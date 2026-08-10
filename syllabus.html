@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science, Technology, and Society — Course Syllabus (Updated) | GE07</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  /* info grid */
+  .info-grid{display:grid;grid-template-columns:200px 1fr;gap:8px 18px;font-size:.98rem;}
+  .info-grid dt{font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  .info-grid dd{margin:0;}
+
+  /* badges */
+  .badge{display:inline-block;font-family:'Segoe UI',Arial,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.08em;padding:2px 8px;border-radius:10px;vertical-align:middle;text-transform:uppercase;margin-left:6px;}
+  .badge.new{background:#e2f4ea;color:var(--new);border:1px solid #9fd4b6;}
+  .badge.updated{background:#fbeadd;color:var(--upd);border:1px solid #e2b28c;}
+  .badge.mandated{background:#fde8e8;color:#a52a2a;border:1px solid #e8a8a8;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .unit-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+  .week-col{width:78px;white-space:nowrap;font-weight:600;color:var(--navy);}
+  .period-banner{background:linear-gradient(90deg,var(--navy),#2c4d88);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:10px 16px;border-radius:6px;margin:24px 0 4px;letter-spacing:.04em;font-size:.95rem;}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 4px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;color:var(--muted);align-items:center;}
+
+  .timeline{list-style:none;margin:14px 0;padding-left:0;}
+  .timeline li{position:relative;padding:0 0 14px 26px;border-left:2px solid #c6d2e4;margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);}
+  .timeline .when{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:.85rem;display:block;}
+
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){.info-grid{grid-template-columns:1fr;} section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Republic of the Philippines · Rizal Technological University · Commission on Higher Education</div>
+  <h1>Science, Technology, and Society — Course Syllabus</h1>
+  <div class="subtitle">GE07 Syllabus • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#outcomes">Learning Outcomes</a></li>
+    <li><a href="#outline">Course Outline</a></li>
+    <li><a href="#plan">Learning Plan</a></li>
+    <li><a href="#map">Course Map</a></li>
+    <li><a href="#grading">Grading</a></li>
+    <li><a href="#readings">Readings</a></li>
+    <li><a href="#policies">Policies</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview">
+  <h2>Course Overview</h2>
+  <dl class="info-grid">
+    <dt>Course Title</dt><dd><strong>Science, Technology, and Society (STS)</strong></dd>
+    <dt>Course Code</dt><dd>GE07</dd>
+    <dt>Course Type</dt><dd>General Education Core Course</dd>
+    <dt>No. of Units</dt><dd><strong>3 units</strong></dd>
+    <dt>Contact Hours</dt><dd><strong>3 hours per week for 18 weeks (54 hours per semester)</strong></dd>
+    <dt>Prerequisites</dt><dd>None</dd>
+    <dt>Instructor</dt><dd>Dr. Ryan Manuel D. Guido</dd>
+    <dt>Basis</dt><dd>CHED CMO No. 20, series of 2013 (with updated topics and resources, 2026)</dd>
+  </dl>
+
+  <h3>Course Description</h3>
+  <p>The course deals with interactions between science and technology and social, cultural, political, and economic contexts that shape and are shaped by them. <em>(CMO No. 20, series of 2013)</em></p>
+  <p>This interdisciplinary course engages students to confront the realities brought about by science and technology in society. Such realities pervade the personal, the public, and the global aspects of our living and are integral to human development. Scientific knowledge and technological development happen in the context of society with all its socio-political, cultural, economic, and philosophical underpinnings at play. This course seeks to instill reflective knowledge in the students so that they are able to live the good life and display ethical decision-making in the face of scientific and technological advancement.</p>
+  <p>This updated edition situates the course in the realities of the 2020s: the rise of <strong>artificial intelligence and generative AI</strong>, the spread of <strong>misinformation, disinformation, and deepfakes</strong>, breakthroughs in <strong>gene editing (CRISPR) and mRNA technology</strong>, the deepening <strong>climate crisis</strong> and the transition to renewable energy, <strong>data privacy and surveillance</strong>, and the emergence of the Philippines as a spacefaring and AI-adopting nation through the <strong>Philippine Space Agency (PhilSA)</strong> and the <strong>National AI Strategy</strong>.</p>
+  <div class="callout"><span class="label">Mandated Topics</span>This course includes mandatory topics on <strong>climate change</strong> and <strong>environmental awareness</strong> (Chapter 11).</div>
+  <div class="callout green"><span class="label">Companion Lecture Series</span>This syllabus is paired with a full set of chapter lecture discussions (Chapters 1–12), each with learning objectives, key terms, discussion activities, a self-check quiz, a 20-item HOTS test, a 20-item HOTS reinforcement assignment, and a 3-item futures essay — all matched to this outline.</div>
+</section>
+
+<!-- ============ OUTCOMES ============ -->
+<section id="outcomes">
+  <h2>Learning Outcomes</h2>
+  <p>At the end of the course, the students should be able to:</p>
+
+  <h3>Knowledge</h3>
+  <ol class="plain">
+    <li>Articulate the impacts of science and technology on society, specifically Philippine society.</li>
+    <li>Explain how science and technology affect society and the environment and their role in nation-building.</li>
+    <li>Analyze the human condition in order to deeply reflect and express philosophical ramifications that are meaningful to the student as a part of society.</li>
+    <li>Define and demonstrate the impact of social media, algorithms, and artificial intelligence on the students' lives and on Philippine society in general. <span class="badge updated">Updated</span></li>
+    <li>Evaluate the ethical, legal, and social implications of emerging technologies such as generative AI, gene editing, and autonomous systems. <span class="badge new">New</span></li>
+  </ol>
+
+  <h3>Values</h3>
+  <ol class="plain">
+    <li>Imbibe the importance of science and technology in the preservation of the environment and the development of the Filipino nation.</li>
+    <li>Critique human flourishing vis-à-vis the progress of science and technology such that the student may define for himself/herself the meaning of the good life.</li>
+    <li>Foster the value of a healthy lifestyle toward the holistic and sustainable development of society and the environment.</li>
+    <li>Value truth, intellectual honesty, and the responsible use of information and AI tools in an age of misinformation. <span class="badge new">New</span></li>
+  </ol>
+
+  <h3>Skills</h3>
+  <ol class="plain">
+    <li>Creatively present the importance and contributions of science and technology to society.</li>
+    <li>Examine shared concerns that make up the good life in order to come up with innovative and creative solutions to contemporary issues guided by ethical standards.</li>
+    <li>Illustrate how social media and the information age impact their lives and their understanding of climate change.</li>
+    <li>Practice digital and AI literacy: critically evaluate sources, detect misinformation and deepfakes, and use AI tools ethically and transparently. <span class="badge new">New</span></li>
+  </ol>
+</section>
+
+<!-- ============ OUTLINE ============ -->
+<section id="outline">
+  <h2>Course Outline and Timeframe</h2>
+  <div class="legend">
+    <span><span class="badge new" style="margin-left:0">New</span> topic added in this update</span>
+    <span><span class="badge updated" style="margin-left:0">Updated</span> topic refreshed with current issues</span>
+    <span><span class="badge mandated" style="margin-left:0">Mandated</span> CHED-mandated topic</span>
+  </div>
+  <table>
+    <thead><tr><th class="week-col">Week</th><th style="width:64px">Ch.</th><th>Topic</th></tr></thead>
+    <tbody>
+      <tr class="unit-row"><td colspan="3">UNIT I — GENERAL CONCEPTS AND STS HISTORICAL DEVELOPMENTS</td></tr>
+      <tr><td class="week-col">1–3</td><td>1</td><td>Historical antecedents in which social considerations changed the course of science and technology — Ancient, Middle, and Modern Ages; the Digital Age and the Fourth Industrial Revolution; the Philippine context <span class="badge updated">Updated</span></td></tr>
+      <tr><td class="week-col">4</td><td>2</td><td>Intellectual revolutions that defined society: Copernican, Darwinian, Freudian, and the Information/AI revolution; Meso-American, Asian, Middle East, and African contributions <span class="badge updated">Updated</span></td></tr>
+      <tr><td class="week-col">5–6</td><td>3</td><td>Science and technology and nation-building: the Philippine S&amp;T agenda, the National AI Strategy Roadmap, the Philippine Space Act &amp; PhilSA, the Philippine Innovation Act, and indigenous science and technologies <span class="badge updated">Updated</span></td></tr>
+      <tr class="unit-row"><td colspan="3">UNIT II — STS AND THE HUMAN CONDITION</td></tr>
+      <tr><td class="week-col">7–8</td><td>4</td><td>The human person flourishing in terms of science and technology; technology as a way of revealing (Heidegger); de-development, degrowth, and sustainable development</td></tr>
+      <tr><td class="week-col">9</td><td>5</td><td>The Good Life (Aristotle's eudaimonia); the good life in the age of algorithms and the attention economy <span class="badge updated">Updated</span></td></tr>
+      <tr><td class="week-col">10</td><td>6</td><td>When technology and humanity cross: robotics, autonomous systems, human rights, and the ethics of AI <span class="badge updated">Updated</span></td></tr>
+      <tr><td class="week-col">11–12</td><td>7</td><td>Why the future does not need us — existential and societal risks of 21st-century technologies: superintelligent AI, autonomous weapons, technological unemployment, and human enhancement <span class="badge updated">Updated</span></td></tr>
+      <tr class="unit-row"><td colspan="3">UNIT III — SPECIFIC ISSUES IN STS</td></tr>
+      <tr><td class="week-col">13</td><td>8</td><td>The Information Age: from Gutenberg to social media to generative AI; big data, algorithms, misinformation/disinformation, deepfakes, and data privacy <span class="badge updated">Updated</span></td></tr>
+      <tr><td class="week-col">14–15</td><td>9</td><td>Biodiversity and the healthy society; Genetically Modified Organisms: science, health, and politics; food security and agro-ecology (incl. the 2024 Golden Rice ruling) <span class="badge updated">Updated</span></td></tr>
+      <tr><td class="week-col">16</td><td>10</td><td>The nano world; gene therapy, CRISPR gene editing, mRNA technology, and stem cells; pandemic preparedness and One Health <span class="badge updated">Updated</span></td></tr>
+      <tr><td class="week-col">16</td><td>11</td><td>Climate change and the energy crisis; environmental awareness; the renewable-energy transition and climate justice for the Philippines <span class="badge mandated">Mandated</span></td></tr>
+      <tr><td class="week-col">17</td><td>12</td><td>Emerging frontiers: artificial intelligence and society, quantum computing, and the new space age <span class="badge new">New</span></td></tr>
+      <tr><td class="week-col">18</td><td>—</td><td>Culminating activity and final examination</td></tr>
+    </tbody>
+  </table>
+  <div class="callout gold"><span class="label">What Changed From the 2013 Outline</span>Climate change is now a full stand-alone <em>mandated</em> chapter (Chapter 11); a new Chapter 12 on AI, quantum computing, and the new space age has been added; and every retained week is refreshed with current issues — generative AI, deepfakes, CRISPR/mRNA, the 2024 Golden Rice ruling, PhilSA, and the National AI Strategy. The original CHED unit sequence and the three grading periods are preserved.</div>
+</section>
+
+<!-- ============ LEARNING PLAN ============ -->
+<section id="plan">
+  <h2>Learning Plan</h2>
+
+  <div class="period-banner">GRADING PERIOD A — GENERAL CONCEPTS AND STS HISTORICAL DEVELOPMENTS (Weeks 1–6)</div>
+  <table>
+    <thead><tr><th style="width:19%">Learning Outcomes</th><th style="width:24%">Topic</th><th style="width:12%">Method</th><th style="width:27%">Resources</th><th style="width:18%">Assessment</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Discuss the interactions between S&amp;T and society throughout history; identify the paradigm shifts in history</td>
+        <td><strong>Ch. 1 — Historical antecedents</strong>: Ancient, Middle &amp; Modern Ages; the Digital Age &amp; 4IR; the Philippines <span class="badge updated">Updated</span></td>
+        <td>Lecture and discussion; activity: "Standing on the Shoulders of Giants"</td>
+        <td>Kuhn, <em>Structure of Scientific Revolutions</em>; Floridi, <em>The Fourth Revolution</em>; Schwab, <em>The Fourth Industrial Revolution</em> <span class="badge new">New</span>; Caoli, "History of S&amp;T of the Philippines"; SEP entries</td>
+        <td>Quiz (40); graded recitation (20); group presentation (40): Creativity 15, Content 15, Learning Impact 10</td>
+      </tr>
+      <tr>
+        <td>Articulate ways by which society is transformed by science and technology</td>
+        <td><strong>Ch. 2 — Intellectual revolutions</strong>: Copernican, Darwinian, Freudian, Information/AI; Meso-American, Asian, Middle East, African <span class="badge updated">Updated</span></td>
+        <td>Lecture and discussion</td>
+        <td>Flow of History (Enlightenment) readings; OSU scientific-revolution lesson plans; documentary <em>AlphaGo</em> (2017) <span class="badge new">New</span></td>
+        <td>Quiz (50); graded activity (30); graded recitation (20)</td>
+      </tr>
+      <tr>
+        <td>Discuss the role of S&amp;T in Philippine nation-building; appraise government S&amp;T policies</td>
+        <td><strong>Ch. 3 — S&amp;T and nation-building</strong>: DOST agenda; National AI Strategy &amp; NAICRI <span class="badge new">New</span>; Space Act &amp; PhilSA <span class="badge new">New</span>; Innovation Act; indigenous S&amp;T</td>
+        <td>Small group activity; discussion; policy-analysis workshop</td>
+        <td>NEDA PDP 2023–2028; DOST–PCIEERD AI Roadmap; NAST <em>Pagtanaw 2050</em> <span class="badge new">New</span>; PhilSA satellite reports; Filipino inventors</td>
+        <td>Group project presentation; policy brief on a current PH S&amp;T policy <span class="badge new">New</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="period-banner">GRADING PERIOD B — STS AND THE HUMAN CONDITION (Weeks 7–12)</div>
+  <table>
+    <thead><tr><th style="width:19%">Learning Outcomes</th><th style="width:24%">Topic</th><th style="width:12%">Method</th><th style="width:27%">Resources</th><th style="width:18%">Assessment</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Analyze the human condition; express philosophical ramifications meaningful to the student</td>
+        <td><strong>Ch. 4 — The human person flourishing</strong>: technology as a way of revealing; de-development &amp; sustainable development; SDGs at 2030 <span class="badge updated">Updated</span></td>
+        <td>Reflection and discussion</td>
+        <td>Heidegger, <em>The Question Concerning Technology</em>; McNamara, "A Return to the Beginning"; Hickel (<em>Guardian</em>); Dayrit; UN SDG Report <span class="badge new">New</span></td>
+        <td>Reflection paper; group presentation on how technology reveals nature and the human person's role</td>
+      </tr>
+      <tr>
+        <td>Examine shared concerns that make up the good life; craft ethical, creative solutions</td>
+        <td><strong>Ch. 5 — The Good Life</strong>: Aristotle's eudaimonia; the good life in the age of algorithms, the attention economy, and digital well-being <span class="badge new">New</span></td>
+        <td>Lecture and discussion</td>
+        <td>Aristotle, <em>Nicomachean Ethics</em> VI &amp; X; Feynman; Gripaldo; Maboloc; <em>That Sugar Film</em>; <em>The Social Dilemma</em> <span class="badge new">New</span>; UNEP green economy</td>
+        <td>Case study: production &amp; consumption of sugar; digital-wellbeing audit <span class="badge new">New</span></td>
+      </tr>
+      <tr>
+        <td>Examine human rights to uphold them in technological ethical dilemmas</td>
+        <td><strong>Ch. 6 — When technology and humanity cross</strong>: robotics; AI ethics — bias, accountability, transparency; facial recognition &amp; surveillance; global AI governance <span class="badge updated">Updated</span></td>
+        <td>Reflection and discussion; structured debate</td>
+        <td>"Ethical Dilemmas of Robotics" (BBC); Carr, "Is Google Making Us Stupid?"; UNESCO AI Ethics (2021) <span class="badge new">New</span>; Coeckelbergh; Crawford; <em>Coded Bias</em> <span class="badge new">New</span></td>
+        <td>Section exam: find &amp; examine local policies protecting the person from new tech; debate on facial recognition <span class="badge new">New</span> — Content 30 / Analysis 40 / Creativity &amp; teamwork 30</td>
+      </tr>
+      <tr>
+        <td>Evaluate contemporary human experience to strengthen the person in society</td>
+        <td><strong>Ch. 7 — Why the future does not need us</strong>: existential risk &amp; superintelligent AI <span class="badge updated">Updated</span>; technological unemployment &amp; the future of work <span class="badge new">New</span>; human enhancement &amp; transhumanism</td>
+        <td>Reflection and discussion</td>
+        <td>Joy, "Why the Future Doesn't Need Us"; Asimov; <em>Ex Machina</em>/<em>A.I.</em> <span class="badge updated">Updated</span>; Bostrom, <em>Superintelligence</em> <span class="badge new">New</span>; Russell, <em>Human Compatible</em> <span class="badge new">New</span>; WEF <em>Future of Jobs</em></td>
+        <td>Case study: WAZE / AI &amp; PH BPO jobs <span class="badge new">New</span>; group presentation — Content 30 / Analysis 40 / Creativity &amp; teamwork 30</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="period-banner">GRADING PERIOD C — SPECIFIC ISSUES IN STS (Weeks 13–18)</div>
+  <table>
+    <thead><tr><th style="width:19%">Learning Outcomes</th><th style="width:24%">Topic</th><th style="width:12%">Method</th><th style="width:27%">Resources</th><th style="width:18%">Assessment</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Link concepts to the information age; detect misinformation and deepfakes <span class="badge new">New</span></td>
+        <td><strong>Ch. 8 — The Information Age</strong>: Gutenberg → social media → generative AI; big data, algorithms; misinformation/disinformation &amp; deepfakes; data privacy (RA 10173) <span class="badge new">New</span></td>
+        <td>Presentation and discussion; fact-checking workshop <span class="badge new">New</span></td>
+        <td>Hodges, <em>Alan Turing</em>; Von Baeyer; Zuboff <span class="badge new">New</span>; Ong &amp; Cabañes, <em>Architects of Networked Disinformation</em> <span class="badge new">New</span>; Rappler/VERA Files/Tsek.ph <span class="badge new">New</span>; Kaku</td>
+        <td>Activity reports (A Day without Technology; Timing Your Technology; Technology and the Past); fact-check portfolio <span class="badge new">New</span></td>
+      </tr>
+      <tr>
+        <td>Determine the interrelatedness of society, environment, and health; discuss GMO ethics</td>
+        <td><strong>Ch. 9 — Biodiversity and the healthy society</strong>: GMOs — science, health, and politics; Golden Rice &amp; the 2024 court ruling <span class="badge updated">Updated</span>; food security &amp; agro-ecology</td>
+        <td>Presentation and discussion</td>
+        <td>Life &amp; biodiversity; Dubock, "Politics of Golden Rice"; Duguet et al. (vulnerable populations); 2024 PH Writ of Kalikasan ruling <span class="badge new">New</span>; agro-ecology reading</td>
+        <td>Graded recitation / debate</td>
+      </tr>
+      <tr>
+        <td>Discuss impacts of nanotech &amp; gene therapy; assess benefits/detriments to global health</td>
+        <td><strong>Ch. 10 — The nano world; gene therapy &amp; gene editing</strong>: nanoethics; CRISPR-Cas9 &amp; Casgevy (2023) <span class="badge new">New</span>; mRNA &amp; pandemic preparedness <span class="badge new">New</span>; stem cells &amp; heritable genome editing <span class="badge updated">Updated</span></td>
+        <td>Presentation and discussion</td>
+        <td>Lin &amp; Allhoff, <em>Nanoethics</em>; Zhang et al.; Dayrit; Isaacson, <em>The Code Breaker</em> <span class="badge new">New</span>; <em>Human Nature</em> (2019) <span class="badge new">New</span>; WHO genome-editing framework <span class="badge new">New</span></td>
+        <td>Position paper: "Should heritable human genome editing ever be allowed?" <span class="badge new">New</span></td>
+      </tr>
+      <tr>
+        <td>Identify causes and assess impacts of climate change; apply STS concepts</td>
+        <td><strong>Ch. 11 — Climate change &amp; the energy crisis; environmental awareness</strong> <span class="badge mandated">Mandated</span>: IPCC AR6 &amp; 1.5&nbsp;°C <span class="badge new">New</span>; Paris Agreement &amp; recent COP outcomes <span class="badge new">New</span>; PH climate justice <span class="badge updated">Updated</span>; renewables &amp; OTEC</td>
+        <td>Presentation and discussion</td>
+        <td>IPCC <em>AR6 Synthesis Report</em> (2023) <span class="badge new">New</span>; Gore; Hardin, "Tragedy of the Commons"; Legarda, <em>BUHOS</em>; CCC &amp; PH NDC <span class="badge new">New</span>; Thunberg, <em>The Climate Book</em> <span class="badge new">New</span>; UNEP</td>
+        <td>Group presentation; learning application: community climate-adaptation proposal <span class="badge updated">Updated</span></td>
+      </tr>
+      <tr>
+        <td>Examine emerging technologies through STS lenses; anticipate societal implications <span class="badge new">New</span></td>
+        <td><strong>Ch. 12 — Emerging frontiers</strong> <span class="badge new">New</span>: generative AI &amp; society; quantum computing &amp; cybersecurity; the new space age (PhilSA); convergence &amp; BCIs</td>
+        <td>Presentation and discussion; horizon-scanning workshop</td>
+        <td>Collingridge, <em>The Social Control of Technology</em>; DOST–PCIEERD AI Roadmap; Suleyman, <em>The Coming Wave</em>; NIST post-quantum standards; PhilSA primers</td>
+        <td>Tech-foresight brief on one emerging technology and its implications for the Philippines</td>
+      </tr>
+      <tr>
+        <td>Research, present, and take a stand on S&amp;T issues affecting Philippine society</td>
+        <td><strong>Culminating activity and final examination</strong></td>
+        <td>Presentation and group work</td>
+        <td>—</td>
+        <td><strong>Final exam</strong> — group presentation: Content &amp; Relevance 30 / Analysis 40 / Creativity &amp; teamwork 30 = 100%</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ COURSE MAP ============ -->
+<section id="map">
+  <h2>Course Map (G.E. Learning Outcomes)</h2>
+  <table>
+    <thead><tr><th>G.E. Learning Outcomes</th><th style="width:120px;text-align:center">STS</th></tr></thead>
+    <tbody>
+      <tr class="unit-row"><td colspan="2">A. INTELLECTUAL COMPETENCIES (Knowledge)</td></tr>
+      <tr><td>1. Analyze "texts" (written, visual, oral, digital, and AI-generated) critically <span class="badge updated">Updated</span></td><td style="text-align:center">L</td></tr>
+      <tr><td>2. Demonstrate proficient and effective communication (writing, speaking, and use of new technologies)</td><td style="text-align:center">L</td></tr>
+      <tr><td>3. Use basic concepts across the domains of knowledge</td><td style="text-align:center">L</td></tr>
+      <tr><td>4. Demonstrate critical, analytical, and creative thinking</td><td style="text-align:center">L</td></tr>
+      <tr><td>5. Apply different analytical modes in problem solving</td><td style="text-align:center">L</td></tr>
+      <tr class="unit-row"><td colspan="2">B. PERSONAL AND CIVIC RESPONSIBILITIES (Values)</td></tr>
+      <tr><td>1. Appreciate the complexity of the human condition</td><td style="text-align:center">O</td></tr>
+      <tr><td>2. Interpret the human experience from various perspectives</td><td style="text-align:center">O</td></tr>
+      <tr><td>3. Examine the contemporary world from both Philippine and global perspectives</td><td style="text-align:center">O</td></tr>
+      <tr><td>4. Take responsibility for knowing and being Filipino</td><td style="text-align:center">O</td></tr>
+      <tr><td>5. Reflect critically on shared concerns</td><td style="text-align:center">O</td></tr>
+      <tr><td>6. Generate innovative practices and solutions guided by ethical standards</td><td style="text-align:center">O</td></tr>
+      <tr><td>7. Make decisions based on moral norms and imperatives</td><td style="text-align:center">O</td></tr>
+      <tr><td>8. Appreciate various art forms</td><td style="text-align:center">—</td></tr>
+      <tr><td>9. Contribute to aesthetics</td><td style="text-align:center">O</td></tr>
+      <tr><td>10. Contribute personally and meaningfully to the country's development</td><td style="text-align:center">O</td></tr>
+      <tr class="unit-row"><td colspan="2">C. PRACTICAL SKILLS (Skills)</td></tr>
+      <tr><td>1. Work effectively in a group</td><td style="text-align:center">O</td></tr>
+      <tr><td>2. Apply computing and AI tools to process information effectively and ethically <span class="badge updated">Updated</span></td><td style="text-align:center">L</td></tr>
+      <tr><td>3. Use current technology to assist and facilitate learning and research</td><td style="text-align:center">L</td></tr>
+      <tr><td>4. Negotiate the world of technology responsibly</td><td style="text-align:center">P</td></tr>
+      <tr><td>5. Create solutions to problems in various fields</td><td style="text-align:center">P</td></tr>
+      <tr><td>6. Manage one's knowledge, skills, and values for responsible and productive living</td><td style="text-align:center">O</td></tr>
+      <tr><td>7. Organize one's self for lifelong learning</td><td style="text-align:center">O</td></tr>
+    </tbody>
+  </table>
+  <p class="sans" style="font-size:.85rem;color:var(--muted)"><strong>Legend:</strong> L = Learned &nbsp;·&nbsp; P = Practiced &nbsp;·&nbsp; O = Opportunity to learn</p>
+</section>
+
+<!-- ============ GRADING ============ -->
+<section id="grading">
+  <h2>Course Requirements and Grading System</h2>
+  <table>
+    <thead><tr><th>Component</th><th style="width:140px;text-align:center">Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Quizzes and graded recitations</td><td style="text-align:center">20%</td></tr>
+      <tr><td>Activity reports, reflection papers, and case studies</td><td style="text-align:center">20%</td></tr>
+      <tr><td>Group presentations, debates, and workshops</td><td style="text-align:center">20%</td></tr>
+      <tr><td>Section examinations (Periods A and B)</td><td style="text-align:center">20%</td></tr>
+      <tr><td>Culminating activity and final examination</td><td style="text-align:center">20%</td></tr>
+      <tr class="unit-row"><td>TOTAL</td><td style="text-align:center">100%</td></tr>
+    </tbody>
+  </table>
+  <p class="sans" style="font-size:.85rem;color:var(--muted)">Group presentations are rubric-scored: Content and Relevance 30%, Analysis 40%, Creativity &amp; Teamwork 30%. Each chapter's HOTS test, HOTS reinforcement assignment, and futures essay (in the companion lecture series) may be drawn upon for quizzes, assignments, and exams. Weights may be adjusted to institutional grading policy.</p>
+</section>
+
+<!-- ============ READINGS ============ -->
+<section id="readings">
+  <h2>Required Readings and Other Materials</h2>
+
+  <h3>Core Readings (from the original CHED syllabus)</h3>
+  <ul class="plain">
+    <li>Anderson, Philip W. "More is Different," Princeton University Press, 2001.</li>
+    <li>Aristotle. <em>Nicomachean Ethics</em>, Books VI and X.</li>
+    <li>Caoli, Olivia. "A History of Science and Technology of the Philippines," University of the Philippines, 1986.</li>
+    <li>Dayrit, Fabian. "Sustainable Development: An Evolving Paradigm for the 21st Century," Ateneo de Manila University Press, 2011.</li>
+    <li>Floridi, Luciano. <em>The Fourth Revolution</em>, Oxford University Press, 2014.</li>
+    <li>Feynman, Richard. "The Pleasure of Finding Things Out," Perseus Books, 1999.</li>
+    <li>Gripaldo, Rolando. "The Concepts of the Public Good," National Bookstore, 2009.</li>
+    <li>Heidegger, Martin. <em>The Question Concerning Technology and Other Essays</em>, HarperCollins, 1982.</li>
+    <li>Hickel, Jason. "Forget 'developing' poor countries…" <em>The Guardian</em>, 2015.</li>
+    <li>Joy, Bill. "Why the Future Doesn't Need Us," <em>Wired</em>, 2000.</li>
+    <li>Kuhn, Thomas. <em>The Structure of Scientific Revolutions</em>, 1962.</li>
+    <li>Maboloc, Christopher Ryan. "Eudaimonia and Human Flourishing," Rex Bookstore, 2010.</li>
+    <li>Von Baeyer, Hans Christian. <em>Information: The New Language of Science</em>, Harvard University Press, 2005.</li>
+  </ul>
+
+  <h3>Updated and New Readings (2026 edition) <span class="badge new">New</span></h3>
+  <ul class="plain">
+    <li>Bostrom, Nick. <em>Superintelligence</em>, Oxford University Press, 2014.</li>
+    <li>Coeckelbergh, Mark. <em>AI Ethics</em>, MIT Press, 2020; Crawford, Kate. <em>Atlas of AI</em>, Yale UP, 2021.</li>
+    <li>DOST–PCIEERD. <em>Philippine Artificial Intelligence Roadmap</em>.</li>
+    <li>IPCC. <em>AR6 Synthesis Report: Climate Change 2023</em>.</li>
+    <li>Isaacson, Walter. <em>The Code Breaker</em>, Simon &amp; Schuster, 2021.</li>
+    <li>NAST Philippines. <em>Pagtanaw 2050</em>, 2021.</li>
+    <li>Ong, Jonathan Corpus &amp; Jason Vincent Cabañes. <em>Architects of Networked Disinformation</em>, 2018.</li>
+    <li>Russell, Stuart. <em>Human Compatible</em>, Viking, 2019; Suleyman, Mustafa. <em>The Coming Wave</em>, 2023.</li>
+    <li>Schwab, Klaus. <em>The Fourth Industrial Revolution</em>, WEF, 2016.</li>
+    <li>Thunberg, Greta (ed.). <em>The Climate Book</em>, Penguin, 2022.</li>
+    <li>UNESCO. <em>Recommendation on the Ethics of Artificial Intelligence</em>, 2021; WHO. <em>Human Genome Editing: A Framework for Governance</em>, 2021.</li>
+    <li>Zuboff, Shoshana. <em>The Age of Surveillance Capitalism</em>, PublicAffairs, 2019.</li>
+  </ul>
+
+  <h3>Films, Documentaries, and Fact-Checking Resources</h3>
+  <ul class="plain">
+    <li>Films/docs: <em>AlphaGo</em> (2017) <span class="badge new">New</span>; <em>Coded Bias</em> (2020) <span class="badge new">New</span>; <em>The Social Dilemma</em> (2020) <span class="badge new">New</span>; <em>Human Nature</em> (2019) <span class="badge new">New</span>; <em>BUHOS</em> (Legarda); <em>That Sugar Film</em> (2015); Kurosawa's <em>Dreams</em>; <em>Ex Machina</em> (2014) <span class="badge updated">Updated</span>.</li>
+    <li>Fact-checking &amp; data: Tsek.ph, VERA Files Fact Check, Rappler Fact Check; Our World in Data; National Privacy Commission; PhilSA and DOST advisories. <span class="badge new">New</span></li>
+  </ul>
+
+  <h3>Class Materials</h3>
+  <ul class="plain">
+    <li>Activity Reports: A Day without Technology; Timing Your Technology; Technology and the Past (interviews with elders).</li>
+    <li>Templates: Fact-Check Portfolio; Policy Brief; Tech-Foresight Brief. <span class="badge new">New</span></li>
+    <li>Companion chapter lecture discussions (Chapters 1–12), each with a self-check quiz, a 20-item HOTS test, a 20-item HOTS reinforcement assignment, and a 3-item futures essay. <span class="badge new">New</span></li>
+  </ul>
+</section>
+
+<!-- ============ POLICIES ============ -->
+<section id="policies">
+  <h2>Course Policies <span class="badge new">New</span></h2>
+  <h3>Responsible Use of AI Tools</h3>
+  <p>Consistent with the course's own subject matter, students may use generative AI tools only as aids for brainstorming, studying, and language polishing — and must disclose such use in every submission. Presenting AI-generated work as one's own analysis is a breach of academic integrity. Reflection papers, debates, and presentations must reflect the student's own reasoning and stance.</p>
+  <h3>Academic Integrity and Information Ethics</h3>
+  <p>All sources — print, online, and AI-assisted — must be properly cited. Sharing or amplifying unverified claims in course outputs is treated as a methodological error; students are expected to apply the fact-checking skills built in Chapter 8 across all coursework.</p>
+  <h3>Inclusion and Environmental Responsibility</h3>
+  <p>The class is a safe space for evidence-based disagreement. In keeping with the mandated environmental-awareness topic, submissions are paperless by default.</p>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society (GE07) · Based on the CHED GEC syllabus (CMO No. 20, s. 2013) · Topics, readings, and resources updated August 2026 · Dr. Ryan Manuel D. Guido
+</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>
