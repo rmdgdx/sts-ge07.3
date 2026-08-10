@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 — Reinforcement Exercises & Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .timeline{list-style:none;margin:14px 0;padding-left:0;}
+  .timeline li{position:relative;padding:0 0 14px 26px;border-left:2px solid #c6d2e4;margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);}
+  .timeline .when{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:.85rem;display:block;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit I · Weeks 1–3</div>
+  <h1>Chapter 1: Reinforcement Exercises and Essay — Historical Antecedents of Science and Technology</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">Chapter Test</a></li>
+    <li><a href="#assignment">Reinforcement</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 1 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key. (For classroom use, print with the details collapsed.)</p>
+
+  <div class="mcq"><p class="stem">1. Writing arose from accounting, the calendar from farming and faith, and the computer from wartime code-breaking. Which generalization do these cases BEST support?</p>
+    <ol><li>Great inventions come from lone geniuses working in isolation.</li><li>Social needs call technologies into existence.</li><li>Science must always precede technology.</li><li>Religion has been the main obstacle to invention.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Each invention answered a concrete social need (record-keeping, agriculture/worship, war). A is contradicted by the collective nature of these efforts; C is contradicted by technology routinely preceding scientific explanation; D is contradicted by religion often <em>driving</em> invention (calendars, clocks).</p></details></div>
+
+  <div class="mcq"><p class="stem">2. China possessed paper, printing, gunpowder, and the compass centuries before Europe, yet the Industrial Revolution occurred in Britain. Which explanation is MOST consistent with the chapter's analysis?</p>
+    <ol><li>Chinese inventions were technically inferior to European ones.</li><li>Europeans were naturally more curious than other peoples.</li><li>Britain's particular social conditions — expensive labor, cheap coal, patent law, and commercial institutions — rewarded mechanization.</li><li>The Industrial Revolution was a matter of pure historical accident.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The Needham Question is best answered institutionally and socially: the same inventions produce different outcomes in different social configurations. A is false (the inventions were superior for centuries); B is prejudice, not analysis; D ignores the identifiable conditions the chapter lists.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. A BPO worker's tasks are automated by AI. Following the Luddites' ACTUAL grievance as presented in the chapter, her most historically consistent demand would be:</p>
+    <ol><li>A total national ban on AI research.</li><li>A fair share in the gains of automation — retraining, transition support, and a voice in how it is deployed.</li><li>Acceptance that displacement is the inevitable price of progress.</li><li>Secretly sabotaging her company's software.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The Luddites protested who bore technology's costs, not technology itself. Their modern equivalent is a demand for just distribution of benefits and a say in deployment — not bans (A), fatalism (C), or sabotage-as-answer (D, the tactic that history shows failed them).</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Some historians rank the mechanical clock above the steam engine as the key machine of the modern age. Which evidence BEST supports this ranking?</p>
+    <ol><li>Clocks were more mechanically complex than steam engines.</li><li>Clock time restructured human behavior itself — scheduling, discipline, and coordination — which industrial production later required.</li><li>Clocks were invented in monasteries, giving them religious authority.</li><li>Steam engines eventually became obsolete while clocks did not.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The claim rests on the clock's <em>social</em> effect: it produced the time-disciplined labor force and coordinated life that industry presupposes. A, C, and D are either false or irrelevant to the argument about social transformation.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. "The printing press was the social media of its age." Which observed parallel gives this analogy its STRONGEST support?</p>
+    <ol><li>Both were invented in Germany.</li><li>Both drastically lowered the cost of spreading ideas — accelerating truth and falsehood alike, and destabilizing established authorities.</li><li>Both were immediately regulated by governments.</li><li>Both were primarily entertainment technologies.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The functional parallel is the collapse in the cost of disseminating ideas and its double-edged consequences (Reformation and science, but also propaganda and religious war — compare disinformation today). A is trivial; C and D are historically inaccurate.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. Gunpowder was discovered while seeking an immortality elixir; the compass began in fortune-telling; ARPANET was a defense project. Applying this pattern, the MOST defensible claim about generative AI is:</p>
+    <ol><li>Its ultimate social uses will likely differ greatly from its creators' intentions and today's predictions.</li><li>It will remain confined to the purposes its developers currently intend.</li><li>Because we know history, we can now predict its trajectory precisely.</li><li>It will inevitably become a weapon and nothing else.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> The pattern of unintended trajectories warns against confident prediction (C), against assuming intended uses will hold (B), and against single-outcome determinism (D). History counsels humility, not clairvoyance.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Rome built roads and aqueducts because "empires invest in the technologies that hold empires together." Which modern investment is the CLOSEST analog to this principle?</p>
+    <ol><li>A hobbyist building a drone for photography.</li><li>A state funding national broadband, GPS, and power grids.</li><li>A restaurant chain redesigning its logo.</li><li>A university offering an elective on Roman history.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Like Roman roads, broadband, GPS, and grids are state-built infrastructure that binds territory, enables commerce and administration, and often originates in military/security needs (GPS literally so). The others are private or symbolic acts without the empire-binding function.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. Egyptian geometry grew from re-surveying flooded fields; Philippine meteorology grew from typhoon warnings at the Observatorio de Manila. Together these cases BEST illustrate that:</p>
+    <ol><li>Only agricultural societies can develop science.</li><li>A society's physical environment helps select which sciences it develops most.</li><li>Colonial science never benefited colonized peoples.</li><li>Geometry and meteorology are the two most important sciences.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Both cases show environment steering scientific priorities: the Nile made surveyors; typhoons made meteorologists. A and D over-generalize; C is contradicted by the life-saving typhoon warnings themselves.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Haber–Bosch nitrogen chemistry feeds half of humanity and made explosives for two world wars. A student concludes: "So technology is completely neutral; only its use matters." Which is the STRONGEST STS-informed critique of this conclusion?</p>
+    <ol><li>The student is right; no further analysis is needed.</li><li>Technologies are never used at all until governments approve them.</li><li>Technologies arrive embedded in social systems — funding, design choices, and infrastructures that make some uses far easier than others — so "neutrality" hides real, built-in tendencies.</li><li>Chemistry is inherently evil, as the explosives prove.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The co-production view: design and context load the dice. A fertilizer plant and a munitions program are not equally available "uses" to every society — patrons, infrastructure, and design shape likely outcomes. B is false; D simply inverts the neutrality error.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. The House of Wisdom flourished under state patronage and declined amid political collapse. The MOST important inference for today's policymakers is:</p>
+    <ol><li>Science funding is a luxury to cut first in hard times.</li><li>Scientific excellence, once achieved, is permanent.</li><li>Science depends on sustained institutions — patronage, libraries, stability — and can be lost when these collapse.</li><li>Translation of foreign works weakens local science.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The Golden Age shows knowledge is institutionally fragile: it needs continuous social support. B is directly refuted by the decline; D inverts the lesson (translation <em>built</em> the Golden Age); A draws the opposite of the rational conclusion.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Heavy plow → more farmland → food surplus → population growth → towns → universities. This chain BEST exemplifies which chapter pattern?</p>
+    <ol><li>Technology redistributes power among armies.</li><li>An invention's effects cascade far beyond its immediate purpose, remaking whole societies.</li><li>Agricultural technologies have only agricultural effects.</li><li>Universities cause agricultural revolutions.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A tool for turning clay soil ends by helping create the medieval university — a cascade of unintended, society-wide consequences. C is refuted by the chain itself; D reverses the causal direction; A describes a different pattern.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. The "stirrup thesis" claims the stirrup caused feudalism by making mounted knights supreme. Which observation MOST weakens this technologically determinist claim?</p>
+    <ol><li>Stirrups were made of metal, which was expensive.</li><li>Other societies adopted the stirrup without developing feudalism, so social factors — not the device alone — shaped the outcome.</li><li>Knights also used swords and lances.</li><li>Feudalism ended when knights retired.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The classic counter to determinism: the same artifact in different societies yields different orders, so the technology cannot be the sole cause. A, C, and D do not address the causal claim.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. Which statement is the MOST balanced evaluation of the Green Revolution, as discussed in the chapter?</p>
+    <ol><li>It was an unqualified triumph with no drawbacks.</li><li>It was a failure because it spread chemical dependence.</li><li>It averted mass famine for perhaps a billion people while creating real environmental and dependence costs that societies are still managing.</li><li>Its effects were too small to evaluate.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> HOTS evaluation requires holding benefit and cost together: famine averted <em>and</em> fertilizer/pesticide/irrigation dependence incurred. A and B each amputate half the record; D is factually wrong.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. The Manhattan Project forced the question: "Should everything that can be built, be built?" Which contemporary debate raises this question in the MOST directly analogous form?</p>
+    <ol><li>Whether to release a new smartphone color.</li><li>Whether to develop lethal autonomous weapons that select targets without human control.</li><li>Whether to expand a city's bicycle lanes.</li><li>Whether students should use calculators in exams.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Like the bomb, autonomous weapons involve irreversible, potentially catastrophic capability whose creation itself — not merely its use — is the moral question, now debated by scientists and the UN as nuclear weapons were. The other options are ordinary policy or consumer choices.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. The barangay, the basic unit of Philippine government, takes its name from the balangay boat. This BEST illustrates:</p>
+    <ol><li>That boats are older than governments everywhere.</li><li>How deeply a technology can structure social organization — even lending its name to the community itself.</li><li>That Spanish colonizers invented Philippine local government.</li><li>That etymology is unrelated to history.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The boat was the community's vehicle of migration and identity; the social unit took the technology's name — technology and social order co-produced. A is an overgeneralization; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. Spain built the Observatorio de Manila for colonial and religious purposes, yet its typhoon warnings saved Filipino lives and seeded national meteorology. The MOST defensible historical judgment is:</p>
+    <ol><li>Colonial science should be celebrated without reservation.</li><li>Colonial science should be erased from the national story.</li><li>Institutions created to serve colonial ends could still yield lasting local benefits — judgment must hold motive and consequence in view at once.</li><li>The observatory's purpose and effects were identical.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> Mature historical evaluation separates motives (colonial control, evangelization) from consequences (life-saving warnings, institutional foundations) and weighs both. A and B are one-sided; D denies the very divergence the case demonstrates.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Life expectancy roughly doubled between 1850 and 1950 mainly due to vaccines, clean water, and sewers rather than dramatic cures. The BEST inference for present-day health policy is:</p>
+    <ol><li>Hospitals and specialists are unnecessary.</li><li>Unglamorous public infrastructure and prevention often save more lives than spectacular high-tech medicine — and deserve matching investment.</li><li>Sewers matter only in the 19th century.</li><li>Life expectancy gains came from better weather.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The historical evidence supports prioritizing prevention and infrastructure (sanitation, immunization) — a live issue for Philippine health budgets. A overcorrects; C and D are absurd on the evidence.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. "The first industrial revolution mechanized muscle; the fourth automates aspects of judgment." Why does this difference make 4IR's social questions cut DEEPER, according to the chapter's logic?</p>
+    <ol><li>Because machines that share cognitive work touch decision-making, expertise, and white-collar livelihoods — domains previously reserved for humans alone.</li><li>Because muscles are more important than judgment.</li><li>Because 4IR technologies are cheaper to build than steam engines.</li><li>Because judgment cannot actually be automated, making the fear irrational.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> Extending automation from physical labor into judgment implicates professions, authority, and responsibility — questions of who decides — not merely productivity. B trivializes; C is beside the point; D contradicts the premise the chapter documents.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. mRNA vaccines were developed in under a year during COVID-19, atop decades of basic research, then distributed unevenly amid vaccine nationalism and misinformation. This case BEST exemplifies:</p>
+    <ol><li>Science operating free of social influence.</li><li>Co-production: social emergency accelerating science, and social forces (politics, inequality, information ecosystems) shaping its outcomes.</li><li>The failure of basic research to matter.</li><li>Technology determining society with no human choice involved.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Every element — emergency funding, prior basic research, nationalist distribution, misinformation — shows society and science shaping each other simultaneously. A, C, and D are each contradicted by at least one element of the case.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Using ALL five synthesis patterns, which forecast about AI in the Philippines is the MOST historically disciplined?</p>
+    <ol><li>"AI will simply follow its inventors' plans, so no governance is needed."</li><li>"AI will destroy society; resistance is the only option."</li><li>"AI's path will be negotiated: real needs will drive adoption, benefits and harms will be unevenly distributed, consequences will surprise us, and institutions — laws, schools, agencies — will decide much of the outcome."</li><li>"History is irrelevant because AI is unprecedented."</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> It applies need-precedes-invention, winners/losers, unintended consequences, institutions, and co-production together. A repeats determinism-by-intention; B repeats single-outcome determinism; D ignores that every "unprecedented" technology in the chapter still followed these social patterns.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Students answer first; keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. Fire has been called "humanity's first energy revolution." Which later transition is its CLOSEST structural parallel?</p>
+    <ol><li>The invention of eyeglasses.</li><li>The steam engine's unlocking of fossil-fuel power.</li><li>The invention of papyrus.</li><li>The Code of Hammurabi.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Both fire and steam gave humans access to a new energy source beyond muscle, with cascading effects on diet/industry, settlement, and environment. The others are information or legal technologies, not energy transitions.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Which causal chain from the Neolithic Revolution is stated in the CORRECT order?</p>
+    <ol><li>Cities → agriculture → surplus → specialization.</li><li>Agriculture → surplus → specialization → social hierarchy and cities.</li><li>Specialization → agriculture → cities → surplus.</li><li>Surplus → agriculture → hierarchy → farming.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Farming produced storable surplus; surplus freed some people from food production (specialization); specialization stratified society and concentrated populations into cities. The other orderings put effects before causes.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. In Sumer, literacy belonged to a small scribal elite, giving them administrative power. The MOST analogous situation today is:</p>
+    <ol><li>Everyone owning a television.</li><li>The concentration of advanced AI capability and data in a small number of firms and states.</li><li>Public libraries lending novels.</li><li>The popularity of karaoke.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The parallel is a scarce, powerful information technology controlled by few — conferring economic and administrative power, and raising the same question: who gets access? A, C, and D describe widely distributed technologies.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. The chapter calls the Code of Hammurabi a "social technology." What justifies applying the word <em>technology</em> to a law code?</p>
+    <ol><li>It was written on durable stone.</li><li>It is a designed, reproducible instrument for solving a social problem — coordinating behavior at scale — just as a plow solves a physical one.</li><li>Ancient people considered laws magical.</li><li>Nothing; the term is purely decorative.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Technology is applied knowledge for practical ends; institutions like law, universities, and peer review are engineered social instruments. A concerns the medium, not the function; C and D miss the analytical point.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. The Antikythera mechanism's sophistication was not matched again for over a millennium. This fact MOST directly challenges which assumption?</p>
+    <ol><li>That technological progress is continuous and irreversible.</li><li>That the Greeks were skilled engineers.</li><li>That astronomy interested ancient peoples.</li><li>That gears can model planetary motion.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> Its long-unmatched complexity shows capability can be lost when the supporting social world (patrons, workshops, transmission) disappears — progress is not an escalator. B, C, D are all confirmed, not challenged, by the artifact.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. The compass moved from geomancy to navigation. Which modern technology followed the MOST similar path from special-purpose origins to transformative general use?</p>
+    <ol><li>GPS: built for military targeting and navigation, now underpinning civilian transport, logistics, and daily life.</li><li>The stapler, which has always joined paper.</li><li>The umbrella, whose purpose never changed.</li><li>The abacus, which disappeared entirely.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> GPS mirrors the compass: a niche (military/divinatory) origin, then repurposing into universal infrastructure. B and C show static purposes; D shows obsolescence, not repurposing.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Indian numerals reached Europe through Arab scholars along trade routes. For a country's science policy today, the MOST direct implication is:</p>
+    <ol><li>Isolation best protects national science.</li><li>Openness — exchange programs, international collaboration, translation — is historically how knowledge grows; cutting these channels starves it.</li><li>Only original domestic discoveries have value.</li><li>Mathematics needs no institutional support.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The zero's journey shows knowledge advancing through contact and exchange. A and C describe the isolationism that history penalizes (compare the chapter's institutional lessons); D is refuted by the entire transmission story.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. The Maya invented zero and precise calendars with no contact with Eurasia. This MOST strongly supports the claim that:</p>
+    <ol><li>Science and mathematics are universal human capacities arising wherever societies need them.</li><li>All mathematics diffused from a single origin.</li><li>Isolated societies cannot achieve abstraction.</li><li>Calendars require metal tools.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> Independent invention is the decisive evidence for universality. B and C are directly refuted by the case; D is false (Mesoamerican achievements were made without iron technology).</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Medieval universities (Bologna 1088) are presented as inventions comparable to machines. Their key "engineering function" was to:</p>
+    <ol><li>House large libraries in stone buildings.</li><li>Reliably reproduce, certify, and transmit knowledge across generations — independent of any single teacher's survival.</li><li>Train knights for warfare.</li><li>Entertain the nobility.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The university solved knowledge's continuity problem — the very failure that doomed earlier golden ages. A describes a building, not the institution's function; C and D are historically wrong.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. The longbow and gunpowder eroded the armored knight's supremacy and helped end feudalism. Which present-day case shows the MOST similar power-redistribution dynamic?</p>
+    <ol><li>Faster commercial airliners.</li><li>Inexpensive drones enabling small states and groups to challenge expensive conventional forces.</li><li>Higher-resolution televisions.</li><li>Electric toothbrushes.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The pattern is a cheap technology neutralizing an expensive elite one (peasant's arrow vs. knight's armor; drone vs. tank/warship), shifting power between classes of actors. The others involve no power redistribution.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Luther's theses spread across Europe within weeks via print. The BEST-supported counterfactual inference is:</p>
+    <ol><li>Without print, the Reformation would have unfolded far more slowly and locally — as earlier, print-less reform movements did.</li><li>Without print, the Reformation would have been identical.</li><li>Print alone caused the Reformation, with theology irrelevant.</li><li>Counterfactual reasoning is impossible in history.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> Disciplined counterfactuals compare like cases: pre-print reformers (Hus, Wycliffe) were contained regionally. B denies the medium's documented role; C commits pure technological determinism; D abandons analysis.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. Why was the Royal Society's practice of publishing and repeating experiments a turning point for science as a SOCIAL system?</p>
+    <ol><li>It made experiments more entertaining for the public.</li><li>It shifted authority from individual reputation to communal verification — claims stood or fell by checks anyone qualified could perform.</li><li>It guaranteed all published results were correct.</li><li>It ended all scientific disagreement.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Replication and publication made knowledge communal property subject to collective scrutiny — the core of the modern scientific method as an institution. C and D are false (errors and disputes continued — the system is designed to catch them); A is trivial.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. Watt improved the steam engine in a Britain with secure patents, investors, and commerce. The chapter implies his genius alone was insufficient because:</p>
+    <ol><li>Watt was not actually skilled.</li><li>Invention becomes innovation only when institutions let inventors profit, find capital, and reach markets — conditions many talented societies lacked.</li><li>Steam engines were unpopular in Britain.</li><li>Patents hinder all technological progress.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The same institutional argument as the Needham Question, in positive form: Britain's legal-commercial environment converted ingenuity into industry. A and C are false; D overstates — the chapter shows patents (in that context) enabling investment.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. The Industrial Revolution produced rising national wealth alongside child labor, slums, and epidemics. What does this teach about MEASURING technological "progress"?</p>
+    <ol><li>Aggregate output alone is a sufficient measure.</li><li>Progress must be assessed on multiple dimensions — including who bears the costs — because averages conceal suffering within them.</li><li>Progress should never be measured.</li><li>Wealth and welfare are always identical.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The era's paradox — growth with misery — shows single-metric evaluation fails; distribution and living conditions must enter the assessment. A and D are the exact errors exposed; C is evaluative surrender.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. John Snow mapped cholera deaths to a single water pump, and sanitation reform followed. This episode is a founding case of:</p>
+    <ol><li>Treating disease as divine punishment.</li><li>Evidence-based public policy — systematic data collection changing collective action, not just individual treatment.</li><li>The germ theory being rejected forever.</li><li>Medicine advancing without any social consequences.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Snow's map turned data into municipal action (removing the pump handle; later, sewers) — epidemiology as a policy science. A is what the episode overturned; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. The Space Race was driven by Cold War rivalry yet yielded weather satellites, GPS, and the environmental movement's iconic Earth image. The BEST general lesson is:</p>
+    <ol><li>Only rivalry can produce good science.</li><li>Motives and outcomes can diverge sharply — competitive or even hostile motives may still yield broadly shared benefits (and vice versa).</li><li>Space technology has no military uses.</li><li>The environmental movement opposed all technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The case generalizes the intentions/outcomes gap at state scale. A over-claims (much science is cooperative); C is false; D is contradicted by the movement's use of satellite imagery itself.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. The chapter claims the contraceptive pill's DEEPEST impacts were social rather than medical. Which evidence pattern would BEST support this claim?</p>
+    <ol><li>Chemical analyses of the pill's ingredients.</li><li>Long-run shifts in women's university enrollment, workforce participation, family size, and marriage timing following its availability.</li><li>The number of pharmacies that stocked it in 1960.</li><li>Its packaging design across decades.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The claim is about social transformation, so the evidence must be societal time-series linked to availability — education, labor, family structure. A, C, D measure the artifact, not its social effects.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Which is the STRONGEST argument that the Ifugao rice terraces constitute genuine engineering, not merely tradition?</p>
+    <ol><li>They are beautiful when photographed.</li><li>They embody tested solutions to hydraulics, soil mechanics, and cooperative water governance, refined by feedback over centuries — the functional definition of engineering practice.</li><li>They are old, and old things deserve respect.</li><li>UNESCO listed them as a heritage site.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The argument must rest on function and method — problem-solving under constraints, iterated and transmitted — not on aesthetics (A), age (C), or external certification (D), which are all non-technical criteria.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. The Balik Scientist Program addresses brain drain by repatriating Filipino scientists with incentives and infrastructure. Within the chapter's framework, this is BEST described as:</p>
+    <ol><li>A scientific discovery.</li><li>A social/institutional remedy for a social problem — recognizing that where scientists work is decided by opportunity structures, not talent alone.</li><li>Proof that emigration is caused by genetics.</li><li>An unnecessary program, since knowledge flows freely online.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Brain drain is an institutional failure (labs, salaries, careers), so the remedy is institutional. A confuses policy with discovery; C is nonsense; D ignores that research capacity requires physically present people, equipment, and mentorship.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Philippine R&amp;D spending remains well below the 1%-of-GDP benchmark. Applying the chapter's five patterns, the MOST defensible policy inference is:</p>
+    <ol><li>Underinvestment is safe because science grows by itself.</li><li>Since science depends on sustained institutions and past golden ages died of neglect, chronic underinvestment risks perpetual dependence on imported technology — raising investment is a strategic social choice.</li><li>The Philippines should wait for other countries to invent everything first.</li><li>R&amp;D spending is unrelated to national development.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Pattern 4 (science as institution) plus the Golden Age and Needham cases imply capacity must be deliberately built and funded. A contradicts the whole chapter; C entrenches the dependence the chapter warns about; D is refuted by every case from Britain to South Korea's trajectory.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 1's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts/patterns 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. Using at least three of the chapter's five historical patterns, forecast how artificial intelligence may reshape Philippine society by 2040. Identify the social needs driving its adoption, the likely winners and losers, and one plausible unintended consequence.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer applies the patterns explicitly. <em>Need precedes invention:</em> AI adoption in the Philippines is being pulled by real needs — a services-heavy economy (BPO), overstretched health and education systems, and disaster response. <em>Technology redistributes power:</em> likely winners include firms and workers who master AI tools, agencies that digitize, and students with access; likely losers include workers in routinizable BPO tasks and communities on the wrong side of the digital divide — so the Luddite lesson demands retraining and a voice for affected workers, not bans. <em>Inventions escape their inventors:</em> one plausible unintended consequence is epistemic — AI-generated disinformation eroding shared truth in elections, a hazard the country's social-media history makes credible. The conclusion should stress co-production: laws (the AI roadmap, data privacy enforcement), schools, and public choices — not the technology alone — will decide which future arrives.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. Imagine you are advising the drafting of the next <em>Pagtanaw</em>-style foresight plan for Philippine science and technology toward 2050. Drawing on the historical experiences in this chapter — the Islamic Golden Age, the Needham Question, colonial science, and the Philippine S&amp;T timeline — recommend and justify three priorities.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer converts history into policy. (1) <em>Build durable institutions, not one-off projects:</em> the Golden Age teaches that science dies when patronage lapses — so lock in R&amp;D funding growth toward the 1% of GDP benchmark, strengthen research universities, and protect scientific careers (expanding the Balik Scientist and Magna Carta frameworks). (2) <em>Fit science to the archipelago's own needs:</em> as the Nile made surveyors and typhoons made the Observatorio's meteorologists, the Philippines' priorities should center climate adaptation, disaster science, marine resources, agriculture, and public health — fields where local need creates world-class opportunity. (3) <em>Choose openness with sovereignty:</em> the zero's journey shows knowledge grows through exchange, while the Needham and colonial cases warn against dependence; hence international collaboration (PhilSA partnerships, IRRI) paired with deliberate local capacity in strategic technologies like AI and energy. The best essays note these are social choices — the chapter's core lesson.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. "The Fourth Industrial Revolution will repeat the First: enormous progress, serious costs, and organized resistance." Evaluate this prediction. What might "modern Luddites" look like, and — judging from how societies eventually answered the first Industrial Revolution's costs — how should Philippine society respond?</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer takes a clear stand and argues by structured analogy. Agreement is defensible: like steam, AI and automation promise productivity while threatening livelihoods and concentrating ownership; "modern Luddites" are already visible in artists suing AI firms over training data, writers' and actors' strikes over AI clauses, and worker campaigns for algorithmic transparency — and, as in 1811, they mostly protest exclusion from benefits, not technology itself. The disanalogy is also worth marks: 4IR automates judgment, moves faster, and crosses borders instantly, so disruption may outpace the adaptive institutions that eventually tamed industrialization. The response, following history, should not be smashing machines or laissez-faire, but the modern equivalents of what answered the first revolution's costs — labor law, public education, sanitation, and the franchise: i.e., reskilling at scale, social protection for displaced workers, enforceable AI governance, and inclusion of affected sectors in policy — society choosing, again, who bears the costs of its machines.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 1 Reinforcement Exercises &amp; Essay · Unit I, Weeks 1–3 · Prepared August 2026
+</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

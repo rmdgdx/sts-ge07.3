@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 — Historical Antecedents of Science and Technology | STS Lecture</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .timeline{list-style:none;margin:14px 0;padding-left:0;}
+  .timeline li{position:relative;padding:0 0 14px 26px;border-left:2px solid #c6d2e4;margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);}
+  .timeline .when{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:.85rem;display:block;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit I · Weeks 1–3</div>
+  <h1>Chapter 1: Historical Antecedents in Which Social Considerations Changed the Course of Science and Technology</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#concepts">Key Concepts</a></li>
+    <li><a href="#ancient">Ancient</a></li>
+    <li><a href="#middle">Middle Ages</a></li>
+    <li><a href="#modern">Modern</a></li>
+    <li><a href="#digital">Digital Age</a></li>
+    <li><a href="#philippines">Philippines</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Discuss the interactions between science and technology and society throughout history;</li>
+    <li>Identify the social needs and considerations — food, shelter, record-keeping, trade, faith, war, health, and communication — that drove key inventions and discoveries in the Ancient, Middle, and Modern Ages;</li>
+    <li>Explain how scientific and technological developments, in turn, transformed societies and the environment;</li>
+    <li>Trace the development of science and technology in the Philippines from the pre-colonial period to the present; and</li>
+    <li>Appreciate that science and technology are human and social activities — never value-neutral, always shaped by their time and place.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: Why Begin with History?</h2>
+  <p class="lead">Ask the person beside you: what is the most important object you own? Most students answer "my phone." Now ask a harder question: <em>how many societies, across how many centuries, had to exist for that phone to exist?</em></p>
+  <p>The glass on its screen descends from Egyptian and Phoenician glassmaking. The mathematics running its processor descends from Indian numerals transmitted through Islamic scholars. Its electricity traces to the Industrial Revolution; its computing logic to a wartime need to break codes; its internet connection to a Cold War project to survive a nuclear strike; its GPS to satellites launched during the Space Race. A smartphone is not merely a gadget — it is a fossil record of human societies solving their problems.</p>
+  <p>This is the central claim of Chapter 1: <strong>science and technology do not develop in a vacuum</strong>. Every era's inventions answer that era's needs — to eat, to shelter, to trade, to worship, to heal, to wage war, to remember, and to communicate. And each invention, once released into the world, changes society in ways its inventors rarely foresee. History shows us this two-way street clearly, which is why we begin here.</p>
+  <div class="callout">
+    <span class="label">Framing Idea</span>
+    Isaac Newton wrote in 1675: <em>"If I have seen further, it is by standing on the shoulders of Giants."</em> Science is cumulative and collective. No discovery stands alone; each rests on generations of prior work — much of it done by societies we rarely credit.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    Before we survey history: name one technology you used today, then work backward — what older technology made it possible? Keep going until you reach something ancient. (Most chains reach agriculture, writing, or metallurgy within five steps.)
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=YvtCLceNf30" target="_blank" rel="noopener">Intro to History of Science (Crash Course #1)</a> — CrashCourse <span class="why">(the big picture of how science &amp; society co-evolve)</span></li>
+      <li><a href="https://www.youtube.com/playlist?list=PLH2l6uzC4UEUljwdcu8_x8df9GDr3lNcq" target="_blank" rel="noopener">Crash Course: History of Science — full playlist</a> — CrashCourse <span class="why">(the whole story, episode by episode)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=the+story+behind+your+smartphone+history+of+technology" target="_blank" rel="noopener">The story behind your smartphone</a> — curated search <span class="why">(see the &lsquo;fossil record&rsquo; of tech inside your phone)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="concepts">
+  <h2>Key Concepts: Science, Technology, Society</h2>
+  <h3>Defining our terms</h3>
+  <p><strong>Science</strong> comes from the Latin <em>scientia</em>, "knowledge." It is best understood in three senses at once: as an <em>idea</em> — the conviction that nature is orderly and intelligible; as a <em>method</em> — the systematic practice of observation, hypothesis, experiment, and peer scrutiny; and as a <em>social institution</em> — a human enterprise of universities, journals, laboratories, and funding agencies embedded in particular societies.</p>
+  <p><strong>Technology</strong> comes from the Greek <em>techne</em> ("art, craft, skill") and <em>logos</em> ("word, study"). It is the application of knowledge — not always scientific knowledge — to practical ends: tools, machines, techniques, and systems. Note the historical order: for most of human history, technology came <em>first</em>. People smelted bronze, brewed beer, and bred crops millennia before anyone could explain the chemistry or genetics involved. Science-led technology is largely a phenomenon of the last two centuries.</p>
+  <p><strong>Society</strong>, from the Latin <em>societas</em> ("companionship"), is the web of relationships, institutions, cultures, economies, and politics within which humans live — and within which science and technology are imagined, funded, built, resisted, celebrated, and regulated.</p>
+  <h3>What, then, is STS?</h3>
+  <p><strong>Science, Technology, and Society (STS)</strong> is the interdisciplinary field that studies how social, cultural, political, and economic contexts shape science and technology — and how science and technology, in turn, shape those contexts. STS refuses two comfortable myths: the myth that science is a pure, isolated pursuit of truth untouched by society, and the myth of <em>technological determinism</em> — that technology develops by its own logic and society merely adapts. The historical record shows something richer: a continuous negotiation, or what scholars call the <em>co-production</em> of science, technology, and social order.</p>
+  <div class="callout gold">
+    <span class="label">STS Lens — carry these questions through the whole chapter</span>
+    For every invention we meet, ask: (1) What social need or interest called it forth? (2) Who benefited, and who was displaced or harmed? (3) How did it change daily life, power, and belief? (4) Could it have developed differently in a different society?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=tJD5RMpIw18" target="_blank" rel="noopener">What is a Paradigm Shift? Visualizing Kuhn&rsquo;s Scientific Revolution</a> — curated <span class="why">(the core STS idea of how frameworks change)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=what+is+science+technology+and+society+STS+introduction" target="_blank" rel="noopener">What is Science, Technology &amp; Society?</a> — curated search <span class="why">(a short primer on the STS lens)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="ancient">
+  <h2>Part I. The Ancient Age: Inventions Born of Survival, Record, and Empire</h2>
+
+  <h3>1. Before civilization: the deep foundations</h3>
+  <p>Long before writing, three technologies made every later society possible. <strong>Stone tools</strong> (from ~3.3 million years ago) extended the human hand and made early humans effective hunters and builders. The controlled use of <strong>fire</strong> (widespread by ~400,000 years ago) provided warmth, protection, and — critically — cooked food, which some scientists argue supported the energy demands of our large brains. Fire was arguably humanity's first energy revolution.</p>
+  <p>Then, around 10,000 BCE, came the most consequential technology in human history: <strong>agriculture</strong>. The Neolithic Revolution — the deliberate cultivation of plants and domestication of animals — transformed nomadic bands into settled villages. Notice the STS pattern already: agriculture was a response to social pressures (growing populations, unreliable hunting), and it then remade society entirely — creating food surpluses, which allowed specialization (priests, potters, soldiers, scribes), which created social hierarchy, cities, and eventually states. Every subsequent invention in this chapter stands on the shoulders of the first farmers.</p>
+
+  <h3>2. Sumer and Babylon: the cradle of invention</h3>
+  <p>In Mesopotamia (modern Iraq), the Sumerians built the world's first cities, such as Uruk, around 4,000–3,000 BCE. City life posed new problems, and Sumerian answers to them still structure our lives:</p>
+  <ul class="plain">
+    <li><strong>Writing (cuneiform, c. 3,200 BCE).</strong> Contrary to romantic assumptions, writing was not invented for poetry but for <em>accounting</em> — temple administrators needed to track grain, livestock, and taxes. Social need: record-keeping in a complex economy. Social consequence: history itself, law, contracts, schooling, and a new elite class of scribes.</li>
+    <li><strong>The wheel (c. 3,500 BCE).</strong> First used for pottery, later for transport — revolutionizing trade, agriculture, and war (the chariot).</li>
+    <li><strong>Irrigation and dikes.</strong> Farming a dry floodplain demanded canals and coordinated labor — engineering that in turn required central authority, strengthening the very idea of government.</li>
+    <li><strong>The plow, the sailboat, bronze metallurgy,</strong> and the sexagesimal (base-60) number system — the reason we still count 60 seconds to a minute and 360 degrees in a circle.</li>
+  </ul>
+  <p>Their Babylonian successors gave us one of history's most important social technologies: the <strong>Code of Hammurabi</strong> (c. 1,754 BCE), among the earliest comprehensive written laws. Babylonian priests also became meticulous astronomers — not out of pure curiosity, but because their religion and agriculture demanded reliable calendars and omens. Faith and food drove the earliest systematic science of the heavens.</p>
+
+  <h3>3. Egypt: technology in the service of faith and the Nile</h3>
+  <p>Egyptian civilization organized itself around the annual flooding of the Nile, and its signature technologies follow from that fact and from its religious worldview:</p>
+  <ul class="plain">
+    <li><strong>The 365-day solar calendar</strong>, developed to predict the flood — agriculture again driving astronomy.</li>
+    <li><strong>Geometry and surveying</strong>, needed to re-establish field boundaries after each flood erased them (the very word geometry means "earth measurement").</li>
+    <li><strong>Papyrus (c. 3,000 BCE)</strong>, the first portable, mass-producible writing surface — the ancestor of paper and the lifeblood of Egyptian administration.</li>
+    <li><strong>Monumental engineering.</strong> The Great Pyramid of Giza (c. 2,560 BCE) reflects a society whose religious conviction — the pharaoh's afterlife — could mobilize tens of thousands of workers, sophisticated logistics, and precise engineering. The pyramids are frozen social organization as much as they are architecture.</li>
+    <li><strong>Medicine.</strong> The Edwin Smith Papyrus (c. 1,600 BCE) records surprisingly empirical treatments of injuries — alongside spells, reminding us that ancient science and religion were interwoven, not opposed.</li>
+    <li><strong>Everyday chemistry:</strong> cosmetics (kohl, which had antibacterial properties), wigs, ink, and glass — technologies of social status and daily life, showing that not all invention is monumental.</li>
+  </ul>
+
+  <h3>4. Greece: the invention of "why"</h3>
+  <p>The Greeks inherited Babylonian astronomy and Egyptian geometry through trade — a reminder that knowledge travels with commerce. Their distinctive contribution was a social one: in the argumentative, competitive culture of the Greek city-state (<em>polis</em>), where citizens debated in the assembly and the marketplace, a new intellectual habit took hold — demanding <em>reasons</em> rather than authorities. Thales, Pythagoras, Aristotle, Euclid, and Archimedes turned inherited know-how into systematic natural philosophy: not just <em>how</em> to calculate, but <em>why</em> it works.</p>
+  <ul class="plain">
+    <li><strong>Alarm clock and water clock (clepsydra).</strong> Plato reportedly rigged a water clock to signal his lectures; courts used them to time speeches — timekeeping as a technology of civic life.</li>
+    <li><strong>The Antikythera mechanism (c. 100 BCE)</strong>, an astonishing geared device for predicting eclipses and astronomical positions — often called the world's first analog computer.</li>
+    <li><strong>The watermill</strong>, harnessing nature's energy for grinding grain — an early step in humanity's long search for power beyond muscle.</li>
+    <li><strong>Hippocratic medicine</strong>, which insisted diseases had natural causes, not divine ones — a revolutionary social claim about what counts as explanation.</li>
+  </ul>
+
+  <h3>5. Rome: engineering an empire</h3>
+  <p>Rome asked different questions than Greece. Governing a vast empire posed problems of logistics, control, and communication, and Roman technology answered them: <strong>roads</strong> (some 80,000 km, built first for the army, enabling trade and administration); <strong>aqueducts</strong> that supplied cities with fresh water; <strong>concrete</strong>, including forms that hardened underwater; <strong>public sanitation</strong>, baths, and sewers; and the <strong>Acta Diurna</strong> (c. 59 BCE), daily posted government gazettes — arguably the world's first newspaper, born of the political need to inform (and manage) the public. Roman technology teaches a key STS lesson: empires invest in the technologies that hold empires together.</p>
+
+  <h3>6. China: the great transmitter of inventions</h3>
+  <p>For much of recorded history, China was the world's most technologically advanced society. Its "Four Great Inventions" alone reshaped the entire world — mostly after traveling west along the Silk Road:</p>
+  <ul class="plain">
+    <li><strong>Paper (c. 105 CE, Cai Lun)</strong> — cheap, abundant writing material that would eventually make mass literacy possible.</li>
+    <li><strong>Printing</strong> — woodblock printing by the Tang era, and movable type by Bi Sheng (c. 1040), four centuries before Gutenberg.</li>
+    <li><strong>Gunpowder (9th century)</strong> — discovered, with historical irony, by alchemists seeking an elixir of immortality; it went on to end the age of castles and armored knights in Europe.</li>
+    <li><strong>The magnetic compass</strong> — first used for geomancy and fortune-telling, later for navigation, making the age of ocean exploration possible.</li>
+  </ul>
+  <p>Add silk (and the trade network named for it), cast iron, the seismograph of Zhang Heng (132 CE), porcelain, and paper money. The STS question historians still debate (the "Needham Question"): why did the Scientific and Industrial Revolutions happen in Europe rather than in China, which was for so long ahead? The leading answers are social and institutional, not intellectual — evidence again that society steers science.</p>
+
+  <h3>7. India and Mesoamerica: parallel brilliance</h3>
+  <p><strong>India</strong> gave the world its most used invention of all: the decimal place-value number system with <strong>zero</strong> (formalized by Brahmagupta, 7th century CE), transmitted through Arab scholars as "Hindu-Arabic numerals." Indian metallurgists produced wootz steel and the rust-resistant Iron Pillar of Delhi; Sushruta's ancient surgical compendium describes cataract surgery and rhinoplasty.</p>
+  <p>In <strong>Mesoamerica</strong>, entirely without contact with Eurasia, the Maya developed a sophisticated calendar system and independently invented zero; civilizations engineered <em>chinampas</em> (floating gardens), cultivated maize, cacao, and rubber, and built precise astronomical observatories — proof that science and technology are universal human capacities, arising wherever societies need them.</p>
+
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Writing was invented for accounting, gunpowder was sought as medicine, and the compass began as a fortune-telling device. What does this pattern of <em>unintended trajectories</em> suggest about our ability to predict what today's inventions — say, generative AI — will become?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=Yocja_N5s1I" target="_blank" rel="noopener">The Agricultural Revolution (Crash Course World History #1)</a> — CrashCourse <span class="why">(how farming created civilization)</span></li>
+      <li><a href="https://www.youtube.com/watch?v=DONiq9pyLg4" target="_blank" rel="noopener">Cuneiform: The Earliest Form of Writing</a> — Mesopotamia <span class="why">(how accounting gave us writing)</span></li>
+      <li><a href="https://www.youtube.com/watch?v=bfpUFES-C8Q" target="_blank" rel="noopener">The 4 Ancient Chinese Inventions That Changed the World</a> — curated <span class="why">(paper, printing, gunpowder, compass)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=how+were+the+egyptian+pyramids+built+engineering" target="_blank" rel="noopener">How were the Pyramids built?</a> — curated search <span class="why">(engineering as frozen social organization)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="middle">
+  <h2>Part II. The Middle Ages: Faith, War, and the Slow Machines of Change</h2>
+  <p>The label "Dark Ages" is a myth. Between roughly 500 and 1500 CE, societies across Eurasia produced transformative technologies — and the social forces driving them are unusually easy to see: religion, war, commerce, and the daily struggle to farm and eat.</p>
+
+  <h3>1. The agricultural revolution of medieval Europe</h3>
+  <p>Three humble inventions rebuilt European society from the soil up. The <strong>heavy plow</strong> could turn the dense, wet clay of northern Europe that scratch-plows could not, opening vast new farmlands. The <strong>horse collar</strong> let horses pull heavy loads without choking, replacing slower oxen. The <strong>three-field crop rotation system</strong> raised yields and improved diets. Together they produced food surpluses, population growth, and the revival of towns and trade — the economic soil in which universities and cathedrals grew. Once again: an agricultural change cascades into a civilizational one.</p>
+
+  <h3>2. War as an engine of invention</h3>
+  <p>Medieval warfare drove rapid technical change: the <strong>stirrup</strong> (making mounted knights devastating and, some historians argue, reinforcing feudalism itself); the <strong>crossbow</strong> and the English <strong>longbow</strong>, which pierced armor and eroded the military supremacy of the aristocratic knight; and finally <strong>gunpowder artillery</strong>, which arrived from China and by the 15th century could demolish castle walls — helping end feudalism and empower centralized states that alone could afford cannon. Observe the loop: social organization (feudalism) shaped military technology, and military technology then dissolved that same social organization.</p>
+
+  <h3>3. The Islamic Golden Age: science's medieval capital</h3>
+  <p>While much of Europe rebuilt after Rome's fall, the intellectual center of the world lay in the Islamic world (8th–14th centuries). At the <strong>House of Wisdom</strong> in Baghdad, scholars translated and extended Greek, Persian, and Indian works — motivated by religious values that prized learning, by the practical needs of a vast empire (astronomy for the calendar and the direction of prayer; arithmetic for inheritance law), and by state patronage. Among its towering figures:</p>
+  <ul class="plain">
+    <li><strong>Al-Khwarizmi</strong> (c. 780–850), whose treatise on <em>al-jabr</em> gave us the word <strong>algebra</strong> — and whose Latinized name gave us <strong>algorithm</strong>, the word at the heart of today's AI age.</li>
+    <li><strong>Ibn al-Haytham</strong> (965–1040), whose <em>Book of Optics</em> insisted on systematic experiment and is why many historians call him a father of the scientific method — centuries before Bacon and Galileo.</li>
+    <li><strong>Al-Zahrawi</strong> (936–1013), whose illustrated surgical encyclopedia and instruments influenced European medicine for 500 years, and <strong>Ibn Sina (Avicenna)</strong>, whose <em>Canon of Medicine</em> was a standard European medical textbook into the 17th century.</li>
+    <li><strong>Jabir ibn Hayyan</strong>, whose laboratory techniques (distillation, crystallization) earned him the title father of chemistry — <em>alchemy</em>, <em>alcohol</em>, <em>alkali</em>, and <em>zenith</em> are all Arabic-derived words.</li>
+  </ul>
+  <div class="callout">
+    <span class="label">STS Insight</span>
+    Knowledge is portable, but it needs institutions to survive. Translation movements, libraries, patrons, and universities are <em>social technologies</em> — and without them, the scientific inheritance of Greece and India might simply have been lost.
+  </div>
+
+  <h3>4. Machines of daily and spiritual life</h3>
+  <p>The <strong>mechanical clock</strong> (13th–14th century Europe) was born partly of a religious need — monasteries required precise hours for prayer. Its consequence was enormous: towns organized life around clock time rather than sun time, preparing the disciplined, scheduled labor on which industry and modern life would later depend. Some historians rank the clock, not the steam engine, as the key machine of the modern age. Meanwhile <strong>eyeglasses</strong> (c. 1290, Italy) extended scholars' working lives; <strong>windmills and watermills</strong> spread mechanical power across the countryside; <strong>universities</strong> (Bologna 1088, Oxford, Paris) institutionalized learning; and <strong>paper</strong> finally reached Europe through the Islamic world, just in time for the invention that closes this era.</p>
+
+  <h3>5. Gutenberg's press: the medieval invention that created the modern world</h3>
+  <p>Around 1440, Johannes Gutenberg of Mainz combined movable metal type, oil-based ink, and a modified screw press. The context was social and economic: rising literacy, a growing merchant class, universities hungry for texts, and a Church that was itself a massive consumer of documents. The consequences exceeded anything Gutenberg imagined. Within 50 years, an estimated 20 million books had been printed. The press standardized languages, made Luther's Reformation possible (his theses spread across Europe in weeks), enabled the wide sharing and checking of scientific results — the foundation of modern science's communal method — and began the long democratization of knowledge that had been the monopoly of clergy and elites.</p>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    The printing press has been called the social media of its age: it slashed the cost of spreading ideas — true ones and false ones alike. Compare the disruptions caused by print (religious wars, propaganda, but also science and literacy) with those caused by the internet and social media today. What lessons transfer?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=oBoStolw2pU" target="_blank" rel="noopener">Golden Age of Islam &amp; the House of Wisdom</a> — Simple History <span class="why">(science&rsquo;s medieval capital: algebra, optics, medicine)</span></li>
+      <li><a href="https://www.youtube.com/watch?v=rcgdDiD5reM" target="_blank" rel="noopener">How the Printing Press Changed the World</a> — curated <span class="why">(the invention that made the modern world)</span></li>
+      <li><a href="https://www.youtube.com/watch?v=n-jkS5qOWS8" target="_blank" rel="noopener">Gutenberg and the Printing Press (Stephen Fry documentary)</a> — BBC / Stephen Fry <span class="why">(a deeper dive for the curious)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="modern">
+  <h2>Part III. The Modern Age: Science Becomes a Social Force</h2>
+
+  <h3>1. The Scientific Revolution (16th–17th centuries)</h3>
+  <p>In 1543, Nicolaus Copernicus published <em>On the Revolutions of the Heavenly Spheres</em>, placing the Sun, not the Earth, at the center of the cosmos. Over the next 150 years, Galileo's telescope, Kepler's laws, Vesalius's anatomy, Harvey's circulation of the blood, and finally Newton's <em>Principia</em> (1687) established a new way of knowing: mathematical, experimental, and public. (We will study these paradigm shifts closely in Chapter 2; here, note the social machinery that made them possible.)</p>
+  <p>That machinery mattered as much as the ideas. The printing press circulated results; instruments like the telescope and microscope — products of Dutch lens-grinding <em>craft</em>, not theory — extended the senses; and new institutions such as the Royal Society of London (1660) created something unprecedented: an organized community that checked, repeated, and published experiments. Modern science was born not just as a method but as a <em>social system</em> — one that also collided with existing authority, as Galileo's trial in 1633 famously showed. Society shapes science; science unsettles society.</p>
+
+  <h3>2. The Industrial Revolution (c. 1760–1900): the machine remakes society</h3>
+  <p>Britain in the 18th century had a specific social and economic configuration: expensive labor, cheap coal, expanding trade, secure property and patent law, and a culture of practical tinkering. Out of that configuration came the <strong>steam engine</strong> — Newcomen's for pumping water out of coal mines (note the driver: coal itself), then James Watt's vastly improved version (1769) that could power anything anywhere. For the first time, humanity's productive power was no longer limited by muscle, wind, or water.</p>
+  <p>The consequences form a checklist of the modern world: the <strong>factory system</strong> and industrial cities; <strong>railways</strong> (Stephenson's Rocket, 1829) and steamships that shrank distance; the <strong>telegraph</strong> (Morse, 1844) — the internet of the 19th century, separating communication from transportation for the first time — followed by the <strong>telephone</strong> (Bell, 1876) and wireless radio (Marconi); and electrification, with Edison's incandescent lamp (1879) and the Edison–Westinghouse–Tesla "current wars" deciding how power would reach homes.</p>
+  <p>But the Industrial Revolution is also STS's great cautionary tale. It produced unprecedented wealth <em>and</em> unprecedented misery: child labor, 14-hour factory days, slums, cholera epidemics, and the beginning of large-scale fossil-fuel emissions whose climate consequences this course's mandated topics will confront in Week 16. It also provoked the first organized <em>resistance</em> to technology — the Luddites (1811–1816), skilled weavers who smashed the mechanized looms destroying their livelihoods. They were not "anti-technology"; they were protesting who bore its costs — a question that returns, essentially unchanged, in today's debates about AI and jobs.</p>
+  <div class="callout gold">
+    <span class="label">STS Insight</span>
+    Every major technology creates winners and losers, and the losers are rarely consulted in advance. The social question is never simply "can we build it?" but "who decides, who benefits, who pays?"
+  </div>
+
+  <h3>3. Medicine and public health: science against death</h3>
+  <p>Few stories show the science–society loop better than medicine. Edward <strong>Jenner's smallpox vaccine</strong> (1796) began humanity's counterattack on infectious disease — culminating in smallpox's global eradication in 1980, arguably science's greatest single gift to humanity. Louis <strong>Pasteur's germ theory</strong> and pasteurization, Joseph Lister's antiseptic surgery, and John Snow's epidemiology of London's 1854 cholera outbreak (which led to sanitation reform — a <em>social</em> technology) transformed cities from death traps into livable spaces. Alexander <strong>Fleming's penicillin</strong> (1928), mass-produced under the social pressure of World War II, opened the antibiotic era. Life expectancy in industrialized countries roughly doubled between 1850 and 1950 — not mainly because of dramatic cures, but because of vaccines, clean water, and sewers: unglamorous technologies driven by public demand and state action.</p>
+
+  <h3>4. The 20th century: big science, total war, and the atom</h3>
+  <p>The 20th century industrialized invention itself: corporate and government laboratories replaced lone inventors. Two world wars made the state the chief patron of science — with morally profound results.</p>
+  <ul class="plain">
+    <li><strong>The automobile and the assembly line.</strong> Ford's Model T (1908) and moving assembly line (1913) put the world on wheels, reorganized cities around roads and suburbs, created massive industries — and locked the 20th century into oil.</li>
+    <li><strong>Flight.</strong> From the Wright brothers (1903) to commercial jets in scarcely 50 years, aviation collapsed global distance — and was accelerated at every step by military demand.</li>
+    <li><strong>The Manhattan Project and Hiroshima (1945).</strong> Nuclear physics, the most abstract science of its day, produced within a decade the most destructive weapon in history. Scientists who built the bomb — including Einstein, whose letter helped launch the project — spent the rest of their lives grappling with its meaning. The bomb forced a permanent question into public life: <em>should</em> everything that <em>can</em> be built, be built? This question anchors Chapter 8 ("Why the Future Does Not Need Us").</li>
+    <li><strong>The Space Race.</strong> Sputnik (1957) and Apollo 11 (1969) were Cold War politics pursued by other means — and yet they yielded satellites, weather forecasting, GPS, and the image of Earth from space that helped ignite the environmental movement. Motives and outcomes, again, diverge.</li>
+    <li><strong>The Green Revolution.</strong> High-yield wheat and rice varieties — developed partly at the International Rice Research Institute (IRRI) in Los Baños, Philippines — are credited with saving perhaps a billion people from famine, while also spreading dependence on fertilizers, pesticides, and irrigation whose environmental bill we are still paying.</li>
+    <li><strong>The contraceptive pill (1960),</strong> a technology whose deepest impacts were social: it reshaped family life, women's education and workforce participation, and gender relations worldwide.</li>
+  </ul>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    The same rocket engineering delivers weather satellites and nuclear warheads; the same nitrogen chemistry (Haber–Bosch) feeds half of humanity and made explosives for two world wars. Is technology itself neutral, with only its uses good or evil — or do some technologies carry values and dangers in their very design? Defend your position with one historical example.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=vzo8vnxSARg" target="_blank" rel="noopener">The Scientific Revolution (Crash Course History of Science #12)</a> — CrashCourse <span class="why">(Copernicus to Newton, and the birth of modern science)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=industrial+revolution+crash+course+world+history" target="_blank" rel="noopener">The Industrial Revolution (Crash Course)</a> — curated search <span class="why">(the steam engine that remade society)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=manhattan+project+atomic+bomb+documentary" target="_blank" rel="noopener">The Manhattan Project &amp; the atomic age</a> — curated search <span class="why">(&lsquo;should everything that can be built, be built?&rsquo;)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="digital">
+  <h2>Part IV. The Digital Age and the Fourth Industrial Revolution</h2>
+
+  <h3>1. From wartime code-breaking to the personal computer</h3>
+  <p>The computer, like so much in this chapter, was born of social crisis. In World War II, Alan <strong>Turing</strong> and the code-breakers of Bletchley Park built machines to crack German ciphers, while ENIAC (1945) computed artillery tables. Turing's deeper contribution was conceptual — the idea of a <em>universal machine</em> that could run any program — the theoretical foundation of every device you own. The transistor (Bell Labs, 1947) and the integrated circuit (1958) then began the relentless miniaturization described by <strong>Moore's Law</strong>, until the 1970s–80s personal computer revolution (Apple, IBM PC) moved computing from government basements to family desks.</p>
+
+  <h3>2. The internet and the connected society</h3>
+  <p>The internet began as <strong>ARPANET</strong> (1969), a US defense project for resilient communication; its opening to the world came when Tim <strong>Berners-Lee</strong>, working at CERN, invented the <strong>World Wide Web</strong> (1989–91) — and, crucially, gave it away free. Add the smartphone (iPhone, 2007) and social media platforms, and within a single generation more than five billion people were connected. The Philippines illustrates the social stakes vividly: consistently ranked among the world's heaviest users of social media, the country has experienced both the promise of connection (diaspora families, disaster response, online livelihoods) and its pathologies (viral disinformation, troll farms, election manipulation) — topics we will examine closely in Chapter 9 (The Information Age).</p>
+
+  <h3>3. The Fourth Industrial Revolution</h3>
+  <p>Klaus Schwab of the World Economic Forum popularized the term <strong>Fourth Industrial Revolution (4IR)</strong> for our current era: a fusion of technologies blurring the lines between the physical, digital, and biological worlds. Its signature technologies include <strong>artificial intelligence and machine learning</strong>, <strong>robotics</strong>, the <strong>Internet of Things</strong>, <strong>big data</strong>, <strong>cloud computing</strong>, <strong>3D printing</strong>, and <strong>gene editing (CRISPR)</strong>. If the first industrial revolution mechanized muscle, the fourth automates aspects of <em>judgment</em> — which is why its social questions cut so deep.</p>
+  <p>The most visible symbol is <strong>generative AI</strong>. Since ChatGPT's release in late 2022, AI systems that write, code, converse, and generate images have moved from research labs into hundreds of millions of hands — including your classrooms. True to every precedent in this chapter, the technology's trajectory is being negotiated socially right now: through the EU's AI Act, UNESCO's ethics recommendation, the Philippines' own National AI Strategy Roadmap, and countless daily choices by schools, employers, and users. You are not studying this history from the outside; you are inside one of its chapters.</p>
+  <div class="callout green">
+    <span class="label">A 2020s Case Study in One Paragraph</span>
+    The COVID-19 pandemic compressed the entire STS story into two years: a global social emergency summoned science (mRNA vaccines developed in under a year — on foundations laid by decades of unglamorous basic research); technology enabled society to adapt (remote work, online classes, contact tracing); and social forces shaped outcomes everywhere — vaccine nationalism, unequal access between rich and poor nations, and misinformation that cost lives. Science, technology, and society: inseparable.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=v9rZOa3CUC8" target="_blank" rel="noopener">What is the Fourth Industrial Revolution? (CNBC Explains)</a> — CNBC <span class="why">(AI, robotics, and the 4IR in plain terms)</span></li>
+      <li><a href="https://www.youtube.com/watch?v=E9xYiqiM80U" target="_blank" rel="noopener">The Age of the Fourth Industrial Revolution</a> — World Economic Forum <span class="why">(the frame for our current moment)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="philippines">
+  <h2>Part V. Science and Technology in the Philippines: A Historical Survey</h2>
+
+  <h3>1. Pre-colonial ingenuity (before 1521)</h3>
+  <p>Long before colonization, Filipino societies possessed sophisticated science and technology fitted to archipelagic life:</p>
+  <ul class="plain">
+    <li><strong>The Banaue Rice Terraces</strong> and the wider Ifugao terrace systems — engineering marvels of hydraulics, soil conservation, and community water management (the <em>zanjera</em>-like cooperative irrigation traditions), sustained for centuries without written plans. They embody indigenous knowledge as genuine engineering.</li>
+    <li><strong>The balangay</strong>, large plank-built boats (earliest finds dated c. 320 CE, Butuan), evidence of advanced shipbuilding and long-distance maritime trade with China and Southeast Asia. The word <em>barangay</em> — our basic unit of government — descends from these boats: a striking case of technology naming social organization.</li>
+    <li><strong>Metallurgy, weaving, and pottery</strong> — gold-working of remarkable refinement (the Surigao treasures), bronze casting, backstrap loom textiles like <em>t'nalak</em>, and the Manunggul Jar (c. 890–710 BCE), which fuses ceramic technology with a spiritual worldview.</li>
+    <li><strong>Writing and knowledge systems</strong> — the baybayin script; the Laguna Copperplate Inscription (900 CE), our earliest known written document, which is — fittingly, like Sumer's tablets — a record of a debt; ethnobotanical medicine practiced by <em>babaylan</em> healers; and indigenous astronomy guiding planting and navigation.</li>
+  </ul>
+
+  <h3>2. The Spanish colonial period (1565–1898)</h3>
+  <p>Colonial science served colonial purposes — evangelization, administration, and the galleon trade — yet it also planted enduring institutions. The <strong>Manila–Acapulco Galleon Trade</strong> (1565–1815) made Manila a node of the first truly global economy and demanded advances in shipbuilding and navigation. The Church founded the <strong>University of Santo Tomas (1611)</strong>, older than Harvard, though higher education long remained restricted and oriented to theology and law. Spanish friars and Filipino scholars documented flora (Fr. Blanco's <em>Flora de Filipinas</em>); the government established the <strong>Observatorio de Manila (1865)</strong> under the Jesuits, whose typhoon warnings — the pioneering work of Fr. Federico Faura — saved countless lives and made Philippine meteorology internationally respected. Note the pattern: in a typhoon-swept archipelago, the local environment itself steered which sciences flourished. By the late 19th century, ilustrados like Jose Rizal (himself an ophthalmologist trained in Europe) tied scientific learning to the project of national emancipation — science as nationalism.</p>
+
+  <h3>3. The American colonial period (1898–1946)</h3>
+  <p>American rule reorganized Philippine science around public health, education, and agriculture — again, the colonizer's priorities, but with lasting infrastructure: the <strong>Bureau of Government Laboratories (1901)</strong>, later the Bureau of Science, to fight cholera, malaria, and other epidemics; the public school system with science in the curriculum; the <strong>University of the Philippines (1908)</strong> and the College of Medicine; and agricultural research at Los Baños. A generation of Filipino scientists emerged through (and sometimes against) these institutions, and the <strong>National Research Council of the Philippines (1933)</strong> gave Philippine science its first national organization.</p>
+
+  <h3>4. Independence to the present: building a national S&amp;T system</h3>
+  <ul class="timeline">
+    <li><span class="when">1946–1957</span> Post-war reconstruction; creation of the Institute of Science; early industrial research.</li>
+    <li><span class="when">1958</span> The <strong>Science Act</strong> creates the <strong>National Science Development Board (NSDB)</strong> — the state formally takes charge of S&amp;T development (a response, worldwide, to the Sputnik shock).</li>
+    <li><span class="when">1960</span> The <strong>International Rice Research Institute (IRRI)</strong> is established in Los Baños — placing the Philippines at the center of the Green Revolution.</li>
+    <li><span class="when">1982–1987</span> NSDB becomes NSTA, then the <strong>Department of Science and Technology (DOST)</strong> — cabinet-level status for science. The 1987 Constitution declares science and technology "essential for national development and progress."</li>
+    <li><span class="when">1990s</span> Science high school system expands (Philippine Science High School System, RA 8496); Magna Carta for Science and Technology Personnel (RA 8439); the country connects to the internet (1994).</li>
+    <li><span class="when">2010s</span> The <strong>Balik Scientist Program</strong> strengthened by law (RA 11035) to reverse brain drain; <strong>Diwata-1 (2016)</strong>, the first Philippine-built microsatellite, then Diwata-2 and the Maya cube satellites — built by Filipino engineers; <strong>RA 11293, the Philippine Innovation Act (2019)</strong>; <strong>RA 11363, the Philippine Space Act (2019)</strong> creates the <strong>Philippine Space Agency (PhilSA)</strong>.</li>
+    <li><span class="when">2020s</span> COVID-19 tests the national S&amp;T system (local test kits, genomic surveillance); <em>Pagtanaw 2050</em> charts a 30-year S&amp;T foresight; the <strong>National AI Strategy Roadmap</strong> and the National AI Center (NAICRI) position the country for the 4IR; climate adaptation becomes a central S&amp;T mission for one of the world's most disaster-exposed nations.</li>
+  </ul>
+
+  <h3>5. Filipino scientists and inventors to know</h3>
+  <table>
+    <thead><tr><th style="width:26%">Name</th><th>Contribution</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fe del Mundo</strong> (1911–2011)</td><td>Pioneering pediatrician; devised an incubator using local materials for rural communities without electricity; first woman admitted to Harvard Medical School's program; National Scientist.</td></tr>
+      <tr><td><strong>Ramon Barba</strong> (1939–2021)</td><td>Invented practical flower induction in mango using potassium nitrate — transforming the Philippine mango industry; National Scientist.</td></tr>
+      <tr><td><strong>Angel Alcala</strong> (1929–2023)</td><td>Marine biologist; pioneered community-managed marine protected areas and artificial coral reefs; National Scientist.</td></tr>
+      <tr><td><strong>Maria Orosa</strong> (1893–1945)</td><td>Food technologist; invented banana ketchup and Darak rice-bran preparations to fight malnutrition; war hero who smuggled food to POWs.</td></tr>
+      <tr><td><strong>Julian Banzon</strong> (1908–1988)</td><td>Chemist; pioneered alternative fuels from coconut and sugarcane — decades ahead of today's biofuels; National Scientist.</td></tr>
+      <tr><td><strong>Diosdado Banatao</strong> (b. 1946)</td><td>Engineer-entrepreneur in Silicon Valley; developed key PC chipset and graphics-acceleration innovations found in millions of computers.</td></tr>
+      <tr><td><strong>Fr. Federico Faura, SJ</strong> (1840–1897)</td><td>Founded the Manila Observatory's typhoon warning service; the "Faura barometer" was standard equipment across East Asia.</td></tr>
+      <tr><td><strong>Gregorio Zara</strong> (1902–1978)</td><td>Physicist-inventor; patented an early two-way television telephone (videophone, 1955) among ~30 patents.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <span class="label">STS Insight — the Philippine pattern</span>
+    Across four centuries, Philippine S&amp;T has been steered by outside priorities (colonial trade, public health, Cold War aid) and by the archipelago's own realities (typhoons, seas, agriculture, disease). The recurring national challenges — underinvestment (R&amp;D spending remains well below the 1% of GDP benchmark), brain drain, and dependence on imported technology — are <em>social and political</em> problems, not scientific ones. Their solutions (the Balik Scientist Program, the Innovation Act, PhilSA, the AI roadmap) are likewise social decisions. This is STS's core lesson applied at home: building Philippine science means building Philippine society.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=ifugao+banaue+rice+terraces+engineering+documentary" target="_blank" rel="noopener">The Ifugao / Banaue Rice Terraces</a> — curated search <span class="why">(indigenous engineering, 2,000 years old)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=balangay+boat+ancient+philippines+documentary" target="_blank" rel="noopener">The Balangay: pre-colonial Filipino boats</a> — curated search <span class="why">(the technology that named the &lsquo;barangay&rsquo;)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=great+filipino+inventions+scientists" target="_blank" rel="noopener">Great Filipino inventors &amp; scientists</a> — curated search <span class="why">(Filipino science in service of the nation)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: The Patterns of History</h2>
+  <p>Across five thousand years and every civilization we surveyed, the same patterns recur. Hold on to these five — they are the analytical toolkit for the rest of the course:</p>
+  <ol class="plain">
+    <li><strong>Need precedes invention.</strong> Writing came from accounting; the calendar from farming and faith; the steam engine from flooded coal mines; the computer from war. Behind every technology, look for the social problem it answered.</li>
+    <li><strong>Inventions escape their inventors.</strong> Gunpowder was sought as medicine; the compass told fortunes before it guided ships; ARPANET was a defense network. Consequences — good and bad — routinely exceed and betray intentions.</li>
+    <li><strong>Technology redistributes power.</strong> The longbow humbled knights; print broke a monopoly on scripture; cannon empowered kings; social media both empowers citizens and enables manipulation. Ask always: who gains, who loses?</li>
+    <li><strong>Science is a social institution.</strong> It needs patrons, translators, universities, journals, and peace. Where those social supports flourish — Baghdad's House of Wisdom, the Royal Society, Silicon Valley — science flourishes; where they collapse, it withers.</li>
+    <li><strong>The street runs both ways.</strong> Society shapes technology <em>and</em> technology reshapes society — clocks disciplined labor, pills transformed families, phones rewired attention. Neither pure social choice nor pure technological determinism: co-production.</li>
+  </ol>
+  <p>In Chapter 2, we narrow our focus from inventions to <em>ideas</em>: the intellectual revolutions — Copernican, Darwinian, Freudian, and informational — that did not merely change what humans could do, but changed what humans believed themselves to be.</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Science, Technology, and Society (STS)</td><td>Interdisciplinary field studying the mutual shaping of science/technology and social, cultural, political, and economic contexts.</td></tr>
+      <tr><td>Neolithic Revolution</td><td>The transition (c. 10,000 BCE) from hunting-gathering to agriculture and settlement — the foundation of civilization.</td></tr>
+      <tr><td>Cuneiform</td><td>The earliest known writing system (Sumer, c. 3200 BCE), developed for record-keeping.</td></tr>
+      <tr><td>Technological determinism</td><td>The (rejected) view that technology develops autonomously and unilaterally determines social change.</td></tr>
+      <tr><td>Co-production</td><td>The STS view that science, technology, and social order continuously produce and reshape one another.</td></tr>
+      <tr><td>Islamic Golden Age</td><td>Era (8th–14th c.) when the Islamic world led global science — algebra, optics, medicine, chemistry — preserving and extending Greek and Indian knowledge.</td></tr>
+      <tr><td>Printing press</td><td>Gutenberg's movable-type press (c. 1440); enabled mass literacy, the Reformation, and modern science's communication system.</td></tr>
+      <tr><td>Scientific Revolution</td><td>16th–17th-century transformation of knowledge-making via mathematics, experiment, instruments, and scientific societies.</td></tr>
+      <tr><td>Industrial Revolution</td><td>The transition (c. 1760–1900) to machine production powered by steam and fossil fuels, which urbanized and transformed society.</td></tr>
+      <tr><td>Luddites</td><td>Early-1800s English textile workers who destroyed machinery in protest — a symbol of conflict over who bears technology's costs.</td></tr>
+      <tr><td>Fourth Industrial Revolution (4IR)</td><td>The current fusion of digital, physical, and biological technologies — AI, robotics, IoT, big data, gene editing.</td></tr>
+      <tr><td>Balangay</td><td>Pre-colonial Filipino plank boat; evidence of advanced indigenous shipbuilding and maritime trade; root of the word "barangay."</td></tr>
+      <tr><td>Laguna Copperplate Inscription</td><td>Earliest known Philippine written document (900 CE) — a legal record of debt clearance.</td></tr>
+      <tr><td>DOST / PhilSA</td><td>The Department of Science and Technology (1987) and Philippine Space Agency (2019) — pillars of the national S&amp;T system.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>Choose any invention from this chapter and analyze it with the four STS lens questions (need, winners/losers, social change, alternatives). Could it have developed differently in a different society?</li>
+    <li>The Needham Question: China led the world technologically for centuries yet the Industrial Revolution happened in Britain. Using this chapter's ideas about institutions and social conditions, propose an explanation.</li>
+    <li>Were the Luddites wrong? Compare their situation with today's workers facing AI-driven automation — including Philippine BPO workers. What options does a society have besides "smash the machines" or "accept everything"?</li>
+    <li>Pre-colonial Filipinos built the rice terraces and the balangay without formal science. What does this imply about the relationship between indigenous knowledge and "modern" science? Should indigenous knowledge count as science? Why or why not?</li>
+    <li>Colonial powers built observatories, universities, and health systems in the Philippines to serve their own ends, yet these became foundations of national science. How should we evaluate this legacy?</li>
+  </ol>
+
+  <h3>Activity 1 — "Standing on the Shoulders of Giants" (group work, in class)</h3>
+  <p>In groups of 4–5: pick one everyday technology (rice cooker, jeepney, GCash, karaoke machine, paracetamol, Wi-Fi). Build its "ancestry tree" backward through history, identifying at least six ancestor technologies or discoveries across at least three civilizations. Present as a one-page diagram. <em>Rubric: completeness and accuracy of chain (40%), identification of social drivers at each step (40%), creativity of presentation (20%).</em></p>
+
+  <h3>Activity 2 — Timeline of Philippine S&amp;T (pair work, take-home)</h3>
+  <p>Create an illustrated timeline of ten milestones in Philippine science and technology — at least two pre-colonial, two colonial, and two from the last decade. For each, write 2–3 sentences on the social need or force behind it.</p>
+
+  <h3>Activity 3 — Mini-essay (individual, 500–700 words)</h3>
+  <p><em>"The most important invention in history is ___."</em> Defend your choice using at least three of the five synthesis patterns. You may not choose the smartphone or the internet without tracing them to an older enabling invention.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. Writing was first invented in Sumer primarily for what purpose?</summary><p>Record-keeping/accounting — tracking grain, livestock, and taxes in temple economies.</p></details>
+  <details><summary>2. What social/religious need drove the development of the Egyptian solar calendar?</summary><p>Predicting the annual flooding of the Nile, on which agriculture (and the religious order built around it) depended.</p></details>
+  <details><summary>3. Name China's "Four Great Inventions."</summary><p>Paper, printing, gunpowder, and the magnetic compass.</p></details>
+  <details><summary>4. Which Islamic Golden Age scholar gave us the words "algebra" and "algorithm"?</summary><p>Al-Khwarizmi — "algebra" from his treatise on <em>al-jabr</em>; "algorithm" from the Latinization of his name.</p></details>
+  <details><summary>5. Give two major social consequences of Gutenberg's printing press.</summary><p>Any two: mass literacy/democratization of knowledge; the Protestant Reformation's rapid spread; standardization of national languages; the communication system underpinning modern science.</p></details>
+  <details><summary>6. Why is the mechanical clock considered a socially transformative technology?</summary><p>It reorganized daily life around measured, scheduled time (rather than natural rhythms), enabling the disciplined, coordinated labor on which industrial society depends.</p></details>
+  <details><summary>7. Who were the Luddites, and what were they actually protesting?</summary><p>Early-19th-century English textile workers who destroyed machines — protesting not technology itself but the destruction of their livelihoods and their exclusion from technology's benefits.</p></details>
+  <details><summary>8. What is the earliest known written document in the Philippines, and what does it record?</summary><p>The Laguna Copperplate Inscription (900 CE) — a legal record clearing a debt.</p></details>
+  <details><summary>9. Which two 2019 laws reshaped the current Philippine S&amp;T landscape?</summary><p>RA 11293 (Philippine Innovation Act) and RA 11363 (Philippine Space Act, creating PhilSA).</p></details>
+  <details><summary>10. State the "co-production" thesis of STS in one sentence.</summary><p>Science, technology, and society continuously shape one another — social needs and institutions steer scientific and technological development, while science and technology in turn transform social life and order.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>Anderson, P. W. "More is Different" (1972/2001) — on how complexity builds level upon level.</li>
+    <li>Caoli, O. "A History of Science and Technology of the Philippines," University of the Philippines, 1986.</li>
+    <li>Floridi, L. <em>The Fourth Revolution: How the Infosphere is Reshaping Human Reality</em>, Oxford University Press, 2014.</li>
+    <li>Headrick, D. <em>Technology: A World History</em>, Oxford University Press, 2009.</li>
+    <li>Kuhn, T. <em>The Structure of Scientific Revolutions</em>, University of Chicago Press, 1962.</li>
+    <li>McClellan, J. and H. Dorn. <em>Science and Technology in World History</em>, Johns Hopkins University Press, 3rd ed., 2015.</li>
+    <li>NAST Philippines. <em>Pagtanaw 2050: The Philippine Foresight on Science, Technology, and Innovation</em>, 2021.</li>
+    <li>Rodriguez, S. M. "Philippine Science and Technology: Economic, Political and Social Events Shaping Their Development," 1996.</li>
+    <li>Schwab, K. <em>The Fourth Industrial Revolution</em>, World Economic Forum, 2016.</li>
+    <li>Video resources (from the course syllabus): "World's Greatest Inventions"; Philippine Great Inventions; Stanford Encyclopedia of Philosophy entries on Scientific Progress and Scientific Revolutions.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 1 Main Lecture · Unit I, Weeks 1–3 · Prepared August 2026
+</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>
