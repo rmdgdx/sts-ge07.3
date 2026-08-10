@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science, Technology, and Society (GE07) — Course Home</title>
+<style>
+  :root{--navy:#1a2f5a;--navy-dark:#12213f;--gold:#c9a227;--accent:#2e6da4;--new:#0e7c4a;--upd:#b3541e;--red:#b3261e;--ink:#26303b;--muted:#5c6b7a;--line:#d8dee6;--bg:#f4f6f9;--card:#ffffff;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:48px 24px 40px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:2.1rem;margin:.45em auto .2em;max-width:900px;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.95rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+  main{max-width:1040px;margin:0 auto;padding:30px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px 28px;margin-bottom:24px;box-shadow:0 1px 4px rgba(20,35,60,.06);}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.12rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:16px;letter-spacing:.02em;}
+  a.syl{display:block;text-decoration:none;background:linear-gradient(135deg,#1e355f,#2c4d88);color:#fff;border-radius:10px;padding:20px 24px;}
+  a.syl:hover{box-shadow:0 8px 20px rgba(20,35,60,.25);}
+  a.syl .lbl{font-family:'Segoe UI',Arial,sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+  a.syl .t{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:1.2rem;margin-top:4px;}
+  a.syl .s{color:#dbe4f3;font-size:.86rem;margin-top:4px;}
+  a.syl .status{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;font-weight:700;margin-top:8px;color:#dfe8f5;}
+  .legend{font-family:'Segoe UI',Arial,sans-serif;font-size:.82rem;color:var(--muted);margin-top:12px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;}
+  .dot{font-weight:700;} .dot.g{color:var(--new);} .dot.r{color:var(--red);} .dot.c{color:#8a97a5;}
+  .cgroup{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px;background:#fbfcfe;}
+  .chd .cnum{font-family:'Segoe UI',Arial,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;}
+  .chd .cwk{font-family:'Segoe UI',Arial,sans-serif;font-size:.7rem;color:var(--muted);}
+  .chd .ctt{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:1.02rem;margin-top:3px;}
+  .cboxes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+  a.sbox{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-left:6px solid #9aa7b4;border-radius:8px;padding:12px 14px;background:#f7f9fc;transition:transform .1s ease,box-shadow .1s ease;}
+  a.sbox:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(20,35,60,.1);}
+  a.sbox .k{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.92rem;color:var(--navy);}
+  a.sbox .d{font-size:.8rem;color:var(--muted);margin-top:2px;}
+  a.sbox .status{font-family:'Segoe UI',Arial,sans-serif;font-size:.76rem;font-weight:700;margin-top:8px;color:#6b7684;}
+  a.sbox.ready{border-left-color:var(--new);background:#f2f9f4;} a.sbox.ready .status{color:var(--new);}
+  a.sbox.missing{border-left-color:var(--red);background:#fdf1f0;cursor:not-allowed;} a.sbox.missing .status{color:var(--red);}
+  a.sbox.missing:hover{transform:none;box-shadow:none;}
+  a.syl.ready{outline:2px solid rgba(255,255,255,.15);} a.syl.missing .status{color:#ffd9d5;}
+  .badge{display:inline-block;font-family:'Segoe UI',Arial,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:2px 7px;border-radius:10px;text-transform:uppercase;margin-left:4px;}
+  .badge.mandated{background:#fde8e8;color:#a52a2a;border:1px solid #e8a8a8;}
+  .badge.new{background:#e2f4ea;color:var(--new);border:1px solid #9fd4b6;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:26px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:620px){.cboxes{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Republic of the Philippines · Rizal Technological University</div>
+  <h1>Science, Technology, and Society (GE07)</h1>
+  <div class="subtitle">Course Home • Full Lecture Series • Dr. Ryan Manuel D. Guido • A.Y. 2026–2027</div>
+  <div class="rule"></div>
+</header>
+
+<main>
+
+  <section>
+    <a class="syl checking" data-file="syllabus.html" href="syllabus.html">
+      <div class="lbl">Start Here</div>
+      <div class="t">Course Syllabus</div>
+      <div class="s">Overview, outcomes, outline, learning plan, grading, and readings</div>
+      <div class="status">● Checking…</div>
+    </a>
+    <div class="legend">
+      <span><span class="dot g">●</span> Ready to use (file uploaded)</span>
+      <span><span class="dot r">●</span> Not uploaded yet</span>
+      <span><span class="dot c">●</span> Checking…</span>
+      <span style="color:#8a97a5">Status refreshes automatically each time this page loads.</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Unit I — General Concepts and STS Historical Developments · Weeks 1–6</h2>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 1</span> <span class="cwk">Weeks 1–3</span> 
+        <div class="ctt">Historical Antecedents of Science &amp; Technology</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-01.html" href="chapter-01.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-01-exercises.html" href="chapter-01-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 2</span> <span class="cwk">Week 4</span> 
+        <div class="ctt">Intellectual Revolutions That Defined Society</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-02.html" href="chapter-02.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-02-exercises.html" href="chapter-02-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 3</span> <span class="cwk">Weeks 5–6</span> 
+        <div class="ctt">Science, Technology, and Nation-Building</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-03.html" href="chapter-03.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-03-exercises.html" href="chapter-03-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Unit II — STS and the Human Condition · Weeks 7–12</h2>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 4</span> <span class="cwk">Weeks 7–8</span> 
+        <div class="ctt">The Human Person Flourishing in S&amp;T</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-04.html" href="chapter-04.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-04-exercises.html" href="chapter-04-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 5</span> <span class="cwk">Week 9</span> 
+        <div class="ctt">The Good Life</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-05.html" href="chapter-05.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-05-exercises.html" href="chapter-05-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 6</span> <span class="cwk">Week 10</span> 
+        <div class="ctt">When Technology and Humanity Cross</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-06.html" href="chapter-06.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-06-exercises.html" href="chapter-06-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 7</span> <span class="cwk">Weeks 11–12</span> 
+        <div class="ctt">Why the Future Does Not Need Us</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-07.html" href="chapter-07.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-07-exercises.html" href="chapter-07-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Unit III — Specific Issues in STS · Weeks 13–18</h2>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 8</span> <span class="cwk">Week 13</span> 
+        <div class="ctt">The Information Age</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-08.html" href="chapter-08.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-08-exercises.html" href="chapter-08-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 9</span> <span class="cwk">Weeks 14–15</span> 
+        <div class="ctt">Biodiversity and the Healthy Society</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-09.html" href="chapter-09.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-09-exercises.html" href="chapter-09-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 10</span> <span class="cwk">Week 16</span> 
+        <div class="ctt">The Nano World, Gene Therapy &amp; Editing</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-10.html" href="chapter-10.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-10-exercises.html" href="chapter-10-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 11</span> <span class="cwk">Week 16</span> <span class="badge mandated">Mandated</span>
+        <div class="ctt">Climate Change &amp; Environmental Awareness</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-11.html" href="chapter-11.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-11-exercises.html" href="chapter-11-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+    <div class="cgroup">
+      <div class="chd"><span class="cnum">Chapter 12</span> <span class="cwk">Week 17</span> <span class="badge new">New</span>
+        <div class="ctt">Emerging Frontiers: AI, Quantum &amp; Space</div></div>
+      <div class="cboxes">
+      <a class="sbox checking" data-file="chapter-12.html" href="chapter-12.html">
+        <div class="k">Main Lecture</div>
+        <div class="d">Lesson · per-topic videos · Self-Assessment · references</div>
+        <div class="status">● Checking…</div>
+      </a>
+      <a class="sbox checking" data-file="chapter-12-exercises.html" href="chapter-12-exercises.html">
+        <div class="k">Reinforcement Exercises &amp; Essay</div>
+        <div class="d">20-item HOTS test · 20-item assignment · 3-item essay</div>
+        <div class="status">● Checking…</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society (GE07) · Rizal Technological University · Dr. Ryan Manuel D. Guido · Full lecture series updated August 2026
+</footer>
+
+<script>
+/* Auto-detect which files are uploaded and colour each box green (ready) or red (missing). */
+(function(){
+  function paint(el, ok){
+    el.classList.remove('checking');
+    el.classList.add(ok ? 'ready' : 'missing');
+    var s = el.querySelector('.status');
+    if(s) s.textContent = ok ? '● Ready to use' : '● Not uploaded yet';
+    if(!ok){ el.addEventListener('click', function(e){ e.preventDefault(); }); }
+  }
+  function check(el){
+    var url = el.getAttribute('data-file');
+    fetch(url, {method:'GET', cache:'no-store'})
+      .then(function(r){ paint(el, r.ok); })
+      .catch(function(){ paint(el, false); });
+  }
+  document.querySelectorAll('[data-file]').forEach(check);
+})();
+</script>
+</body>
+</html>
