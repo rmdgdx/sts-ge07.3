@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 2 — Main Lecture | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .timeline{list-style:none;margin:14px 0;padding-left:0;}
+  .timeline li{position:relative;padding:0 0 14px 26px;border-left:2px solid #c6d2e4;margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);}
+  .timeline .when{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:.85rem;display:block;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit I · Week 4</div>
+  <h1>Chapter 2: Intellectual Revolutions That Defined Society</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#paradigm">Paradigms</a></li>
+    <li><a href="#copernican">Copernican</a></li>
+    <li><a href="#darwinian">Darwinian</a></li>
+    <li><a href="#freudian">Freudian</a></li>
+    <li><a href="#information">Information &amp; AI</a></li>
+    <li><a href="#nonwestern">Non-Western</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Articulate the ways by which society is transformed by science and technology, specifically through revolutions in ideas;</li>
+    <li>Explain what a <em>paradigm shift</em> is, using Thomas Kuhn's framework, and distinguish it from ordinary "normal science";</li>
+    <li>Analyze the Copernican, Darwinian, Freudian, and Information/AI revolutions as successive displacements of humanity from the center of its own worldview;</li>
+    <li>Recognize the intellectual revolutions and contributions of Meso-American, Asian, Middle Eastern, and African civilizations; and</li>
+    <li>Reflect on how each revolution reshaped not only what humans could <em>do</em>, but what they believed themselves to <em>be</em>.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: From Inventions to Ideas</h2>
+  <p class="lead">In Chapter 1 we traced <em>inventions</em> — the plow, the press, the steam engine — and how social needs summoned them. This chapter turns to something subtler and, in a way, more powerful: <em>ideas</em> that changed not what humanity could do, but what humanity believed itself to be.</p>
+  <p>An intellectual revolution is a transformation so deep that afterward people cannot think the way they did before. It rewrites the mental map. The Italian historian's phrase for it is a "change of world" — the same stars, the same bodies, the same dreams, but seen through a new frame that reorganizes their meaning. Four such revolutions form the spine of the modern mind, and there is a striking thread running through all of them: each one <strong>knocked human beings a little further from the center of the universe</strong>.</p>
+  <p>Copernicus removed the Earth from the center of the cosmos. Darwin removed humans from a special place among living things. Freud removed the conscious mind from the center of the self. And the Information and AI revolutions are now removing human intelligence from its lonely pedestal as the only known form of complex reasoning. Sigmund Freud himself noticed the first two and called them "wounds" to human self-love; we can read the whole chapter as the long, humbling — and liberating — decentering of humanity.</p>
+  <div class="callout gold">
+    <span class="label">The Thread of This Chapter</span>
+    Four "blows" to human self-importance: <strong>Cosmological</strong> (Copernicus — we are not the center of space) → <strong>Biological</strong> (Darwin — we are not separate from the animals) → <strong>Psychological</strong> (Freud — we are not masters in our own minds) → <strong>Informational</strong> (Turing/AI — we are not the only thinkers). Each felt like a loss; each opened a larger world.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    Before we begin: has an <em>idea</em> ever changed how you see yourself or the world — so that you could not go back to seeing it the old way? What made the shift so hard, or so freeing?
+  </div>
+</section>
+<section id="paradigm">
+  <h2>The Engine of Change: Kuhn and the Paradigm Shift</h2>
+  <p>Before surveying the four revolutions, we need the concept that best explains how they happen. In 1962 the physicist-turned-historian <strong>Thomas Kuhn</strong> published <em>The Structure of Scientific Revolutions</em>, one of the most influential books of the 20th century, and gave us a phrase now used everywhere: the <strong>paradigm shift</strong>.</p>
+  <p>A <strong>paradigm</strong>, for Kuhn, is the entire framework of shared assumptions, methods, questions, and exemplary achievements that a scientific community takes for granted at a given time. It is the "water the fish swim in" — mostly invisible, precisely because everyone accepts it. Kuhn argued that science does <em>not</em> advance as the textbooks pretend, by the smooth, steady piling-up of facts. Instead it moves in a jagged rhythm of long calm punctuated by upheaval.</p>
+  <h3>Kuhn's cycle of scientific change</h3>
+  <ul class="plain">
+    <li><strong>Normal science.</strong> Most scientists, most of the time, do "puzzle-solving" within an accepted paradigm — refining, measuring, filling in gaps. They do not question the frame itself.</li>
+    <li><strong>Anomalies.</strong> Over time, observations pile up that the paradigm cannot explain. At first they are ignored, explained away, or blamed on error.</li>
+    <li><strong>Crisis.</strong> When anomalies become too numerous or too stubborn, confidence in the paradigm cracks. The community grows uneasy; rival ideas get a hearing they would not have had before.</li>
+    <li><strong>Revolution.</strong> A new paradigm emerges that explains both the old data <em>and</em> the anomalies. There is a wrenching, often generational, switch — Kuhn compared it to a religious conversion or a gestalt flip (the duck that suddenly becomes a rabbit).</li>
+    <li><strong>New normal science.</strong> The new paradigm becomes the taken-for-granted frame, and the cycle begins again.</li>
+  </ul>
+  <p>Two of Kuhn's ideas are especially important — and controversial. The first is <strong>incommensurability</strong>: rival paradigms are so different that they can barely be compared point-for-point, because they define their very terms differently (Aristotle's "motion" and Newton's "motion" are not the same concept). The second is that paradigm choice is never settled by logic and evidence <em>alone</em>; it also involves persuasion, aesthetics, institutional power, and the slow turnover of generations. As the physicist Max Planck put it, "science advances one funeral at a time." This is a deeply <strong>STS</strong> claim: it says science is a <em>human, social</em> activity, not a pure ascent toward truth — connecting directly to Chapter 1's lesson of co-production.</p>
+  <div class="callout">
+    <span class="label">Why This Matters</span>
+    Each of the four revolutions in this chapter is a textbook Kuhnian shift: an old paradigm (Earth-centered, fixed species, the rational self, human-only intelligence), a mounting pile of anomalies, a crisis, and a new frame that reorganized everything. Keep the cycle in mind as a lens for each.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    "Paradigm shift" is now used for everything from phone launches to marketing campaigns. Is this loose usage fair to Kuhn's idea, or does it drain the concept of meaning? What would count as a <em>genuine</em> paradigm shift versus mere novelty?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=tJD5RMpIw18" target="_blank" rel="noopener">What is a Paradigm Shift? (Visualizing Kuhn)</a> — curated <span class="why">(the engine of scientific revolutions)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Thomas+Kuhn+structure+of+scientific+revolutions+explained" target="_blank" rel="noopener">Kuhn&rsquo;s Structure of Scientific Revolutions</a> — curated search <span class="why">(normal science, anomaly, crisis, revolution)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="copernican">
+  <h2>Revolution I. The Copernican Revolution — Displacing the Earth</h2>
+  <h3>The paradigm that ruled for 1,400 years</h3>
+  <p>From antiquity through the Middle Ages, educated people accepted the <strong>geocentric</strong> (Earth-centered) model, systematized by Ptolemy around 150 CE and fused with Aristotle's physics and, later, Christian theology. It was not a stupid belief — it fit everyday experience (the ground feels still; the Sun visibly moves) and it predicted planetary positions reasonably well. But it also carried a comforting message: humanity's home sat motionless at the center of creation, with the heavens literally revolving around us. To keep the model accurate, astronomers had added ever more <em>epicycles</em> — circles upon circles — until the system groaned with complexity. These were Kuhn's anomalies accumulating.</p>
+  <h3>The shift</h3>
+  <p>In 1543, the Polish cleric-astronomer <strong>Nicolaus Copernicus</strong> published <em>De revolutionibus orbium coelestium</em>, proposing a <strong>heliocentric</strong> model with the Sun at the center and the Earth as just another planet, spinning daily and orbiting yearly. It was mathematically simpler and more elegant. Over the next century the model gained decisive support:</p>
+  <ul class="plain">
+    <li><strong>Johannes Kepler</strong> showed the planets move in <em>ellipses</em>, not perfect circles, finally making the predictions precise and discarding the last epicycles.</li>
+    <li><strong>Galileo Galilei</strong>, turning the new telescope skyward (c. 1609), saw moons orbiting Jupiter (so not everything circles the Earth), the phases of Venus (predicted by heliocentrism), and craters on the Moon and spots on the Sun (so the heavens are not perfect and unchanging).</li>
+    <li><strong>Isaac Newton</strong> (1687) supplied the physics — universal gravitation — that explained <em>why</em> the planets move as they do, uniting heaven and earth under one set of laws.</li>
+  </ul>
+  <h3>Why it was a social earthquake, not just an astronomical one</h3>
+  <p>The stakes were never merely technical. If the Earth was not the center, humanity's privileged place in creation was in question, and the authority of institutions that had endorsed the old cosmology was threatened. Galileo was tried by the Roman Inquisition in 1633 and forced to recant; his story became the enduring symbol of the collision between new evidence and established authority — a collision that recurs whenever knowledge outpaces the institutions built on older knowledge. The Copernican Revolution also helped inaugurate the Scientific Revolution itself and the conviction that human reason, using mathematics and observation, could overturn even the most ancient and authoritative certainties.</p>
+  <div class="callout gold">
+    <span class="label">The First Blow</span>
+    We are not the center of space. The comfort lost was cosmic centrality; the world gained was a universe vastly larger, law-governed, and open to human understanding.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    The evidence for heliocentrism accumulated for over a century before it was widely accepted. What does this slow acceptance — despite good evidence — reveal about how societies, not just individuals, change their minds? Where do you see similar slow shifts today?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=-FYvy3_egHw" target="_blank" rel="noopener">The New Astronomy (Crash Course History of Science #13)</a> — CrashCourse <span class="why">(Copernicus, Kepler &amp; the heliocentric shift)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Galileo+telescope+heliocentrism+TED-Ed" target="_blank" rel="noopener">Galileo and the birth of modern astronomy</a> — curated search <span class="why">(evidence vs. authority)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="darwinian">
+  <h2>Revolution II. The Darwinian Revolution — Displacing the Human from Creation</h2>
+  <h3>The old paradigm: fixed species and a young, designed world</h3>
+  <p>Before Darwin, the dominant Western view held that species were <em>fixed</em> — each created separately in its present form — and that humans stood apart from and above the animal kingdom, uniquely made. The apparent "design" of living things (the eye, the wing) was taken as direct evidence of a designer. This was a coherent, satisfying paradigm. But anomalies were mounting: fossils of creatures no longer alive, the geological evidence that the Earth was vastly older than a few thousand years, the peculiar distribution of species across islands and continents, and the obvious kinship among related animals.</p>
+  <h3>The shift</h3>
+  <p>In 1859, after decades of caution, <strong>Charles Darwin</strong> published <em>On the Origin of Species</em>, proposing <strong>evolution by natural selection</strong>. The mechanism is elegantly simple: organisms vary; more are born than can survive; those with variations better suited to their environment tend to survive and reproduce; and so, over immense spans of time, populations change and new species arise. No designer is required — order emerges from a blind, natural process. (Alfred Russel Wallace independently arrived at the same idea, a reminder that revolutionary ideas often ripen when their time has come.) In <em>The Descent of Man</em> (1871), Darwin made the implication explicit: humans, too, are part of this tree of life, sharing common ancestry with other animals.</p>
+  <h3>The social shockwaves — for good and ill</h3>
+  <p>The Darwinian Revolution reorganized biology into a single coherent science and remains its unifying framework ("nothing in biology makes sense except in the light of evolution"). But its social consequences were vast and double-edged, illustrating an STS lesson: powerful ideas are seized, stretched, and misused by society. On one hand, evolution grounded modern medicine, agriculture, ecology, and genetics. On the other, the phrase "survival of the fittest" (coined by Herbert Spencer, not Darwin) was twisted into <strong>Social Darwinism</strong> — a pseudo-scientific rationalization for laissez-faire cruelty, colonial domination, racism, and later the horrors of eugenics. This misuse was a distortion of Darwin's actual science, but it shows how a scientific idea, once released into society, can be weaponized far beyond its author's intent — exactly the pattern of "inventions escaping their inventors" from Chapter 1. The clash between evolution and certain religious interpretations also continues in debates over school curricula to this day.</p>
+  <div class="callout gold">
+    <span class="label">The Second Blow</span>
+    We are not separate from the rest of life. The comfort lost was human exceptionalism; the world gained was a profound kinship with all living things and a powerful explanation for life's staggering diversity.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Social Darwinism misapplied a biological idea to justify social inequality. Can you identify a present-day example where scientific language ("it's just natural," "it's in our genes," "the algorithm knows best") is used to justify a social or political arrangement? How should we guard against this?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=natural+selection+evolution+explained+TED-Ed" target="_blank" rel="noopener">How natural selection works</a> — TED-Ed / curated <span class="why">(Darwin&rsquo;s mechanism in plain terms)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Charles+Darwin+theory+of+evolution+documentary" target="_blank" rel="noopener">Darwin &amp; the Descent of Man</a> — curated search <span class="why">(humans within the tree of life)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="freudian">
+  <h2>Revolution III. The Freudian Revolution — Displacing the Conscious Self</h2>
+  <h3>The old paradigm: the rational, transparent self</h3>
+  <p>The Enlightenment bequeathed a flattering picture of the human being: a fundamentally <em>rational</em> creature, master of a mind that was transparent to itself. You knew your own reasons; you chose your own actions; the self was a unified, conscious "captain of the soul." Against this, the Viennese physician <strong>Sigmund Freud</strong>, working around 1900, argued something disturbing: that the conscious mind is only the tip of a vast iceberg, and that most of our mental life churns <em>below</em> awareness.</p>
+  <h3>The shift</h3>
+  <p>Freud's <strong>psychoanalysis</strong> proposed that human behavior is driven substantially by the <strong>unconscious</strong> — repressed desires, memories, and conflicts, especially from childhood, that we cannot directly access but that shape our feelings and choices. He offered a model of the psyche in tension: the instinctual <strong>id</strong>, the reality-checking <strong>ego</strong>, and the moral <strong>superego</strong>. He treated dreams as "the royal road to the unconscious," and introduced now-common concepts: repression, projection, denial, the Freudian slip, and defense mechanisms. Whatever their scientific standing, these ideas gave us a new vocabulary for the inner life.</p>
+  <h3>A contested revolution — and an honest reckoning</h3>
+  <p>Freud belongs in this chapter because his impact on how modern people understand themselves is immense — yet intellectual honesty requires noting that his standing differs sharply from Copernicus's or Darwin's. Much of classical psychoanalytic theory is <strong>not considered scientifically valid</strong> by modern psychology: its central claims are difficult or impossible to test and falsify (the philosopher Karl Popper used Freud as his prime example of a <em>non</em>-falsifiable, and therefore unscientific, theory), and empirical support for many specific mechanisms is weak. Modern clinical psychology rests far more on cognitive-behavioral, neuroscientific, and evidence-based approaches. Nevertheless, Freud's <em>core insight</em> — that much of the mind operates outside conscious awareness — has been broadly vindicated by cognitive science and neuroscience, which now study "implicit" processes, cognitive biases, and automatic behavior. And his cultural influence — on art, literature, film, advertising, and everyday self-talk ("that's so subconscious," "he's in denial") — is inescapable.</p>
+  <div class="callout gold">
+    <span class="label">The Third Blow</span>
+    We are not masters in our own minds. The comfort lost was the sovereign, transparent self; the world gained was a deeper, if unsettling, map of human motivation — and a caution about how much of ourselves we truly know.
+  </div>
+  <div class="callout green">
+    <span class="label">Critical-Thinking Note</span>
+    Including Freud lets us practice a key STS skill: distinguishing <em>cultural influence</em> from <em>scientific validity</em>. An idea can be historically world-changing and still be, in its specifics, largely unfalsifiable. Both things are true of Freud at once.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    If parts of Freud's theory are unfalsifiable and empirically weak, why did (and does) it remain so culturally powerful? What does this tell us about the difference between what is <em>scientifically true</em> and what is <em>socially influential</em>?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Freud+the+unconscious+psychoanalysis+explained" target="_blank" rel="noopener">Freud and the unconscious mind</a> — curated search <span class="why">(the third &lsquo;blow&rsquo; to human self-importance)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=is+Freud+still+relevant+modern+psychology+falsifiability" target="_blank" rel="noopener">Is Freud still scientifically valid?</a> — curated search <span class="why">(cultural impact vs. scientific validity)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="information">
+  <h2>Revolution IV. The Information &amp; AI Revolution — Displacing Human Intelligence</h2>
+  <h3>The old paradigm: humans as the unique thinkers</h3>
+  <p>Even after Copernicus, Darwin, and Freud, one pedestal seemed secure: whatever else we had lost, humans were the only beings that could reason, calculate, compose, and create. Intelligence was our last claim to uniqueness. The Information Revolution — and its culmination in artificial intelligence — is now unsettling even this. The philosopher <strong>Luciano Floridi</strong> calls it the <strong>"Fourth Revolution"</strong> precisely because it completes the sequence begun by the other three: after being displaced from the center of the universe, from the animal kingdom, and from our own conscious minds, we are now displaced from our assumed monopoly on intelligent information-processing.</p>
+  <h3>The shift</h3>
+  <p>The intellectual roots run through <strong>Alan Turing</strong>, whose 1936 concept of a universal computing machine showed that <em>reasoning could be mechanized</em> — that thinking, or at least symbol-manipulation, is not necessarily tied to a biological brain. Turing's 1950 question "Can machines think?" and his famous <em>imitation game</em> (the Turing Test) put the issue on the intellectual map. Claude Shannon's information theory (1948) reduced all messages — words, images, sound — to a common currency of <em>bits</em>, making the digital world possible. From these foundations grew the computer, the internet, and, in our own decade, <strong>generative AI</strong> systems that write, converse, code, and create images at a level that only recently seemed uniquely human. Floridi argues we now live in the <strong>infosphere</strong>, and that we are <strong>"inforgs"</strong> — informational organisms — sharing our environment with artificial agents.</p>
+  <h3>Why this is a genuine intellectual revolution — the deepest questions</h3>
+  <p>This revolution is not only technological; it is philosophical, and it forces questions the earlier three only hinted at. If a machine can do what we thought only minds could do, then <em>what is thinking?</em> <em>What, if anything, is uniquely human?</em> Is it consciousness, emotion, creativity, moral judgment, embodiment — or are these too, in time, computable? These are live questions in 2026, not science fiction. And, exactly as the STS lens predicts, the answers are being negotiated socially right now: through the EU AI Act, UNESCO's ethics recommendation, and the Philippines' own National AI Strategy Roadmap. Unlike Galileo's contemporaries, you are living <em>inside</em> the paradigm shift — which makes it far harder to see clearly, since we are the fish and this is our water.</p>
+  <div class="callout gold">
+    <span class="label">The Fourth Blow</span>
+    We are not the only thinkers. The comfort lost is the human monopoly on intelligence; the world potentially gained is a new understanding of mind itself — and a profound new responsibility to decide what role artificial minds should play in human life.
+  </div>
+  <div class="callout">
+    <span class="label">Connecting the Chapters</span>
+    This revolution is the intellectual counterpart to the Digital Age and Fourth Industrial Revolution studied in Chapter 1. There we asked what these technologies <em>do to society</em>; here we ask what they <em>do to our self-understanding</em>. Both questions matter, and both are being answered in your lifetime.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Generative AI can now write essays and pass exams. Does this diminish what it means to be human, or does it clarify it — pushing us to ask what is genuinely ours (judgment? care? lived experience?)? Where would you draw the line, and why?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=v9rZOa3CUC8" target="_blank" rel="noopener">What is the Fourth Industrial Revolution? (CNBC Explains)</a> — CNBC <span class="why">(the Information/AI revolution)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Alan+Turing+can+machines+think+imitation+game" target="_blank" rel="noopener">Turing: Can machines think?</a> — curated search <span class="why">(mechanizing intelligence)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="nonwestern">
+  <h2>Beyond the West: Meso-American, Asian, Middle Eastern, and African Revolutions</h2>
+  <p>The four revolutions above are usually told as a European story, but the CHED syllabus rightly insists that intellectual revolutions happened across many civilizations — a corrective to the myth that "real" science and abstract thought are a Western invention. Recognizing these traditions is both historically accurate and an act of intellectual justice.</p>
+  <h3>Meso-American</h3>
+  <p>The <strong>Maya</strong>, in isolation from Eurasia, independently developed the concept of <strong>zero</strong> and a positional number system, produced astronomical calculations of extraordinary precision (their predictions of Venus's cycles and eclipses rival any in the ancient world), and built two interlocking calendars of remarkable sophistication. The <strong>Aztec</strong> engineered <em>chinampas</em> (highly productive floating gardens) and advanced herbal medicine. That these achievements arose with no contact with the "Old World" is powerful evidence that mathematical and scientific reasoning are <em>universal human capacities</em>, not a cultural inheritance of any one people.</p>
+  <h3>Asian</h3>
+  <p><strong>India</strong> gave the world the decimal place-value system and the numeral zero (Aryabhata, Brahmagupta), foundational to all modern mathematics, along with early work in algebra, trigonometry, and astronomy, and Sushruta's surgical tradition. <strong>China</strong> produced not only the Four Great Inventions (Chapter 1) but sophisticated astronomy, seismology (Zhang Heng's seismograph), and a distinctive philosophical-scientific outlook; its intellectual traditions — Confucian, Daoist, Buddhist — shaped how a fifth of humanity understood nature and society. The broader Asian contribution reminds us that the "scientific temper" took many forms.</p>
+  <h3>Middle Eastern</h3>
+  <p>The <strong>Islamic Golden Age</strong> (8th–14th centuries) was not merely a "preserver" of Greek learning but a site of genuine intellectual revolution: al-Khwarizmi effectively founded <strong>algebra</strong> (and lent his name to <em>algorithm</em>); Ibn al-Haytham pioneered the <strong>experimental method</strong> in optics centuries before Bacon; and scholars advanced medicine, chemistry, and astronomy. Crucially, this knowledge later flowed <em>into</em> Europe and helped ignite the very Scientific Revolution described above — meaning the Copernican Revolution itself stands on Middle Eastern and Asian foundations.</p>
+  <h3>African</h3>
+  <p>Beyond Egypt's monumental mathematics and medicine, sub-Saharan Africa hosted centers of learning such as <strong>Timbuktu</strong> (in the Mali Empire), whose universities and libraries held hundreds of thousands of manuscripts on astronomy, mathematics, and medicine. African metallurgists smelted steel (the Haya people of present-day Tanzania), and the <strong>Dogon</strong> and other peoples developed detailed astronomical knowledge. The <strong>Ishango bone</strong> from Central Africa (c. 20,000 years old) is among the oldest known mathematical artifacts — a reminder that the human impulse to count, measure, and understand is as old and as widespread as humanity itself.</p>
+  <div class="callout">
+    <span class="label">STS Insight</span>
+    Intellectual revolutions are a <em>human</em> inheritance, not the property of any single civilization. Knowledge has always been a global relay — the numerals you use daily traveled from India, through the Middle East, into Europe, and now to your phone. To tell the story of ideas fairly is itself part of thinking well.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=history+of+zero+India+Maya+mathematics" target="_blank" rel="noopener">The story of zero (India &amp; the Maya)</a> — curated search <span class="why">(science as a universal human inheritance)</span></li>
+      <li><a href="https://www.youtube.com/watch?v=oBoStolw2pU" target="_blank" rel="noopener">Golden Age of Islam &amp; the House of Wisdom</a> — Simple History <span class="why">(algebra, optics, medicine)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: The Great Decentering</h2>
+  <p>Read together, the four revolutions tell one continuous story — the progressive removal of humanity from the center of its own picture of reality. Each was resisted; each was experienced as a loss; and each, in the end, enlarged rather than diminished the human world.</p>
+  <table>
+    <thead><tr><th>Revolution</th><th>Displaced from…</th><th>Old paradigm → New paradigm</th><th>Key figures</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Copernican</strong> (1543– )</td><td>the center of space</td><td>Geocentric → Heliocentric; Earth is one planet among many</td><td>Copernicus, Kepler, Galileo, Newton</td></tr>
+      <tr><td><strong>Darwinian</strong> (1859– )</td><td>the summit of creation</td><td>Fixed, designed species → Evolution by natural selection; humans within the tree of life</td><td>Darwin, Wallace</td></tr>
+      <tr><td><strong>Freudian</strong> (c. 1900– )</td><td>the center of the self</td><td>The rational, transparent mind → A mind largely ruled by the unconscious</td><td>Freud (later contested)</td></tr>
+      <tr><td><strong>Information/AI</strong> (1936– )</td><td>the monopoly on intelligence</td><td>Human-only reasoning → Mechanizable intelligence; the infosphere and "inforgs"</td><td>Turing, Shannon, Floridi</td></tr>
+    </tbody>
+  </table>
+  <p>Three lessons carry forward. First, each revolution was a <strong>Kuhnian paradigm shift</strong>: an old frame, mounting anomalies, a crisis, and a new frame that reorganized everything — confirming that science advances in jolts, through human communities, not by smooth accumulation. Second, each shows that <strong>ideas have social power</strong>: heliocentrism unsettled institutions, Darwinism was twisted into Social Darwinism, psychoanalysis reshaped culture, and AI is reshaping law, work, and self-understanding as we speak. Third, and most hopeful: <strong>decentering is not diminishment</strong>. Losing the center of the map did not make humanity smaller; it made the map immensely larger, and it placed on us the distinctly human responsibility of understanding — and choosing wisely within — a universe far bigger than our ancestors imagined.</p>
+  <p>In Chapter 3, we bring these ideas home, turning to <strong>science, technology, and nation-building in the Philippines</strong> — how a nation harnesses knowledge for its own development.</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Intellectual revolution</td><td>A transformation of ideas so deep that afterward people cannot think about the world (or themselves) the way they did before.</td></tr>
+      <tr><td>Paradigm</td><td>The framework of shared assumptions, methods, and exemplary achievements a scientific community takes for granted (Kuhn).</td></tr>
+      <tr><td>Paradigm shift</td><td>The wrenching replacement of one paradigm by an incompatible new one during a scientific revolution.</td></tr>
+      <tr><td>Normal science</td><td>Routine "puzzle-solving" research conducted within an accepted paradigm, not questioning its foundations.</td></tr>
+      <tr><td>Anomaly</td><td>An observation a reigning paradigm cannot explain; accumulating anomalies drive crisis and revolution.</td></tr>
+      <tr><td>Incommensurability</td><td>Kuhn's claim that rival paradigms cannot be fully compared because they define their basic terms differently.</td></tr>
+      <tr><td>Geocentrism / Heliocentrism</td><td>The Earth-centered vs. Sun-centered models of the cosmos; the core of the Copernican Revolution.</td></tr>
+      <tr><td>Natural selection</td><td>Darwin's mechanism of evolution: heritable variations that aid survival and reproduction become more common over time.</td></tr>
+      <tr><td>Social Darwinism</td><td>The misuse of "survival of the fittest" to justify inequality, colonialism, and eugenics — a distortion of Darwin's science.</td></tr>
+      <tr><td>Unconscious</td><td>In Freud, the mental processes outside awareness that shape behavior; his enduring (and broadly vindicated) core insight.</td></tr>
+      <tr><td>Falsifiability</td><td>Popper's criterion that a scientific claim must be testable and capable of being proven false; Freud's theory is his key counter-example.</td></tr>
+      <tr><td>Infosphere / Inforgs</td><td>Floridi's terms for the informational environment we now inhabit, and for us as "informational organisms" within it.</td></tr>
+      <tr><td>The Fourth Revolution</td><td>Floridi's name for the Information/AI revolution, which displaces humanity from its assumed monopoly on intelligence.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>Explain the sentence "each revolution decentered humanity" in your own words, using all four revolutions. Do you find this framing illuminating or overstated?</li>
+    <li>Apply Kuhn's cycle (normal science → anomaly → crisis → revolution) to <em>one</em> of the four revolutions in detail. What were the anomalies? What triggered the crisis?</li>
+    <li>Freud is included despite much of his theory being unfalsifiable. Was it right to include him among "revolutions that defined society"? Defend a position.</li>
+    <li>Is the Information/AI revolution truly comparable in depth to Copernicus and Darwin, or are we overstating a technology we're too close to judge? Argue both sides.</li>
+    <li>Why does the syllabus deliberately include Meso-American, Asian, Middle Eastern, and African revolutions? What is lost when the story of ideas is told as purely Western?</li>
+  </ol>
+  <h3>Activity 1 — Paradigm-shift case file (group work, in class)</h3>
+  <p>In groups, pick one revolution and build a "case file" mapping it onto Kuhn's stages: identify the old paradigm, at least three specific anomalies, the crisis moment, the key figures, and the resisting institutions. Present as a labeled diagram or timeline.</p>
+  <h3>Activity 2 — "The Fifth Blow?" (pair debate, take-home)</h3>
+  <p>Some thinkers argue a <em>fifth</em> decentering is coming — from neuroscience (the self as brain activity), genetic engineering, or the discovery of extraterrestrial life. In pairs, argue for the most likely "next revolution" and how society might react. 1 page.</p>
+  <h3>Activity 3 — Mini-essay (individual, 500–700 words)</h3>
+  <p><em>"Which of the four revolutions most changed what it means to be human?"</em> Defend your choice using Kuhn's framework and at least one idea from the non-Western traditions.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. What is a "paradigm" in Kuhn's sense?</summary><p>The framework of shared assumptions, methods, questions, and exemplary achievements a scientific community takes for granted at a given time.</p></details>
+  <details><summary>2. List the stages of Kuhn's cycle of scientific change.</summary><p>Normal science → anomalies → crisis → revolution → new normal science.</p></details>
+  <details><summary>3. From what was humanity "displaced" by each of the four revolutions?</summary><p>Copernican — the center of space; Darwinian — the summit/separateness of creation; Freudian — the center/mastery of the self; Information/AI — the monopoly on intelligence.</p></details>
+  <details><summary>4. Name the model the Copernican Revolution replaced, and the one it introduced.</summary><p>It replaced geocentrism (Earth-centered, Ptolemaic) with heliocentrism (Sun-centered).</p></details>
+  <details><summary>5. State Darwin's mechanism of evolution in one sentence.</summary><p>Heritable variations that improve survival and reproduction become more common over generations — natural selection.</p></details>
+  <details><summary>6. What is Social Darwinism, and why is it a distortion?</summary><p>The misuse of "survival of the fittest" to justify inequality, colonialism, and eugenics; it misapplies a biological description to social policy and was not Darwin's science.</p></details>
+  <details><summary>7. What is Freud's enduring core insight, and how does it differ from his contested specifics?</summary><p>Core insight (broadly vindicated): much of mental life operates outside conscious awareness. Contested specifics: id/ego/superego and many mechanisms are largely unfalsifiable and empirically weak.</p></details>
+  <details><summary>8. Why did Popper cite Freud as a key example?</summary><p>As a case of a non-falsifiable theory — one that cannot, even in principle, be tested and proven false — which by his criterion makes it unscientific.</p></details>
+  <details><summary>9. Why does Floridi call the Information/AI revolution the "Fourth Revolution"?</summary><p>Because it completes the sequence after Copernicus, Darwin, and Freud — displacing humanity from its assumed monopoly on intelligence; we live in the infosphere as "inforgs."</p></details>
+  <details><summary>10. Give one intellectual achievement each from Meso-American, Asian, Middle Eastern, and African traditions.</summary><p>Examples: Maya independent zero and astronomy; Indian decimal/zero system (or Chinese seismograph); al-Khwarizmi's algebra / Ibn al-Haytham's experimental method; Timbuktu's manuscripts or the Ishango bone.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>Kuhn, Thomas. <em>The Structure of Scientific Revolutions</em>, University of Chicago Press, 1962.</li>
+    <li>Copernicus, Nicolaus. <em>On the Revolutions of the Heavenly Spheres</em>, 1543.</li>
+    <li>Darwin, Charles. <em>On the Origin of Species</em>, 1859; <em>The Descent of Man</em>, 1871.</li>
+    <li>Freud, Sigmund. <em>The Interpretation of Dreams</em>, 1900.</li>
+    <li>Popper, Karl. <em>Conjectures and Refutations</em>, 1963 (on falsifiability and Freud).</li>
+    <li>Floridi, Luciano. <em>The Fourth Revolution: How the Infosphere is Reshaping Human Reality</em>, Oxford University Press, 2014.</li>
+    <li>Turing, Alan. "Computing Machinery and Intelligence," <em>Mind</em>, 1950.</li>
+    <li>Shannon, Claude. "A Mathematical Theory of Communication," 1948.</li>
+    <li>Stanford Encyclopedia of Philosophy: entries on Scientific Revolutions, Thomas Kuhn, and Karl Popper.</li>
+    <li>Course syllabus resources: Flow of History readings on the Age of Enlightenment; PowerPoint presentations on the individual scholars and their great works.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 2 Main Lecture &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

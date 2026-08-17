@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 2 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .timeline{list-style:none;margin:14px 0;padding-left:0;}
+  .timeline li{position:relative;padding:0 0 14px 26px;border-left:2px solid #c6d2e4;margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);}
+  .timeline .when{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:.85rem;display:block;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit I · Week 4</div>
+  <h1>Chapter 2: Intellectual Revolutions That Defined Society — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 2 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. A student says, "Science just steadily piles up facts until we know everything." Which Kuhnian idea BEST corrects this?</p>
+    <ol><li>Normal science never produces useful results.</li><li>Science advances through periodic paradigm shifts that reorganize knowledge, not by smooth accumulation.</li><li>All paradigms are equally true.</li><li>Anomalies should always be ignored.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Kuhn's central claim is the jagged rhythm of normal science punctuated by revolutions. A and D misstate Kuhn (normal science is productive; anomalies eventually force change); C confuses Kuhn's incommensurability with relativism.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Ptolemaic astronomers kept adding epicycles to keep predictions accurate. In Kuhn's framework, these additions are BEST understood as:</p>
+    <ol><li>A successful new paradigm.</li><li>Normal science straining to absorb accumulating anomalies before a crisis.</li><li>Proof the geocentric model was never useful.</li><li>An example of falsifiability.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Epicycle-stacking is normal science patching anomalies within the reigning paradigm — the pressure that eventually produces crisis. A is wrong (still the old paradigm); C is false (it predicted reasonably well for centuries); D is unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. What is the STRONGEST reason the Copernican Revolution was a <em>social</em> upheaval and not merely an astronomical correction?</p>
+    <ol><li>It made telescopes more expensive.</li><li>It challenged humanity's privileged place in creation and the authority of institutions built on the old cosmology.</li><li>It had no effect on religion or philosophy.</li><li>It was accepted instantly by everyone.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Moving Earth from the center threatened both human centrality and institutional authority (hence Galileo's trial). C and D are historically false; A is trivial.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Galileo saw moons orbiting Jupiter. Why was this observation so damaging to geocentrism specifically?</p>
+    <ol><li>It proved the Moon was made of cheese.</li><li>It showed that not every celestial body orbits the Earth — directly contradicting a core geocentric assumption.</li><li>It confirmed that the heavens are perfect and unchanging.</li><li>It had nothing to do with the debate.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Geocentrism held that everything circles Earth; a moon circling Jupiter is a direct counterexample. C is the opposite of what his observations (sunspots, craters) showed; A and D are absurd.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Wallace independently reached natural selection at nearly the same time as Darwin. This BEST supports which idea?</p>
+    <ol><li>Revolutionary ideas often emerge when accumulated evidence and context make them "ripe," not from lone genius alone.</li><li>Darwin plagiarized Wallace.</li><li>Natural selection must be false.</li><li>Only one person can ever have a scientific idea.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> Simultaneous independent discovery signals that the intellectual and evidential conditions were ready — a social/historical point. B is unfounded; C is a non sequitur; D is contradicted by the very case.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. "Survival of the fittest" was used to justify colonial domination. This is BEST analyzed as an instance of:</p>
+    <ol><li>A correct application of Darwin's biology to society.</li><li>A scientific idea being distorted and weaponized by society beyond its author's intent.</li><li>Proof that evolution is false.</li><li>Normal science.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Social Darwinism misapplied a biological description as a moral-political justification — the "ideas escape their inventors" pattern. A is wrong (it was a distortion, and Spencer's phrase); C confuses misuse with falsity; D is irrelevant.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Popper argued Freud's theory is unscientific. His reasoning is that the theory:</p>
+    <ol><li>Was too mathematical.</li><li>Could explain any outcome and its opposite, so no observation could ever prove it false.</li><li>Was never culturally influential.</li><li>Was identical to Darwin's.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Falsifiability is Popper's criterion; a theory compatible with every possible outcome cannot be tested. A is false; C is the opposite of the truth; D is nonsense.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. A modern neuroscientist studies unconscious cognitive biases. This BEST illustrates that, regarding Freud:</p>
+    <ol><li>His entire theory has been fully confirmed.</li><li>His broad core insight (much of the mind is unconscious) survived, even though many specific mechanisms did not.</li><li>The unconscious was disproven.</li><li>Neuroscience and psychology ignore the mind.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The chapter's precise distinction: core insight vindicated, specifics contested. A overclaims; C is the reverse of the evidence; D is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Why is it useful, for STS thinking, that Freud is both "world-changing" and "largely unfalsifiable"?</p>
+    <ol><li>It shows scientific validity and social influence are the same thing.</li><li>It trains us to separate an idea's cultural impact from its scientific truth — two independent measures.</li><li>It proves culture is more important than truth.</li><li>It proves Freud was a fraud.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The case decouples two dimensions people often conflate. A is exactly the error the case dispels; C and D overreach beyond the evidence.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. Floridi calls AI the "Fourth Revolution." The STRONGEST justification for the label is that it:</p>
+    <ol><li>Is the fourth-fastest technology ever invented.</li><li>Completes a sequence of decenterings by challenging the human monopoly on intelligence, as the prior three challenged other human certainties.</li><li>Happened exactly 400 years after Copernicus.</li><li>Was invented by four people.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The label's force is conceptual continuity with Copernicus/Darwin/Freud, not chronology or counting. A, C, and D are irrelevant or invented.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Which scenario would count as a genuine paradigm shift rather than mere novelty?</p>
+    <ol><li>A phone company releases a thinner phone.</li><li>Evidence forces biologists to abandon a core framework and re-explain all prior data under a new one.</li><li>A store rebrands its logo.</li><li>A faster version of an existing algorithm is released.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A paradigm shift reorganizes an entire field's foundational assumptions and reinterprets existing data. A, C, and D are incremental or cosmetic — the loose usage Kuhn's idea is often diluted into.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. That the Maya invented zero with no contact with Eurasia MOST strongly supports which claim relevant to this chapter?</p>
+    <ol><li>All mathematics descends from one culture.</li><li>Abstract mathematical reasoning is a universal human capacity, not a single culture's invention.</li><li>Intellectual revolutions only happen in Europe.</li><li>Zero is unimportant.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Independent invention is decisive evidence for universality — and rebuts the Eurocentric myth. A and C are directly contradicted; D is false given zero's foundational role.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. The numerals you use came from India via the Middle East into Europe. The BEST lesson for evaluating scientific progress is:</p>
+    <ol><li>Knowledge advances through cross-cultural relay and exchange, not in isolated silos.</li><li>Only Europeans produced useful mathematics.</li><li>Cultural borrowing weakens science.</li><li>Numerals have no history.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> The transmission history models knowledge as a global relay — echoing Chapter 1's openness lesson. B is false and Eurocentric; C inverts the evidence; D is absurd.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. Max Planck said "science advances one funeral at a time." This BEST supports Kuhn's view that:</p>
+    <ol><li>Scientists never change their minds through evidence.</li><li>Paradigm change is partly generational and social, not settled by logic and data alone.</li><li>Older scientists are always right.</li><li>Funerals cause discoveries.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Planck's remark captures the social/generational dimension of paradigm change. A overstates (evidence still matters, eventually); C and D misread the quip.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. A creationist and an evolutionary biologist "talk past each other," disagreeing even about what counts as evidence. This BEST illustrates Kuhn's concept of:</p>
+    <ol><li>Normal science.</li><li>Incommensurability — rival frameworks define their terms and standards differently.</li><li>Falsifiability.</li><li>Anomaly.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Incommensurability is the difficulty of point-for-point comparison across frameworks with different definitions and criteria. The other terms name different parts of Kuhn's cycle.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. Which is the MOST defensible reason to treat the AI revolution more cautiously than the Copernican one when judging its significance?</p>
+    <ol><li>AI is obviously trivial.</li><li>We are living inside it, so we lack the historical distance to see its true shape — "we are the fish and this is our water."</li><li>Copernicus used better mathematics.</li><li>Intellectual revolutions cannot happen after 1900.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The epistemic-humility point: contemporaries judge ongoing revolutions poorly. A dismisses the phenomenon; C is irrelevant to significance; D is a baseless rule.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Turing's idea that reasoning can be mechanized matters to this chapter chiefly because it:</p>
+    <ol><li>Made computers cheaper.</li><li>Suggested that thinking need not be tied to a biological brain — undermining the human monopoly on intelligence.</li><li>Proved machines are conscious.</li><li>Disproved information theory.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The conceptual stakes — decoupling reasoning from biology — drive the Fourth Revolution. A is economic, not conceptual; C overclaims (mechanizing symbol-manipulation ≠ consciousness); D is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. The chapter frames decentering as "not diminishment." Which statement BEST captures this paradox?</p>
+    <ol><li>Losing the center made humanity objectively less important and that is all.</li><li>Each lost certainty was traded for a larger, truer world and a new human responsibility to understand it.</li><li>The revolutions cancelled each other out.</li><li>Humanity regained the center each time.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The synthesis argues expansion of knowledge and responsibility offsets lost centrality. A takes only half; C and D contradict the historical record.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. A politician says a policy is justified because "it's just natural selection at work in the economy." The BEST critical response, using this chapter, is:</p>
+    <ol><li>Agree — biology settles economics.</li><li>Point out this is Social-Darwinist reasoning: a descriptive biological idea illegitimately smuggled in as a moral-political justification.</li><li>Note that natural selection was disproven.</li><li>Say evolution is only a theory so it doesn't matter.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The is/ought error at the heart of Social Darwinism: describing nature does not justify a social arrangement. A repeats the fallacy; C and D are scientifically false.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Which forecast about a possible "fifth revolution" is the MOST historically disciplined, given the chapter's pattern?</p>
+    <ol><li>"There can be no more revolutions; science is finished."</li><li>"A further decentering (e.g., neuroscience reducing the 'self,' or contact with alien life) would likely be resisted, felt as loss, then absorbed into a larger worldview — as the prior four were."</li><li>"The next revolution will restore humanity to the center of everything."</li><li>"History tells us nothing about the future."</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It extrapolates the chapter's established pattern (resistance → loss → enlargement) with appropriate caution. A and C contradict the trajectory; D abandons the analytical use of history.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. Kuhn compared a paradigm shift to a gestalt flip (duck ↔ rabbit). What feature of paradigm change does this analogy capture BEST?</p>
+    <ol><li>That the data physically change.</li><li>That the same evidence is suddenly seen within a wholly different organizing frame.</li><li>That scientists are easily fooled by pictures.</li><li>That paradigms are only about vision.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A gestalt flip reinterprets identical input under a new frame — like the same sky reread as heliocentric. A is false (data don't change, interpretation does); C and D miss the analogy's point.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. "Normal science" is essential to Kuhn's account because it:</p>
+    <ol><li>Is where revolutions are avoided forever.</li><li>Does the detailed puzzle-solving that eventually exposes the anomalies a paradigm cannot handle.</li><li>Is unscientific.</li><li>Never produces knowledge.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Precisely by working hard within the paradigm, normal science surfaces its failures. A, C, and D misunderstand its productive, anomaly-revealing role.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. Kepler's ellipses mattered to the Copernican Revolution mainly because they:</p>
+    <ol><li>Made the model prettier only.</li><li>Removed the need for epicycles and made heliocentric predictions genuinely accurate.</li><li>Proved the Earth is flat.</li><li>Restored geocentrism.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Elliptical orbits eliminated the last epicycles and delivered predictive precision, converting elegance into evidence. A undersells the accuracy gain; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Newton's role in the Copernican story is BEST described as:</p>
+    <ol><li>Disproving Copernicus.</li><li>Supplying the physical mechanism (universal gravitation) that explained <em>why</em> heliocentric motions occur, unifying heaven and earth.</li><li>Inventing the telescope.</li><li>Rejecting mathematics in science.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Newton gave the causal physics that completed the paradigm. A is false; the telescope was Galileo's tool; D contradicts the Principia's entire method.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. "Nothing in biology makes sense except in the light of evolution" MOST directly claims that Darwinism functions as biology's:</p>
+    <ol><li>One optional hypothesis among many.</li><li>Unifying paradigm that makes the rest of the field coherent.</li><li>A purely social theory.</li><li>A disproven idea.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The line asserts evolution's paradigmatic, field-organizing status. A understates it; C and D are incorrect.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. A newspaper claims a study "proves men are naturally better leaders." Using this chapter's cautions, the BEST first question is:</p>
+    <ol><li>"How natural is natural?" — is a descriptive claim being smuggled into a social justification (the Social-Darwinist error)?</li><li>"Was it published on a weekday?"</li><li>"Is evolution real?"</li><li>"Did Freud agree?"</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> The chapter trains vigilance against is-to-ought leaps dressed in scientific language. B is irrelevant; C and D miss the specific fallacy.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Which pairing correctly matches a revolution with the certainty it dissolved?</p>
+    <ol><li>Freudian → Earth's centrality.</li><li>Darwinian → human separateness from other animals.</li><li>Copernican → the transparent rational self.</li><li>Information/AI → fixed species.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Darwin dissolved human separateness. The others are scrambled: Freud → the rational self; Copernicus → Earth's centrality; AI → the human monopoly on intelligence.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. Freud's cultural staying power despite weak empirical support BEST demonstrates that:</p>
+    <ol><li>Empirical support is the only source of an idea's influence.</li><li>Social/cultural influence can persist independently of scientific validation.</li><li>All influential ideas are true.</li><li>Psychology has not advanced since 1900.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Influence and validity are independent axes — the case's central lesson. A, C, and D each collapse that distinction or are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. The claim "we are inforgs living in the infosphere" (Floridi) is best understood as asserting that:</p>
+    <ol><li>Humans are literally robots.</li><li>Our environment and self-understanding are now fundamentally informational, shared with artificial agents.</li><li>The internet will be switched off soon.</li><li>Information has no value.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Floridi describes a reconceived, information-saturated environment and identity. A is a literalist misreading; C and D are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. Why does the chapter say we can see the AI revolution <em>less</em> clearly than the earlier three?</p>
+    <ol><li>Because it is less important.</li><li>Because we lack historical distance — being inside an ongoing shift distorts judgment.</li><li>Because there is no evidence about AI.</li><li>Because Kuhn forbade studying it.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Contemporaries judge live revolutions poorly for want of hindsight. A, C, and D are false or irrelevant.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Which is the BEST example of an "anomaly" that pressured the fixed-species paradigm before Darwin?</p>
+    <ol><li>The popularity of zoos.</li><li>Fossils of extinct creatures and the odd distribution of species across islands.</li><li>The invention of the telescope.</li><li>The Freudian slip.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Fossils and biogeography were data the fixed-species view struggled to explain. A is irrelevant; C belongs to astronomy; D is from a different revolution.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. Ibn al-Haytham is placed among "revolutions," not mere "preservers," because he:</p>
+    <ol><li>Only translated Greek texts.</li><li>Pioneered systematic experimentation in optics, anticipating the scientific method by centuries.</li><li>Rejected mathematics.</li><li>Invented the printing press.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> His experimental methodology was a genuine methodological advance. A understates the Golden Age; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. That the Islamic Golden Age's knowledge later flowed into Europe implies that the Copernican Revolution:</p>
+    <ol><li>Owed nothing to other civilizations.</li><li>Rested partly on Middle Eastern and Asian mathematical and astronomical foundations.</li><li>Happened before algebra existed.</li><li>Was purely religious.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> European science built on transmitted non-Western foundations — undercutting a purely Eurocentric story. A is the myth being corrected; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. The Ishango bone (c. 20,000 years old) is used in this chapter to argue that:</p>
+    <ol><li>Mathematics is a recent European invention.</li><li>The human impulse to count and measure is ancient and geographically widespread.</li><li>Africa had no intellectual history.</li><li>Bones cannot be dated.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> As one of the oldest mathematical artifacts, it evidences deep, global mathematical cognition. A and C are the opposite of its point; D is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. A company brands a minor app update a "paradigm shift." Using Kuhn precisely, the BEST critique is that a true shift requires:</p>
+    <ol><li>A new marketing slogan.</li><li>The overthrow of a field's foundational assumptions and reinterpretation of its accumulated data.</li><li>A faster download speed.</li><li>More users.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Genuine shifts are foundational and reorganize prior knowledge; the rest are incremental improvements misusing the term.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. Which best explains why each revolution was strongly <em>resisted</em> at first?</p>
+    <ol><li>The new ideas were always poorly evidenced.</li><li>Each threatened a cherished certainty and the institutions or self-images built on it.</li><li>Scientists dislike all new ideas equally.</li><li>Resistance was purely imaginary.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Resistance tracked the depth of the certainty (and interests) being overturned — a social, not merely evidential, matter. A is false; C overgeneralizes; D denies the record (e.g., Galileo's trial).</p></details></div>
+
+  <div class="mcq"><p class="stem">17. The chapter's decentering thread would be MOST weakened by which (hypothetical) finding?</p>
+    <ol><li>Evidence that human intelligence is, after all, uniquely non-computable and unlike anything machines do.</li><li>Evidence that the Maya used zero.</li><li>Evidence that Kepler used ellipses.</li><li>Evidence that Freud was popular.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> A robust human uniqueness in intelligence would blunt the "fourth blow," weakening the arc. B, C, and D are consistent with, or irrelevant to, the thread.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Which reasoning shows the deepest understanding of "incommensurability"?</p>
+    <ol><li>"Two paradigms disagree, so one side is simply lying."</li><li>"Because rival paradigms define key terms and standards of evidence differently, comparing them is genuinely difficult, though not always impossible."</li><li>"All scientific claims are equally valid."</li><li>"Paradigms never disagree."</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Incommensurability is about differing definitions/standards, not dishonesty (A) or relativism (C), and it presupposes disagreement (D is false).</p></details></div>
+
+  <div class="mcq"><p class="stem">19. A student argues Freud should be excluded from a "revolutions" chapter because his theory is unscientific. The MOST balanced reply is:</p>
+    <ol><li>"Agreed — cultural influence is irrelevant to intellectual history."</li><li>"Scientific validity and historical/cultural impact are different measures; Freud scores low on the first but high on the second, and this chapter studies both."</li><li>"Freud's theory is fully scientific, so the objection fails."</li><li>"No idea belongs in intellectual history unless it is falsifiable."</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The two-axis distinction justifies inclusion while conceding the scientific critique. A dismisses cultural history; C is false; D would absurdly exclude much of the humanities.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Considering all four revolutions, which generalization is BEST supported?</p>
+    <ol><li>Scientific ideas stay safely inside laboratories.</li><li>Deep ideas reshape self-understanding and society, are resisted, are sometimes misused, and ultimately enlarge the human world.</li><li>Only technology, never ideas, changes society.</li><li>Intellectual revolutions have no losers.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It integrates the chapter's threads (self-understanding, resistance, misuse, enlargement). A and C contradict the whole chapter; D ignores real harms like eugenics and institutional upheaval.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 2's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (paradigm shift, decentering) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. The chapter frames four revolutions as a progressive "decentering" of humanity. Argue whether the AI revolution will complete this arc as a true "fourth blow," or whether human intelligence will prove different enough from machine intelligence that the analogy breaks down. Use Kuhn and Floridi.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer takes a clear stand and reasons with the chapter's tools. For "completes the arc": generative AI already performs tasks (writing, coding, diagnosis) once treated as proof of human uniqueness, and Floridi's infosphere/inforg framing suggests we are being decentered from intelligence just as Copernicus and Darwin decentered us from space and biology; resistance and unease today mirror earlier revolutions' pattern. For "the analogy breaks": consciousness, embodiment, lived experience, moral responsibility, and genuine understanding (versus statistical prediction) may be non-computable, so machine "intelligence" could be a different kind of thing, leaving a redefined — not dissolved — human uniqueness. The best essays apply Kuhn's epistemic-humility point (we are inside the shift and may misjudge it) and conclude that, either way, the outcome is being negotiated socially — through AI governance, education, and daily choices — not determined by the technology alone.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. Some scholars predict a "fifth revolution" — from neuroscience dissolving the unified self, from genetic engineering letting humans redesign their own species, or from the discovery of extraterrestrial life. Choose the candidate you find most plausible, and predict how society would resist and then absorb it, drawing explicit parallels to how the earlier four unfolded.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer picks one candidate and runs it through the chapter's established pattern: an old certainty, mounting anomalies, crisis, resistance from threatened institutions/self-images, and eventual enlargement. Example (neuroscience): the "self" as an emergent product of brain activity threatens free will, moral responsibility, and the legal system — a Freud-like blow to the sovereign self, but with harder empirical teeth; society would first resist (as with Galileo and Darwin), then absorb it by redefining responsibility and identity. Example (genetic engineering): CRISPR could make humans agents of their own evolution — a Darwinian decentering inverted, raising eugenics-era warnings (the chapter's Social-Darwinism caution). Example (alien life): a second Copernican blow to human cosmic specialness. The best essays note the recurring shape — loss felt, world enlarged — and stress that, unlike past revolutions, some of these are choices we can govern in advance.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. "Decentering is not diminishment." Evaluate this claim for the coming decades. As AI, neuroscience, and biotechnology further displace old human certainties, will societies experience this as liberation and enlargement (as the chapter argues past revolutions ultimately were), or as a genuine crisis of meaning? What should education — including a course like STS — do in response?</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer engages both possibilities rather than cheerleading. The optimistic case: each past decentering ultimately enlarged human knowledge and agency, and AI/biotech could likewise expand health, understanding, and creativity while clarifying what is distinctively human (judgment, care, meaning-making). The pessimistic case: the <em>pace</em> and <em>simultaneity</em> of today's shifts, plus misinformation and unequal power over these technologies, could outrun society's capacity to make meaning, producing alienation rather than enlargement — a real "crisis of meaning." The chapter's own hedge (we are the fish in the water) supports humility. On education: STS should equip students to distinguish scientific validity from cultural influence, to spot is/ought fallacies (Social Darwinism's lesson), to govern technologies deliberately, and to hold both wonder and responsibility — so that decentering is <em>experienced</em> as enlargement rather than merely suffered. The strongest essays make a defensible, qualified judgment rather than a slogan.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 2 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>
