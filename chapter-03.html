@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 3 — Main Lecture | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .timeline{list-style:none;margin:14px 0;padding-left:0;}
+  .timeline li{position:relative;padding:0 0 14px 26px;border-left:2px solid #c6d2e4;margin-left:8px;}
+  .timeline li:last-child{border-left:2px solid transparent;}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);}
+  .timeline .when{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--navy);font-size:.85rem;display:block;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit I · Weeks 5–6</div>
+  <h1>Chapter 3: Science, Technology, and Nation-Building</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#concepts">Key Concepts</a></li>
+    <li><a href="#agenda">The S&amp;T Agenda</a></li>
+    <li><a href="#laws">Laws &amp; Policies</a></li>
+    <li><a href="#programs">Programs &amp; People</a></li>
+    <li><a href="#indigenous">Indigenous S&amp;T</a></li>
+    <li><a href="#challenges">Challenges</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Discuss the role of science and technology in Philippine nation-building;</li>
+    <li>Identify and explain the government agencies, agenda, and major laws that structure the Philippine science and technology (S&amp;T) system;</li>
+    <li>Evaluate government policies pertaining to S&amp;T in terms of their contributions to national development, and appraise their impact on the Filipino nation;</li>
+    <li>Recognize the value of Filipino indigenous science and technology; and</li>
+    <li>Analyze the enduring challenges — underinvestment, brain drain, and technological dependence — as social and political problems requiring social and political solutions.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: Can Science Build a Nation?</h2>
+  <p class="lead">Chapter 1 showed that science and technology answer social needs; Chapter 2 showed that ideas can remake a worldview. This chapter asks the most practical question of the unit: <em>can a nation deliberately harness science and technology to develop itself — and if so, how?</em> For a country like the Philippines, the answer is not academic. It is a matter of food on the table, resilience against typhoons, jobs for graduates, and sovereignty in a technological century.</p>
+  <p>The evidence that S&amp;T drives national development is overwhelming. Compare two countries that were roughly as poor as the Philippines in the 1950s and 1960s: <strong>South Korea</strong> and <strong>Singapore</strong> deliberately invested in education, research, and high-technology industries, and within two generations became wealthy, innovation-driven economies. The difference was not natural resources — Singapore has almost none — but a sustained national <em>decision</em> to build scientific and technological capability. This is the central STS lesson of the chapter, and it is a hopeful one: <strong>national development through science is a choice, not a fate</strong>. A nation is not doomed by its starting point; it is shaped by what it chooses to invest in and build.</p>
+  <p>But the same comparison delivers a warning. Building S&amp;T capacity is hard, slow, and easily neglected, and the Philippines' own record is one of real achievements alongside persistent, self-inflicted obstacles. To understand nation-building through science, we must look honestly at both.</p>
+  <div class="callout gold">
+    <span class="label">Framing Idea</span>
+    The 1987 Philippine Constitution (Article XIV, Section 10) declares: <em>"Science and technology are essential for national development and progress. The State shall give priority to research and development, invention, innovation, and their utilization."</em> This chapter asks how faithfully that constitutional promise has been kept — and what it would take to keep it.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    Name one everyday problem in your community — traffic, flooding, the price of rice, unreliable internet, a local disease. Could science and technology help solve it? Who would have to decide to fund that solution?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=how+South+Korea+became+rich+development+economic+miracle" target="_blank" rel="noopener">How South Korea developed</a> — curated search <span class="why">(development is a decision)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="concepts">
+  <h2>Key Concepts: What "Nation-Building Through Science" Means</h2>
+  <p><strong>Nation-building</strong> is the sustained process by which a country develops its institutions, economy, infrastructure, and shared identity so that its people can flourish. <strong>Development</strong>, in the modern sense, is not merely economic growth (a bigger GDP) but the expansion of people's real capabilities and freedoms — health, education, dignified work, and the ability to shape their own future (the economist Amartya Sen's influential view).</p>
+  <p>Where does science and technology fit? In at least four ways, S&amp;T is an engine of national development:</p>
+  <ul class="plain">
+    <li><strong>Economic productivity.</strong> Technology raises what each worker and each hectare can produce — from high-yield rice to digital services — and creates entirely new industries.</li>
+    <li><strong>Human development.</strong> Medicine, clean water, and public-health science extend and improve life; education spreads the capability to participate.</li>
+    <li><strong>Resilience and sovereignty.</strong> A nation that can forecast its typhoons, secure its food and energy, and defend its data depends less on others and survives shocks better.</li>
+    <li><strong>National identity and confidence.</strong> Shared achievements — a Filipino-built satellite, a homegrown vaccine, a Nobel-level discovery — build the belief that Filipinos can solve Filipino problems.</li>
+  </ul>
+  <p>Two further concepts frame the Philippine case specifically. <strong>Self-reliance</strong> is the capacity to generate and adapt technology locally rather than importing everything — a recurring theme in Filipino science policy since the scholar Olivia Caoli analyzed "conditions for national scientific and technological self-reliance." And <strong>innovation</strong> — turning knowledge into new products, services, and ways of doing things — is the mechanism by which research becomes development. A discovery in a laboratory changes nothing until society adopts it; innovation is that bridge.</p>
+  <div class="callout">
+    <span class="label">STS Insight</span>
+    Recall the co-production lesson: science shapes society, and society shapes science. A nation does not simply "receive" technology; it must build the social machinery — schools, agencies, laws, funding, and firms — that lets knowledge take root. Nation-building through science is therefore as much about <em>institutions</em> as about <em>inventions</em>.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Amartya+Sen+development+as+freedom+capability+approach" target="_blank" rel="noopener">Development as Freedom (Amartya Sen)</a> — curated search <span class="why">(development beyond GDP)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="agenda">
+  <h2>The Philippine Government S&amp;T Agenda</h2>
+  <h3>Who runs Philippine science?</h3>
+  <p>The lead agency is the <strong>Department of Science and Technology (DOST)</strong>, a cabinet-level department since 1987. DOST sets the national research agenda, funds projects and scholarships, and oversees a family of sectoral and service institutes, including:</p>
+  <ul class="plain">
+    <li>The three <strong>sectoral planning councils</strong> that decide research priorities and allocate grants: <strong>PCAARRD</strong> (agriculture, aquatic, and natural resources), <strong>PCHRD</strong> (health), and <strong>PCIEERD</strong> (industry, energy, and emerging technology — the council leading the AI and space-adjacent programs).</li>
+    <li><strong>Research and development institutes</strong> such as the Industrial Technology Development Institute (ITDI), the Food and Nutrition Research Institute (FNRI), and the Advanced Science and Technology Institute (ASTI, which builds satellites and AI infrastructure).</li>
+    <li><strong>Service institutes</strong> Filipinos rely on daily: <strong>PAGASA</strong> (weather and typhoon forecasting — the direct descendant of the 1865 Observatorio de Manila) and <strong>PHIVOLCS</strong> (volcanoes and earthquakes). In a country facing about 20 tropical cyclones a year and sitting on the Pacific Ring of Fire, these are not luxuries but survival infrastructure.</li>
+    <li>The <strong>Science Education Institute (SEI)</strong>, which funds S&amp;T scholarships, and the <strong>Philippine Science High School System</strong>, which trains the country's most promising young scientists.</li>
+  </ul>
+  <p>Alongside DOST sit two other key bodies: the <strong>National Academy of Science and Technology (NAST)</strong>, the country's highest advisory body on science, which confers the rank of <strong>National Scientist</strong>; and the <strong>National Economic and Development Authority (NEDA)</strong>, which folds S&amp;T into the country's overall development plan.</p>
+  <h3>The planning documents</h3>
+  <p>Government does not fund science at random; it plans. Two documents matter most today. The <strong>Philippine Development Plan (PDP) 2023–2028</strong>, prepared by NEDA, is the overall socioeconomic blueprint and treats science, technology, and innovation as cross-cutting drivers of growth. And <strong>Pagtanaw 2050</strong>, produced by NAST, is a 30-year <em>foresight</em> document — a long-range vision of where Philippine science, technology, and innovation should aim by mid-century, covering health, food, energy, education, and the digital future. Foresight planning is itself a mature move: it treats the future as something to be shaped deliberately rather than merely suffered.</p>
+  <div class="callout green">
+    <span class="label">Then → Now</span>
+    PAGASA's typhoon warnings trace in an unbroken line to Fr. Federico Faura's storm forecasts at the Observatorio de Manila in the 1860s (Chapter 1). The archipelago's environment — its typhoons, faults, and volcanoes — has steered which sciences the nation invests in for over 150 years. Environment shapes science; science protects against environment.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=DOST+Philippines+science+and+technology+agency" target="_blank" rel="noopener">The DOST and Philippine S&amp;T</a> — curated search <span class="why">(who runs Philippine science)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=PAGASA+typhoon+forecasting+Philippines" target="_blank" rel="noopener">PAGASA &amp; typhoon forecasting</a> — curated search <span class="why">(survival infrastructure)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="laws">
+  <h2>Landmark Laws and Policies</h2>
+  <p>Policies are the "social technology" through which a nation builds its scientific capacity (recall Chapter 1's Code of Hammurabi as engineered social order). The Philippine S&amp;T system rests on a series of landmark laws. Note how the <em>pace</em> quickens in recent years — a sign of a nation trying to catch up.</p>
+  <ul class="timeline">
+    <li><span class="when">1958 · Science Act (RA 2067)</span> Declared an integrated national science policy and created the National Science Development Board (NSDB) — the state's first formal machinery for directing S&amp;T, a response to the global "Sputnik shock."</li>
+    <li><span class="when">1987 · DOST &amp; the Constitution</span> Executive Order 128 reorganized the system into the cabinet-level DOST; the 1987 Constitution made S&amp;T a constitutional priority (Art. XIV, Secs. 10–12).</li>
+    <li><span class="when">1990s · Building the pipeline</span> The <strong>Magna Carta for Scientists, Engineers, Researchers and Technology Personnel (RA 8439, 1997)</strong> improved pay and benefits to retain talent; the <strong>Philippine Science High School System Act (RA 8496)</strong> expanded elite science education nationwide.</li>
+    <li><span class="when">2009 · Cheaper Medicines &amp; the innovation debate</span> Policies on access to medicines and intellectual property sharpened a lasting question: how to balance rewarding innovation with making its fruits affordable to ordinary Filipinos.</li>
+    <li><span class="when">2018 · Balik Scientist Act (RA 11035)</span> Strengthened the decades-old program that lures Filipino scientists abroad to return — temporarily or permanently — with incentives, directly targeting <strong>brain drain</strong>.</li>
+    <li><span class="when">2019 · Philippine Innovation Act (RA 11293)</span> Made innovation a core national policy, created the National Innovation Council chaired by the President, and mandated a long-term innovation strategy — an attempt to move the country from a technology <em>adopter</em> toward a technology <em>creator</em>.</li>
+    <li><span class="when">2019 · Innovative Startup Act (RA 11337)</span> Provided incentives and support for technology startups, aiming to grow a homegrown innovation economy.</li>
+    <li><span class="when">2019 · Philippine Space Act (RA 11363)</span> Created the <strong>Philippine Space Agency (PhilSA)</strong> and a national space policy — declaring that space science and technology are matters of national development, security, and pride.</li>
+    <li><span class="when">2020s · The digital and AI frontier</span> The <strong>Data Privacy Act (RA 10173, 2012)</strong> governs personal data; newer initiatives — the <strong>National AI Strategy Roadmap</strong> and the National Center for AI Research (NAICRI) — position the country for the Fourth Industrial Revolution, with AI regulation under active debate.</li>
+  </ul>
+  <div class="callout">
+    <span class="label">Reading Policy with the STS Lens</span>
+    For each law, ask the Chapter 1 questions: What social need called it forth (brain drain? dependence? disaster?)? Who benefits and who is left out? Could it work differently? Laws are not neutral machinery — they encode choices about what kind of nation to build.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    The Philippines has strong S&amp;T <em>laws</em> on paper. Yet R&amp;D spending remains low and brain drain continues. What does this gap between law and outcome teach us about the difference between <em>passing</em> a policy and <em>funding and implementing</em> it?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Philippine+Space+Act+PhilSA+explained" target="_blank" rel="noopener">The Philippine Space Act &amp; PhilSA</a> — curated search <span class="why">(space as national development)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Philippine+Innovation+Act+RA+11293" target="_blank" rel="noopener">The Philippine Innovation Act</a> — curated search <span class="why">(from adopter to creator)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="programs">
+  <h2>Major Development Programs and Filipino Achievements</h2>
+  <h3>Programs that changed lives</h3>
+  <p>Policy becomes real through programs. Several stand out as evidence that Philippine science can deliver national impact:</p>
+  <ul class="plain">
+    <li><strong>Agricultural science and the Green Revolution.</strong> The <strong>International Rice Research Institute (IRRI)</strong> in Los Baños placed the Philippines at the center of the global effort to feed humanity; Filipino scientists helped develop high-yield rice varieties. Ramon Barba's mango flower-induction technique transformed an entire export industry (Chapter 1).</li>
+    <li><strong>The space program.</strong> Filipino engineers built and launched <strong>Diwata-1</strong> (2016), the country's first microsatellite, followed by Diwata-2 and the <strong>Maya</strong> cube satellites, and the <strong>MULA</strong> satellite program — used for agriculture monitoring, disaster response, and weather. PhilSA now coordinates a genuine national space effort.</li>
+    <li><strong>Disaster-risk science.</strong> Programs like <strong>Project NOAH</strong> (Nationwide Operational Assessment of Hazards) built flood and landslide hazard maps and early-warning systems — science aimed squarely at the nation's greatest vulnerability.</li>
+    <li><strong>Health and nutrition.</strong> During COVID-19, Filipino institutions developed local <strong>test kits</strong> (the "GenAmplify" kit from UP-NIH) and conducted genomic surveillance — a demonstration of the payoff from decades of quiet capacity-building.</li>
+    <li><strong>ICT and connectivity.</strong> DOST's ASTI develops the national research network and AI infrastructure, and programs promote a startup and digital economy.</li>
+  </ul>
+  <h3>Filipino scientists and the meaning of "National Scientist"</h3>
+  <p>The nation honors its greatest scientists with the rank of <strong>National Scientist</strong>. Their work models science in service of the Filipino:</p>
+  <table>
+    <thead><tr><th style="width:28%">Name</th><th>Contribution to nation-building</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fe del Mundo</strong></td><td>Pediatrician who designed an incubator and a hot-water-bottle warmer for rural areas without electricity — science adapted to Philippine realities.</td></tr>
+      <tr><td><strong>Ramon Barba</strong></td><td>Induced uniform mango flowering with potassium nitrate, turning mangoes into a year-round export industry.</td></tr>
+      <tr><td><strong>Angel Alcala</strong></td><td>Pioneered community-managed marine sanctuaries — protecting fisheries that millions of coastal Filipinos depend on.</td></tr>
+      <tr><td><strong>Gavino Trono</strong></td><td>"Father of Kappaphycus farming" — developed seaweed aquaculture, a livelihood for coastal communities and a major export.</td></tr>
+      <tr><td><strong>William Padolina / Filipino chemists</strong></td><td>Advanced natural-products chemistry and science administration, strengthening the national research system.</td></tr>
+      <tr><td><strong>Julian Banzon</strong></td><td>Pioneered coconut- and sugarcane-based biofuels decades before the world's renewable-energy turn.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout gold">
+    <span class="label">A Pattern Worth Noticing</span>
+    Filipino science at its best has been <em>problem-driven and rooted in local realities</em>: rice and mangoes for food, seaweed and sanctuaries for coastal livelihoods, incubators for rural clinics, satellites and hazard maps for a disaster-prone archipelago. The most successful Philippine S&amp;T answers Philippine needs — exactly the "need precedes invention" pattern, applied to nation-building.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Diwata+satellite+Philippines+PhilSA+microsatellite" target="_blank" rel="noopener">Diwata: the first Philippine satellite</a> — curated search <span class="why">(homegrown capability)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=IRRI+International+Rice+Research+Institute+Los+Banos" target="_blank" rel="noopener">IRRI &amp; the Green Revolution</a> — curated search <span class="why">(feeding the world from Los Ba&ntilde;os)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="indigenous">
+  <h2>Indigenous Filipino Science and Technology</h2>
+  <p>Nation-building through science does not begin with imported laboratories. It has deep roots in the ingenuity of Filipino ancestors and living indigenous communities — knowledge often dismissed as "mere tradition" but which is, on inspection, genuine science and engineering (recall Chapter 1's argument about the Banaue terraces and the balangay).</p>
+  <ul class="plain">
+    <li><strong>Agriculture and engineering.</strong> The <strong>Ifugao Rice Terraces</strong> embody sophisticated hydraulics, soil science, and cooperative water-governance (the <em>muyong</em> forest-management and communal irrigation systems) sustained for centuries. This is indigenous engineering, tested by generations of feedback.</li>
+    <li><strong>Maritime technology.</strong> The <strong>balangay</strong> boats and Austronesian navigation enabled long-distance trade and the very settlement of the archipelago — advanced naval architecture without written blueprints.</li>
+    <li><strong>Ethnomedicine.</strong> Indigenous healers (<em>albularyo</em>, <em>babaylan</em>) accumulated detailed knowledge of medicinal plants. Modern Philippine science has validated some of this: <strong>lagundi</strong> (for cough) and <strong>sambong</strong> (a diuretic) were scientifically studied and developed into approved herbal medicines — a model of indigenous knowledge and formal science working together.</li>
+    <li><strong>Materials and craft.</strong> Traditional <strong>weaving</strong> (t'nalak, piña, abel), <strong>metallurgy</strong>, boatbuilding, and food-preservation techniques encode empirical knowledge of materials and chemistry.</li>
+    <li><strong>Indigenous knowledge systems (IKS).</strong> Sustainable resource-management practices — the <em>zanjera</em> irrigation cooperatives, traditional agroforestry, and community fishing rules — offer lessons for present-day sustainability and disaster resilience.</li>
+  </ul>
+  <div class="callout green">
+    <span class="label">Why This Matters for Nation-Building</span>
+    Recognizing indigenous S&amp;T does three things at once: it corrects a colonial bias that treated Filipino knowledge as primitive; it supplies practical, locally-adapted solutions (medicinal plants, sustainable farming, disaster-resilient design); and it strengthens national identity and confidence — the belief that scientific capability is part of the Filipino inheritance, not a foreign import. Integrating IKS with formal science is a distinctively Filipino path to development.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Lagundi and sambong show indigenous knowledge and modern science reinforcing each other. What are the risks (e.g., biopiracy, loss of credit to communities) and the rewards of formally studying indigenous knowledge? How should the benefits be shared fairly?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Ifugao+Banaue+rice+terraces+engineering+documentary" target="_blank" rel="noopener">The Ifugao / Banaue Rice Terraces</a> — curated search <span class="why">(indigenous engineering)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=lagundi+sambong+Philippine+herbal+medicine+science" target="_blank" rel="noopener">Lagundi &amp; sambong: validated herbal medicine</a> — curated search <span class="why">(indigenous knowledge + science)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="challenges">
+  <h2>The Hard Truths: Challenges to Philippine S&amp;T</h2>
+  <p>Honesty is part of good STS thinking. For all its achievements, the Philippine S&amp;T system faces deep, persistent challenges — and the crucial insight is that these are <strong>social and political problems, not scientific ones</strong>. They are, in principle, solvable by national decisions.</p>
+  <h3>1. Chronic underinvestment</h3>
+  <p>The Philippines spends only about <strong>0.3–0.4% of its GDP on research and development</strong> — well below the roughly 1% benchmark UNESCO recommends for developing countries, and a fraction of what South Korea (over 4%) or Singapore invests. Underfunding starves laboratories, limits scholarships, and makes it hard to retain talent. It is the root cause from which many other problems grow.</p>
+  <h3>2. Brain drain</h3>
+  <p>The Philippines educates excellent scientists, engineers, doctors, and nurses — and then loses many of them to better-paid, better-equipped opportunities abroad. This <strong>brain drain</strong> represents a national investment (their education) flowing to other economies. The Balik Scientist Program and Magna Carta are direct responses, but the underlying pull — of opportunity, pay, and research infrastructure — persists. (Note the STS framing: people migrate because of opportunity structures, not lack of talent or patriotism.)</p>
+  <h3>3. Technological dependence</h3>
+  <p>The country imports most of its advanced technology and produces relatively little of its own, leaving it vulnerable and capturing less of the value that innovation creates. This is the very condition the scholarship on "self-reliance" and the Innovation Act aim to reverse — moving from technology <em>consumer</em> toward technology <em>creator</em>.</p>
+  <h3>4. The commercialization gap</h3>
+  <p>Filipino researchers produce good work, but too little of it crosses the "valley of death" from laboratory to market. Weak links among universities, government, and industry mean promising research often does not become products, jobs, or exports — a gap the Innovation and Startup Acts try to close.</p>
+  <h3>5. Uneven access and the digital divide</h3>
+  <p>Science education, laboratories, and internet access are concentrated in Metro Manila and a few urban centers, leaving rural and poorer regions behind. Development that reaches only some Filipinos is incomplete nation-building.</p>
+  <div class="callout gold">
+    <span class="label">The Central Argument</span>
+    None of these challenges is caused by a lack of Filipino talent — the achievements above prove the talent exists. They are caused by <em>choices</em>: how much to fund, whom to retain, what to build. That is the hard news and the hopeful news at once. What was chosen can be chosen differently. South Korea and Singapore made those choices; so can the Philippines.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    If you were given the DOST budget and could triple it, where would you spend the increase first — scholarships, researcher salaries, rural laboratories, startup support, or disaster science — and why? Defend your priority.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Philippines+brain+drain+scientists+RandD+spending" target="_blank" rel="noopener">Brain drain &amp; R&amp;D in the Philippines</a> — curated search <span class="why">(social and political challenges)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: Development Is a Decision</h2>
+  <p>This chapter connects the abstract lessons of Unit I to the concrete future of a nation. Its argument can be gathered into four points that carry forward:</p>
+  <ol class="plain">
+    <li><strong>Science and technology are essential engines of national development</strong> — economically, in human wellbeing, in resilience, and in national confidence. The Constitution says so; the histories of South Korea and Singapore prove it.</li>
+    <li><strong>Nation-building through science is about institutions as much as inventions.</strong> The Philippines has built real machinery — DOST and its institutes, PAGASA and PHIVOLCS, the science high schools, PhilSA, a stack of landmark laws — and has real achievements to show: satellites, hazard maps, high-yield crops, homegrown test kits, validated herbal medicines.</li>
+    <li><strong>Indigenous knowledge is part of the national scientific inheritance</strong>, not a relic — offering practical solutions and grounding development in Filipino identity.</li>
+    <li><strong>The obstacles are social and political, not scientific.</strong> Underinvestment, brain drain, dependence, and the commercialization gap are the products of choices, and can be reversed by different choices. The talent already exists.</li>
+  </ol>
+  <p>The unifying idea is the one that closes Unit I: <strong>development is a decision</strong>. Science does not build a nation automatically; a nation builds itself by deciding to invest in, retain, and deploy scientific capability in service of its people. In Unit II, the course turns from the nation to the person, asking how science and technology bear on the human condition and the meaning of "the good life."</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Nation-building</td><td>The sustained development of a country's institutions, economy, infrastructure, and shared identity so its people can flourish.</td></tr>
+      <tr><td>Development</td><td>Not just economic growth, but the expansion of people's real capabilities and freedoms (Sen).</td></tr>
+      <tr><td>DOST</td><td>The Department of Science and Technology — the cabinet-level lead agency of the Philippine S&amp;T system (since 1987).</td></tr>
+      <tr><td>PAGASA / PHIVOLCS</td><td>DOST service institutes for weather/typhoons and for volcanoes/earthquakes — survival infrastructure for a hazard-prone nation.</td></tr>
+      <tr><td>PhilSA</td><td>The Philippine Space Agency, created by the Space Act (RA 11363, 2019).</td></tr>
+      <tr><td>Balik Scientist Program</td><td>Government program (strengthened by RA 11035, 2018) that encourages Filipino scientists abroad to return; a response to brain drain.</td></tr>
+      <tr><td>Philippine Innovation Act</td><td>RA 11293 (2019) — made innovation a national priority and created the National Innovation Council.</td></tr>
+      <tr><td>Pagtanaw 2050</td><td>NAST's 30-year foresight on Philippine science, technology, and innovation.</td></tr>
+      <tr><td>Self-reliance</td><td>The capacity to generate and adapt technology locally rather than importing everything.</td></tr>
+      <tr><td>Innovation</td><td>Turning knowledge into new products, services, and practices — the bridge from research to development.</td></tr>
+      <tr><td>Brain drain</td><td>The emigration of highly educated talent, exporting a national investment to other economies.</td></tr>
+      <tr><td>Technological dependence</td><td>Reliance on imported technology rather than domestically created technology.</td></tr>
+      <tr><td>Indigenous Knowledge Systems (IKS)</td><td>Locally-developed, community-held knowledge (medicine, agriculture, resource management) — genuine science rooted in Filipino heritage.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>The chapter argues "development is a decision." Using South Korea or Singapore as a comparison, do you agree that the Philippines' S&amp;T outcomes are a matter of choice rather than fate? What complicates that claim?</li>
+    <li>Choose one landmark law and evaluate it with the STS lens: what need did it answer, who benefits, and why might it under-deliver in practice?</li>
+    <li>Should the Philippines prioritize <em>catching up</em> in imported technologies (adopting AI, buying satellites) or <em>building</em> homegrown capacity even if slower and costlier? Argue a position.</li>
+    <li>Is brain drain a betrayal by departing scientists, a failure of national policy, or a rational individual choice — or all three? What would actually keep talent home?</li>
+    <li>How should indigenous knowledge (like lagundi or the rice terraces) be integrated into national S&amp;T without exploiting the communities that hold it?</li>
+  </ol>
+  <h3>Activity 1 — Policy appraisal brief (group work)</h3>
+  <p>In groups, choose one Philippine S&amp;T law or program (Balik Scientist Act, Innovation Act, Space Act, Project NOAH, IRRI, the AI Roadmap). Research it and produce a one-page appraisal: its goal, the need it addresses, evidence of impact, one weakness, and one recommendation. Present to the class.</p>
+  <h3>Activity 2 — "Fund the future" simulation (in class)</h3>
+  <p>Your group is the National Innovation Council with a fixed budget. Allocate it across five priorities (scholarships, researcher pay, rural labs, startups, disaster science) and justify your allocation with reference to the chapter's challenges. Defend it against another group's plan.</p>
+  <h3>Activity 3 — Mini-essay (individual, 500–700 words)</h3>
+  <p><em>"The greatest obstacle to Philippine scientific development is ___."</em> Choose one challenge from the chapter, defend it as the most important, and propose one realistic policy to address it.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. What does the 1987 Constitution say about science and technology?</summary><p>That they are "essential for national development and progress," and the State shall give priority to research, development, invention, innovation, and their utilization (Art. XIV, Sec. 10).</p></details>
+  <details><summary>2. Name the lead agency of the Philippine S&amp;T system and two of its service institutes.</summary><p>The Department of Science and Technology (DOST); service institutes include PAGASA (weather/typhoons) and PHIVOLCS (volcanoes/earthquakes).</p></details>
+  <details><summary>3. What did the Philippine Space Act (2019) create, and why does it matter?</summary><p>The Philippine Space Agency (PhilSA) and a national space policy — declaring space S&amp;T a matter of national development, security, and pride.</p></details>
+  <details><summary>4. What problem does the Balik Scientist Program target?</summary><p>Brain drain — it encourages Filipino scientists working abroad to return and contribute at home.</p></details>
+  <details><summary>5. Roughly what share of GDP does the Philippines spend on R&amp;D, and how does that compare to the benchmark?</summary><p>About 0.3–0.4% — well below the ~1% UNESCO benchmark for developing countries (and far below South Korea's 4%+).</p></details>
+  <details><summary>6. Name two Filipino-built satellites.</summary><p>Diwata-1 (and Diwata-2) and the Maya cube satellites (also the MULA program).</p></details>
+  <details><summary>7. Give two examples of indigenous Filipino knowledge validated or used by modern science.</summary><p>Lagundi (cough) and sambong (diuretic) developed into approved herbal medicines; the Ifugao rice terraces' hydraulic engineering and water governance.</p></details>
+  <details><summary>8. List three major challenges facing Philippine S&amp;T.</summary><p>Any three: chronic underinvestment, brain drain, technological dependence, the commercialization gap, and uneven access/the digital divide.</p></details>
+  <details><summary>9. What is the difference between the PDP 2023–2028 and Pagtanaw 2050?</summary><p>The PDP is NEDA's medium-term (6-year) socioeconomic plan; Pagtanaw 2050 is NAST's 30-year long-range S&amp;T foresight.</p></details>
+  <details><summary>10. State the chapter's central argument in one sentence.</summary><p>National development through science is a decision, not a fate: the Philippines' key obstacles are social and political choices (funding, retention, deployment), which can be chosen differently.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>Republic of the Philippines. <em>1987 Constitution</em>, Article XIV, Sections 10–12 (Science and Technology).</li>
+    <li>Caoli, Olivia. <em>Analysis of Conditions for National Scientific and Technological Self-Reliance: The Philippine Situation</em>, University of the Philippines, 1986.</li>
+    <li>Rodriguez, Socorro M. "Philippine Science and Technology: Economic, Political and Social Events Shaping Their Development," 1996.</li>
+    <li>Department of Science and Technology (DOST). Harmonized National R&amp;D Agenda and agency materials (PCAARRD, PCHRD, PCIEERD; PAGASA, PHIVOLCS, ASTI, SEI).</li>
+    <li>National Economic and Development Authority (NEDA). <em>Philippine Development Plan 2023–2028</em>.</li>
+    <li>National Academy of Science and Technology (NAST). <em>Pagtanaw 2050: The Philippine Foresight on Science, Technology, and Innovation</em>, 2021.</li>
+    <li>Key laws: RA 2067 (1958); RA 8439 (1997); RA 8496; RA 11035 (Balik Scientist, 2018); RA 11293 (Innovation Act, 2019); RA 11337 (Startup Act, 2019); RA 11363 (Space Act, 2019); RA 10173 (Data Privacy Act, 2012).</li>
+    <li>Sen, Amartya. <em>Development as Freedom</em>, Oxford University Press, 1999.</li>
+    <li>DOST–PCIEERD. <em>Philippine Artificial Intelligence Roadmap</em> (latest edition).</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 3 Main Lecture &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

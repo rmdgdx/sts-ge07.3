@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4 — Main Lecture | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit II · Weeks 7–8</div>
+  <h1>Chapter 4: The Human Person Flourishing in Terms of Science and Technology</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#flourishing">Human Flourishing</a></li>
+    <li><a href="#progress">Progress vs. Flourishing</a></li>
+    <li><a href="#heidegger">Heidegger</a></li>
+    <li><a href="#revealing">Technology as Revealing</a></li>
+    <li><a href="#enframing">Enframing</a></li>
+    <li><a href="#saving">The Saving Power</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Analyze the human condition in order to deeply reflect and express philosophical ramifications that are meaningful to the student as a part of society;</li>
+    <li>Define <em>human flourishing</em> and distinguish it from mere technological progress or material accumulation;</li>
+    <li>Explain Martin Heidegger's account of <em>technology as a way of revealing</em>, including the concepts of <em>enframing</em> (Gestell) and <em>standing-reserve</em>;</li>
+    <li>Evaluate whether — and how — science and technology contribute to, or detract from, a genuinely flourishing human life; and</li>
+    <li>Reflect on a "free relationship" to technology in their own lives as students in a digital age.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: From the Nation to the Person</h2>
+  <p class="lead">Unit I asked what science and technology do to <em>society</em> — across history, in ideas, and in the building of nations. Unit II turns inward, to the <em>human person</em>. The question is no longer "Does technology make us more powerful or productive?" — plainly it does — but something deeper and more personal: <em>Does technology make us more human? Does it help us live well?</em></p>
+  <p>These are not the same question. A society can grow richer while its people grow lonelier; a person can own every device and still feel that something essential is missing. We now live surrounded by more technological power than any generation in history — instant communication, near-infinite information, machines that answer our questions before we finish asking. And yet rates of anxiety, distraction, and disconnection are widely reported to be rising, especially among the young. This paradox is the doorway into Unit II: technological progress and human flourishing are related, but they are not the same thing, and confusing them is one of the characteristic mistakes of our age.</p>
+  <p>This chapter has two movements. First, we clarify what <strong>human flourishing</strong> actually means, and ask how science and technology bear on it. Then we turn to one of the most profound — and difficult — thinkers on technology, the German philosopher <strong>Martin Heidegger</strong>, whose essay "The Question Concerning Technology" argues that technology is not merely a set of tools but a <em>way of seeing the world</em> that quietly shapes who we become. Heidegger is challenging, but his core insight will change how you look at your own phone.</p>
+  <div class="callout gold">
+    <span class="label">The Guiding Question of the Chapter</span>
+    Technology reliably increases our <em>power</em> — our ability to do things. But does it increase our <em>flourishing</em> — our ability to live well and to be fully human? Keep this distinction between <em>power</em> and <em>flourishing</em> alive through everything that follows.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    Think of one technology you use every day. Be honest: does it make your life <em>better</em> — more meaningful, connected, and free — or merely <em>easier</em>, busier, or more stimulating? Are those the same thing?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=does+technology+actually+make+us+happier" target="_blank" rel="noopener">Does technology make us happier?</a> — curated search <span class="why">(power vs. flourishing)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="flourishing">
+  <h2>What Is Human Flourishing?</h2>
+  <p>The word "flourishing" translates the ancient Greek <strong>eudaimonia</strong> — often rendered "happiness," but that translation is misleading. For Aristotle, eudaimonia does not mean a pleasant feeling or a good mood; it means living well and doing well across a whole life — a life of meaning, virtue, and the full realization of one's distinctly human capacities. It is closer to "the flourishing of a human being" the way a plant flourishes when it grows into the fullness of what it is.</p>
+  <h3>Aristotle's picture</h3>
+  <p>Aristotle argued that everything has a <em>function</em> (ergon), and that a thing flourishes when it performs its function excellently. The function of a human being, he thought, is to reason and to act well — so human flourishing is a life of <strong>virtuous activity in accordance with reason</strong>, developed as a stable character over time. Flourishing, on this view, is not something that happens <em>to</em> you (like winning the lottery) but something you <em>achieve</em> through how you live: cultivating virtues, forming good relationships, contributing to your community, and exercising your mind. Importantly, eudaimonia is an <em>activity</em>, not a possession — you cannot buy it, and no device can deliver it to you.</p>
+  <h3>Flourishing and the "good life" in the Filipino context</h3>
+  <p>Filipino thought enriches this picture. The concept of <em>kagandahang-loob</em> (shared inner nobility or goodness of will) and the deep value placed on <em>kapwa</em> (shared identity, the self-in-relation-to-others) suggest that flourishing is not merely individual self-actualization but is fundamentally <em>relational</em> — realized in community, in <em>pakikipagkapwa</em> (relating to others as fellow human beings). To flourish, in this view, is not to accumulate for oneself but to live well <em>with</em> and <em>for</em> others. This connects directly to the coming chapters on the good life (Chapter 5) and reminds us that "the good life" is a shared project, not a solo one.</p>
+  <h3>The crucial distinction: flourishing vs. its substitutes</h3>
+  <p>Human flourishing is easily confused with three things that our technological culture constantly offers in its place:</p>
+  <ul class="plain">
+    <li><strong>Pleasure.</strong> Enjoyable sensations are part of a good life, but a life spent only chasing pleasure (what philosophers call hedonism) is not the same as flourishing — pleasures fade, and a life organized around them tends to feel empty. Much of digital technology is engineered to deliver quick pleasure (the "like," the scroll, the notification), which is precisely why it can feel compelling and unsatisfying at once.</li>
+    <li><strong>Material accumulation.</strong> Beyond meeting genuine needs, more possessions do not reliably produce more flourishing — a finding confirmed by decades of wellbeing research. Consumer technology often sells us accumulation as if it were fulfillment.</li>
+    <li><strong>Mere power or convenience.</strong> Being able to do more, faster, is not the same as living better. A life can be maximally efficient and minimally meaningful.</li>
+  </ul>
+  <div class="callout">
+    <span class="label">Why This Matters for STS</span>
+    If we cannot tell flourishing apart from pleasure, accumulation, and convenience, we will keep measuring technology's success by the wrong yardstick — asking only "Is it powerful? Is it profitable? Is it convenient?" and never "Does it help human beings flourish?" The whole point of Unit II is to recover the second question.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Aristotle+eudaimonia+human+flourishing+explained" target="_blank" rel="noopener">Aristotle&rsquo;s eudaimonia</a> — curated search <span class="why">(what flourishing really means)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=what+makes+a+good+life+Harvard+study+happiness" target="_blank" rel="noopener">What makes a good life?</a> — curated search <span class="why">(relationships and meaning)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="progress">
+  <h2>Does Technological Progress Deliver Human Flourishing?</h2>
+  <p>Here we hold the honest, two-sided view that good STS thinking requires. Technology is neither humanity's savior nor its enemy; it is a powerful amplifier whose effect on flourishing depends on how it is designed, chosen, and used.</p>
+  <h3>The case that technology serves flourishing</h3>
+  <p>The optimistic case is strong and should not be dismissed. Science and technology have doubled human lifespans, freed billions from famine and back-breaking toil, cured or prevented terrible diseases, connected families across oceans, and put the accumulated knowledge of humanity within reach of a student with a phone. Antibiotics, vaccines, clean water, literacy, and anesthesia have removed vast quantities of suffering. A life with less pain, more years, more knowledge, and more connection has, other things equal, more room to flourish. To romanticize a pre-technological past is to forget how short, painful, and constrained most human lives once were.</p>
+  <h3>The case for caution</h3>
+  <p>Yet more power has not straightforwardly produced more flourishing, and the reasons are instructive:</p>
+  <ul class="plain">
+    <li><strong>The hedonic treadmill.</strong> We quickly adapt to each new convenience, so it stops adding to our happiness and simply becomes the new baseline — while the anxieties multiply.</li>
+    <li><strong>Attention and distraction.</strong> Technologies engineered to capture attention (Chapter 1's "attention economy") can fragment the very focus that deep thought, real relationships, and meaningful work require.</li>
+    <li><strong>Connection vs. isolation.</strong> Tools that promise connection can, paradoxically, deepen loneliness when they replace embodied presence with curated performance.</li>
+    <li><strong>Means becoming ends.</strong> Technologies meant to serve human purposes can quietly become purposes in themselves — we check the phone not to accomplish anything but because checking has become compulsive.</li>
+    <li><strong>The displacement of difficulty.</strong> Some flourishing comes precisely from effort, struggle, and mastery; technology that removes all friction can also remove the challenges through which we grow.</li>
+  </ul>
+  <p>The resolution is not to reject technology but to refuse to <em>equate</em> progress with flourishing. Technology expands what is <em>possible</em>; whether those possibilities serve a genuinely good human life is a separate question that no device can answer for us. This is exactly the distinction between <em>power</em> and <em>flourishing</em> we began with — and it sets up Heidegger's far deeper worry.</p>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Consider a specific technology you would not want to live without (say, antibiotics or your phone). For each, separate the ways it genuinely expands human flourishing from the ways it merely expands power, convenience, or stimulation. Is the balance different for the two?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=hedonic+treadmill+why+we+are+never+satisfied" target="_blank" rel="noopener">The hedonic treadmill</a> — curated search <span class="why">(why more doesn&rsquo;t mean happier)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="heidegger">
+  <h2>Martin Heidegger and "The Question Concerning Technology"</h2>
+  <p>We now turn to the chapter's central and most demanding text. <strong>Martin Heidegger</strong> (1889–1976) was one of the most influential — and most controversial — philosophers of the 20th century. (Intellectual honesty requires noting that Heidegger was, for a time, a member of the Nazi party, a stain his admirers and critics both must reckon with; we study his ideas about technology critically, neither ignoring the man nor dismissing the thought because of him.) His 1954 essay <em>The Question Concerning Technology</em> is difficult, but its central claim is genuinely transformative.</p>
+  <h3>Beyond the "instrumental" definition</h3>
+  <p>Heidegger begins by stating the common-sense view of technology — what he calls the <strong>instrumental and anthropological definition</strong>: technology is (a) a means to an end, and (b) a human activity. Technology is just tools we use for our purposes. Heidegger says this definition is <em>correct</em> — but not <em>true</em>. That is, it accurately describes technology without revealing its <em>essence</em>, the deeper thing technology <em>is</em>. His famous line: <strong>"the essence of technology is by no means anything technological."</strong> To understand technology, in other words, we must look past the gadgets to the way of seeing the world that produces them.</p>
+  <p>Why does he reject the merely instrumental view? Because if we believe technology is <em>just</em> a neutral tool, we relate to it wrongly — we imagine we are fully in control, that a tool has no effect on us beyond what we intend. Heidegger wants to show that technology, in its essence, shapes <em>how the whole world appears to us</em> — and therefore shapes us — whether we notice it or not. This is a far stronger claim than "technology has side effects." It is the claim that modern technology is a <em>mode of understanding being itself</em>.</p>
+  <div class="callout">
+    <span class="label">A Key Distinction to Hold Onto</span>
+    "Correct" vs. "True." A statement can be <em>correct</em> (accurate as far as it goes) without being <em>true</em> (revealing the essence of the matter). "Technology is a tool" is correct but not true, in Heidegger's sense. Much of the essay is an attempt to move from the correct to the true.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Heidegger+the+question+concerning+technology+explained" target="_blank" rel="noopener">Heidegger: The Question Concerning Technology</a> — curated search <span class="why">(the essence of technology)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Heidegger+enframing+standing+reserve+explained" target="_blank" rel="noopener">Enframing &amp; standing-reserve</a> — curated search <span class="why">(how technology reveals the world)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="revealing">
+  <h2>Technology as a Way of Revealing</h2>
+  <p>To reach technology's essence, Heidegger goes back to the Greek roots of the words. <strong>Technology</strong> comes from <em>technē</em> — which for the Greeks meant not just craft but a kind of <em>knowing</em>, and which was linked to <em>poiēsis</em>, a "bringing-forth." And truth, for the Greeks, was <em>alētheia</em> — "unconcealment," a revealing, a bringing of things out of hiddenness into presence. Putting these together, Heidegger arrives at his first great thesis: <strong>technology is a mode of revealing</strong>. Technology is not fundamentally about making or using; it is a way that things are <em>disclosed</em>, brought into the open, made to show themselves to us in a particular light.</p>
+  <p>Consider his example of a craftsman making a silver chalice, or a farmer of the old kind tending a field. The traditional craftsperson does not <em>force</em> the silver or the soil; they work <em>with</em> the material, drawing forth what is already latent in it — a "bringing-forth" that cooperates with nature, like a midwife helping a birth. The old windmill took the wind's energy as it came and did not store it. This gentle, cooperative revealing Heidegger sees as the older meaning of <em>technē</em>: a way of letting things come into being that respects what they are.</p>
+  <p>So far, technology as revealing sounds benign, even beautiful. The turn — and the warning — comes when Heidegger asks what is distinctive about <em>modern</em> technology. For modern technology reveals the world in a very different way.</p>
+  <div class="callout gold">
+    <span class="label">The First Thesis</span>
+    Technology is a way of <em>revealing</em> — of disclosing the world, of letting things show themselves. The question is not whether technology reveals, but <em>how</em> it reveals, and what that way of revealing does to the things revealed (including us).
+  </div>
+</section>
+<section id="enframing">
+  <h2>Enframing (Gestell) and the Standing-Reserve</h2>
+  <p>Modern technology, Heidegger argues, reveals the world in a way that is not a gentle "bringing-forth" but a <strong>challenging-forth</strong> — a demanding, a setting-upon. Where the old farmer <em>cared for</em> the field and took what it offered, modern agriculture <em>challenges</em> the soil to yield maximum output, treating the land as a resource to be extracted, optimized, and stockpiled. His famous contrast: the old wooden bridge across the Rhine let the river be a river; the modern hydroelectric dam sets upon the Rhine, revealing it now essentially as a <em>supplier of water-power</em> — even the river's beauty becomes "an object on call for inspection by a tour group ordered there by the vacation industry."</p>
+  <h3>Standing-reserve (Bestand)</h3>
+  <p>Under modern technology, Heidegger says, everything comes to show up as <strong>standing-reserve</strong> (Bestand): resources on standby, ready to be used, ordered, optimized, and consumed. The forest becomes lumber-in-waiting; the river becomes power-in-waiting; the wind becomes energy-in-waiting; even land becomes a "coal mining district," a mineral deposit. Things lose their independent standing as <em>things</em> and appear only as stock for human use. Nothing is allowed simply to <em>be</em>; everything is measured by its usefulness and availability.</p>
+  <h3>Enframing (Gestell)</h3>
+  <p>The <em>way of seeing</em> that makes everything appear as standing-reserve is what Heidegger calls <strong>enframing</strong> (Gestell). This is the essence of modern technology — and note: enframing is not a machine or a gadget. It is a <em>framework of understanding</em>, an all-encompassing mindset that sets upon reality and demands that everything reveal itself as a calculable, orderable resource. Enframing is the lens; standing-reserve is how the world looks through it. And crucially, enframing is not something we chose or fully control; it is the "atmosphere" of the modern technological age, the water we swim in (recall Kuhn's paradigm from Chapter 2 — enframing is like a paradigm for our whole relationship to reality).</p>
+  <h3>The supreme danger: the human as standing-reserve</h3>
+  <p>Here is Heidegger's deepest warning. Once enframing takes hold, <em>we ourselves</em> risk appearing as standing-reserve — as resources to be optimized. We already speak this way without noticing: "<strong>human resources</strong>," "human capital," "manpower," measuring people by their productivity and availability. The danger of modern technology, for Heidegger, is not primarily that a machine might kill us or that we might run out of oil. The supreme danger is <em>spiritual</em>: that enframing becomes so total that we can no longer see the world — or ourselves — in any other way, forgetting that other ways of revealing ever existed. We would become beings who see everything, including each other and ourselves, as mere resource — and, worst of all, we would not even notice the loss. Modern examples are easy to supply: think of how attention is called a "resource" to be "captured," how dating apps present people as profiles to be swiped, how our own data becomes a commodity, how students can come to see education merely as credential-optimization.</p>
+  <div class="callout gold">
+    <span class="label">The Core of Heidegger's Warning</span>
+    The greatest danger of technology is not physical but <em>ontological</em> and <em>spiritual</em>: that <em>enframing</em> could become the <em>only</em> way we are able to encounter reality — reducing nature, other people, and ultimately ourselves to <em>standing-reserve</em>, mere resources on call — and that we would lose even the memory that things could be revealed otherwise.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Find three phrases from everyday life, business, or social media that reveal people or nature as "standing-reserve" (e.g., "human resources," "content creator," "monetize your audience," "the attention economy"). What does each phrase quietly assume about what a person or a place <em>is</em>?
+  </div>
+</section>
+<section id="saving">
+  <h2>The Saving Power: Toward a Free Relationship with Technology</h2>
+  <p>Heidegger is often read as a pessimist, but his essay does not end in despair. He quotes the poet Friedrich Hölderlin: <em>"But where danger is, grows the saving power also."</em> The very fact that we can <em>recognize</em> enframing as a way of revealing — rather than being wholly trapped inside it — is itself the opening of freedom. To see the frame is already to be, in part, outside it.</p>
+  <h3>What Heidegger is — and is not — asking for</h3>
+  <p>Heidegger is emphatically <strong>not</strong> a Luddite. He does not tell us to smash machines, flee to a cabin, or reject technology. He explicitly says that would be foolish and impossible. What he seeks is a <strong>"free relationship"</strong> with technology: to use technology while remaining <em>aware</em> of its essence, refusing to let enframing become our only way of seeing. He wants us to be able to say "yes" to technological devices for their usefulness <em>and</em> "no" to their claim to dominate our entire understanding of the world — a stance he elsewhere calls <em>Gelassenheit</em>, usually translated "releasement" or a serene "letting-be."</p>
+  <h3>Where the saving power grows</h3>
+  <p>Heidegger locates the counterweight to enframing especially in <strong>art</strong> and in reflective, meditative thinking. Because <em>technē</em> once also named the work of the artist, art preserves the memory of another kind of revealing — one that lets things show themselves in their own beauty and mystery rather than as resources to be consumed. Poetry, contemplation, wonder, and genuine encounter with nature and with other persons keep alive the possibility of relating to the world as more than standing-reserve. The saving power is not a new technology; it is a recovered way of <em>seeing</em>.</p>
+  <div class="callout green">
+    <span class="label">Bringing It Home</span>
+    For a student in 2026, Heidegger's "free relationship" is intensely practical. It does not mean deleting your apps. It means using them <em>as tools</em> without letting them redefine your friends as followers, your attention as a product, your studies as mere credential-farming, or your worth as engagement metrics. To notice enframing at work in your own life — and to deliberately preserve spaces of wonder, presence, rest, and non-productive being — is exactly the "free relationship" he describes. That awareness is the beginning of flourishing in a technological age.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Heidegger points to art and contemplation as the "saving power." In your own life, what practices let you encounter the world <em>not</em> as a resource to be used — moments of genuine wonder, presence, or rest? Are those practices getting more or less space in your life, and why?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=digital+minimalism+Cal+Newport+free+relationship+technology" target="_blank" rel="noopener">Digital minimalism &amp; a free relationship with tech</a> — curated search <span class="why">(the &lsquo;saving power&rsquo; in practice)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: Power, Flourishing, and a Free Relationship</h2>
+  <p>This chapter opened Unit II by turning from society to the person, and from power to flourishing. Its argument can be gathered into four threads:</p>
+  <ol class="plain">
+    <li><strong>Flourishing is not progress.</strong> Human flourishing (eudaimonia) is living well and fully as a human being — an activity of virtue, reason, and relationship, realized with and for others (kapwa). It is not the same as pleasure, accumulation, power, or convenience — the substitutes our technological culture constantly offers in its place.</li>
+    <li><strong>Technology is a double-edged amplifier.</strong> It has removed immense suffering and expanded what human life can be; it has also, when mistaken for flourishing itself, fragmented attention, fed the hedonic treadmill, and turned means into ends. The task is not to reject it but to stop <em>equating</em> progress with the good life.</li>
+    <li><strong>Technology is a way of revealing (Heidegger).</strong> More than a set of tools, technology is a way the world shows up for us. Modern technology's way of revealing — <em>enframing</em> — makes everything appear as <em>standing-reserve</em>, resources to be optimized, and its supreme danger is that we come to see nature, others, and even ourselves as nothing more.</li>
+    <li><strong>Freedom lies in awareness.</strong> The "saving power" is not a gadget but a recovered way of seeing. A <em>free relationship</em> with technology means using it fully while refusing to let it become our only lens — keeping alive, through art, contemplation, and genuine encounter, the capacity to let things and people simply <em>be</em>.</li>
+  </ol>
+  <p>The through-line of Unit II is now visible: technology confronts us not only with practical choices but with the question of who we are and how we should live. In Chapter 5, we take up "the good life" directly — Aristotle's eudaimonia, the ethics of the good, and how we might define, for ourselves and our communities, a life worth living amid scientific and technological advancement.</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Human flourishing (eudaimonia)</td><td>Living and doing well as a full human being across a whole life — an activity of virtue, reason, and relationship; not a mere feeling, possession, or convenience.</td></tr>
+      <tr><td>Function (ergon)</td><td>Aristotle's idea that a thing flourishes by performing its characteristic function excellently; for humans, reasoning and acting well.</td></tr>
+      <tr><td>Kapwa / pakikipagkapwa</td><td>The Filipino value of shared identity and relating to others as fellow human beings — framing flourishing as relational, not merely individual.</td></tr>
+      <tr><td>Hedonic treadmill</td><td>The tendency to adapt quickly to improvements so they stop adding to happiness, becoming the new baseline.</td></tr>
+      <tr><td>Instrumental definition of technology</td><td>The common view that technology is (a) a means to an end and (b) a human activity — "correct but not true" for Heidegger.</td></tr>
+      <tr><td>Revealing (alētheia / poiēsis)</td><td>Heidegger's claim that technology is fundamentally a mode of <em>revealing</em> — bringing things out of concealment into presence.</td></tr>
+      <tr><td>Bringing-forth vs. challenging-forth</td><td>The gentle, cooperative revealing of older craft (bringing-forth) vs. the demanding, extractive revealing of modern technology (challenging-forth).</td></tr>
+      <tr><td>Standing-reserve (Bestand)</td><td>The mode in which everything shows up under modern technology — as resources on standby, to be ordered, optimized, and consumed.</td></tr>
+      <tr><td>Enframing (Gestell)</td><td>The essence of modern technology: the all-encompassing way of seeing that makes everything appear as standing-reserve.</td></tr>
+      <tr><td>The supreme danger</td><td>That enframing becomes our <em>only</em> way of revealing, reducing nature, others, and ourselves to mere resource — and that we forget other ways are possible.</td></tr>
+      <tr><td>The saving power</td><td>The counter-possibility that grows alongside the danger: recovering, especially through art and contemplation, other ways of revealing.</td></tr>
+      <tr><td>Free relationship / Gelassenheit</td><td>Using technology while remaining aware of its essence — saying "yes" to its use and "no" to its domination; a serene "letting-be."</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>Explain, in your own words, the difference between technological <em>progress</em> and human <em>flourishing</em>. Give an example where the two come apart.</li>
+    <li>Heidegger says the instrumental definition of technology is "correct but not true." What does he mean, and why does it matter how we define technology?</li>
+    <li>What is "standing-reserve," and can you find examples of people (not just nature) being revealed as standing-reserve today? Is this always wrong?</li>
+    <li>Is Heidegger too pessimistic, or does the "saving power" give real grounds for hope? What would a "free relationship" with technology look like for a student?</li>
+    <li>Does the Filipino idea of <em>kapwa</em> change how we should think about flourishing in a digital age dominated by individual profiles and personal feeds?</li>
+  </ol>
+  <h3>Activity 1 — "Standing-reserve audit" (group work)</h3>
+  <p>In groups, collect ten phrases from advertising, social media, business, or campus life that reveal people or nature as resources (e.g., "human resources," "grow your audience," "monetize," "content," "engagement," "user"). For each, rewrite it in a way that reveals the person or thing as more than standing-reserve. Present your before/after list and discuss what changed.</p>
+  <h3>Activity 2 — Reflection paper: "A Free Relationship" (individual, take-home)</h3>
+  <p>Reflect on Chapter 6's viewing (Kurosawa's <em>Dreams</em>, "Village of the Watermills," and the clip on scientism) alongside Heidegger. Then examine your own technology use for one week. Where do you notice "enframing" at work? Where do you preserve — or fail to preserve — a "free relationship"? 500–700 words.</p>
+  <h3>Activity 3 — Group presentation</h3>
+  <p>Prepare a presentation on <em>how technology reveals nature and the human person's role in it</em> (the syllabus assessment for this section). Use one concrete case — a dam, a mine, a social-media platform, an AI system — and analyze it with Heidegger's concepts of revealing, enframing, and standing-reserve, then propose what a "free relationship" to it would look like.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. What does eudaimonia mean, and why is "happiness" a misleading translation?</summary><p>It means human flourishing — living and doing well as a full human being across a whole life. "Happiness" misleads because eudaimonia is not a pleasant feeling but an activity of virtue and reason, achieved over time.</p></details>
+  <details><summary>2. Name three things human flourishing is often confused with.</summary><p>Pleasure, material accumulation, and mere power/convenience.</p></details>
+  <details><summary>3. What is the difference between technological "power" and human "flourishing"?</summary><p>Power is the ability to do more; flourishing is living well and fully as a human being. Technology reliably increases power but does not automatically increase flourishing.</p></details>
+  <details><summary>4. According to Heidegger, what is the "instrumental and anthropological definition" of technology, and what is his verdict on it?</summary><p>That technology is (a) a means to an end and (b) a human activity. He says it is "correct but not true" — accurate, but failing to reveal technology's essence.</p></details>
+  <details><summary>5. Complete the famous line: "The essence of technology is by no means anything ___."</summary><p>"…technological." (To understand technology we must look past gadgets to a way of revealing the world.)</p></details>
+  <details><summary>6. What does Heidegger mean by "technology is a way of revealing"?</summary><p>Technology is fundamentally a way things are disclosed or brought out of concealment into presence — not just tools we use, but a way the world shows itself to us.</p></details>
+  <details><summary>7. Distinguish "bringing-forth" from "challenging-forth."</summary><p>Bringing-forth is the gentle, cooperative revealing of older craft (working with the material/nature); challenging-forth is modern technology's demanding, extractive revealing that sets upon nature to yield maximum resource.</p></details>
+  <details><summary>8. What is "standing-reserve" (Bestand)?</summary><p>The way everything shows up under modern technology — as resources on standby, to be ordered, optimized, stockpiled, and consumed (forest as lumber, river as power).</p></details>
+  <details><summary>9. What is "enframing" (Gestell), and why is it not a machine?</summary><p>It is the essence of modern technology — the all-encompassing <em>way of seeing</em> that makes everything appear as standing-reserve. It is a framework of understanding, a mindset, not a device.</p></details>
+  <details><summary>10. What is the "saving power," and where does Heidegger say it grows?</summary><p>The counter-possibility of recovering other ways of revealing; it "grows" where the danger is, especially through art and contemplative thinking, enabling a "free relationship" with technology.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>Heidegger, Martin. <em>The Question Concerning Technology and Other Essays</em>, trans. William Lovitt, Harper &amp; Row, 1977 (essay orig. 1954).</li>
+    <li>Aristotle. <em>Nicomachean Ethics</em>, Books I, VI, and X (on eudaimonia and the function argument).</li>
+    <li>McNamara, Daniel J. "A Return to the Beginning," in <em>Stellar Origins, Human Ways: Readings in Science, Technology, and Society</em>, Ateneo de Manila University Press, 2011.</li>
+    <li>Maboloc, Christopher Ryan. "Eudaimonia and Human Flourishing," in <em>Ethics and Human Dignity</em>, Rex Bookstore, 2010.</li>
+    <li>Enriquez, Virgilio. <em>From Colonial to Liberation Psychology</em> (on <em>kapwa</em> and Filipino relational values), 1992.</li>
+    <li>Film: Akira Kurosawa's <em>Dreams</em> — "Village of the Watermills" (technology, nature, and a good human life).</li>
+    <li>Video clip: <em>The Magician's Twin: C.S. Lewis and the Case against Scientism</em>.</li>
+    <li>Sen, Amartya. <em>Development as Freedom</em>, Oxford University Press, 1999 (capabilities and human flourishing).</li>
+    <li>Stanford Encyclopedia of Philosophy: entries on Heidegger, Philosophy of Technology, and Aristotle's Ethics.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 4 Main Lecture &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

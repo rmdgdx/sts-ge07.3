@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit II · Weeks 7–8</div>
+  <h1>Chapter 4: The Human Person Flourishing in Terms of Science and Technology — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 4 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. A student owns the latest devices, has thousands of followers, yet feels chronically anxious and disconnected. This scenario BEST illustrates the chapter's central distinction between:</p>
+    <ol><li>Pleasure and pain.</li><li>Technological power/progress and human flourishing.</li><li>Wealth and poverty.</li><li>Correct and incorrect.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Maximal technological power with minimal wellbeing is the exact gap the chapter opens with. A, C, and D name other distinctions not at issue here.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Aristotle would deny that winning the lottery constitutes eudaimonia MOST because flourishing is:</p>
+    <ol><li>A pleasant feeling that money can buy.</li><li>An activity achieved through how one lives (virtue, reason, relationship), not something that merely happens to you.</li><li>Only possible for the wealthy.</li><li>Identical to good luck.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Eudaimonia is achieved activity, not a windfall or a mood. A and D confuse it with pleasure/luck; C contradicts Aristotle's view.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. An app is engineered to deliver quick hits of pleasure (likes, infinite scroll) yet leaves users feeling empty. Using the chapter, this is BEST explained as:</p>
+    <ol><li>Proof that pleasure equals flourishing.</li><li>The confusion of a substitute (pleasure) for genuine flourishing — enjoyable sensation without meaning.</li><li>Evidence the app is broken.</li><li>The hedonic treadmill being cured.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The chapter names pleasure as a substitute mistaken for flourishing. A is the very error exposed; C misreads intentional design; D inverts the concept.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Heidegger calls the instrumental definition of technology "correct but not true." The BEST paraphrase is:</p>
+    <ol><li>It is factually false.</li><li>It accurately describes technology's use but fails to reveal its deeper essence.</li><li>It is true but useless.</li><li>It is a lie invented by engineers.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> "Correct" = accurate as far as it goes; "not true" = not disclosing the essence. A contradicts "correct"; C and D misread the distinction.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. "The essence of technology is by no means anything technological." The MOST defensible reading is that to understand technology we must examine:</p>
+    <ol><li>Better gadgets and faster chips.</li><li>The way of seeing/revealing the world that produces and accompanies technology.</li><li>The stock prices of tech firms.</li><li>Only the history of machines.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Essence lies in a mode of revealing, not in devices. A, C, and D stay at the level of the "technological" Heidegger says to look past.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. Which pair correctly matches Heidegger's contrast of old vs. modern revealing?</p>
+    <ol><li>Old windmill stores energy; dam merely takes wind as it comes.</li><li>The old farmer cares for the field (bringing-forth); modern agriculture challenges the soil for maximum yield (challenging-forth).</li><li>Both treat nature identically.</li><li>Modern technology is gentler than old craft.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Care/cooperation vs. demand/extraction is the core contrast. A reverses the windmill/dam example; C and D deny the distinction.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. A forest is described purely as "board-feet of harvestable timber." In Heidegger's terms, the forest is being revealed as:</p>
+    <ol><li>A bringing-forth.</li><li>Standing-reserve — a resource on standby to be ordered and consumed.</li><li>The saving power.</li><li>Gelassenheit.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Reducing the forest to stock-on-call is exactly Bestand. The other terms name different (indeed opposite) concepts.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. Why is enframing (Gestell) NOT a machine or gadget?</p>
+    <ol><li>Because it is very expensive.</li><li>Because it is a framework of understanding — a way of seeing that makes things appear as standing-reserve — not a physical object.</li><li>Because it was never invented.</li><li>Because only philosophers can use it.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Enframing is the essence/way-of-revealing, a mindset, not a device — the chapter's key clarification. The others misunderstand the concept.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. The phrase "human resources" is used in the chapter chiefly to illustrate that:</p>
+    <ol><li>Companies value their employees highly.</li><li>Under enframing, even human beings can come to appear as standing-reserve — resources to be optimized.</li><li>HR departments are inefficient.</li><li>People are literally machines.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The phrase exemplifies humans revealed as resource — Heidegger's supreme danger. A misreads the critique; C is off-topic; D is a literalist error.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. Heidegger's "supreme danger" is BEST described as:</p>
+    <ol><li>A machine physically harming us.</li><li>Running out of natural resources.</li><li>That enframing becomes our ONLY way of revealing, so we see everything (including ourselves) merely as resource — and forget other ways are possible.</li><li>That technology will stop working.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The danger is ontological/spiritual — the totalization of enframing and the forgetting of alternatives. A, B, and D are the physical dangers Heidegger explicitly says are <em>not</em> the deepest.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Which everyday example BEST fits Heidegger's worry that persons are revealed as standing-reserve?</p>
+    <ol><li>A friend helping you move house for free.</li><li>A platform treating users' attention as a "resource" to be "captured" and sold to advertisers.</li><li>A family sharing a meal with no phones present.</li><li>A student volunteering at a shelter.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The attention economy reveals persons as extractable resource. A, C, and D are encounters that treat people as ends, not stock.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. A classmate concludes, "Heidegger wants us to throw away our phones and live in the woods." The BEST correction is:</p>
+    <ol><li>Correct — he is a Luddite.</li><li>Wrong — he explicitly rejects fleeing technology and seeks a "free relationship": using it while refusing to let enframing dominate our whole way of seeing.</li><li>Correct — technology is evil.</li><li>Wrong — he wants more technology, faster.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Heidegger seeks awareness, not rejection. A and C misattribute Luddism; D misstates his aim.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. "Where danger is, grows the saving power also." Applied to Heidegger's argument, this means:</p>
+    <ol><li>Danger automatically disappears.</li><li>The very ability to recognize enframing as a way of revealing is itself the opening of freedom from its total grip.</li><li>New gadgets will save us.</li><li>The danger is imaginary.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Seeing the frame is partly to stand outside it — the saving power is recognition, not a device (C). A and D deny the danger the line presupposes.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. Heidegger locates the "saving power" especially in art because art:</p>
+    <ol><li>Is more profitable than technology.</li><li>Preserves the memory of another kind of revealing — letting things show themselves in beauty and mystery rather than as resource.</li><li>Is a form of standing-reserve.</li><li>Rejects all technē.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Because technē once also named art, art keeps alive a non-extractive revealing. A is irrelevant; C inverts it; D is false (art <em>is</em> a technē).</p></details></div>
+
+  <div class="mcq"><p class="stem">15. The chapter presents a "two-sided" view of technology and flourishing. The BEST statement of that balance is:</p>
+    <ol><li>Technology always increases flourishing.</li><li>Technology always decreases flourishing.</li><li>Technology is a powerful amplifier whose effect on flourishing depends on how it is designed, chosen, and used — and must not be equated with flourishing itself.</li><li>Technology has no relationship to flourishing.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The chapter refuses both technophilia and technophobia. A, B, and D are the one-sided or null positions it rejects.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. A student says, "A more efficient life is automatically a better life." The chapter's BEST reply is:</p>
+    <ol><li>Agreed — efficiency is flourishing.</li><li>Efficiency (a form of power/convenience) is not the same as flourishing; a life can be maximally efficient and minimally meaningful.</li><li>Efficiency is always bad.</li><li>Only inefficient lives flourish.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The power-vs-flourishing distinction again. A conflates them; C and D overcorrect into the opposite error.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. The Filipino concept of <em>kapwa</em> enriches the chapter's account of flourishing MOST by suggesting that:</p>
+    <ol><li>Flourishing is purely individual self-actualization.</li><li>Flourishing is fundamentally relational — realized with and for others, not in isolation.</li><li>Flourishing requires wealth.</li><li>Flourishing is impossible in community.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Kapwa frames the self-in-relation, making flourishing a shared project. A and D are the opposite; C is unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Which scenario BEST exemplifies a "free relationship" (Gelassenheit) with technology?</p>
+    <ol><li>Deleting all apps and refusing to use any device.</li><li>Using a phone for genuine tasks while deliberately protecting phone-free time for presence, rest, and wonder — and noticing when it starts redefining friends as "followers."</li><li>Maximizing screen time and engagement metrics.</li><li>Believing technology is a purely neutral tool with no effect on us.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Saying "yes" to use and "no" to domination, with awareness, is exactly Gelassenheit. A is rejection (which Heidegger denies); C is enframing embraced; D is the "correct but not true" illusion.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Why does the chapter insist on studying Heidegger's ideas even while noting his Nazi party membership?</p>
+    <ol><li>Because his politics prove his philosophy correct.</li><li>Because ideas can be evaluated critically on their merits while the person's record is neither ignored nor used to automatically dismiss the thought.</li><li>Because his biography is irrelevant to intellectual honesty.</li><li>Because philosophy should never mention a thinker's life.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The chapter models critical engagement — acknowledging the stain without genetic-fallacy dismissal. A is false; C and D deny the honest reckoning the chapter performs.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Synthesizing the chapter, which statement is the MOST defensible thesis?</p>
+    <ol><li>Technology guarantees the good life, so use as much as possible.</li><li>Technology is evil and should be rejected to flourish.</li><li>Technology amplifies human possibility but is not itself flourishing; living well requires awareness of how technology reveals the world (enframing) and a free relationship that preserves other ways of seeing.</li><li>Flourishing and technology are entirely unrelated.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> It integrates power-vs-flourishing, enframing/standing-reserve, and the free relationship. A and B are the one-sided errors; D denies the chapter's whole inquiry.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. Wellbeing research finds that beyond meeting genuine needs, more possessions don't reliably raise happiness. This BEST supports the chapter's claim that flourishing is not:</p>
+    <ol><li>Relational.</li><li>Material accumulation.</li><li>An activity.</li><li>Achievable.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The finding targets the accumulation-as-flourishing substitute. A and C are things flourishing <em>is</em>; D is unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. The "hedonic treadmill" explains why a new convenience often stops boosting happiness because we:</p>
+    <ol><li>Reject it immediately.</li><li>Adapt to it, making it the new baseline rather than a lasting gain.</li><li>Never notice it.</li><li>Give it away.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Adaptation resets the baseline — the treadmill's mechanism. The others misdescribe it.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. Aristotle's "function argument" grounds flourishing in performing one's characteristic function well. For humans this function is:</p>
+    <ol><li>Consuming as much as possible.</li><li>Reasoning and acting well (virtuous activity in accordance with reason).</li><li>Accumulating followers.</li><li>Avoiding all effort.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The ergon of humans is rational, virtuous activity. A, C, and D are the substitutes or opposites.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. A factory farm treats animals purely as units of meat-output to be maximized. In Heidegger's vocabulary this is BEST described as:</p>
+    <ol><li>Bringing-forth.</li><li>Challenging-forth that reveals living things as standing-reserve.</li><li>The saving power.</li><li>A free relationship.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It sets upon nature to extract maximum yield, revealing animals as stock. The others are the opposite or unrelated concepts.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Heidegger's Rhine example (bridge vs. hydroelectric dam) is meant to show that:</p>
+    <ol><li>Dams are more beautiful than bridges.</li><li>The same river is revealed differently — as a river to be crossed vs. a supplier of water-power on call.</li><li>Rivers cannot be dammed.</li><li>Technology never changes how we see nature.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The point is the shift in <em>revealing</em> the same river. A is aesthetic misreading; C is false; D contradicts his thesis.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. Which is the BEST example of "means becoming ends" from the chapter's caution?</p>
+    <ol><li>Using a map app to reach a destination.</li><li>Compulsively checking a phone not to accomplish anything but because checking has become an end in itself.</li><li>Turning a device off to sleep.</li><li>Reading a book for a class.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The tool's use detaches from any purpose and becomes compulsive — means-turned-end. A and D are ordinary instrumental use; C is the opposite.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Enframing is compared in the chapter to Kuhn's "paradigm" (Chapter 2) because both are:</p>
+    <ol><li>Physical machines.</li><li>Largely invisible frameworks that shape how a whole community perceives reality.</li><li>Easily switched on and off at will.</li><li>Recent inventions of the 21st century.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Both are encompassing, taken-for-granted lenses ("the water we swim in"). A, C, and D misdescribe both concepts.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. A dating app presents people as swipeable profiles ranked by desirability. The deepest Heideggerian worry is that:</p>
+    <ol><li>The app is slow.</li><li>It trains us to reveal other persons — and ourselves — as standing-reserve, optimizable resources rather than as persons.</li><li>It has too many users.</li><li>It is not profitable.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The concern is ontological: persons reduced to resource/stock. A, C, and D are surface complaints, not the essence.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Why does the chapter say the "saving power" is "not a new technology"?</p>
+    <ol><li>Because technology cannot help anyone.</li><li>Because the counterweight to enframing is a recovered <em>way of seeing</em> (art, contemplation, encounter), not another gadget.</li><li>Because art is useless.</li><li>Because Heidegger banned all tools.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The remedy is perceptual/spiritual, not instrumental. A, C, and D distort the point.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. A romanticized claim that "life was better before all technology" is BEST answered by the chapter with:</p>
+    <ol><li>Full agreement.</li><li>A reminder that pre-technological life was often short, painful, and constrained; technology has removed vast suffering — so the aim is a free relationship, not rejection.</li><li>The claim that technology has no benefits.</li><li>The claim that flourishing is impossible.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The chapter honors technology's genuine gains while refusing to equate them with flourishing. A, C, and D are one-sided.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. "The displacement of difficulty" warns that removing all friction can also remove:</p>
+    <ol><li>The challenges and struggle through which people grow and gain mastery.</li><li>All forms of pleasure.</li><li>The need for electricity.</li><li>Human relationships entirely.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> Some flourishing comes from effort and mastery, which frictionless convenience can erase. B, C, and D misstate the point.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. Which correctly orders Heidegger's concepts from "lens" to "what appears through it"?</p>
+    <ol><li>Standing-reserve → enframing.</li><li>Enframing (the way of seeing) → standing-reserve (how the world then appears).</li><li>Saving power → enframing.</li><li>Bestand → Gelassenheit.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Enframing is the lens; standing-reserve is the resulting appearance. A reverses them; C and D pair unrelated terms.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. A company's slogan urges you to "monetize every moment of your life." Analyzed with the chapter, this slogan:</p>
+    <ol><li>Promotes a free relationship with technology.</li><li>Extends enframing into lived time itself, revealing even one's moments as resource to be optimized.</li><li>Reflects Aristotle's eudaimonia.</li><li>Rejects standing-reserve.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It applies the extractive logic to time and life — enframing totalized. A, C, and D are opposites of the slogan's logic.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. The strongest reason flourishing must be distinguished from convenience is that:</p>
+    <ol><li>Convenience is always harmful.</li><li>A life can be maximally convenient yet lack meaning, virtue, and genuine relationship — the substance of flourishing.</li><li>Flourishing requires suffering.</li><li>Convenience and flourishing are identical.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Convenience is a form of power, not a guarantee of meaning. A and C overcorrect; D collapses the distinction.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. Heidegger would classify a claim like "technology is completely neutral; only use matters" as:</p>
+    <ol><li>The deepest truth about technology.</li><li>The "correct but not true" instrumental view that blinds us to how technology shapes our very way of seeing.</li><li>A form of the saving power.</li><li>An example of Gelassenheit.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Pure neutrality is the instrumental illusion he critiques. A, C, and D misassign the claim.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. Which practice would MOST directly cultivate the "saving power" in a student's life?</p>
+    <ol><li>Increasing daily screen time to stay informed.</li><li>Setting aside regular, device-free time for contemplation, art, nature, or genuine presence with others.</li><li>Optimizing every hour for maximum productivity.</li><li>Measuring self-worth by engagement metrics.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Non-extractive encounter and contemplation are where the saving power grows. A, C, and D deepen enframing.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. A student argues Heidegger is irrelevant because "he never saw smartphones or AI." The BEST rebuttal is:</p>
+    <ol><li>Agreed; his ideas expired with him.</li><li>His analysis targets the <em>essence</em> (a way of revealing), which applies all the more to AI and platforms that reveal attention, data, and persons as resource.</li><li>He predicted the iPhone exactly.</li><li>Technology has no essence.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Because enframing is about essence, not specific devices, it extends naturally to today's tech. A dismisses wrongly; C is false; D contradicts his thesis.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. The chapter's link between Heidegger and Chapter 1's "attention economy" is BEST stated as:</p>
+    <ol><li>They are unrelated topics.</li><li>The attention economy is a concrete instance of enframing — revealing human attention as a resource to be captured, optimized, and sold.</li><li>The attention economy rejects standing-reserve.</li><li>Heidegger invented the attention economy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It operationalizes standing-reserve at the level of the mind. A and C deny the link; D is anachronistic.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Which best captures why the chapter treats "the good life" as a shared project (kapwa), not a solo one?</p>
+    <ol><li>Because individuals do not matter.</li><li>Because flourishing is realized in relationship and community (pakikipagkapwa), so a purely individualistic, device-mediated life risks missing it.</li><li>Because technology forbids solitude.</li><li>Because Aristotle rejected all community.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Kapwa reframes flourishing as relational. A is false; C is unrelated; D misstates Aristotle (who prized community/friendship).</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Taking the chapter as a whole, the "free relationship" with technology is BEST summarized as:</p>
+    <ol><li>Total rejection of devices.</li><li>Uncritical maximal use of devices.</li><li>Using technology fully for its genuine goods while remaining aware of enframing and preserving other ways of encountering the world and one another.</li><li>Believing technology is neutral and has no effect on us.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> Awareness plus balanced use is Gelassenheit. A is Luddism (rejected); B is enframing embraced; D is the instrumental illusion.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 4's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (flourishing, enframing, standing-reserve, free relationship) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. As generative AI and recommendation algorithms increasingly mediate how young people learn, socialize, and form identity, will they help this generation flourish or mainly deepen "enframing"? Argue a position using Aristotle's eudaimonia and Heidegger's concepts, and propose what a "free relationship" with these technologies would concretely require.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer takes a clear, qualified stand. The optimistic case: AI can democratize tutoring, accessibility, and creativity, expanding capabilities (Sen/Aristotle) that support flourishing. The cautionary case: recommendation systems and generative AI intensify enframing — revealing attention as a resource to be captured, peers as engagement metrics, and even the self as an optimizable profile/brand — while outsourcing the effortful thinking through which eudaimonia is achieved. The best essays argue the outcome is not determined by the technology but by design and use, then specify a "free relationship": using AI as a genuine tool (drafting, exploring) while protecting the difficulty and struggle that build understanding; preserving device-free spaces for presence and wonder (the saving power); disclosing and limiting AI's role in one's own work; and resisting metrics of self-worth. The strongest answers connect to kapwa — insisting flourishing is relational and cannot be delivered by an algorithm optimized for engagement.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. Heidegger warns that under "enframing," even human beings appear as "standing-reserve" ("human resources," "human capital," data to be monetized). Evaluate whether this danger is growing or receding in the coming decades, using concrete trends (the attention economy, the data economy, AI-driven hiring, the gig economy). What social or personal "saving powers" could counter it?</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer marshals evidence that the danger is intensifying: the data economy monetizes persons' behavior; AI-driven hiring and gig platforms rank and allocate people as optimizable units; the attention economy treats minds as extractable resource. It should apply Heidegger precisely — these are not mere side effects but a way of <em>revealing</em> persons as Bestand — and note the "supreme danger" that we stop noticing. For counter-forces, the essay can distinguish <em>personal</em> saving powers (contemplative practices, art, embodied community, protecting non-productive time) from <em>social/structural</em> ones (data-privacy law like RA 10173, worker protections, algorithmic transparency, education in STS itself). The best essays argue the personal is necessary but insufficient — enframing is systemic, so countering it requires collective/political action too — while conceding the honest possibility that the trend may deepen, and that Heidegger offers awareness rather than a guaranteed cure.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. "Technology increases our power but not necessarily our flourishing." Defend or challenge this thesis for the next generation, drawing on both the optimistic case (technology has removed vast suffering) and the cautionary case (distraction, isolation, the hedonic treadmill). What would it take, personally and as a society, for future technological progress to actually translate into greater human flourishing?</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer engages both sides rather than sloganizing. Defending the thesis: history shows soaring power alongside stagnant or declining wellbeing indicators (anxiety, loneliness, distraction), and the hedonic treadmill explains why more convenience doesn't compound into more happiness. Challenging it: technology has genuinely expanded flourishing by removing suffering (vaccines, connection, knowledge), so the relationship is contingent, not fixed. The synthesis — the chapter's own view — is that technology is an amplifier that must not be <em>equated</em> with flourishing. For progress to translate into flourishing, the essay should propose conditions on two levels: <em>design/policy</em> (measuring technology by wellbeing, not just engagement or profit; regulating attention-extractive design; ensuring equitable access) and <em>personal</em> (cultivating virtue, relationship/kapwa, and a free relationship that keeps means from becoming ends). The best answers stress that flourishing is an <em>achievement</em> no device can deliver — so the decisive variable is human choice, individually and collectively.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 4 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>
