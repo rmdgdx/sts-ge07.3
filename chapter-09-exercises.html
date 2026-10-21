@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 9 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit III · Weeks 14–15</div>
+  <h1>Chapter 9: Biodiversity and the Healthy Society — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 9 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. A city clears a forest for development; soon after, flooding worsens and a new disease appears among residents. This BEST illustrates:</p>
+    <ol><li>Coincidence unrelated to the environment.</li><li>The interrelatedness of society, environment, and health — environmental harm producing social and health harm.</li><li>That forests are irrelevant to cities.</li><li>Pure economic progress.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Deforestation → flooding and disease is the interrelatedness thesis. A and C deny the links; D ignores the costs.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Calling biodiversity "the life-support system of human society" BEST means that:</p>
+    <ol><li>Biodiversity is a luxury for nature-lovers.</li><li>Society depends on ecosystem services (food, medicine, water, climate regulation) that biodiversity provides.</li><li>Only scientists benefit from it.</li><li>Species have no practical value.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The phrase points to essential ecosystem services. A, C, D dismiss biodiversity's role.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. The Philippines' status as "megadiverse" AND a "hotspot" specifically means it has:</p>
+    <ol><li>Many species, all safe.</li><li>Exceptional, often endemic biodiversity that is also under severe threat.</li><li>Few species but stable ones.</li><li>No endemic species.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Hotspot = high endemism + high threat. A, C, D misstate the definition.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. The "sixth extinction" differs from the previous five MOST because it is:</p>
+    <ol><li>Caused by an asteroid.</li><li>Anthropogenic — driven by human activity — making it a risk we can choose to reduce.</li><li>Natural and unstoppable.</li><li>Beneficial to ecosystems.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Human causation (Ch. 7's anthropogenic risk) is the key difference. A describes an earlier extinction; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Why does the chapter say protecting biodiversity is "a form of pandemic prevention"?</p>
+    <ol><li>Because vaccines grow on trees.</li><li>Because intact habitats reduce the human–wildlife contact and environmental disruption that drive zoonotic spillovers.</li><li>Because animals cannot carry disease.</li><li>Because pandemics are unrelated to the environment.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> One Health links habitat protection to reduced spillover risk. A is absurd; C and D contradict the framework.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. "One Health" is described as an STS idea because it:</p>
+    <ol><li>Separates human medicine from the environment.</li><li>Applies co-production — society, environment, and health continuously shaping one another — and rejects the illusion that humans stand apart from nature.</li><li>Proves humans are above nature.</li><li>Ignores animals.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is co-production applied to biology (echoing Darwin, Ch. 2). A, C, D are the opposite of One Health.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. The chapter notes humans have "genetically modified organisms for ~10,000 years." The purpose of this framing is to:</p>
+    <ol><li>Prove GMOs are identical to breeding in every way.</li><li>Reframe the real question as whether the modern gene-level method differs enough in kind, speed, or risk to warrant special concern — not whether altering nature is new.</li><li>Show that altering nature began in 2000.</li><li>Prove all modification is dangerous.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The context sharpens the actual debate. A overstates equivalence; C is false; D prejudges.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. A student claims, "GMOs are proven safe to eat, so all opposition is anti-science." The BEST critique is:</p>
+    <ol><li>Agreed; the debate is over.</li><li>Food-safety evidence is reassuring, but most objections concern ecology, corporate power, ethics, and who decides — value questions science cannot settle.</li><li>GMOs are unsafe to eat.</li><li>Science can answer every value question.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The category error is treating value questions as settled by safety data. A commits it; C contradicts the consensus; D is scientism (Ch. 5).</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Which GMO concern is an EMPIRICAL question science can address?</p>
+    <ol><li>Should corporations patent living seeds?</li><li>Does Bt corn reduce insecticide use compared to conventional corn?</li><li>Is it fair for a few firms to control the food supply?</li><li>Who should decide what farmers plant?</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Insecticide-use comparison is measurable. A, C, D are value/political questions.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. Which GMO concern is a VALUE/POLITICAL question that science alone cannot settle?</p>
+    <ol><li>Whether a GMO protein is allergenic.</li><li>Whether patented seeds should concentrate power in a few corporations and make farmers dependent.</li><li>Whether a crop is drought-tolerant.</li><li>Whether beta-carotene converts to vitamin A.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Corporate control is an ethics/justice question. A, C, D are empirical.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Golden Rice's specific public-health purpose is to combat:</p>
+    <ol><li>Malaria.</li><li>Vitamin A Deficiency, which causes childhood blindness and raises child mortality in rice-dependent populations.</li><li>Dengue.</li><li>Water pollution.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Beta-carotene targets VAD. The others are unrelated to Golden Rice.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. The 2008 Golden Rice feeding trial is cited MOST to illustrate:</p>
+    <ol><li>That Golden Rice cures blindness instantly.</li><li>The ethics of research with vulnerable populations — feeding children reportedly without adequate informed consent violated dignity and damaged trust.</li><li>That GMOs are toxic.</li><li>That trials are unnecessary.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The episode is a research-ethics/informed-consent lesson (Ch. 6). A, C, D misread it.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. In the 2024 case, the Court of Appeals halted Golden Rice and Bt eggplant primarily by invoking:</p>
+    <ol><li>The right to free expression.</li><li>The constitutional right to a balanced and healthful ecology (Writ of Kalikasan) and the precautionary principle.</li><li>Corporate contract law.</li><li>Data privacy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A Writ of Kalikasan + precaution grounded the ruling. The others are unrelated legal bases.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. The Golden Rice ruling is called a "landmark" chiefly because it shows:</p>
+    <ol><li>Courts never affect science.</li><li>A court, using a constitutional environmental right and the precautionary principle, overriding a scientific-regulatory approval — the collision of science, law, ethics, and politics.</li><li>That GMOs are proven deadly.</li><li>That precaution always wins globally.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It exemplifies the multi-domain collision. A is false; C overstates; D overgeneralizes.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. "Framing the debate as 'GMOs vs. starvation' is a false choice" because:</p>
+    <ol><li>There is no hunger anywhere.</li><li>Hunger is driven as much by poverty and distribution as by total production — the world already produces enough calories for everyone.</li><li>GMOs produce no food.</li><li>Starvation is unrelated to farming.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Access/justice, not just yield, drives hunger. A and D are false; C is absurd.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. "Food sovereignty" arguments show that some GMO opposition is rooted in:</p>
+    <ol><li>Ignorance of all science.</li><li>A defense of small farmers' and peoples' right to control their own food systems against corporate domination.</li><li>Opposition to eating food.</li><li>Support for seed patents.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Food sovereignty is about local control, not anti-science sentiment. A, C, D misrepresent it.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. The chapter argues public resistance to GMOs is "often less about the science than about trust." The BEST implication is that:</p>
+    <ol><li>More safety data alone will always resolve resistance.</li><li>Restoring trust requires transparency, public participation, and honest acknowledgment of uncertainty and past ethical failures — not just data.</li><li>Trust is irrelevant to technology adoption.</li><li>People should simply obey regulators.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Trust is built socially, not by data alone. A ignores this; C and D dismiss legitimate concerns.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Agro-ecology is BEST described as farming that:</p>
+    <ol><li>Maximizes chemical inputs and monoculture.</li><li>Applies ecological principles — biodiversity, healthy soil, natural pest control, local knowledge — working with nature.</li><li>Rejects all science.</li><li>Ignores small farmers.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Working with ecological processes is agro-ecology. A is the industrial model; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. The chapter's "honest view" on GMOs vs. agro-ecology is that:</p>
+    <ol><li>Only GMOs can feed the world.</li><li>Only agro-ecology is acceptable.</li><li>The future likely needs elements of both — biotechnology and ecological wisdom — matched to context, not a dogmatic either/or.</li><li>Neither can produce food.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> A both/and, context-sensitive stance. A and B are dogmatic extremes; D is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Synthesizing the chapter, the MOST defensible thesis is:</p>
+    <ol><li>Humans are the masters of nature and can override it freely.</li><li>Society, environment, and health form one web; technologies like GMOs can strengthen or fray it, and deciding wisely requires separating what science can settle from the value and political questions it cannot.</li><li>All GMOs are dangerous and should be banned.</li><li>Science alone should decide all food policy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It integrates interrelatedness with the empirical/value distinction. A denies interdependence; C is one-sided; D is scientism.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. Which correctly matches a biodiversity level to its example?</p>
+    <ol><li>Species diversity → variation within a single rice variety.</li><li>Genetic diversity → variation within a species; species diversity → number/variety of species; ecosystem diversity → variety of habitats.</li><li>Ecosystem diversity → one gene.</li><li>Genetic diversity → number of ecosystems.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Correct mapping of the three levels. The others scramble them.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Mangroves buffering a coast against storm surge is an ecosystem service especially vital to the Philippines because it:</p>
+    <ol><li>Generates tourism revenue only.</li><li>Provides disaster resilience for a typhoon-prone archipelago, linking biodiversity to human safety.</li><li>Is purely decorative.</li><li>Has no link to human health.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Disaster buffering ties biodiversity to survival (Ch. 3). A, C, D understate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. A pandemic emerges after wildlife is crowded in markets near cleared forest. The One Health lesson is that:</p>
+    <ol><li>Human health can be protected in isolation from animals and environment.</li><li>Human, animal, and environmental health are one system; disruption in one causes disease in another.</li><li>Forests cause disease.</li><li>Markets are unrelated to health.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The inseparability of the three healths is One Health. A, C, D deny it.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Bt crops are engineered to:</p>
+    <ol><li>Produce vitamin A.</li><li>Make an insect-killing protein from a soil bacterium, reducing chemical insecticide use.</li><li>Tolerate drought only.</li><li>Resist all herbicides.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Bt = insect resistance via <em>Bacillus thuringiensis</em>. A is Golden Rice; C and D are other traits.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. A concern that GMO monocultures could "crowd out diverse traditional crops" is fundamentally a worry about:</p>
+    <ol><li>Food safety for eaters.</li><li>Biodiversity loss and the resilience that genetic diversity provides.</li><li>Corporate patents only.</li><li>Vitamin content.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is an ecological/biodiversity concern, distinct from eating-safety. A, C, D misidentify it.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. CRISPR gene-editing "blurs the line between GMO and conventional breeding" because it:</p>
+    <ol><li>Uses only random mutations.</li><li>Can make precise edits (sometimes without foreign genes) that resemble changes achievable by breeding, complicating regulation.</li><li>Is identical to spraying pesticide.</li><li>Cannot edit genes.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Precise, sometimes transgene-free edits raise new regulatory questions. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Which statement best reflects the scientific consensus the chapter reports?</p>
+    <ol><li>All GMOs are proven dangerous to eat.</li><li>Currently approved GMO foods are judged as safe to eat as conventional foods by major scientific bodies.</li><li>No one has studied GMO safety.</li><li>GMOs cure disease on contact.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The reported consensus is food-safety parity. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. The chapter warns against "treating the whole GMO debate as if it were only about food safety." This is a warning against:</p>
+    <ol><li>Reading too much science.</li><li>A category error that ignores the ecological, economic, ethical, and political value-questions at the debate's core.</li><li>Trusting any evidence.</li><li>Discussing GMOs at all.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Reducing a multi-dimensional debate to safety is the error. A, C, D misread the warning.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Golden Rice is described as "unusual" among GM crops because it is:</p>
+    <ol><li>The most profitable product ever.</li><li>Developed largely as a humanitarian, royalty-free project rather than for corporate profit.</li><li>Grown only in Europe.</li><li>Not actually rice.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Its non-profit, humanitarian character is atypical. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. A critic argues VAD is "better solved by diverse diets, supplements, and reducing poverty." This objection targets Golden Rice on the grounds that it:</p>
+    <ol><li>Is unsafe to eat.</li><li>Addresses a symptom rather than the root cause (poverty and dietary poverty) of vitamin A deficiency.</li><li>Contains no beta-carotene.</li><li>Is a corporate monopoly.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is a "treat the cause, not the symptom" argument. A, C, D are different claims.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. The precautionary principle, as applied by the court, holds that for potentially serious/irreversible harm:</p>
+    <ol><li>Proceed until harm is proven.</li><li>The burden should fall on demonstrating safety before proceeding; lack of full certainty is not grounds to skip precaution.</li><li>Certainty is required to act at all.</li><li>Ecology is irrelevant.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Burden-shifting toward safety is the principle (Ch. 7). A reverses it; C and D misstate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. A defender of Golden Rice would MOST likely criticize the precautionary principle here for:</p>
+    <ol><li>Being too permissive.</li><li>Causing paralysis that delays a life-saving technology while children continue to suffer VAD.</li><li>Ignoring corporate profit.</li><li>Being unscientific about safety.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The classic critique: precaution's own inaction has costs. A is backwards; C and D are not the core critique.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. The chapter says "food is political." The BEST evidence in the Golden Rice case is that:</p>
+    <ol><li>Rice has no economic value.</li><li>Its fate was decided not only by scientists but by regulators, courts, farmer and scientist groups, corporations, and constitutional rights.</li><li>Only chemists were involved.</li><li>Politics never touches agriculture.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A web of actors and institutions decided it. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. Which response to GMO opposition reflects the chapter's balanced STS stance?</p>
+    <ol><li>Dismiss all opposition as ignorant anti-science.</li><li>Correct opposition that rests on misinformation with evidence, while taking seriously legitimate concerns about power, ecology, ethics, and democratic control.</li><li>Accept all opposition uncritically.</li><li>Refuse to discuss the science.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Distinguish misinformation from legitimate value concerns. A and C are the two failures; D abandons inquiry.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. "The world already produces enough calories to feed everyone" is used to argue that:</p>
+    <ol><li>Yield-increasing technology is the only solution to hunger.</li><li>Hunger is substantially a problem of access, distribution, and justice — not only production.</li><li>Hunger does not exist.</li><li>Agro-ecology cannot produce food.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It reframes hunger as distributional/justice as well as productive. A, C, D misuse the fact.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. Agro-ecology connects to Chapter 3's indigenous knowledge because it:</p>
+    <ol><li>Rejects all traditional practice.</li><li>Values local and indigenous farmers' knowledge (e.g., muyong, zanjera) as genuine, tested ecological science.</li><li>Requires only imported technology.</li><li>Ignores biodiversity.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It integrates indigenous ecological knowledge. A, C, D contradict agro-ecology.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. A critic of agro-ecology would MOST reasonably argue that it:</p>
+    <ol><li>Harms biodiversity.</li><li>May not produce enough on limited land for a growing population, and can be labor-intensive.</li><li>Uses too many chemicals.</li><li>Ignores local knowledge.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Yield and labor are the honest critiques. A, C, D describe the industrial model, not agro-ecology.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. The chapter reframes the deepest food question not as "GMO or organic?" but as:</p>
+    <ol><li>"Which is cheaper today?"</li><li>"What kind of food system serves human and ecological flourishing together?"</li><li>"Which has better marketing?"</li><li>"Which is more natural?"</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It elevates the debate to flourishing and the whole system. A, C, D are narrower or misleading (the "natural" framing is itself contested).</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Which statement best links this chapter to the Darwinian revolution (Ch. 2)?</p>
+    <ol><li>Humans stand apart from and above nature.</li><li>We are part of the web of life, not its masters — so a healthy society is possible only within a healthy environment.</li><li>Biology is irrelevant to society.</li><li>Extinction is impossible.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The interrelatedness thesis rests on the Darwinian insight of human kinship with life. A, C, D are the pre-Darwinian errors.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Applying the whole chapter, the wisest approach to a proposed new GM crop would be to:</p>
+    <ol><li>Approve or ban it based on food-safety data alone.</li><li>Assess the empirical evidence (safety, ecology) AND the value questions (corporate power, farmer rights, biodiversity, consent, who decides), with transparency and public participation.</li><li>Trust the corporation's marketing.</li><li>Reject it because it is "unnatural."</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Integrate empirical and value analysis with democratic process. A is the category error; C is naïve; D is a weak "appeal to nature."</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 9's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (interrelatedness, empirical vs. value, precautionary principle) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. The 2024 Philippine court ruling halted Golden Rice using the precautionary principle and a constitutional environmental right. Evaluate whether this was the right decision, and argue how the Philippines should balance the precautionary principle against the potential benefits of biotechnology in the coming decade.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer refuses an easy verdict and reasons with the chapter's tools. It should separate the empirical (major scientific bodies judge approved GMOs as safe to eat; Golden Rice targets a real, deadly deficiency) from the value/political (ecological risk, corporate control, informed-consent failures like the 2008 trial, and who decides) — and note that the court's ruling rested largely on the latter plus unresolved ecological questions and a constitutional right. The best essays weigh both the precautionary principle's wisdom (irreversibility, complexity, trust) and its costs (delaying a life-saving intervention while children suffer VAD), and propose a balanced path: rigorous, transparent, independent risk assessment; genuine public participation and farmer consent; staged, monitored releases; and honest acknowledgment of past ethical failures to rebuild trust. They conclude that the decision is "genuinely hard," that reasonable people disagree, and that the right process — not a dogmatic yes or no — is what a healthy society owes such a decision.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. "One Health" holds that human, animal, and environmental health are inseparable. As biodiversity loss and climate change accelerate, argue how seriously the world — and the Philippines specifically — should invest in protecting ecosystems as a strategy for human health and pandemic prevention, and what trade-offs this involves.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer uses the interrelatedness thesis and the zoonotic-spillover evidence (COVID-19, SARS, Ebola) to argue that ecosystem protection is a form of cheap, upstream pandemic prevention and health policy, not a luxury separate from human welfare. For the Philippines — megadiverse, hotspot, typhoon-prone — it should link biodiversity to food security, disaster resilience (mangroves, forests), medicine, and livelihoods, framing conservation as nation-building (Ch. 3). The best essays confront the real trade-offs honestly: conservation can conflict with short-term economic development, land use, and the livelihoods of the poor, so a just approach must couple protection with alternative livelihoods and equity (avoiding "fortress conservation" that harms local communities). They argue for integrating human medicine, veterinary, and environmental policy (breaking the silos One Health names), and conclude that investing in ecosystems is investing in human health — an application of the chapter's thesis that society, environment, and health are one web.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. Is the future of farming industrial biotechnology (GMOs, gene editing), agro-ecology, or a blend? Argue your view for the next generation, addressing food security for a growing population, sustainability and biodiversity, corporate power and food sovereignty, and the needs of Filipino small farmers.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer resists dogmatism and defends a context-sensitive blend, using the chapter's framing. It should acknowledge biotechnology's genuine potential (yield, pest/drought resistance, biofortification) and its real problems (corporate concentration, patents, monoculture, farmer dependence), alongside agro-ecology's strengths (biodiversity, resilience, sustainability, empowerment of small farmers and indigenous knowledge) and its honest limits (yield and labor concerns). It should reframe hunger as a problem of access and justice as much as production, and center food sovereignty and the welfare of Filipino small farmers. The best essays argue for a food system judged by whether it serves human <em>and</em> ecological flourishing together — deploying the best of both approaches, matched to local conditions, with public/farmer participation and safeguards against corporate capture — rather than an ideological either/or. They tie the conclusion to sustainability and the coming climate chapter, and to the chapter's thesis of keeping society, environment, and health in balance.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 9 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

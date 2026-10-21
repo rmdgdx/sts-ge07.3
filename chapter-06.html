@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6 — Main Lecture | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit II · Week 10</div>
+  <h1>Chapter 6: When Technology and Humanity Cross</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#rights">Human Rights &amp; Ethics</a></li>
+    <li><a href="#robotics">Robotics</a></li>
+    <li><a href="#autonomous">Autonomous Systems</a></li>
+    <li><a href="#ai-ethics">AI Ethics</a></li>
+    <li><a href="#surveillance">Surveillance</a></li>
+    <li><a href="#carr">Is Google Making Us Stupid?</a></li>
+    <li><a href="#governance">Governance</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Examine human rights in order to uphold such rights in technological ethical dilemmas;</li>
+    <li>Analyze the ethical dilemmas raised by robotics, autonomous systems, and artificial intelligence;</li>
+    <li>Evaluate contemporary issues — algorithmic bias, accountability, facial recognition, and surveillance — through the lens of human rights and human dignity;</li>
+    <li>Assess the argument that digital technology is reshaping human cognition (Nicholas Carr's "Is Google Making Us Stupid?"); and</li>
+    <li>Appraise emerging frameworks of technology governance (the EU AI Act, UNESCO's ethics recommendation, and Philippine initiatives) as social responses to these dilemmas.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: The Crossing Point</h2>
+  <p class="lead">There is a point at which technology stops being merely a tool we use and begins to touch what we <em>are</em> — our minds, our freedom, our dignity, our rights. This chapter is about that crossing point: the growing number of situations where technological power collides with human values and forces genuinely hard choices.</p>
+  <p>Chapter 4 asked whether technology helps us flourish; Chapter 5 gave us a picture of the good life to judge it by. But knowing the good life in general does not automatically tell us what to do in a specific hard case: <em>Should a self-driving car swerve to save its passenger or a pedestrian? Who is to blame when an algorithm denies someone a loan? Is a city safer or less free when cameras recognize every face on the street? Is our constant connection making us smarter or more scattered?</em> These are <strong>ethical dilemmas</strong> — situations where important values genuinely conflict and there is no cost-free answer.</p>
+  <p>The organizing thread of this chapter is <strong>human rights and human dignity</strong>. As the syllabus frames it, our task is to "examine human rights in order to uphold such rights in technological ethical dilemmas." When technology and humanity cross, human rights are the compass — the shared, hard-won standards that tell us what we owe to persons no matter how powerful our machines become. The point is not to fear technology, but to insist that human beings, not their tools, remain the measure of what is acceptable.</p>
+  <div class="callout gold">
+    <span class="label">Framing Idea</span>
+    A recurring pattern in this chapter: our technological <em>power</em> is now advancing faster than our collective <em>wisdom</em> about how to use it. Closing that gap — between what we <em>can</em> do and what we <em>should</em> do — is the work of ethics, human rights, and governance. This chapter is that work applied to today's hardest cases.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    Describe one situation where a technology you use put two things you value in conflict — say, convenience vs. privacy, or connection vs. focus. How did you decide? Was there a cost-free option, or did every choice give something up?
+  </div>
+</section>
+<section id="rights">
+  <h2>Human Rights and Human Dignity as the Measure</h2>
+  <p>Before the specific dilemmas, we need the standard by which to judge them. <strong>Human rights</strong> are the basic entitlements every person has simply by being human — enshrined after the horrors of World War II in the <strong>Universal Declaration of Human Rights (UDHR, 1948)</strong>. They rest on the idea of <strong>human dignity</strong>: the inherent, equal worth of every person, which may never be treated as a mere means to someone else's ends (an idea the philosopher Immanuel Kant expressed as treating humanity "always as an end, never merely as a means"). Notice how directly this connects to Heidegger's warning (Chapter 4): to reduce a person to "standing-reserve," a mere resource, is precisely to violate their dignity.</p>
+  <p>Several rights are especially stressed when technology and humanity cross:</p>
+  <ul class="plain">
+    <li><strong>Privacy</strong> — the right to a private life, correspondence, and control over information about oneself (UDHR Art. 12). Under threat from surveillance and data collection.</li>
+    <li><strong>Equality and non-discrimination</strong> — the right to be treated equally before the law (Art. 7). Under threat from biased algorithms.</li>
+    <li><strong>Freedom of thought and expression</strong> (Arts. 18–19). Shaped, and sometimes distorted, by algorithmic curation and censorship.</li>
+    <li><strong>Life, liberty, and security of person</strong> (Art. 3). At stake in autonomous vehicles and weapons.</li>
+    <li><strong>The right to a remedy</strong> (Art. 8) — to hold someone accountable for harms. Strained when "the algorithm did it" and no human takes responsibility.</li>
+  </ul>
+  <p>Human rights matter here for a specific reason: they resist the seductive claim that "if we <em>can</em> build it, we <em>should</em>," and the utilitarian temptation to sacrifice a few individuals for aggregate benefit. Rights function as <em>limits</em> — lines that a person's dignity draws around what may be done to them, however useful the technology or however large the benefit to others. When technology crosses the line, rights are what we point to.</p>
+  <div class="callout">
+    <span class="label">A Toolkit of Ethical Lenses</span>
+    Throughout the chapter, three ethical frameworks recur: <strong>consequentialism</strong> (judge acts by their outcomes — "greatest good for the greatest number"), <strong>deontology</strong> (judge by duties and rights — some things are wrong regardless of outcome), and <strong>virtue ethics</strong> (judge by character — what would a person of good character do?). Human-rights reasoning is largely deontological: it sets side-constraints that outcomes alone may not override.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Universal+Declaration+of+Human+Rights+explained" target="_blank" rel="noopener">The Universal Declaration of Human Rights</a> — curated search <span class="why">(the compass for the chapter)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="robotics">
+  <h2>The Ethical Dilemmas of Robotics</h2>
+  <p>The syllabus opens this topic with "The ethical dilemmas of robotics." Robots — machines that sense, decide, and act in the physical world — raise questions that were once science fiction and are now engineering.</p>
+  <h3>Asimov's Laws and why they aren't enough</h3>
+  <p>The writer Isaac Asimov famously proposed <strong>Three Laws of Robotics</strong>: a robot may not harm a human; must obey humans (unless that conflicts with the first law); and must protect itself (unless that conflicts with the first two). Asimov's own stories, however, were mostly about how these tidy rules <em>break down</em> in real situations — which is exactly the point. Real ethics cannot be reduced to a few lines of code, because moral situations are ambiguous, values conflict, and "harm" is hard to define. Asimov's Laws are a brilliant illustration of why robot ethics is genuinely hard, not a solution to it.</p>
+  <h3>The live dilemmas</h3>
+  <ul class="plain">
+    <li><strong>Physical safety and harm.</strong> As robots share our roads, factories, and homes, who is responsible when one injures someone — the manufacturer, the programmer, the owner, or "no one"?</li>
+    <li><strong>Care robots and human dignity.</strong> Robots increasingly assist the elderly, sick, and children. Is it dignified — or a quiet abandonment — to outsource human care to machines? Does a lonely elderly person cared for by a robot gain companionship or lose the human contact that dignity requires?</li>
+    <li><strong>Deception and attachment.</strong> Social robots are designed to seem to feel and understand. Is it ethical to encourage humans (especially children and the vulnerable) to form emotional bonds with machines that feel nothing?</li>
+    <li><strong>Lethal autonomous weapons ("killer robots").</strong> The gravest case: weapons that select and kill targets without human control. Many ethicists and states argue that delegating the decision to take a human life to a machine crosses an absolute moral line — a violation of human dignity that no military advantage can justify. This connects directly to Chapter 8 ("Why the future does not need us").</li>
+  </ul>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Consider a care robot for a lonely elderly relative. List the genuine <em>benefits</em> (safety, reminders, some companionship, easing caregiver burden) and the genuine <em>risks</em> (isolation from humans, deception, loss of dignity). On balance, under what conditions would using one respect the person's dignity — and when would it violate it?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=ethics+of+robots+should+machines+make+decisions" target="_blank" rel="noopener">The ethical dilemmas of robotics</a> — curated search <span class="why">(from Asimov to today)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=should+robots+care+for+the+elderly+ethics" target="_blank" rel="noopener">Care robots &amp; human dignity</a> — curated search <span class="why">(companionship or abandonment?)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="autonomous">
+  <h2>Autonomous Systems and the Problem of the Machine That Decides</h2>
+  <p>The deepest robotics dilemmas come from <strong>autonomy</strong> — machines that make consequential decisions without a human in the loop. The clearest teaching case is the <strong>self-driving (autonomous) vehicle</strong>.</p>
+  <h3>The trolley problem, made real</h3>
+  <p>Philosophers long debated a thought experiment: a runaway trolley will kill five people unless you divert it to a track where it kills one — do you pull the lever? For centuries this was purely hypothetical. Autonomous vehicles make it concrete: an AV facing an unavoidable crash may have to be <em>programmed in advance</em> for whom to protect — swerve and risk the passenger, or continue and risk pedestrians? Should it prioritize the young over the old, the many over the few, the passenger who bought the car over strangers? Whatever the engineers choose, they are encoding an <em>ethical theory</em> into a product — and someone must decide which one. There is no neutral option; even "do nothing" is a choice with victims.</p>
+  <h3>Weighing the goods and the dilemmas</h3>
+  <p>The honest, two-sided view matters here. Autonomous vehicles promise enormous <em>good</em>: human error causes most road deaths, and AVs could save many lives, aid the disabled and elderly, and ease traffic. But they raise hard problems: the crash-decision dilemma above; the <strong>accountability gap</strong> (when an AV kills, who is liable — owner, manufacturer, software vendor?); job displacement for millions of professional drivers (a Chapter 1 Luddite echo); and cybersecurity (a hacked fleet is a weapon). The lesson is not "ban them" or "deploy them recklessly," but that autonomy transfers moral weight from split-second human reactions to deliberate design choices — which is precisely why those choices must be made openly, ethically, and accountably rather than left to a single company's engineers.</p>
+  <div class="callout gold">
+    <span class="label">The Core Shift</span>
+    Autonomy moves the moral decision <em>upstream</em> — from the human in the moment to the designer in advance. This is liberating (we can deliberate carefully rather than react in panic) and dangerous (a single design choice is replicated across millions of machines). It makes the ethics of design a public matter, not a private engineering detail.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=self+driving+car+trolley+problem+ethics" target="_blank" rel="noopener">The self-driving car trolley problem</a> — curated search <span class="why">(encoding ethics into a product)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=who+is+responsible+when+a+self+driving+car+crashes" target="_blank" rel="noopener">The accountability gap</a> — curated search <span class="why">(who is to blame?)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="ai-ethics">
+  <h2>Artificial Intelligence: Bias, Accountability, and the "Black Box"</h2>
+  <p>Beyond physical robots, the most far-reaching crossing of technology and humanity today is <strong>artificial intelligence</strong> — software that increasingly decides who gets a loan, a job interview, bail, a medical diagnosis, or a place at university. When AI makes decisions about people's lives, several dilemmas threaten human rights directly.</p>
+  <h3>Algorithmic bias — the equality problem</h3>
+  <p>AI systems learn from historical data — and history is full of human bias. So an AI trained on past hiring, policing, or lending data can <em>learn and automate</em> those biases, then apply them at massive scale while wearing a mask of mathematical objectivity. Real cases abound: hiring tools that downgraded women's résumés; facial-recognition systems far less accurate on darker-skinned and female faces; risk-assessment algorithms in criminal justice that scored Black defendants as higher-risk. This is not a glitch but a predictable result of "garbage in, garbage out," and it directly threatens the right to <strong>equality and non-discrimination</strong>. The danger is that bias hidden inside an algorithm looks neutral and is therefore harder to challenge than an openly prejudiced human.</p>
+  <h3>The accountability gap — the remedy problem</h3>
+  <p>When an algorithm harms someone, <em>who is responsible?</em> The programmer who wrote it, the company that deployed it, the data that trained it, or the machine itself? This "<strong>many hands</strong>" problem, plus the tendency to defer to "what the computer says," can leave victims with no one to hold accountable — undermining the right to a <strong>remedy</strong>. A related worry: <strong>automation bias</strong>, our tendency to over-trust machine outputs even when we should question them.</p>
+  <h3>The black box and the right to explanation</h3>
+  <p>Many powerful AI systems (especially deep learning) are "<strong>black boxes</strong>": even their creators cannot fully explain <em>why</em> they produced a particular output. But human dignity arguably includes a <strong>right to an explanation</strong> for decisions that seriously affect us — you should be able to know <em>why</em> you were denied a loan or flagged by the state. Opaque, unexplainable decision-making about human lives is in tension with due process and dignity, which is why "explainable AI" and transparency have become central ethical demands.</p>
+  <div class="callout">
+    <span class="label">The Deepest AI Worry, Restated</span>
+    AI does not need to be conscious or evil to threaten human rights. It threatens them precisely by being a fast, scalable, opaque, and seemingly-neutral <em>amplifier</em> of existing human choices and biases — automating discrimination, diffusing accountability, and hiding its reasoning. The response is not to anthropomorphize AI but to keep humans responsible, decisions explainable, and rights protected.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    An AI system denies someone a loan, and the bank says, "We just followed the algorithm's recommendation." Which rights are at stake? Who <em>should</em> be accountable, and what would the person need in order to have a genuine "remedy"?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Coded+Bias+algorithmic+bias+documentary" target="_blank" rel="noopener">Coded Bias</a> — curated search <span class="why">(bias wearing a mask of objectivity)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=how+AI+algorithmic+bias+works+explained" target="_blank" rel="noopener">How algorithmic bias happens</a> — curated search <span class="why">(garbage in, garbage out)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="surveillance">
+  <h2>Surveillance, Privacy, and Freedom</h2>
+  <p>Perhaps the sharpest crossing of technology and humanity is <strong>surveillance</strong> — the technological capacity to watch, track, and record people at a scale never before possible. Cameras with <strong>facial recognition</strong>, location tracking through our phones, and the vast <strong>data economy</strong> that records our clicks, purchases, and messages together create the infrastructure for what the scholar Shoshana Zuboff calls <em>surveillance capitalism</em>, and what, in state hands, can become a tool of control.</p>
+  <h3>The privacy dilemma</h3>
+  <p>Surveillance technologies genuinely can serve good ends: catching criminals, finding missing persons, managing pandemics, improving services. This is the honest other side. But they collide with the right to <strong>privacy</strong>, and privacy is not merely about "having something to hide." Privacy protects the space in which we think, explore, dissent, and become ourselves. A society in which you assume you are always watched is one in which people <em>self-censor</em> — the "chilling effect" — quietly shrinking freedom of thought, expression, and association. Pervasive facial recognition in public space, in particular, can end the practical possibility of anonymity and lawful protest.</p>
+  <h3>Surveillance and power</h3>
+  <p>The gravest concern is political. Comprehensive surveillance shifts power decisively from citizens to whoever controls the data — states or corporations. History's authoritarian regimes could only dream of the monitoring that today's technology makes trivial; a "social credit"-style system that scores and sanctions citizens by their behavior is no longer science fiction. The human-rights question is not merely "is my data safe?" but "what kind of power does this give, to whom, over whom?" The Philippines' own <strong>Data Privacy Act (RA 10173, 2012)</strong> and its National Privacy Commission are one social response — an attempt to give individuals rights over their personal data.</p>
+  <div class="callout gold">
+    <span class="label">Why "Nothing to Hide" Misses the Point</span>
+    Privacy is not the interest of wrongdoers in hiding wrongdoing; it is the condition of a free person and a free society. The right to privacy protects dissenters, journalists, minorities, and ordinary people's ability to grow and change without permanent surveillance. Surrendering it "because I have nothing to hide" gives away a freedom whose value is only fully felt once it is gone.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=surveillance+capitalism+Shoshana+Zuboff+explained" target="_blank" rel="noopener">Surveillance capitalism</a> — curated search <span class="why">(you as raw material)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=facial+recognition+privacy+chilling+effect" target="_blank" rel="noopener">Facial recognition &amp; the end of anonymity</a> — curated search <span class="why">(privacy as freedom)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="carr">
+  <h2>Is Google Making Us Stupid? Technology and the Human Mind</h2>
+  <p>The crossings so far have been external — robots, cars, cameras acting on us. The syllabus pairs this chapter with Nicholas Carr's 2008 essay <strong>"Is Google Making Us Stupid?"</strong> to raise an <em>internal</em> crossing: the possibility that our technologies are reshaping our very <strong>minds</strong> — how we think, read, remember, and pay attention.</p>
+  <p>Carr's argument, since expanded in his book <em>The Shallows</em>, runs like this. The human brain is <strong>neuroplastic</strong> — it physically rewires itself in response to how we use it. The internet, designed for rapid skimming, clicking, and constant interruption, trains our brains for exactly that: quick, shallow, distracted processing. In the process, Carr argues, we may be losing the capacity for <strong>deep reading</strong> and <strong>sustained, contemplative thought</strong> — the slow, focused attention through which humans have traditionally produced their deepest understanding, creativity, and wisdom. We gain breadth and speed; we may be losing depth and focus. His worry is not that we become less intelligent in raw processing, but that we lose a distinctively <em>human</em> mode of thinking.</p>
+  <p>Intellectual honesty requires the counter-arguments, and they are strong. Every major information technology has provoked this fear: <strong>Socrates</strong> himself worried that <em>writing</em> would ruin memory and give only "the appearance of wisdom." Print, newspapers, and television each drew similar alarms. The internet also brings extraordinary goods — democratized knowledge, new literacies, powerful tools for collaboration and creativity. Perhaps we are not getting "stupider" but developing <em>different</em> cognitive skills suited to a new environment. The most balanced view — connecting straight to Chapter 5's golden mean and Chapter 4's "free relationship" — is that the technology is neither simply good nor bad for our minds; the question is whether we use it with enough <em>awareness and discipline</em> to preserve the capacity for deep thought <em>alongside</em> the new skills, rather than letting it quietly erode the former.</p>
+  <div class="callout green">
+    <span class="label">Bringing It Home</span>
+    Carr's essay is really a human-rights question turned inward: do we retain sovereignty over our own attention and minds, or do we cede it to technologies engineered to capture them (the attention economy again)? Protecting your capacity for deep, focused thought — through deliberate practices of undistracted reading and reflection — is a way of upholding your own dignity and freedom in the one place no external law can protect: your mind.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Be honest about your own experience: has your ability to read a long book, follow a complex argument, or sit with your own thoughts changed since you got a smartphone? Is Carr describing something real in your life — and if so, what, concretely, could you do about it?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Is+Google+Making+Us+Stupid+Nicholas+Carr" target="_blank" rel="noopener">Is Google Making Us Stupid?</a> — curated search <span class="why">(technology reshaping the mind)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=how+the+internet+changes+your+brain+deep+reading" target="_blank" rel="noopener">How the internet rewires attention</a> — curated search <span class="why">(neuroplasticity &amp; deep reading)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="governance">
+  <h2>Governing the Crossing: How Society Responds</h2>
+  <p>These dilemmas are not to be solved by individuals alone; they call for <strong>collective, social responses</strong> — the machinery of ethics, law, and governance (recall Chapter 1: law is a "social technology"). Around the world, societies are now scrambling to build guardrails for AI and related technologies:</p>
+  <ul class="plain">
+    <li><strong>The EU AI Act (2024)</strong> — the world's first comprehensive AI law, taking a <em>risk-based</em> approach: it bans some uses outright (e.g., social scoring, most real-time public facial recognition), tightly regulates "high-risk" systems (hiring, credit, policing), and lightly touches low-risk ones. A landmark attempt to put human rights ahead of unregulated deployment.</li>
+    <li><strong>UNESCO's Recommendation on the Ethics of Artificial Intelligence (2021)</strong> — the first global standard, adopted by nearly 200 countries, grounding AI in human rights, human dignity, transparency, fairness, and human oversight.</li>
+    <li><strong>The Philippine response</strong> — the <strong>Data Privacy Act (RA 10173)</strong> and National Privacy Commission; a developing <strong>National AI Strategy Roadmap</strong> and the national AI research center (NAICRI); and active debate over dedicated AI regulation. The country is deciding how to capture AI's benefits (Chapter 3's development agenda) while protecting Filipinos' rights.</li>
+  </ul>
+  <p>These frameworks converge on a shared set of principles worth remembering as the ethical "guardrails" for when technology and humanity cross: <strong>human oversight</strong> (a human stays responsible and in the loop for consequential decisions), <strong>transparency and explainability</strong>, <strong>fairness and non-discrimination</strong>, <strong>accountability</strong> (someone can be held responsible), <strong>privacy and data protection</strong>, and <strong>safety</strong>. None of these is automatic; each is a deliberate social choice to keep human dignity ahead of technological convenience — exactly the "development is a decision" logic of Chapter 3, applied now to rights.</p>
+  <div class="callout">
+    <span class="label">The Governance Insight</span>
+    Ethics is necessary but not sufficient. Individual good character (Chapter 5's virtue) matters, but the dilemmas here are systemic — built into products used by millions — so they also require <em>structural</em> responses: laws, standards, oversight bodies, and rights that constrain powerful actors. Personal virtue plus public governance, together, is how a society keeps humanity in charge of its technology.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=EU+AI+Act+explained" target="_blank" rel="noopener">The EU AI Act explained</a> — curated search <span class="why">(governing the crossing)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: Keeping Humanity the Measure</h2>
+  <p>When technology and humanity cross, the recurring lesson of this chapter is that <strong>the human person must remain the measure</strong> — the fixed point by which we judge our tools, never a resource to be optimized by them. Four threads carry forward:</p>
+  <ol class="plain">
+    <li><strong>Human rights are the compass.</strong> Privacy, equality, freedom, life, and the right to a remedy — grounded in human dignity — are the shared standards that tell us what may never be done to a person, however useful the technology or large the benefit.</li>
+    <li><strong>The hard cases are real dilemmas, not easy villains.</strong> Robotics, autonomous vehicles, AI, and surveillance each bring genuine goods <em>and</em> genuine threats; honest STS thinking holds both, refusing both technophobia and techno-utopianism.</li>
+    <li><strong>The deepest danger is quiet, not dramatic.</strong> Not killer robots alone, but automated bias wearing a mask of objectivity, accountability dissolving into "many hands," privacy eroded convenience by convenience, and attention harvested until deep thought itself atrophies. Vigilance, not panic, is the response.</li>
+    <li><strong>Freedom lies in awareness plus governance.</strong> Personal virtue and a "free relationship" with technology (Chapters 4–5) matter, but systemic dilemmas need systemic answers — rights, laws, oversight, and transparency that keep humans responsible and in control.</li>
+  </ol>
+  <p>The through-line of Unit II is now nearly complete: technology confronts us with the question of who we are and how we should live, and the answer must keep the human person — and every person's dignity and rights — at the center. In Chapter 7, we follow this to its most radical edge, asking with Bill Joy "Why the future does not need us" — whether our most powerful 21st-century technologies could threaten humanity itself, and what it would mean to remain the measure when our creations begin to rival, or exceed, us.</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Ethical dilemma</td><td>A situation where important values genuinely conflict and no option is cost-free.</td></tr>
+      <tr><td>Human rights</td><td>Basic entitlements every person has by being human (UDHR, 1948), grounded in human dignity.</td></tr>
+      <tr><td>Human dignity</td><td>The inherent, equal worth of every person; never to be treated as a mere means (Kant).</td></tr>
+      <tr><td>Consequentialism / Deontology / Virtue ethics</td><td>Three ethical lenses: judge by outcomes / by duties and rights / by character. Rights reasoning is largely deontological.</td></tr>
+      <tr><td>Asimov's Three Laws</td><td>Fictional robot rules whose breakdown illustrates why real ethics can't be reduced to code.</td></tr>
+      <tr><td>Autonomous system</td><td>A machine that makes consequential decisions without a human in the loop (e.g., self-driving car).</td></tr>
+      <tr><td>Trolley problem</td><td>A dilemma of choosing whom a harm falls on; made concrete by AV crash-programming.</td></tr>
+      <tr><td>Algorithmic bias</td><td>AI reproducing and scaling human biases learned from historical data — threatening equality.</td></tr>
+      <tr><td>Accountability gap / many hands</td><td>The difficulty of assigning responsibility for algorithmic harm, undermining the right to a remedy.</td></tr>
+      <tr><td>Black box / explainable AI</td><td>AI whose reasoning can't be fully explained; the demand for transparency and a "right to explanation."</td></tr>
+      <tr><td>Surveillance / surveillance capitalism</td><td>Large-scale watching and data extraction (Zuboff); collides with privacy and shifts power.</td></tr>
+      <tr><td>Chilling effect</td><td>Self-censorship produced by the belief that one is being watched.</td></tr>
+      <tr><td>Neuroplasticity</td><td>The brain's capacity to rewire with use — central to Carr's worry about deep reading.</td></tr>
+      <tr><td>AI governance</td><td>Social frameworks (EU AI Act, UNESCO, PH Data Privacy Act) that set rights-based guardrails on technology.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>Why are <em>human rights</em> a better compass than "greatest good for the greatest number" when technology and humanity cross? When, if ever, might outcomes override a right?</li>
+    <li>Should a self-driving car ever be programmed to sacrifice its passenger to save more pedestrians? Who should decide the rule — the company, the government, the buyer, or the public?</li>
+    <li>Is algorithmic bias worse than human bias, better, or just different? Why might automated discrimination be harder to fight?</li>
+    <li>Is widespread public facial recognition ever compatible with a free society? Where would you draw the line?</li>
+    <li>Is Carr right that we are losing deep thought — or just gaining new skills? What have you personally gained and lost?</li>
+  </ol>
+  <h3>Activity 1 — Dilemma role-play / debate (group work)</h3>
+  <p>Assign each group a case (a care robot, an AV crash rule, a biased hiring AI, a city facial-recognition system) and roles (developer, affected person, human-rights advocate, government regulator). Debate the case, then have the class propose the human-rights "guardrails" that should apply.</p>
+  <h3>Activity 2 — Local policy scan (the syllabus assessment)</h3>
+  <p>Find and examine local or national government policies that protect the well-being of the person in the face of new technologies (e.g., the Data Privacy Act, proposed AI regulation, anti-cybercrime or anti-deepfake measures). Present what the policy protects, one gap, and one recommendation, scored on Content and Relevance (30%), Analysis (40%), Creativity &amp; teamwork (30%).</p>
+  <h3>Activity 3 — "Deep work" experiment (individual, take-home)</h3>
+  <p>For one week, practice one undistracted, deep-reading or deep-thinking session daily (phone away). Journal what you notice about your attention, and reflect on Carr's argument in light of your experience. 500 words.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. What is an "ethical dilemma," and why do the cases in this chapter count as dilemmas?</summary><p>A situation where important values genuinely conflict and no option is cost-free; the cases (AV crashes, surveillance, AI decisions) all force trade-offs among real goods with no perfect answer.</p></details>
+  <details><summary>2. What is the relationship between human rights and human dignity?</summary><p>Human rights are the basic entitlements every person has by being human; they rest on human dignity — the inherent, equal worth of every person, never to be treated as a mere means.</p></details>
+  <details><summary>3. Name three human rights especially stressed when technology and humanity cross.</summary><p>Any three: privacy; equality/non-discrimination; freedom of thought/expression; life, liberty, and security; and the right to a remedy.</p></details>
+  <details><summary>4. Why are Asimov's Three Laws of Robotics not an actual solution to robot ethics?</summary><p>Because real moral situations are ambiguous and values conflict; Asimov's own stories show the rules breaking down. Ethics can't be reduced to a few lines of code.</p></details>
+  <details><summary>5. How do autonomous vehicles make the "trolley problem" real?</summary><p>An AV may have to be programmed in advance for whom to protect in an unavoidable crash, forcing engineers to encode an ethical theory into a product — with no neutral option.</p></details>
+  <details><summary>6. What is algorithmic bias, and which right does it most threaten?</summary><p>AI learning and scaling human biases from historical data; it most threatens the right to equality and non-discrimination, while looking deceptively "objective."</p></details>
+  <details><summary>7. What is the "accountability gap" (many hands problem)?</summary><p>The difficulty of assigning responsibility when an algorithm harms someone (programmer? company? data? machine?), which undermines the right to a remedy.</p></details>
+  <details><summary>8. Why is "I have nothing to hide" a weak defense of surveillance?</summary><p>Privacy is not about hiding wrongdoing; it protects the freedom to think, dissent, and become oneself, and guards against the chilling effect and concentrated power — freedoms whose loss harms everyone.</p></details>
+  <details><summary>9. Summarize Carr's argument in "Is Google Making Us Stupid?"</summary><p>The brain is neuroplastic; the internet trains it for fast, shallow, distracted processing, potentially eroding our capacity for deep reading and sustained, contemplative thought — even as it brings real benefits.</p></details>
+  <details><summary>10. Name two governance frameworks responding to these dilemmas and one principle they share.</summary><p>The EU AI Act and UNESCO's Recommendation on the Ethics of AI (also the PH Data Privacy Act); shared principles include human oversight, transparency/explainability, fairness, accountability, and privacy.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>"The Ethical Dilemmas of Robotics," BBC News (news.bbc.co.uk).</li>
+    <li>Carr, Nicholas. "Is Google Making Us Stupid?" <em>The Atlantic</em>, 2008; and <em>The Shallows: What the Internet Is Doing to Our Brains</em>, 2010.</li>
+    <li>Asimov, Isaac. <em>I, Robot</em> (the Three Laws and their breakdown).</li>
+    <li>United Nations. <em>Universal Declaration of Human Rights</em>, 1948.</li>
+    <li>Kant, Immanuel. <em>Groundwork of the Metaphysics of Morals</em> (humanity as an end in itself).</li>
+    <li>Zuboff, Shoshana. <em>The Age of Surveillance Capitalism</em>, PublicAffairs, 2019 (selections).</li>
+    <li>Crawford, Kate. <em>Atlas of AI</em>, Yale University Press, 2021; Coeckelbergh, Mark. <em>AI Ethics</em>, MIT Press, 2020.</li>
+    <li>Documentary: <em>Coded Bias</em> (2020), on algorithmic bias and facial recognition.</li>
+    <li>UNESCO. <em>Recommendation on the Ethics of Artificial Intelligence</em>, 2021; European Union. <em>Artificial Intelligence Act</em>, 2024.</li>
+    <li>Republic of the Philippines. <em>Data Privacy Act of 2012</em> (RA 10173); National Privacy Commission; DOST–PCIEERD <em>AI Roadmap</em>.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 6 Main Lecture &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

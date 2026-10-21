@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 11 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .mandated{display:inline-block;margin-top:12px;background:#7a1f1f;color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 14px;border-radius:12px;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit III · Week 16</div>
+  <h1>Chapter 11: Climate Change and Environmental Awareness — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="mandated">CHED-Mandated Topic</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 11 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. A student says, "The greenhouse effect is natural, so warming can't be a problem." The BEST correction is:</p>
+    <ol><li>The greenhouse effect is not real.</li><li>The natural effect is necessary for life; the problem is its human-driven <em>intensification</em>, which traps excess heat.</li><li>Warming is caused by the sun only.</li><li>CO₂ does not trap heat.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The issue is enhancement of a natural process, not the process itself. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. The chapter ties climate change to Chapter 1's Industrial Revolution to show that:</p>
+    <ol><li>Industrialization had no benefits.</li><li>The same fossil-fuel technology that lifted billions from poverty is now destabilizing the climate — technologies bring both benefit and long-delayed cost.</li><li>The Industrial Revolution never happened.</li><li>Climate change began in 2000.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The double-edged-technology lesson at planetary scale. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. That CO₂ traps heat (1850s–60s) and fossil-fuel warming was predicted in 1896 is cited to counter:</p>
+    <ol><li>The claim that climate science is new, uncertain, or fragile.</li><li>The claim that CO₂ exists.</li><li>The greenhouse effect.</li><li>The IPCC.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>A.</strong> The history shows the science is old and robust — a defense against misinformation. B, C, D misread the point.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. "Both sides" framing of climate science can mislead because:</p>
+    <ol><li>There are exactly two equal sides.</li><li>One "side" represents 97%+ of experts and a century of physics, while the other is substantially funded by those who profit from delay — false balance.</li><li>Scientists never disagree about anything.</li><li>Journalism should ignore science.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> False balance misrepresents a lopsided consensus. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. The parallel between climate denial and tobacco-industry tactics BEST illustrates which Chapter 8 concept?</p>
+    <ol><li>The DIKW hierarchy.</li><li>Manufactured doubt / disinformation — deliberately creating false controversy to delay a response to settled science.</li><li>The liar's dividend only.</li><li>Filter bubbles.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Manufactured doubt is organized disinformation. The others are related but distinct.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. Why is a "1.5°C" global average change not as small as it sounds?</p>
+    <ol><li>Because degrees are meaningless.</li><li>Because a few degrees of global <em>average</em> change drives large shifts in extremes, ecosystems, and sea level — the last Ice Age was only ~5°C cooler globally.</li><li>Because local weather never changes.</li><li>Because it refers to a single day.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Small average shifts produce huge systemic effects. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. A climate "tipping point" connects to Chapter 7's reasoning because both involve:</p>
+    <ol><li>Cheap energy.</li><li>Irreversibility — thresholds beyond which mistakes cannot be undone, so acting before crossing them is essential.</li><li>Corporate profit.</li><li>Deepfakes.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Irreversibility links tipping points to existential-risk logic. A, C, D are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. Warmer oceans "supercharging" typhoons is an example of which impact category, and why does it matter to the Philippines?</p>
+    <ol><li>Economic only; irrelevant to the PH.</li><li>Meteorological — and it matters acutely because the Philippines faces ~20 storms a year in the world's most active cyclone basin.</li><li>Geopolitical only.</li><li>It does not affect the Philippines.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Stronger storms are a meteorological impact of grave PH concern. A, C, D understate or deny it.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. The defining moral fact of the Philippine climate case is that the country:</p>
+    <ol><li>Is the world's largest emitter.</li><li>Contributed very little to emissions yet suffers among the most — the essence of climate injustice.</li><li>Is unaffected by climate change.</li><li>Caused Typhoon Haiyan.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Low responsibility + high harm = climate injustice. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. In Hardin's tragedy of the commons, the "tragedy" is that:</p>
+    <ol><li>One selfish person ruins everything for everyone else deliberately.</li><li>Individually <em>rational</em> choices (each adding cattle) sum to a collectively catastrophic outcome — everyone loses.</li><li>The pasture was never shared.</li><li>Cooperation is impossible by nature.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Rational individual acts → collective ruin is the core. A misstates it; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Applying the commons model, why is individual virtue alone insufficient to solve climate change?</p>
+    <ol><li>Because individual action never matters.</li><li>Because the atmosphere is a shared commons where free-riding is rational; aligning private incentives with the common good requires cooperative rules and governance.</li><li>Because governments can do nothing.</li><li>Because the problem is purely technical.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Structural coordination is needed (Ch. 6 lesson). A dismisses individual action wrongly; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. Hardin's "mutual coercion, mutually agreed upon" points toward which kind of climate solution?</p>
+    <ol><li>Purely individual lifestyle change.</li><li>Collective rules and governance — international agreements, national regulation, shared norms.</li><li>Doing nothing.</li><li>Manufactured doubt.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Agreed collective rules are the commons solution. A is insufficient; C and D are the opposite.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. "Common but differentiated responsibilities" holds that:</p>
+    <ol><li>All nations must do exactly the same thing.</li><li>All must act, but nations with greater historical responsibility and capacity must do more, including funding vulnerable nations.</li><li>Only poor nations must act.</li><li>No nation is responsible.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Differentiated obligation by responsibility/capacity. A, C, D misstate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. The "Loss and Damage" Fund (COP28, 2023) is best understood as:</p>
+    <ol><li>A loan to fossil-fuel companies.</li><li>A partial recognition of climate justice — helping vulnerable nations cope with harms they did not cause.</li><li>A tax on poor nations.</li><li>A ban on renewables.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It operationalizes climate-justice responsibility. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. Intergenerational justice in climate ethics connects to Chapter 7 because both concern:</p>
+    <ol><li>Cheap energy today.</li><li>Obligations to future people who cannot consent to the risks we impose on them.</li><li>Corporate patents.</li><li>Deep reading.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Duties to the unconsenting future link the chapters. A, C, D are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. The chapter calls climate change "fundamentally an energy problem" because:</p>
+    <ol><li>Energy is unrelated to emissions.</li><li>Most emissions come from the fossil fuels that power civilization, so solving climate change requires transforming the entire energy system.</li><li>Renewables cause warming.</li><li>Energy use is trivial.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Decarbonizing energy is the core solution. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Geothermal energy and OTEC are highlighted as especially fitting for the Philippines because they:</p>
+    <ol><li>Are impossible in the tropics.</li><li>Suit its natural endowments — volcanic geology (geothermal) and warm tropical seas (OTEC) — a national asset (Ch. 3).</li><li>Require no technology.</li><li>Emit more CO₂ than coal.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> They match Philippine geography — fitting science to local conditions. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Why does the chapter insist the energy transition must be "just"?</p>
+    <ol><li>Justice is irrelevant to policy.</li><li>Workers and communities dependent on fossil fuels (a Luddite echo) must be supported, or the transition will be resisted and unfair.</li><li>Only the rich should transition.</li><li>Fossil-fuel workers deserve no consideration.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A just transition supports the displaced (Ch. 1). A, C, D contradict justice.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. The chapter's recommended response to "eco-anxiety" is:</p>
+    <ol><li>Denial of the problem.</li><li>Empowered, informed, collective action — which is itself an antidote to climate anxiety.</li><li>Paralyzing despair.</li><li>Ignoring the science.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Action counters anxiety; denial and despair are the two failures. A, C, D are those failures.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Synthesizing the chapter, the MOST defensible thesis is that climate change is:</p>
+    <ol><li>A hoax with two equal scientific sides.</li><li>A settled scientific reality whose <em>response</em> is a matter of politics, ethics, and justice — a tragedy of the commons that solutions exist for, if humanity chooses, collectively and fairly, to act.</li><li>Unsolvable, so despair is rational.</li><li>A purely technical problem with no ethical dimension.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It integrates settled science, the commons, justice, and choice. A is denial; C is despair; D ignores justice.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. Ice cores showing CO₂ now far above any level in 800,000 years function as evidence that:</p>
+    <ol><li>CO₂ has always been this high.</li><li>Current CO₂ levels are historically extraordinary and align with the industrial era — supporting the human-cause conclusion.</li><li>Ice cannot record CO₂.</li><li>The climate never changes naturally.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The record shows an unprecedented, human-timed spike. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Which correctly pairs a driver of climate change with its mechanism?</p>
+    <ol><li>Deforestation → adds a carbon sink.</li><li>Fossil-fuel burning → releases long-buried CO₂; deforestation → removes a carbon sink and releases stored carbon.</li><li>Renewables → emit the most CO₂.</li><li>Agriculture → absorbs all methane.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Correct mechanisms. A reverses deforestation's effect; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. A politician says "climate has always changed naturally, so humans aren't responsible." The BEST rebuttal notes that:</p>
+    <ol><li>Climate has never changed before.</li><li>Natural change is real, but the current rapid warming matches the industrial CO₂ spike and is explained by well-understood physics — natural variation does not account for it.</li><li>Physics is irrelevant.</li><li>Scientists have not studied this.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Acknowledge natural change while explaining the human fingerprint. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Coral bleaching is listed under which impact category, and why is it acute for the Philippines?</p>
+    <ol><li>Geopolitical; the PH has no reefs.</li><li>Biological/ecological — and acute because the Philippines sits in the biodiverse Coral Triangle, with reefs vital to fisheries and coasts.</li><li>Economic only; unrelated to biodiversity.</li><li>It has no effect on people.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Reef loss is ecological and hits PH food/coastal security (Ch. 9). A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Typhoon Haiyan (Yolanda, 2013) is used in the chapter as:</p>
+    <ol><li>Proof climate change is a hoax.</li><li>A symbol of Philippine climate vulnerability — one of the most powerful landfalling storms ever, killing over 6,000.</li><li>An event unrelated to climate.</li><li>A minor storm.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It exemplifies frontline vulnerability. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. The chapter links the tragedy of the commons to the Filipino value of <em>kapwa</em> to argue that:</p>
+    <ol><li>Filipino values are irrelevant to climate.</li><li>Solving the commons requires shared responsibility — extending <em>kapwa</em> and <em>kabutihang panlahat</em> to all humanity and future generations.</li><li>Only individuals matter.</li><li>The commons cannot be shared.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Relational ethics is the disposition the commons needs (Ch. 5). A, C, D miss it.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Which is an example of MITIGATION rather than adaptation?</p>
+    <ol><li>Building higher sea walls.</li><li>Replacing a coal plant with solar and wind to cut emissions.</li><li>Installing typhoon early-warning systems.</li><li>Planting mangroves for storm buffering.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Cutting emissions is mitigation. A, C, D are adaptation.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. Which is an example of ADAPTATION rather than mitigation?</p>
+    <ol><li>Carbon pricing.</li><li>Deploying climate-resilient crop varieties and flood defenses.</li><li>Building offshore wind farms.</li><li>Electrifying transport.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Adjusting to unavoidable impacts is adaptation. A, C, D are mitigation.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. The falling cost of solar and wind is described as "a real reason for hope" because it:</p>
+    <ol><li>Proves the problem is solved.</li><li>Makes clean energy increasingly the economically sensible choice, not just the moral one — easing the transition.</li><li>Means fossil fuels are cheaper.</li><li>Removes the need for policy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Cheap renewables improve feasibility. A and D overstate; C is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. The chapter says the obstacles to the transition are "less technical than political and economic." The BEST support is:</p>
+    <ol><li>Renewable technology does not exist.</li><li>Solutions exist and are increasingly cheap; the barriers are the collective-action problem, entrenched fossil interests, and achieving a just transition.</li><li>Physics forbids clean energy.</li><li>No one wants clean energy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The barriers are social/political, not technical. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Why is climate justice called "a precondition for global cooperation," not a soft add-on?</p>
+    <ol><li>Because justice does not matter.</li><li>Because vulnerable, low-emitting nations cannot fairly be asked to sacrifice development for a problem they did not create unless the responsible, capable nations lead and support them.</li><li>Because only the poor should act.</li><li>Because cooperation is impossible.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Fairness enables the cooperation the commons requires. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. The gap between what COP summits agree and what the science says is needed is itself an STS lesson about:</p>
+    <ol><li>The ease of collective action.</li><li>The difficulty of collective action / solving a tragedy of the commons among many self-interested actors.</li><li>The failure of science.</li><li>The irrelevance of politics.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The agreement–need gap illustrates the commons difficulty. A, C, D misread it.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. Geothermal energy is called a Philippine "national asset" because it:</p>
+    <ol><li>Requires importing all technology.</li><li>Exploits the country's volcanic geology (the Ring of Fire) — a low-carbon resource suited to local conditions.</li><li>Emits more CO₂ than oil.</li><li>Only works in cold climates.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Volcanic geology makes geothermal a local strength. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. A "green economy" (UNEP) is BEST described as one that:</p>
+    <ol><li>Maximizes growth regardless of environmental cost.</li><li>Delivers human prosperity <em>within</em> environmental limits — decoupling flourishing from environmental destruction.</li><li>Abolishes all economic activity.</li><li>Ignores poverty.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Prosperity within limits is the green-economy idea (Ch. 5). A, C, D misstate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. The chapter frames climate change as "the definitive proof that a fact and a response are different things" because:</p>
+    <ol><li>The science is uncertain.</li><li>The science is settled, yet what humanity does about it is a matter of politics, economics, and ethics — which science cannot decide.</li><li>Facts and responses are identical.</li><li>There is no response possible.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Settled science + open response is the is/ought lesson. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. Which everyday reasoning error does "1.5°C sounds trivial" represent, and how is it exploited?</p>
+    <ol><li>None; it is trivial.</li><li>Misjudging global averages by everyday intuition — exploited by denialists to make catastrophic change sound minor.</li><li>Overestimating the danger.</li><li>A statistical certainty.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Intuition about "degrees" misleads and is weaponized. A, C, D are wrong.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Restoring mangroves and forests is a climate response that is BOTH:</p>
+    <ol><li>Neither mitigation nor adaptation.</li><li>Mitigation (they absorb carbon) AND adaptation (they buffer storms/floods) — while also protecting biodiversity (Ch. 9).</li><li>Only economic.</li><li>Harmful to coasts.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Natural solutions do double duty and aid biodiversity. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. The chapter's claim that "action is an antidote to climate anxiety" implies that the healthiest stance is:</p>
+    <ol><li>Denial.</li><li>Empowered engagement — converting concern into informed, collective action.</li><li>Despair and withdrawal.</li><li>Ignoring the issue.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Engagement counters anxiety; the others are the failures. A, C, D are those failures.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. How does this mandated chapter serve as the "final exam" of the whole STS course?</p>
+    <ol><li>It has nothing to do with earlier chapters.</li><li>It gathers co-production, power-vs-wisdom, the good life, justice/rights, existential risk, and the fact/response distinction into one urgent, real problem.</li><li>It only covers weather.</li><li>It replaces all prior content.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It integrates the course's themes. A, C, D understate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Applying the whole chapter, the wisest overall stance on climate change is to:</p>
+    <ol><li>Deny it to avoid anxiety.</li><li>Accept the settled science, recognize the commons and justice dimensions, support a fast and just energy transition, and act at both personal and structural levels — because the future is a choice, not a fate.</li><li>Despair, since it is hopeless.</li><li>Wait for technology to fix it automatically.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It combines realism, justice, and empowered action. A is denial; C is despair; D is complacency.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 11's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (commons, climate justice, mitigation/adaptation) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. Climate change is described as a "tragedy of the commons" and a question of justice. Argue how the world should overcome the collective-action problem over the coming decades, and what a just global response would require — including what wealthy nations owe vulnerable ones like the Philippines.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer uses Hardin's model to explain why climate change resists solution (individually rational emitting sums to collective ruin; free-riding is tempting) and argues that the remedy is "mutual coercion, mutually agreed upon" — binding international agreements, national regulation, carbon pricing, and shared norms that align private incentives with the common good, since individual virtue alone cannot solve a commons problem. On justice, it should invoke historical responsibility, unequal impact, and intergenerational justice, and "common but differentiated responsibilities": wealthy high-emitters must cut fastest and provide climate finance (the Loss and Damage Fund, adaptation funding, technology transfer) to nations like the Philippines that emitted little but suffer most. The best essays argue that justice is a precondition, not an add-on — vulnerable nations cannot fairly sacrifice development for a crisis they did not cause unless the responsible lead and support them — and honestly note the gap between COP pledges and what the science demands, framing it as the central STS difficulty of our time.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. The Philippines is among the most climate-vulnerable nations yet contributed almost nothing to the problem. Argue what the Philippines should do over the next decade — balancing adaptation (surviving impacts), mitigation (its own transition), and advocacy for climate justice — and how it can turn its frontline experience into moral leadership.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer builds a three-part national strategy. <em>Adaptation</em> (most urgent given exposure): strengthen early-warning and disaster science (PAGASA, Project NOAH), climate-resilient agriculture and infrastructure, restore natural buffers (mangroves, reefs, forests — also biodiversity gains, Ch. 9), and protect coastal communities from sea-level rise and supertyphoons. <em>Mitigation</em>: pursue its own clean transition using national assets — geothermal (Ring of Fire), solar, wind, and emerging options like OTEC — while ensuring a just transition for affected workers, and meet/raise its NDC. <em>Advocacy</em>: use its frontline moral authority to press for climate finance, Loss and Damage funding, and stronger global emissions cuts, leading the vulnerable-nations bloc. The best essays connect this to nation-building (Ch. 3) — climate resilience as development — and to <em>kapwa</em> (Ch. 5), arguing that the Philippines' lived experience of climate injustice gives it credibility to speak for a just global response, turning victimhood into leadership.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. Some respond to climate change with denial, others with despair. Argue for a third path — empowered, informed action — and evaluate what individuals, governments, and your generation specifically can and cannot do. Is genuine hope justified, and on what basis?</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer rejects both denial (contradicted by settled science and often driven by manufactured doubt, Ch. 8) and despair (which, like denial, produces inaction) in favor of empowered engagement. It should distinguish what individuals can do (reduce footprints, and crucially act as citizens — voting, advocacy, pressure on institutions) from the decisive structural changes only collective/governmental/corporate action can achieve (the commons lesson: individual virtue is necessary but insufficient). On hope: the essay should ground it in real evidence — collapsing renewable costs, rapid clean-energy deployment, and the fact that solutions exist and are increasingly economical — while honestly acknowledging the political and justice obstacles. The best essays argue that the young generation has both the most at stake and rising power (as voters, workers, and advocates), that action is itself an antidote to eco-anxiety, and that hope here is not naïve optimism but "active hope" — justified precisely because the future is a choice, not a fate, and this generation is among those who will make it.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 11 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

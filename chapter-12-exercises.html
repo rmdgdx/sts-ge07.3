@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 12 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit III · Week 17</div>
+  <h1>Chapter 12: Emerging Frontiers — AI, Quantum, and the New Space Age — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 12 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. Society ignored social media's harms until they were entrenched and hard to fix. This is a textbook example of:</p>
+    <ol><li>Horizon scanning done well.</li><li>The Collingridge dilemma — the harms became clear only after the technology was too embedded to easily change.</li><li>Dual-use.</li><li>Post-quantum cryptography.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Late-recognized, hard-to-fix harm is the Collingridge trap. A is the opposite; C and D are different concepts.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. The Collingridge dilemma implies that responsible governance of a new technology should:</p>
+    <ol><li>Wait for certain proof of harm before acting.</li><li>Engage the technology early, under uncertainty, because that is when it is still shapeable.</li><li>Never regulate technology.</li><li>Ban all emerging technologies.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Acting early under uncertainty is the dilemma's lesson. A guarantees acting too late; C and D are extremes.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. "The future is already here — it's just not evenly distributed" is used to argue that emerging-tech literacy is:</p>
+    <ol><li>Impossible, since the future is unknowable.</li><li>The skill of seeing frontier technologies clearly before they spread widely, so we can prepare and shape them.</li><li>Only for scientists.</li><li>Irrelevant to ordinary citizens.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The quote frames anticipation as a learnable civic skill. A, C, D dismiss it.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Calling generative AI a "general-purpose technology" (like electricity) BEST implies that:</p>
+    <ol><li>It will affect only the tech industry.</li><li>It will reshape nearly every field, so its governance and social effects are broad, not niche.</li><li>It is harmless.</li><li>It is identical to a calculator.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> General-purpose = economy-wide impact. A, C, D understate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. The chapter says the key AI question is not "is AI good or bad?" but "what kind of society do we build around it?" This reflects which course-long principle?</p>
+    <ol><li>Technological determinism.</li><li>That technology is a choice-dependent amplifier; outcomes hinge on the social choices around it (co-production).</li><li>That AI has no effects.</li><li>Scientism.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Co-production/choice-dependence is the framing. A is the opposite; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. A student uses AI to write an essay they were meant to think through themselves. The chapter's lens frames the cost as:</p>
+    <ol><li>Nothing; efficiency is always good.</li><li>Losing something essential (skill, understanding, originality) — AI as a tool must serve human ends, not replace the growth that makes us human (Chs. 4–6).</li><li>A violation of copyright only.</li><li>Purely a technical error.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The power-vs-flourishing distinction applied to learning. A ignores the loss; C and D miss the point.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Why is it inaccurate to call a quantum computer simply "a much faster computer"?</p>
+    <ol><li>Because it is slower.</li><li>Because it is powerful for a narrow class of specific problems, not for everything — a different kind of machine, not just a faster one.</li><li>Because it uses bits.</li><li>Because it does not exist.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Quantum advantage is problem-specific. A and C are false; D is inaccurate (early machines exist).</p></details></div>
+
+  <div class="mcq"><p class="stem">8. The "harvest now, decrypt later" threat is a compelling case for anticipatory governance because it shows that:</p>
+    <ol><li>Encryption is already broken today.</li><li>Waiting until the quantum threat is certain would be too late — data stolen now could be decrypted later — so post-quantum defenses must be built in advance.</li><li>Quantum computers are harmless.</li><li>Cybersecurity does not matter.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The future threat justifies present action — the Collingridge insight applied. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Quantum computing "could design life-saving drugs or crack the world's secrets." This BEST illustrates:</p>
+    <ol><li>The Collingridge dilemma.</li><li>Dual-use — the same power serves beneficial and harmful ends.</li><li>Horizon scanning.</li><li>The Kessler syndrome.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> One capability, two opposite uses = dual-use. The others name different concepts.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. The "Kessler syndrome" from crowded orbits is described as an STS problem because it is:</p>
+    <ol><li>A purely technical glitch.</li><li>A tragedy of the commons in space — shared orbits degraded by many actors' individually rational launches.</li><li>Unrelated to Earth.</li><li>Beneficial for astronomy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Orbital debris is a commons problem (Ch. 11). A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Mega-constellations bringing internet to remote areas, while crowding orbits and brightening the sky, exemplify the course's insistence on:</p>
+    <ol><li>Seeing technology as purely good.</li><li>Holding both real benefits and real costs — the two-sided view.</li><li>Rejecting all satellites.</li><li>Ignoring the night sky.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The balanced STS stance. A and C are one-sided; D dismisses a real cost.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. For the Philippines, the chapter frames space primarily as:</p>
+    <ol><li>Spectacle and prestige only.</li><li>Survival and development — typhoon tracking, disaster response, agriculture, and connectivity for an archipelago (via PhilSA).</li><li>Irrelevant.</li><li>Purely military.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Practical, development-focused value. A, C, D understate or misframe it.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. "Convergence" is called the deepest frontier challenge because it:</p>
+    <ol><li>Slows all technology down.</li><li>Combines AI, bio, nano, and quantum so they amplify each other — raising pace, power, and unpredictability, and (via BCIs) blurring the human/technological line.</li><li>Only affects one field.</li><li>Makes governance easy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Mutual amplification raises stakes and difficulty. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. "Neurorights" extend which earlier chapter's concern to a new frontier?</p>
+    <ol><li>Chapter 11's climate justice.</li><li>Chapter 6's sovereignty over one's own mind — now made literal as BCIs could access the inside of the brain.</li><li>Chapter 9's biodiversity.</li><li>Chapter 1's Neolithic Revolution.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Mental privacy/integrity extends Ch. 6's cognitive-autonomy concern. The others are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. BCIs illustrate the two-sided view MOST clearly because they can:</p>
+    <ol><li>Only harm people.</li><li>Restore movement/communication to the disabled (profound good) yet raise enhancement, merging, and mental-privacy concerns (Ch. 7).</li><li>Only enhance the healthy.</li><li>Do nothing useful.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Therapeutic promise plus deep risks. A, C, D are one-sided or false.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. The chapter reframes Chapter 3's choice for the emerging frontier as:</p>
+    <ol><li>Whether the Philippines should use any technology at all.</li><li>Whether the country will be an adopter, a creator/shaper, or risk being left behind — a decision requiring investment, education, and governance.</li><li>Whether technology is good or bad.</li><li>Whether to ban foreign technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Adopter/creator/left-behind is the sharpened choice. A, C, D misframe it.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Which is the STRONGEST argument that the Philippines can claim a place at the frontier?</p>
+    <ol><li>It has no scientists.</li><li>It has begun deliberate action (National AI Strategy/NAICRI, PhilSA, Innovation/Startup Acts, Pagtanaw 2050) and real assets (a young, digitally fluent, English-speaking population) — if paired with investment and governance.</li><li>Frontier technology requires nothing.</li><li>Adoption alone guarantees leadership.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Deliberate institutions plus human assets ground the hope. A is false; C and D are naïve.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Why must governance of emerging technology be "adaptive and humble," per the chapter?</p>
+    <ol><li>Because the future can be predicted precisely.</li><li>Because prediction is impossible, so rules must be able to learn and change as understanding grows.</li><li>Because governance should never change.</li><li>Because technology has no effects.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Uncertainty demands adaptive governance. A, C, D contradict it.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. The chapter's line "keeping the human person the measure is not a constraint on progress; it is the definition of progress worth having" BEST means:</p>
+    <ol><li>Ethics slows down real progress.</li><li>Progress that diminishes human dignity is not genuine progress; serving human flourishing is what makes advancement worthwhile.</li><li>Human dignity is irrelevant to technology.</li><li>Only speed matters.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It redefines progress around flourishing (Chs. 4–5). A, C, D are the errors it rejects.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Synthesizing this capstone chapter and the course, the MOST defensible thesis is:</p>
+    <ol><li>Emerging technologies will inevitably save or doom us on their own.</li><li>Emerging technologies are choice-dependent amplifiers; through anticipatory, human-centered governance and engaged citizenship, we shape whether they enhance or diminish human dignity — the future is a frontier we shape, not a fate we suffer.</li><li>The future is unknowable, so we should do nothing.</li><li>Only corporations should decide the technological future.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It integrates the course's themes into the forward-looking thesis. A is determinism; C is paralysis; D abandons democratic agency.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. Foresight (like Pagtanaw 2050) is BEST described as an attempt to:</p>
+    <ol><li>Predict the future with certainty.</li><li>Map plausible futures and prepare for them, treating the future as something to shape.</li><li>Ignore the future.</li><li>Ban new technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Foresight prepares, not predicts. A overstates; C and D are opposite.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. A country develops post-quantum cryptography before quantum computers can break encryption. This is:</p>
+    <ol><li>Reactive governance.</li><li>Anticipatory governance — acting early under uncertainty to prevent a foreseeable harm.</li><li>The Kessler syndrome.</li><li>A dual-use failure.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Acting before the harm arrives is anticipatory governance. The others misapply.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. Superposition allows a qubit to:</p>
+    <ol><li>Be only 0.</li><li>Represent a blend of 0 and 1 at once, enabling many possibilities to be explored simultaneously.</li><li>Store no information.</li><li>Work only when off.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Superposition is the 0-and-1 blend. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. The chapter cautions that quantum computers are "still early, difficult, and not yet at large practical scale." This reflects:</p>
+    <ol><li>Hype.</li><li>Honest, balanced appraisal — avoiding both overstatement and dismissal.</li><li>Denial that quantum computing exists.</li><li>Certainty about timelines.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The two-sided, honest stance. A, C, D are the errors avoided.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Which is a genuine promise of quantum computing tied to earlier chapters?</p>
+    <ol><li>Instantly solving every problem.</li><li>Simulating molecules to accelerate drug discovery, batteries, and clean energy (Chs. 9–11).</li><li>Breaking all physics.</li><li>Replacing the internet.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Molecular simulation is a real, connected promise. A, C, D overstate or misstate.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. Satellites for weather, disaster response, agriculture, and climate monitoring are called space's "greatest everyday benefit" because they:</p>
+    <ol><li>Are the most profitable.</li><li>Provide indispensable data that saves lives and supports development on Earth (Chs. 3, 9, 11).</li><li>Are the most visible.</li><li>Have no downsides.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Earth-observation data is the practical payoff. A, C, D miss it.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. The old age of space (Ch. 1's Space Race) differed from the New Space Age chiefly in that the new age is:</p>
+    <ol><li>Government-only and prestige-driven.</li><li>Commercialized, cheaper, and multi-national — open to companies, universities, and smaller nations.</li><li>Impossible.</li><li>Purely military.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Commercialization and access define the New Space Age. A describes the old age; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. Bright satellite "trains" interfering with astronomy is raised to show that emerging technologies can:</p>
+    <ol><li>Only benefit science.</li><li>Impose subtle cultural and scientific costs (altering our relationship with the night sky) alongside their benefits.</li><li>Never affect astronomy.</li><li>Improve stargazing.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A real, non-obvious cost. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Which best states the governance question the New Space Age raises?</p>
+    <ol><li>Nothing needs governing in space.</li><li>Who owns space, orbits, and resources — and how to prevent domination by a few and a commons collapse — under decades-old treaties.</li><li>Only astronauts matter.</li><li>Space cannot be governed.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Ownership, equity, and commons governance are the issues. A, C, D dismiss them.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. Which scenario BEST illustrates technological convergence?</p>
+    <ol><li>A faster version of an old app.</li><li>AI accelerating gene editing while quantum computing supercharges the AI and nanotech enables new sensors — each amplifying the others.</li><li>A single technology used alone.</li><li>Turning off all devices.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Mutual amplification across fields is convergence. A, C, D are not.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. A BCI restores speech to a paralyzed patient but could later enable cognitive enhancement and mental surveillance. This spans which two chapters most directly?</p>
+    <ol><li>Chapters 1 and 2.</li><li>Chapter 7 (enhancement) and Chapter 6 (mental privacy/neurorights).</li><li>Chapters 8 and 9.</li><li>Chapters 3 and 11.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Enhancement (7) plus mind privacy (6) are the touchpoints. The others are less direct.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. "Anticipatory, not reactive" governance is justified by which concept from this chapter?</p>
+    <ol><li>The Kessler syndrome.</li><li>The Collingridge dilemma — waiting for certain harm means acting too late.</li><li>Superposition.</li><li>Dual-use only.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Collingridge grounds early action. A, C, D are different ideas.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. The chapter warns against "the paralysis of excessive caution" as well as recklessness. This balanced stance echoes which earlier chapter?</p>
+    <ol><li>Chapter 8 only.</li><li>Chapter 7 — taking risk seriously while avoiding both doomerism and denial (and precaution's own costs).</li><li>Chapter 2 only.</li><li>Chapter 5 only.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The neither-doomer-nor-denier balance is from Ch. 7. The others are less apt.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. For the Philippines, the risk of remaining a pure "adopter" of frontier technologies is that it could:</p>
+    <ol><li>Capture all the value automatically.</li><li>Consume technologies without capturing their value or shaping their terms — while still exposed to their harms (AI job loss, quantum security threats, inequitable space access).</li><li>Avoid all harms.</li><li>Become the global leader by default.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Dependence risks value loss plus exposure to harms (Ch. 3). A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. Which Filipino strengths does the chapter identify as real frontier assets?</p>
+    <ol><li>Abundant fossil fuels.</li><li>A young, English-speaking, digitally fluent, highly online population — if paired with investment, education, and governance.</li><li>The absence of any tech sector.</li><li>Isolation from global networks.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Human-capital assets are the strength cited. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. "Keeping the human person the measure" applied to AI specifically means:</p>
+    <ol><li>Letting AI redefine humans as data to be optimized.</li><li>Using AI as a tool that serves human ends, with dignity, rights, and flourishing as the standard — not reducing people to standing-reserve (Ch. 4).</li><li>Maximizing engagement metrics.</li><li>Removing humans from all decisions.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Human dignity as the measure. A, C, D are the failures it guards against.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Why does the chapter say governing frontier technologies "justly requires international cooperation and concern for future generations"?</p>
+    <ol><li>Because these technologies are local and short-lived.</li><li>Because they are global and long-lasting, so their governance implicates the commons (Ch. 11) and those who cannot consent (Chs. 5, 7).</li><li>Because only one nation is affected.</li><li>Because the future does not matter.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Global, long-lasting effects demand cooperation and intergenerational concern. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. The chapter's phrase "make our collective wisdom race to keep up" with our power restates which course-long theme?</p>
+    <ol><li>Technological determinism.</li><li>Chapter 7's "power outrunning wisdom" — closing the gap between what we can do and what we should do.</li><li>Scientism.</li><li>That wisdom is unnecessary.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is the power/wisdom gap restated. A, C, D are the opposite or irrelevant.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Which response best embodies the chapter's ideal of "clear-eyed anticipation"?</p>
+    <ol><li>Believing AI will surely save humanity, so ignore risks.</li><li>Assuming quantum computing is doom, so ban research.</li><li>Studying an emerging technology's plausible benefits and harms, its dual-use and Collingridge challenges, and steering it through governance — without hype or fear.</li><li>Refusing to think about the future at all.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> Balanced, anticipatory engagement is the ideal. A is hype; B is fear; D is avoidance.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. As the course's capstone, this chapter's final lesson is that:</p>
+    <ol><li>Science and technology develop on their own, beyond human influence.</li><li>Science and technology are human and social activities, and their future depends on informed, ethical, engaged human choice — the future is a frontier we shape, not a fate we suffer.</li><li>The future is already decided.</li><li>Only experts can shape technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It restates the course's foundational thesis, forward-looking. A and C are determinism; D excludes citizens.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 12's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (Collingridge, dual-use, anticipatory governance) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. The Collingridge dilemma holds that technologies are easiest to shape before we know we need to. Choose one emerging technology (generative AI, quantum computing, BCIs, or the new space age) and argue how society should govern it now, given that we cannot yet be certain of its effects. What would anticipatory, human-centered governance concretely require?</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer states the Collingridge dilemma precisely and applies it to a chosen technology. For generative AI, for example: because harms (bias, misinformation, job loss, concentration) are becoming visible while the technology is still shapeable, society should act now — through the EU AI Act model, UNESCO principles, human-oversight and transparency requirements, bias auditing, and workforce protection — rather than waiting for certainty. The answer should acknowledge the dilemma's genuine difficulty (acting under uncertainty risks both over- and under-regulation) and argue for <em>adaptive</em> governance that can learn and change, plus the precautionary attention severe/irreversible risks deserve without paralysis. The best essays specify what "human-centered" means (dignity, rights, the common good as the measure; keeping humans in the loop), note the dual-use character of the chosen technology, and connect to the course thesis that the future is shaped by present choices — including for the Philippines (National AI Strategy, workforce, equity).</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. The Philippines faces a choice at the technological frontier: adopter, creator, or left behind. Argue which path the country should pursue over the next two decades across AI, space, and digital security, and what investments, education, and governance it would require — while keeping the common good (kabutihang panlahat) as the measure.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer resists a slogan and defends a realistic, layered strategy. It should acknowledge the constraints (R&amp;D underinvestment, brain drain, digital divide, dependence — Ch. 3) and the assets (young, English-speaking, digitally fluent population; existing institutions like PhilSA, NAICRI, the Innovation/Startup Acts, Pagtanaw 2050). A defensible position: pursue <em>selective creation</em> in areas of national strength and need (locally-relevant AI for agriculture/disaster/health and local languages; earth-observation and disaster satellites via PhilSA; cybersecurity/post-quantum readiness) while being a <em>wise adopter</em> elsewhere — always avoiding being left behind. Requirements: sustained R&amp;D funding toward the ~1% benchmark, education and reskilling (especially given BPO exposure to AI, Ch. 7), data and security governance, and equitable access so benefits reach beyond urban elites. The best essays keep <em>kabutihang panlahat</em> central — insisting frontier technology serve the whole nation and future generations — and frame the choice as a deliberate decision, echoing "development is a decision."</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. As this course's capstone, reflect on whether humanity is likely to prove "not just clever but wise" in governing the converging frontiers of AI, biotechnology, quantum computing, and neurotechnology. Draw on the whole course to argue whether you are ultimately hopeful or fearful about the technological future — and why.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer is genuinely integrative, drawing on multiple chapters, and takes a clear but nuanced stand rather than a slogan. The fearful case: convergence raises pace and stakes; the Collingridge dilemma and manufactured doubt (Ch. 8) make timely governance hard; power tends to concentrate; and history shows society often acts too late (fossil fuels, social media). The hopeful case: humanity has, at times, shown collective wisdom — banning biological weapons and CFCs, the emerging AI-governance movement, the near-universal line against heritable editing (Ch. 10) — proving that "development is a decision" and that we can choose not to use powers we possess. The best essays argue that the outcome is not predetermined (rejecting both techno-utopian and doomer determinism), that it depends on informed, ethical, engaged citizenship — the very capacity this course cultivates — and land on "active hope": justified not by optimism about outcomes but by conviction that the future is a frontier we shape. They should explicitly tie the reflection to the course's throughline that science and technology are human, social activities whose future is up to us.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 12 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

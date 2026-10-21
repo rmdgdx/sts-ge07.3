@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 12 — Main Lecture | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit III · Week 17</div>
+  <h1>Chapter 12: Emerging Frontiers — AI, Quantum, and the New Space Age</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#thinking">Thinking About the Future</a></li>
+    <li><a href="#ai">AI &amp; Society</a></li>
+    <li><a href="#quantum">Quantum Computing</a></li>
+    <li><a href="#space">The New Space Age</a></li>
+    <li><a href="#convergence">Convergence &amp; BCIs</a></li>
+    <li><a href="#philippines">The PH at the Frontier</a></li>
+    <li><a href="#governing">Governing the Future</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Examine emerging technologies through conceptual STS lenses and anticipate their societal implications;</li>
+    <li>Explain the significance of generative artificial intelligence, quantum computing, and the new space age;</li>
+    <li>Apply tools for thinking about the future — horizon scanning, dual-use, and the Collingridge dilemma — to emerging technologies;</li>
+    <li>Analyze the Philippines' position and choices at the technological frontier (the National AI Strategy, PhilSA); and</li>
+    <li>Evaluate how emerging technologies should be governed so that human dignity and the common good remain the measure.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: Standing at the Edge of the Known</h2>
+  <p class="lead">Every chapter of this course has shown that today's ordinary technology was once someone's astonishing frontier — the printing press, electricity, the computer, the internet. This chapter turns that lens forward, to the technologies now crossing from laboratory to world: <strong>artificial intelligence, quantum computing, and a new age of space</strong>. These are the frontiers your generation will not merely witness but shape and inhabit.</p>
+  <p>This is, in an important sense, the course's capstone. It gathers the analytical tools built across eleven chapters — co-production, the double-edged nature of technology, power versus flourishing, human rights and dignity, existential risk, the information crisis, and the conviction that the future is chosen not fated — and applies them to technologies whose stories are still being written. Where earlier chapters could analyze history's verdict, here we must reason about consequences that have not yet arrived. That is harder, and more important: the decisions being made <em>now</em>, while these technologies are young, will echo for generations.</p>
+  <p>The chapter's guiding stance is the one this whole course has cultivated: neither breathless hype nor reflexive fear, but <strong>clear-eyed anticipation</strong>. Emerging technologies are neither the salvation their promoters promise nor the doom their critics fear; they are powerful amplifiers whose effects depend on the choices societies make about them. Our task is not to predict the future — no one can — but to think about it wisely enough to steer toward the futures worth wanting.</p>
+  <div class="callout gold">
+    <span class="label">Framing Idea</span>
+    "The future is already here — it's just not evenly distributed" (William Gibson). The technologies in this chapter already exist in labs and early products; the open question is how they will spread, who will benefit, who will decide, and whether human dignity will remain the measure. Emerging-technology literacy is the skill of seeing the frontier clearly before it arrives.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    Name one technology that did not exist (or was not mainstream) when you started school but is ordinary now. Did anyone predict its social effects accurately? What does that suggest about our ability to foresee the technologies in this chapter?
+  </div>
+</section>
+<section id="thinking">
+  <h2>Tools for Thinking About the Future</h2>
+  <p>Before surveying the technologies, we need a small toolkit for reasoning about the not-yet-arrived. Three STS concepts recur throughout this chapter.</p>
+  <h3>Horizon scanning and foresight</h3>
+  <p><strong>Horizon scanning</strong> is the systematic effort to detect early signs of important developments before they fully arrive, so society can prepare rather than merely react. <strong>Foresight</strong> (recall <em>Pagtanaw 2050</em>, Chapter 3) does not try to <em>predict</em> the future — an impossible task — but to map plausible futures and prepare for them. This is the mature alternative to being blindsided: treating the future as something to anticipate and shape, not passively await.</p>
+  <h3>Dual-use</h3>
+  <p>A <strong>dual-use</strong> technology is one that can be used for both beneficial and harmful purposes — the same tool that cures can kill, that connects can surveil. Nearly every powerful technology is dual-use (recall Chapter 1's rocketry that delivers satellites and warheads, and Chapter 10's gene editing). Recognizing dual-use means abandoning the illusion that a technology is simply "good" or "bad"; the question is always the design, the governance, and the choices around it.</p>
+  <h3>The Collingridge dilemma</h3>
+  <p>The most important concept for this chapter is the <strong>Collingridge dilemma</strong>, a genuine trap at the heart of governing emerging technology. It states: <em>early</em> in a technology's life, when it is still easy to shape and control, we do not yet know what its effects will be; but by the time its harmful effects become clear, the technology is so entrenched that changing it is extremely difficult. In short: <strong>when change is easy, the need is not yet visible; when the need is visible, change is hard.</strong> This dilemma explains why we so often act too late (as with fossil fuels, tobacco, and social-media harms), and why <em>anticipatory</em> governance — thinking about consequences while a technology is young — is so valuable, even though it must act under uncertainty.</p>
+  <div class="callout">
+    <span class="label">Why These Tools Matter</span>
+    Together, these concepts define responsible engagement with the frontier: <em>scan</em> the horizon early, assume every powerful technology is <em>dual-use</em>, and act on the <em>Collingridge</em> insight that the best (and only easy) time to shape a technology is before we are certain we need to — which requires the very wisdom, under uncertainty, that this course exists to build.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Collingridge+dilemma+technology+governance" target="_blank" rel="noopener">The Collingridge dilemma</a> — curated search <span class="why">(shaping tech before we&rsquo;re certain)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=how+to+think+about+the+future+foresight+horizon+scanning" target="_blank" rel="noopener">Foresight &amp; horizon scanning</a> — curated search <span class="why">(anticipating the frontier)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="ai">
+  <h2>Frontier I. Artificial Intelligence and Society</h2>
+  <p>Artificial intelligence is the defining emerging technology of the moment — the frontier that has moved fastest and touches the most lives. We have met AI throughout this course (Chapter 2's Fourth Revolution, Chapter 6's algorithmic bias, Chapter 7's alignment problem, Chapter 8's deepfakes); here we consider its trajectory as a whole and what it means for society.</p>
+  <h3>What changed</h3>
+  <p>AI is not new, but it crossed a threshold with the rise of <strong>generative AI</strong> — large models that produce fluent text, images, audio, code, and video — brought to the public by systems like ChatGPT from late 2022. For the first time, a machine could perform, at scale and on demand, tasks long considered distinctly human: writing, conversing, creating, and reasoning through problems. This has moved AI from a specialized tool into a <strong>general-purpose technology</strong>, like electricity or the internet — one that reshapes nearly every field rather than one.</p>
+  <h3>The promise and the peril, gathered</h3>
+  <p>The two-sided view this course insists upon applies with full force:</p>
+  <ul class="plain">
+    <li><strong>Promise:</strong> accelerated science and medicine (drug discovery, protein folding), democratized tutoring and expertise, productivity gains, accessibility for people with disabilities, and tools for tackling problems from climate modeling to disaster response.</li>
+    <li><strong>Peril:</strong> the harms catalogued across this course — algorithmic bias and the accountability gap (Chapter 6), misinformation and deepfakes (Chapter 8), technological unemployment (Chapter 7), surveillance (Chapter 6), concentration of power in a few firms and states, environmental costs of computation, and the deeper alignment and control questions (Chapter 7).</li>
+  </ul>
+  <h3>The societal question</h3>
+  <p>The frontier question is not "is AI good or bad?" but "<em>what kind of society do we build around it?</em>" Will AI augment human capability and be widely shared, or concentrate power and displace human agency? Will it be developed with human oversight, transparency, and rights as the measure (Chapter 6's guardrails), or deployed for engagement and profit alone (Chapter 8)? These are choices, being made now, under exactly the Collingridge uncertainty described above — which is why the current wave of AI governance (the EU AI Act, UNESCO's ethics recommendation, national strategies) is a defining STS story of the decade.</p>
+  <div class="callout gold">
+    <span class="label">The Core AI Question, Restated</span>
+    AI forces the course's oldest question into the present tense: technology increases <em>power</em>; whether it increases human <em>flourishing</em> (Chapter 4) depends on the social choices around it. The task is to keep the human person the measure — using AI as a tool that serves human ends, not one that redefines humans as data to be optimized (Chapter 4's standing-reserve).
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Generative AI can already write your essays, answer your questions, and create art. In your own education and future career, where should AI be a welcome tool, and where would relying on it cost you something essential (skill, understanding, originality, dignity)? How do you tell the difference?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/watch?v=v9rZOa3CUC8" target="_blank" rel="noopener">What is the Fourth Industrial Revolution? (CNBC)</a> — CNBC <span class="why">(AI as a general-purpose technology)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=how+generative+AI+large+language+models+work" target="_blank" rel="noopener">How generative AI works</a> — curated search <span class="why">(the technology reshaping everything)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="quantum">
+  <h2>Frontier II. Quantum Computing and the Future of Cybersecurity</h2>
+  <p>Less visible than AI but potentially just as consequential is <strong>quantum computing</strong> — a fundamentally new way of computing that exploits the strange rules of quantum physics.</p>
+  <h3>What it is (in plain terms)</h3>
+  <p>Classical computers (including the most powerful supercomputers) process information in <strong>bits</strong>, each either 0 or 1 (Chapter 8's Shannon). Quantum computers use <strong>qubits</strong>, which exploit two quantum phenomena — <strong>superposition</strong> (a qubit can represent a blend of 0 and 1 at once) and <strong>entanglement</strong> (qubits can be correlated in ways with no classical analog). This lets a quantum computer explore an enormous number of possibilities simultaneously, giving it, in principle, staggering power for <em>certain specific kinds</em> of problems. Two clarifications matter: quantum computers are not simply "faster computers" — they are good at a narrow (if important) class of problems, not everything; and the technology is still early, difficult (qubits are fragile and error-prone), and not yet at large practical scale, though progress is rapid.</p>
+  <h3>The promise</h3>
+  <p>For the problems they suit, quantum computers could be transformative: simulating molecules and materials (revolutionizing drug discovery, batteries, fertilizers, and clean energy — connecting to Chapters 9–11), solving vast optimization problems (logistics, finance, traffic), and accelerating certain kinds of scientific modeling and AI.</p>
+  <h3>The peril: the cybersecurity time bomb</h3>
+  <p>The most urgent societal implication is a threat, and it is a striking case of anticipatory thinking. Much of today's digital security — the encryption protecting your bank transactions, private messages, medical records, and national secrets — relies on mathematical problems that are effectively impossible for classical computers to crack. A sufficiently powerful quantum computer could, in principle, <strong>break much of this encryption</strong>. This creates a genuine "<strong>harvest now, decrypt later</strong>" danger: adversaries could be collecting encrypted data <em>today</em> to decrypt once quantum machines mature. The response — a global effort to develop and deploy <strong>post-quantum cryptography</strong> (new encryption resistant to quantum attack) — is a live example of the Collingridge dilemma handled well: acting <em>now</em>, under uncertainty about exactly when the threat arrives, because waiting until it is certain would be too late.</p>
+  <div class="callout">
+    <span class="label">An STS Lesson in One Technology</span>
+    Quantum computing shows why horizon scanning matters. The threat to encryption is not yet here, but preparing for it must begin now — the very definition of anticipatory governance. It also shows dual-use vividly: the same power that could design life-saving drugs could also crack the world's secrets. The technology is neutral; the preparation and governance are everything.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=quantum+computing+explained+qubits+superposition" target="_blank" rel="noopener">Quantum computing explained</a> — curated search <span class="why">(qubits, superposition, entanglement)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=quantum+computing+threat+to+encryption+post-quantum+cryptography" target="_blank" rel="noopener">Quantum &amp; the encryption time bomb</a> — curated search <span class="why">(&lsquo;harvest now, decrypt later&rsquo;)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="space">
+  <h2>Frontier III. The New Space Age</h2>
+  <p>Space is no longer the exclusive domain of superpower governments. A <strong>New Space Age</strong> has arrived, driven by falling launch costs, private companies, and the entry of new nations — including the Philippines. This transforms space from a Cold War prestige contest (Chapter 1's Space Race) into an accessible arena of commerce, science, and, increasingly, contested strategy.</p>
+  <h3>What is new</h3>
+  <ul class="plain">
+    <li><strong>Commercialization and cheaper access.</strong> Reusable rockets and private launch providers have dramatically lowered the cost of reaching orbit, opening space to companies, universities, and smaller nations.</li>
+    <li><strong>Mega-constellations.</strong> Thousands of small satellites (e.g., for global broadband internet) are being launched, promising connectivity to remote and underserved regions — a genuine development good — while raising new problems (below).</li>
+    <li><strong>Earth observation.</strong> Satellites now provide indispensable data for weather forecasting, disaster response, agriculture, and climate monitoring (Chapters 3, 9, 11) — arguably space's greatest everyday benefit to humanity.</li>
+    <li><strong>New ambitions.</strong> Renewed crewed lunar exploration, plans toward Mars, space tourism, and early discussion of asteroid and space resources.</li>
+  </ul>
+  <h3>The societal and ethical questions</h3>
+  <p>The New Space Age raises distinctly STS questions. <strong>Space debris and sustainability:</strong> mega-constellations and decades of launches are crowding low Earth orbit, raising the risk of collisions and a cascading debris problem (the "Kessler syndrome") that could render orbits unusable — a tragedy of the commons (Chapter 11) in space. <strong>Astronomy and the night sky:</strong> bright satellite trains interfere with astronomical observation and alter humanity's ancient relationship with the stars. <strong>Governance and equity:</strong> who owns space, its orbits, and its resources? Existing treaties are decades old; the risk is that space becomes dominated by a few wealthy corporations and nations, extending Earthly inequalities upward. And <strong>militarization:</strong> as nations depend on satellites, space becomes a strategic and potentially militarized domain. Space, once a symbol of shared human aspiration, is now a frontier where the same questions of commons, justice, and governance from every prior chapter recur.</p>
+  <div class="callout green">
+    <span class="label">The Filipino Stake in Space</span>
+    For the Philippines, space is not spectacle but survival and development: satellites for typhoon tracking and disaster response, agricultural and marine monitoring, and connectivity for a scattered archipelago (Chapter 3). Through <strong>PhilSA</strong> and its Diwata, Maya, and MULA satellites, the country has moved from spectator to participant — a concrete case of a developing nation claiming a place at the frontier.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    A company launches thousands of satellites to bring internet to remote areas — a real good — but crowds orbits, brightens the night sky, and concentrates control of space infrastructure. Weigh the benefits against the "commons" costs. Who should govern low Earth orbit, and how?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=new+space+age+commercial+spaceflight+explained" target="_blank" rel="noopener">The New Space Age</a> — curated search <span class="why">(cheaper, commercial, multi-national)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=space+debris+Kessler+syndrome+mega+constellations" target="_blank" rel="noopener">Space debris &amp; the Kessler syndrome</a> — curated search <span class="why">(a tragedy of the commons in orbit)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="convergence">
+  <h2>Convergence and the Frontier of the Human Body</h2>
+  <p>The most profound frontier may be not any single technology but their <strong>convergence</strong> — the way AI, biotechnology (Chapter 10), nanotechnology, and computing increasingly combine, each amplifying the others. AI accelerates drug discovery and gene editing; nanotech enables new computing and medicine; quantum computing could supercharge AI and materials science. Convergence means the pace and unpredictability of change rise together — and so does the difficulty of governance.</p>
+  <p>One convergent frontier deserves special mention because it returns us to the deepest theme of Unit II: technologies that interface directly with the human body and brain. <strong>Brain-computer interfaces (BCIs)</strong> — devices that connect the nervous system directly to computers — are moving from research into early human trials. Their promise is genuinely moving: restoring movement to the paralyzed, communication to those who have lost speech, and sight or hearing to some who lack it. But taken further, BCIs raise the enhancement and dignity questions of Chapter 7 in their sharpest form: cognitive enhancement, the merging of human and machine, and an entirely new frontier of privacy — <strong>"neurorights"</strong>, the protection of the last truly private space, the inside of our own minds (Chapter 6's sovereignty over one's mind, made literal). Alongside BCIs, advanced <strong>robotics and humanoid systems</strong> continue to raise the questions of Chapter 6 (safety, care, dignity, labor).</p>
+  <div class="callout gold">
+    <span class="label">Why Convergence Is the Real Frontier</span>
+    Analyzing technologies one at a time understates the challenge. Their convergence produces effects no single technology would — faster, more powerful, and harder to foresee. And when convergence reaches the human body and mind (BCIs, enhancement), the boundary between the human and the technological — the recurring theme of Unit II — begins to dissolve. This is where "when technology and humanity cross" reaches its literal frontier.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=brain+computer+interface+Neuralink+explained" target="_blank" rel="noopener">Brain-computer interfaces</a> — curated search <span class="why">(the frontier of the human body)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=neurorights+mental+privacy+brain+data" target="_blank" rel="noopener">Neurorights: protecting the mind</a> — curated search <span class="why">(the last private space)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="philippines">
+  <h2>The Philippines at the Frontier: Adopter, Creator, or Left Behind?</h2>
+  <p>The syllabus's forward look asks students to anticipate implications "for the Philippines" — and the emerging frontier sharpens Chapter 3's central choice: will the country be a mere <em>adopter</em> of technologies made elsewhere, a genuine <em>creator</em> and shaper of them, or risk being <em>left behind</em>?</p>
+  <p>There are real grounds for both concern and hope. <strong>Concern:</strong> chronic underinvestment in R&amp;D (Chapter 3), brain drain, the digital divide, and technological dependence could leave the Philippines consuming frontier technologies without capturing their value or shaping their terms — and exposed to their harms (AI-driven job loss in the BPO sector, Chapter 7; quantum threats to security; inequitable space access). <strong>Hope:</strong> the country has begun to act deliberately. The <strong>National AI Strategy Roadmap</strong> and the National Center for AI Research (NAICRI), the <strong>Philippine Space Agency (PhilSA)</strong>, the Innovation and Startup Acts, and foresight documents like <em>Pagtanaw 2050</em> represent a nation trying to claim a place at the frontier rather than merely receive it (Chapter 3's "development is a decision"). Filipino strengths — a young, English-speaking, digitally fluent, and highly online population — are real assets if paired with investment, education, and governance.</p>
+  <p>The frontier also demands that the Philippines govern these technologies for its own people: protecting workers through the AI transition, defending data and security, ensuring frontier benefits reach beyond urban elites, and insisting that human dignity and the common good (Chapter 5's <em>kabutihang panlahat</em>) remain the measure. The choices are being made now, under Collingridge uncertainty — which is precisely why an educated, engaged citizenry (the aim of this course) matters.</p>
+  <div class="callout">
+    <span class="label">The Recurring Choice</span>
+    From Chapter 3 to here, the same lesson holds at ever-higher stakes: a nation's technological future is a <em>decision</em>, not a fate. The emerging frontier will not wait; whether the Philippines shapes it or is shaped by it depends on investment, education, governance, and the will to choose — the very themes this course has traced from the first chapter.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Philippines+national+AI+strategy+roadmap" target="_blank" rel="noopener">The Philippine National AI Strategy</a> — curated search <span class="why">(adopter, creator, or left behind?)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=PhilSA+Philippine+Space+Agency+satellites" target="_blank" rel="noopener">PhilSA &amp; Philippine satellites</a> — curated search <span class="why">(claiming a place at the frontier)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="governing">
+  <h2>Governing the Future: Keeping the Human Person the Measure</h2>
+  <p>How should societies govern technologies whose full effects cannot yet be known? This chapter's tools converge on an answer that is also the course's: <strong>anticipatory, adaptive, human-centered governance</strong>.</p>
+  <ul class="plain">
+    <li><strong>Anticipatory, not reactive.</strong> Because of the Collingridge dilemma, waiting for certain proof of harm means acting too late. Governance must engage technologies while they are young — through horizon scanning, foresight, and the precautionary attention (Chapter 7) that severe or irreversible risks deserve — while avoiding the paralysis of excessive caution.</li>
+    <li><strong>Adaptive and humble.</strong> Because prediction is impossible, rules must be able to learn and change as understanding grows — governance as an ongoing process, not a one-time act.</li>
+    <li><strong>Human rights and dignity as the measure.</strong> Every emerging technology must be judged by whether it serves human dignity, rights, and flourishing (Chapters 4–6) — with human oversight, transparency, accountability, fairness, and privacy as the guardrails (Chapter 6), now extended to new frontiers like neurorights.</li>
+    <li><strong>The common good, globally and across generations.</strong> Frontier technologies are global and long-lasting; governing them justly requires international cooperation (Chapter 11's commons) and concern for those who cannot consent — the poor, the excluded, and future generations (Chapters 5, 7).</li>
+    <li><strong>Wisdom over mere cleverness.</strong> Ultimately, no rule substitutes for a society that reflects on ends, not just means — that asks not only "can we?" but "should we, and to what purpose?" This reflective capacity is the deepest aim of an STS education.</li>
+  </ul>
+  <div class="callout gold">
+    <span class="label">The Governance Insight, Final Form</span>
+    The lesson of the entire course, applied to the future: our technological power is racing ahead; our task is to make our collective wisdom race to keep up. Emerging technologies will be neither our salvation nor our doom by themselves — they will be what we, through our choices, decide to make them. Keeping the human person the measure is not a constraint on progress; it is the definition of progress worth having.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=how+should+we+regulate+artificial+intelligence" target="_blank" rel="noopener">How should we govern AI?</a> — curated search <span class="why">(keeping the human person the measure)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: Shaping the Frontiers We Will Inhabit</h2>
+  <p>This capstone chapter turned the course's tools toward the not-yet-arrived. Four threads bring it together:</p>
+  <ol class="plain">
+    <li><strong>The future can be anticipated, if not predicted.</strong> Horizon scanning, the dual-use principle, and above all the Collingridge dilemma — that technologies are easiest to shape before we are certain we need to — define responsible engagement with the frontier. Anticipation under uncertainty is the required skill.</li>
+    <li><strong>Three frontiers, one pattern.</strong> Generative AI (a general-purpose technology reshaping everything), quantum computing (transformative promise and a cybersecurity time bomb), and the new space age (development good and a commons in orbit) each display the same double-edged, choice-dependent character every technology in this course has shown.</li>
+    <li><strong>Convergence is the deepest challenge.</strong> As AI, bio, nano, and quantum combine — and as BCIs reach into the brain itself — the pace and stakes rise, and the boundary between the human and the technological blurs, returning us to Unit II's core question of what it means to remain human.</li>
+    <li><strong>Governance must be anticipatory and human-centered.</strong> Because prediction fails and the Collingridge trap is real, we must govern early, adaptively, and with human dignity, rights, and the common good — globally and across generations — as the measure.</li>
+  </ol>
+  <p>The unifying conviction is the one this course has built from its first page to its last: <strong>the future is not a fate that befalls us but a frontier we shape</strong>. The technologies of this chapter are being designed, deployed, and governed right now, in your lifetime and increasingly by your generation. Whether they amplify human dignity or diminish it, whether their benefits are shared or hoarded, whether the Philippines shapes them or is shaped by them — these are open questions whose answers depend on informed, ethical, engaged human choice. That is why an STS education matters, and why it ends not with a verdict but with a responsibility. The final word of this course is the same as its first lesson: science and technology are human and social activities, and their future is, quite literally, up to us.</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Emerging technology</td><td>A technology in early development or adoption whose full societal effects are not yet known but potentially large.</td></tr>
+      <tr><td>Horizon scanning / foresight</td><td>Systematically detecting early signs of important developments / mapping and preparing for plausible futures (not predicting them).</td></tr>
+      <tr><td>Dual-use</td><td>A technology usable for both beneficial and harmful purposes; nearly all powerful technologies are dual-use.</td></tr>
+      <tr><td>Collingridge dilemma</td><td>Early on, a technology is easy to shape but its effects are unknown; once effects are clear, it is entrenched and hard to change.</td></tr>
+      <tr><td>Generative AI</td><td>AI that creates fluent text, images, audio, code, and video; a general-purpose technology since ~2022.</td></tr>
+      <tr><td>General-purpose technology</td><td>A technology (like electricity, the internet, or AI) that reshapes nearly every field rather than one.</td></tr>
+      <tr><td>Qubit / superposition / entanglement</td><td>The quantum unit of information; a qubit can blend 0 and 1 (superposition) and be correlated with others (entanglement).</td></tr>
+      <tr><td>Post-quantum cryptography</td><td>New encryption designed to resist attack by future quantum computers.</td></tr>
+      <tr><td>"Harvest now, decrypt later"</td><td>Collecting encrypted data today to decrypt once quantum computers mature.</td></tr>
+      <tr><td>New Space Age</td><td>The era of cheaper, commercialized, multi-national access to space.</td></tr>
+      <tr><td>Mega-constellation / Kessler syndrome</td><td>Thousands of small satellites for services like broadband / a cascading space-debris collision risk that could render orbits unusable.</td></tr>
+      <tr><td>Convergence</td><td>The combining of AI, bio, nano, and quantum technologies, each amplifying the others.</td></tr>
+      <tr><td>Brain-computer interface (BCI) / neurorights</td><td>A device linking the nervous system to computers / the proposed rights protecting mental privacy and integrity.</td></tr>
+      <tr><td>Anticipatory governance</td><td>Governing technologies early and adaptively, under uncertainty, before harms become entrenched.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>Explain the Collingridge dilemma in your own words, using a past technology (social media, fossil fuels, plastics). How might we handle a current frontier technology better?</li>
+    <li>Is generative AI more like electricity (a benign general-purpose technology) or more like a uniquely dangerous one? Defend your analogy.</li>
+    <li>The quantum "harvest now, decrypt later" threat is invisible and years away. Why should society act on it now, and what does that teach about anticipatory governance?</li>
+    <li>Low Earth orbit is becoming a crowded commons. Who should govern it, and how can the "tragedy of the commons" (Chapter 11) be avoided in space?</li>
+    <li>Should the Philippines aim to <em>create</em> frontier technologies or focus on <em>adopting</em> them wisely? What would each path require?</li>
+  </ol>
+  <h3>Activity 1 — Tech-foresight brief (the syllabus assessment)</h3>
+  <p>Choose one emerging technology (generative AI, quantum computing, the new space age, BCIs, or another). Write a foresight brief covering: what it is, its plausible promises and perils, its dual-use character, the Collingridge challenge it poses, and its specific implications for the Philippines. Recommend how it should be governed.</p>
+  <h3>Activity 2 — Horizon-scanning workshop (group work)</h3>
+  <p>As a group, scan for "weak signals" of an emerging technology in the news, research, or startups. Map plausible 10-year futures (best case, worst case, most likely) and identify the choices today that would steer toward the better ones. Present as a simple futures map.</p>
+  <h3>Activity 3 — Culminating reflection (individual, links to the course finale)</h3>
+  <p>Drawing on the whole course, write a reflection: <em>"The most important thing I have learned about living wisely with science and technology is ___."</em> Use at least three chapters and apply your insight to one emerging technology you expect to shape your future.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. What is horizon scanning, and how does it differ from prediction?</summary><p>Systematically detecting early signs of important developments so society can prepare. It does not predict the future but maps and prepares for plausible futures.</p></details>
+  <details><summary>2. What does "dual-use" mean? Give an example.</summary><p>A technology usable for both beneficial and harmful purposes — e.g., rocketry (satellites and warheads), gene editing (cures and misuse), or quantum computing (drug design and code-breaking).</p></details>
+  <details><summary>3. State the Collingridge dilemma.</summary><p>Early in a technology's life it is easy to shape but its effects are unknown; by the time its harmful effects are clear, it is entrenched and hard to change. When change is easy the need isn't visible; when the need is visible, change is hard.</p></details>
+  <details><summary>4. Why is generative AI called a "general-purpose technology"?</summary><p>Because, like electricity or the internet, it reshapes nearly every field rather than a single one — moving AI from a specialized tool to a broadly transformative one.</p></details>
+  <details><summary>5. How do qubits differ from bits, and why does it matter?</summary><p>Bits are 0 or 1; qubits use superposition (blending 0 and 1) and entanglement, letting quantum computers explore many possibilities at once — powerful for certain specific problems (not everything).</p></details>
+  <details><summary>6. What is the "harvest now, decrypt later" threat, and what is the response?</summary><p>Adversaries collecting encrypted data today to decrypt once quantum computers can break current encryption. The response is developing and deploying post-quantum cryptography now.</p></details>
+  <details><summary>7. Name two societal/ethical problems raised by the New Space Age.</summary><p>Any two: space debris/Kessler syndrome (an orbital tragedy of the commons); interference with astronomy/the night sky; governance and equity (who owns orbits/resources); and militarization.</p></details>
+  <details><summary>8. What is "convergence," and why does it raise the stakes?</summary><p>The combining of AI, bio, nano, and quantum technologies, each amplifying the others — raising the pace and unpredictability of change and the difficulty of governance, and, via BCIs, blurring the human/technological boundary.</p></details>
+  <details><summary>9. What are "neurorights," and which earlier chapter do they extend?</summary><p>Proposed rights protecting mental privacy and integrity as brain-computer interfaces develop — extending Chapter 6's sovereignty over one's own mind to a literal new frontier.</p></details>
+  <details><summary>10. What are the key features of the governance this chapter recommends?</summary><p>Anticipatory (not reactive), adaptive/humble (able to learn and change), human-rights-and-dignity-centered, oriented to the common good globally and across generations, and guided by wisdom about ends, not just means.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>Collingridge, David. <em>The Social Control of Technology</em>, 1980 (the Collingridge dilemma).</li>
+    <li>Schwab, Klaus. <em>The Fourth Industrial Revolution</em>, World Economic Forum, 2016.</li>
+    <li>Suleyman, Mustafa. <em>The Coming Wave</em>, Crown, 2023 (AI, synthetic biology, and containment).</li>
+    <li>Russell, Stuart. <em>Human Compatible</em>, Viking, 2019; Bostrom, Nick. <em>Superintelligence</em>, 2014 (see Chapter 7).</li>
+    <li>National Institute of Standards and Technology (NIST). Post-Quantum Cryptography standards and reports.</li>
+    <li>UNESCO. <em>Recommendation on the Ethics of Artificial Intelligence</em>, 2021; European Union. <em>Artificial Intelligence Act</em>, 2024.</li>
+    <li>NAST Philippines. <em>Pagtanaw 2050</em>; DOST–PCIEERD. <em>Philippine AI Roadmap</em>; PhilSA mission reports (Diwata, Maya, MULA).</li>
+    <li>Kaku, Michio. <em>Physics of the Future</em>, Doubleday, 2011; TED Talks: Ray Kurzweil; Juan Enriquez, "The Next Species of Human."</li>
+    <li>Ienca, Marcello and Roberto Andorno. On "neurorights" and the ethics of neurotechnology, 2017.</li>
+    <li>Stanford Encyclopedia of Philosophy: entries on the Ethics of Artificial Intelligence, Quantum Computing, and Philosophy of Technology.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 12 Main Lecture &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

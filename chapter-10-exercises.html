@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 10 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit III · Week 16</div>
+  <h1>Chapter 10: The Nano World, Gene Therapy, and Gene Editing — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 10 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. Gold is inert and yellow in bulk but reactive and reddish at the nanoscale. This BEST illustrates why:</p>
+    <ol><li>Nanotechnology is impossible.</li><li>Materials behave differently at the nanoscale, which is the source of both nanotech's usefulness and its novel risks.</li><li>Gold is not a metal.</li><li>Size never affects properties.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Scale-dependent behavior is the core insight. A and C are false; D is the opposite.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. The chapter calls nanotech a "convergent and enabling technology." The MAIN governance challenge this creates is that:</p>
+    <ol><li>It does only one thing, so it is easy to regulate.</li><li>Because it is embedded invisibly in thousands of products, its benefits and risks are both diffuse and hard to track.</li><li>It has no applications.</li><li>It is banned everywhere.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Diffuse, invisible embedding complicates governance. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. The property that makes nanoparticles useful for drug delivery (tiny size, ability to cross barriers) is ALSO the source of which concern?</p>
+    <ol><li>The nano-divide.</li><li>Nanotoxicology — the same penetration could make them hazardous to cells and ecosystems in ways not fully known.</li><li>Grey goo.</li><li>Surveillance.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Usefulness and toxicity share the same root property. The others are different nanoethics concerns.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. The "regulatory gap" in nanoethics arises because:</p>
+    <ol><li>Nanomaterials are identical to their bulk forms.</li><li>Existing safety rules were written for bulk chemicals and may not apply to nanomaterials that behave differently.</li><li>There are no regulators.</li><li>Nanotech is illegal.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Rules written for bulk materials misfit the nanoscale. A contradicts the science; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. A patient's blood stem cells are edited outside the body and returned, curing their sickle-cell disease. This is:</p>
+    <ol><li>Germline editing.</li><li>Somatic editing — affecting only the individual, not their descendants.</li><li>Enhancement.</li><li>Reproductive cloning.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Editing body cells (not eggs/sperm/embryos) is somatic. A, C, D misclassify it.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. Why is the somatic/germline distinction called the "ethical hinge" of gene editing?</p>
+    <ol><li>Because somatic editing is more dangerous.</li><li>Because germline editing affects all descendants and the human gene pool permanently, and those affected cannot consent — while somatic editing stops with the patient.</li><li>Because they are the same thing.</li><li>Because neither is possible.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Heritability + non-consent is what raises germline's stakes. A is backwards; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Casgevy (2023) is significant for this chapter chiefly because it:</p>
+    <ol><li>Is a germline enhancement.</li><li>Is the first approved CRISPR therapy — a responsible, somatic cure demonstrating gene editing has become real medicine.</li><li>Was created secretly.</li><li>Alters patients' children.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is the promise realized: somatic, approved, curative. A, C, D describe the opposite (He Jiankui-type) case.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. The He Jiankui affair and Casgevy differ from each other precisely along which line?</p>
+    <ol><li>Cheap vs. expensive.</li><li>Germline (He Jiankui, reckless, heritable) vs. somatic (Casgevy, responsible, non-heritable).</li><li>Chinese vs. American.</li><li>Old vs. new.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The somatic/germline line is exactly what separates them. The others are irrelevant.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Even granting He Jiankui's stated good intentions, the universal condemnation shows that:</p>
+    <ol><li>Good intentions justify any action.</li><li>What technology <em>can</em> do does not settle what we <em>should</em> do — consent, safety, necessity, heritability, and process all matter.</li><li>HIV resistance is unimportant.</li><li>Germline editing is always safe.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The is/ought and process lessons. A is the error exposed; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. The "therapy-vs-enhancement" problem in germline editing is that:</p>
+    <ol><li>Therapy and enhancement are identical.</li><li>Once editing to prevent disease is permitted, drawing a stable line against editing for traits like height or intelligence becomes genuinely difficult.</li><li>Enhancement is impossible.</li><li>Therapy is unethical.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The slippery slope from therapy to enhancement is the concern. A, C, D misstate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. The "genetic divide"/"designer babies" worry about germline enhancement is that it could:</p>
+    <ol><li>Cure all disease equally for everyone.</li><li>Create a permanent biological caste system if available only to the wealthy — a new, market-driven eugenics.</li><li>Make everyone genetically identical.</li><li>Eliminate inequality.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Enhancement-driven biological inequality is the fear (Ch. 7). A, C, D are opposite or false.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. The global consensus against heritable human editing is described as an example of:</p>
+    <ol><li>Reckless acceleration.</li><li>Humanity collectively drawing a line and choosing not (yet) to use a power it possesses — relinquishment applied to our own genome.</li><li>Scientism.</li><li>Technological determinism.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is deliberate non-use (Ch. 7's relinquishment). The others mischaracterize it.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. An anti-vaccine post claims "mRNA vaccines rewrite your DNA." The chapter's correction is that:</p>
+    <ol><li>This is true.</li><li>mRNA instructs cells to make a viral fragment and does NOT enter or alter DNA — a case where misinformation had real public-health consequences.</li><li>Vaccines contain no mRNA.</li><li>DNA does not exist.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> mRNA doesn't alter DNA; the claim is Ch. 8 misinformation. A is false; C and D are absurd.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. mRNA vaccines were developed in under a year "only because of decades of prior basic research." The BEST policy lesson is:</p>
+    <ol><li>Basic research is a waste.</li><li>Sustained long-term research investment builds the platforms that enable rapid response to future emergencies — preparedness is decided years in advance.</li><li>Science should fund only immediate payoffs.</li><li>Pandemics cannot be prepared for.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The payoff-of-patience lesson (Ch. 3). A and C are the opposite; D is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. That mRNA vaccines reached rich nations first and faced misinformation shows that:</p>
+    <ol><li>Technology's impact is independent of society.</li><li>Society shapes a technology's outcomes — through equity of access and the information environment — not just the science.</li><li>Vaccines don't work.</li><li>Misinformation is harmless.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Co-production: social choices shape outcomes. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. The development of induced pluripotent stem cells (iPSCs) is presented as an example of:</p>
+    <ol><li>Science ignoring ethics.</li><li>Ethical concern (about embryo use) steering scientists toward a more acceptable technical solution — science and society co-producing a path.</li><li>A failure of research.</li><li>Germline editing.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Ethics reshaped the research direction. A is the opposite; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Unproven, expensive "stem-cell therapy" clinics illustrate which cross-chapter danger?</p>
+    <ol><li>That stem cells have no promise.</li><li>That promising science attracts predatory hype (Ch. 8), so vulnerable patients need protection through regulation and scientific literacy.</li><li>That regulation is unnecessary.</li><li>That all stem-cell medicine is fake.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Hype exploiting desperate patients links to Ch. 8. A and D overstate; C is the opposite of the lesson.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Which statement BEST reflects the chapter's balanced stance on these technologies?</p>
+    <ol><li>They are miracles; deploy them all with no limits.</li><li>They are menaces; ban them all.</li><li>They offer extraordinary benefits and profound risks; proceed with responsible innovation, ethics, and governance, refusing both hype and fear.</li><li>They are irrelevant to society.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The two-sided, responsible-innovation stance. A and B are the extremes; D is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. A student argues, "If we can edit the germline to prevent Huntington's, we clearly should, full stop." The chapter's BEST response is:</p>
+    <ol><li>Fully agree; no further thought needed.</li><li>The good of preventing disease is real, but must be weighed against irreversibility, the consent of future generations, the therapy-to-enhancement slope, inequality, and the lack of consensus/governance — "can" does not settle "should."</li><li>Huntington's is not serious.</li><li>Germline editing is impossible.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It holds the genuine good against the serious cautions. A ignores the stakes; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Synthesizing the chapter, its unifying conviction is that our growing power to remake matter and life:</p>
+    <ol><li>Makes ethics and governance obsolete.</li><li>Makes wisdom, ethics, and governance MORE essential, because these technologies can heal or entrench inequality and cross irreversible lines — so the future must be chosen, not merely built.</li><li>Guarantees a good outcome automatically.</li><li>Means we should never use any of them.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Greater power raises the stakes of wise choice. A and C are complacent; D is reflexive technophobia.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. A human hair is ~80,000 nm wide; a nanometer is a billionth of a meter. This comparison is used to convey that nanotechnology:</p>
+    <ol><li>Works at everyday visible scales.</li><li>Operates at a scale almost unimaginably smaller than anything we see — manipulating matter atom by atom.</li><li>Is about large machines.</li><li>Is the same as microtechnology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The hair comparison conveys the extreme smallness. A, C, D miss the scale.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Feynman's "There's Plenty of Room at the Bottom" (1959) is significant because it:</p>
+    <ol><li>Banned nanotechnology.</li><li>Foresaw a whole new world of engineering at the smallest scales — the founding vision of nanotech.</li><li>Was about outer space.</li><li>Disproved atomic theory.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is the field's founding vision. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. The lipid nanoparticles that delivered mRNA COVID-19 vaccines are cited as an example of:</p>
+    <ol><li>Germline editing.</li><li>A nano–bio convergence — nanotechnology enabling a biomedical breakthrough.</li><li>A stem-cell therapy.</li><li>Grey goo.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Nanoparticles enabling mRNA delivery is convergence. The others are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Bill Joy's "grey goo" (Ch. 7) is treated in this chapter as:</p>
+    <ol><li>An imminent certainty.</li><li>Physically implausible per most scientists, but a dramatization of the precautionary attention novel, powerful technologies deserve.</li><li>Already having occurred.</li><li>Proof nanotech is safe.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Implausible scenario, real underlying caution. A and C overstate; D understates.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Which correctly pairs a gene technology with its nature?</p>
+    <ol><li>Casgevy → germline enhancement.</li><li>Casgevy → somatic therapy (sickle-cell/beta-thalassemia); He Jiankui's babies → germline editing.</li><li>mRNA vaccine → DNA editing.</li><li>iPSCs → embryo destruction.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Correct pairings. A, C, D each misstate the technology.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. CRISPR "democratized" gene editing. Following Chapter 7's logic, this accessibility is:</p>
+    <ol><li>Purely beneficial with no downside.</li><li>Double-edged — cheap, widespread editing accelerates cures but also lowers the barrier to misuse (as He Jiankui showed).</li><li>Irrelevant to ethics.</li><li>A reason to ban all research.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Accessibility cuts both ways (Ch. 7). A and C ignore misuse; D overreacts.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Disability-rights advocates raise which concern about germline editing?</p>
+    <ol><li>That it is too cheap.</li><li>That treating the genome as something to optimize can erode acceptance of human variation and the equal worth of people with disabilities.</li><li>That it cures too many diseases.</li><li>That it is identical to a vaccine.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The "loss of the given"/equal-worth concern. A, C, D misstate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. The chapter warns germline editing raises the "specter of a new eugenics." How would this new eugenics differ from the old?</p>
+    <ol><li>It would be identical in every way.</li><li>It could be driven by consumer choice and markets rather than by state coercion.</li><li>It would be state-run only.</li><li>It would be impossible.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Market/consumer-driven vs. state-imposed is the difference noted. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Which is an EMPIRICAL question about germline editing, as opposed to a value question?</p>
+    <ol><li>Should we edit the genome of future generations?</li><li>Is a given edit currently safe and free of off-target effects?</li><li>Who should decide whether to proceed?</li><li>Is it just for only the rich to access enhancement?</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Safety/off-target effects are empirical (Ch. 9's distinction). A, C, D are value questions.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. A country bans heritable human editing while permitting somatic gene therapy. This policy BEST reflects:</p>
+    <ol><li>Confusion about the technology.</li><li>The principled somatic/germline distinction — treating individuals is acceptable, altering the species is not.</li><li>A total ban on gene therapy.</li><li>Support for designer babies.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It codifies the ethical hinge. A, C, D misread the policy.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Why does the chapter state plainly that mRNA "does not enter or alter your DNA"?</p>
+    <ol><li>To exaggerate the vaccine's power.</li><li>Because widespread misinformation claimed otherwise, with real public-health consequences (Ch. 8).</li><li>Because it is false.</li><li>Because DNA is irrelevant.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It corrects a consequential falsehood. A, C, D are wrong.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. Karikó and Weissman's Nobel-winning mRNA work exemplifies the chapter's claim that:</p>
+    <ol><li>Only applied research matters.</li><li>The "useless" basic research of one era becomes the life-saving technology of the next.</li><li>Research pays off only immediately.</li><li>Vaccines require no research.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The payoff-of-patience thesis. A, C, D contradict it.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. Under the "One Health" logic (Ch. 9), mRNA platforms are valued for future:</p>
+    <ol><li>Cosmetic enhancement.</li><li>Pandemic preparedness — rapid response to emerging infectious diseases.</li><li>Germline editing.</li><li>Grey goo prevention.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> mRNA as a preparedness platform links to One Health. The others are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. Embryonic stem cells raise a distinctive ethical objection because they:</p>
+    <ol><li>Are too expensive.</li><li>Are obtained from embryos, raising profound questions about the moral status and beginning of human life.</li><li>Cannot become other cell types.</li><li>Are the same as iPSCs.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Embryo status is the ethical crux. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. iPSCs "sidestep the embryo-destruction objection" by:</p>
+    <ol><li>Using embryos more efficiently.</li><li>Reprogramming ordinary adult cells back to a versatile, embryo-like state without using embryos.</li><li>Banning stem-cell research.</li><li>Editing the germline.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Reprogrammed adult cells avoid embryo use. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. A desperate patient pays a clinic for an unproven "stem-cell cure" advertised online. The chapter's protective response combines:</p>
+    <ol><li>Nothing; buyer beware.</li><li>Regulation of clinics AND public scientific/information literacy (Ch. 8) to protect the vulnerable.</li><li>Banning all stem-cell science.</li><li>Trusting the advertisement.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Both structural and literacy responses. A and D fail to protect; C is overbroad.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. The chapter's overall claim that "power makes wisdom more essential, not less" is BEST supported by:</p>
+    <ol><li>The fact that these technologies are harmless.</li><li>That the same tools can heal terrible disease or entrench inequality and cross irreversible lines — so the outcome depends on wise choices.</li><li>That technology decides outcomes by itself.</li><li>That ethics slows progress needlessly.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Dual-use potential raises the stakes of choice. A, C, D contradict the claim.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Which pairing correctly matches a technology to a key 2020s milestone?</p>
+    <ol><li>Stem cells → first CRISPR therapy.</li><li>CRISPR → Casgevy approval (2023); mRNA → COVID-19 vaccines and 2023 Nobel.</li><li>Nanotech → gene-edited babies.</li><li>mRNA → He Jiankui.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Correct milestone pairings. The others mismatch.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Nanotechnology's promise for the Philippines (per Fabian Dayrit's question) is BEST framed as:</p>
+    <ol><li>A reason to abandon local science.</li><li>A potential driver of national scientific development and locally-relevant applications (Ch. 3) — "building a culture of science."</li><li>Purely a foreign concern.</li><li>Irrelevant to development.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It ties nanotech to nation-building. A, C, D dismiss it.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Applying the whole chapter, the wisest overall approach to nanotech and gene technologies is to:</p>
+    <ol><li>Deploy everything immediately with no oversight.</li><li>Ban all of it as too dangerous.</li><li>Pursue the benefits through responsible innovation — safety research, updated governance, equity, honoring bright lines like germline editing — because "can" never settles "should."</li><li>Leave all decisions to corporations.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> Responsible innovation with ethical lines is the chapter's stance. A and D are reckless; B is technophobic.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 10's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (somatic/germline, therapy/enhancement, precaution) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. Should heritable (germline) human genome editing ever be permitted? Argue a clear position for the coming decades, using the somatic/germline distinction, the therapy-vs-enhancement problem, the He Jiankui case, the consent and inequality arguments, and the current global consensus.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer takes a clear, defensible stand and reasons with the chapter's framework. A common well-argued position: permit and advance <em>somatic</em> therapy (Casgevy-style cures) enthusiastically, but maintain a moratorium on <em>heritable germline</em> editing for now — because it is currently unsafe (off-target risks), irreversible, affects future people who cannot consent, slides hard from therapy toward enhancement, threatens a genetic divide and a market-driven eugenics, and lacks the broad societal consensus and governance such a species-altering step demands. The He Jiankui affair is the cautionary anchor: it proves the capability exists and can be abused, and that good intentions do not justify crossing the line. The best essays engage the strongest counter-argument honestly — that germline editing could someday eliminate devastating diseases like Huntington's — and respond that even a real good must be weighed against irreversibility and consent, and that the burden of proof (precautionary principle) lies on demonstrating safety, equity, and consensus first. They conclude with the course's theme: "can" does not settle "should," and this is the clearest case where the future must be deliberately chosen.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. mRNA vaccines emerged rapidly during COVID-19 only because of decades of prior basic research, yet were distributed unequally and undermined by misinformation. Using this case, argue how the Philippines should invest in and govern biomedical science and pandemic preparedness over the next decade.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer draws the triple lesson: (1) sustained basic-research funding is preparedness — the mRNA platform existed in 2020 only because of decades of unglamorous work, so the Philippines should raise and protect long-term R&amp;D investment (Ch. 3) rather than funding only immediate payoffs; (2) equity matters — vaccine nationalism left poorer nations last, so the country should invest in local manufacturing/biotech capacity and regional cooperation to reduce dependence; (3) the information environment shapes outcomes — misinformation (that mRNA "alters DNA") cost lives, so pandemic preparedness must include information literacy and public trust-building (Ch. 8). The best essays connect these to the national S&amp;T system (DOST, the AI/biotech roadmap, genomic-surveillance capacity built during COVID-19), argue that preparedness is a deliberate decision made years in advance, and note the One Health framing (Ch. 9) that ties human, animal, and environmental health to pandemic risk.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. Nanotechnology is an invisible, enabling technology already embedded in thousands of products, with benefits and risks that are both real and diffuse. Argue how society should govern it responsibly over the coming decades — balancing innovation, the precautionary principle, equity, and the challenge that its effects are hard to track.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer resists both hype and fear, applying the nanoethics balance. It should acknowledge nanotech's vast, diffuse benefits (medicine, energy, materials, water) and its equally diffuse risks (nanotoxicology, the regulatory gap, the nano-divide, invisible surveillance), and argue for responsible innovation rather than blanket acceleration or prohibition. Concrete governance proposals: invest in nanotoxicology and lifecycle research to close knowledge gaps; update safety regulation to reflect that nanomaterials behave differently from bulk forms (the regulatory gap); require transparency/labeling of engineered nanomaterials in consumer products so the public can make informed choices; ensure equitable access so benefits do not accrue only to the rich (the nano-divide, linking to Ch. 3); and apply proportionate precaution — stronger scrutiny where exposure and novelty are highest. The best essays note the special difficulty that nanotech's invisibility and ubiquity make tracking and governance uniquely hard, and tie the recommendation to the course theme that powerful new technologies make wisdom and governance more essential, not less — and, via water purification and efficient solar cells, to the sustainability and climate themes of the next chapter.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 10 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

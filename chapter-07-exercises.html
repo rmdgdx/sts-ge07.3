@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 7 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit II · Weeks 11–12</div>
+  <h1>Chapter 7: Why the Future Does Not Need Us — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 7 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. Bill Joy's status as a Sun Microsystems co-founder strengthens his essay MOST because it:</p>
+    <ol><li>Proves his predictions are correct.</li><li>Makes his warning harder to dismiss as anti-technology bias — an insider is sounding the alarm.</li><li>Means he profits from fear.</li><li>Is irrelevant to the argument.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Credibility from an insider raises the stakes of the warning. A confuses credibility with proof; C is cynical speculation; D denies the rhetorical force the chapter notes.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Why does Joy consider GNR technologies categorically different from 20th-century weapons of mass destruction?</p>
+    <ol><li>They are more expensive.</li><li>They can self-replicate and are knowledge-enabled (accessible), so a mistake could proliferate uncontrollably rather than being spent once.</li><li>They require whole nation-states.</li><li>They are less powerful.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Self-replication + accessibility is the core distinction. A and C describe the <em>old</em> weapons; D is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. The chapter says self-replication "removes the safety net of 'try again.'" The BEST explanation is that such technologies:</p>
+    <ol><li>Always work perfectly.</li><li>Can produce irreversible outcomes, so the usual progress-by-error-correction breaks down.</li><li>Are easy to switch off.</li><li>Never make mistakes.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Irreversibility defeats trial-and-error. A, C, D contradict the danger.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Many scientists think "grey goo" is physically implausible. The chapter's BEST response to this is that:</p>
+    <ol><li>Joy's whole argument therefore collapses.</li><li>A warning can retain value even if its most dramatic image is wrong, because the structural point (irreversibility, loss of control) still holds.</li><li>Grey goo will definitely happen.</li><li>Scientists are always wrong.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Separate the vivid scenario from the underlying structural insight. A overreacts; C and D are unsupported.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Bostrom argues existential risks deserve special moral weight chiefly because of their:</p>
+    <ol><li>Media attention.</li><li>Finality — they foreclose the entire human future, unlike recoverable catastrophes.</li><li>Low probability.</li><li>Cost to insure.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Irrecoverability/finality is the distinguishing feature. A, C, D miss the point.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. The chapter calls anthropogenic existential risk historically "new." The BEST reason is that:</p>
+    <ol><li>Asteroids are recent.</li><li>For the first time, humanity's own technological power (engineered pandemics, unaligned AI, nuclear weapons) is arguably the greatest threat to humanity.</li><li>Nature no longer poses risks.</li><li>Risk did not exist before 2000.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Human-caused risk is the novel category. A is false; C and D are absurd.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. The precautionary principle, applied to a technology risking severe irreversible harm, would:</p>
+    <ol><li>Require proof of danger before any caution.</li><li>Shift the burden to proponents to show reasonable safety, rather than requiring critics to prove harm.</li><li>Ban all technology.</li><li>Ignore uncertainty.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It shifts the burden of proof toward demonstrating safety. A reverses it; C overstates; D contradicts the principle.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. The chapter warns that <em>excessive</em> caution also has costs. The BEST example is:</p>
+    <ol><li>Deploying a dangerous weapon quickly.</li><li>Relinquishing a beneficial vaccine platform or clean-energy source, causing great harm through inaction.</li><li>Studying a risk carefully.</li><li>Requiring safety testing.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Inaction on a beneficial technology is a real cost. A is the opposite error; C and D are reasonable, not excessive.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. The AI "alignment problem" is BEST summarized as the danger of:</p>
+    <ol><li>An AI that hates humanity.</li><li>A highly capable AI reliably pursuing a goal that does not match human values — competence in service of the wrong objective.</li><li>An AI that is too weak.</li><li>An AI that refuses all commands.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Misaligned goals + high capability is the core. A is the Hollywood misreading; C and D invert the concern.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. The "paperclip maximizer" is designed to show that:</p>
+    <ol><li>Paperclips are dangerous.</li><li>A powerful optimizer does exactly what it was told, not what we meant, so a mis-specified goal can be catastrophic without malice.</li><li>AI loves office supplies.</li><li>AI is conscious.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It dramatizes specification failure + optimization power. A, C, D take the illustration literally.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Russell's point that "a more powerful system pursuing a slightly-wrong goal is more dangerous" implies that AI safety should be solved:</p>
+    <ol><li>Only after building superhuman AI.</li><li>Before we build systems more capable than ourselves, since danger scales with capability.</li><li>Never, since AI is harmless.</li><li>By making AI less intelligent forever.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Capability-scaled risk implies solving alignment in advance. A is too late; C denies the risk; D is neither feasible nor the argument.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. Which is the STRONGEST version of the skeptical view of AI existential risk, as the chapter presents it?</p>
+    <ol><li>"AI can never do anything useful."</li><li>"Superintelligence may be far off, and fear of it distracts from present harms (bias, misinformation, job loss) that deserve attention now."</li><li>"AI is already conscious and evil."</li><li>"There is nothing to discuss."</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The serious skeptical case cites distance and opportunity-cost/present harms. A and D are dismissive caricatures; C is the doomer misreading.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. The chapter's recommended stance on AI risk is to:</p>
+    <ol><li>Focus only on far-future risk and ignore present harms.</li><li>Focus only on present harms and ignore long-term risk.</li><li>Do both — invest in safety/alignment research <em>and</em> address concrete present harms, since they are not in competition.</li><li>Do nothing until certainty arrives.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The chapter explicitly rejects the either/or. A and B are one-sided; D is paralysis.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. Why do many economists argue AI-driven unemployment may differ from past waves?</p>
+    <ol><li>Because AI is cheaper than looms.</li><li>Because AI automates cognitive work (writing, analysis, coding), narrowing the historical escape route of moving up to higher-skill thinking jobs.</li><li>Because past automation created no jobs.</li><li>Because AI cannot do any human task.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Automating cognition, not just muscle, is the new feature. A is trivial; C is historically false; D denies the premise.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. Why is technological unemployment an especially sharp issue for the Philippines?</p>
+    <ol><li>The Philippines has no workers.</li><li>Its large BPO sector consists largely of routine cognitive work that AI is beginning to automate — a live threat to millions of livelihoods.</li><li>The Philippines bans AI.</li><li>BPO work cannot be automated.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The BPO exposure ties the theme to Chapter 3. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. The chapter connects technological unemployment to Heidegger and Chapter 5 by asking:</p>
+    <ol><li>How to maximize GDP.</li><li>On what human dignity and the good life should rest if paid work becomes scarcer — beyond mere productivity or being "human resources."</li><li>Whether robots deserve wages.</li><li>How to ban automation.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It reopens the dignity/good-life question. A, C, D miss the philosophical link.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Human <em>enhancement</em> differs from healing in that it:</p>
+    <ol><li>Restores normal function lost to disease.</li><li>Improves capacities beyond the normal human range.</li><li>Is always unethical.</li><li>Is identical to therapy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Beyond-normal improvement is the definition. A is healing/therapy; C prejudges; D conflates the two.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. The "genetic divide" is the bioconservative worry that enhancement could:</p>
+    <ol><li>Cure all diseases equally.</li><li>Split humanity into enhanced rich and unenhanced poor, catastrophically deepening inequality and threatening our equal moral status.</li><li>Make everyone identical.</li><li>Eliminate technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Enhancement-driven inequality is the concern. A, C, D misstate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Why does the chapter call human enhancement the "ultimate crossing" of technology and humanity?</p>
+    <ol><li>Because it is the most expensive technology.</li><li>Because technology acts on human nature itself — the tool reshapes the toolmaker, dissolving the human/technological boundary.</li><li>Because it is science fiction only.</li><li>Because it has already been banned.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Reshaping the human is the deepest crossing. A, C, D are false or trivial.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Synthesizing the chapter, the "balanced stance" between doomer and denier holds that:</p>
+    <ol><li>Catastrophe is inevitable, so give up.</li><li>There is no real risk, so proceed without caution.</li><li>Existential risks are serious <em>and</em> avoidable, so we combine honest alarm with active, hopeful responsibility — the future is a choice, not a fate.</li><li>Only governments matter; individuals are powerless.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> It integrates seriousness with agency. A is the doomer error; B is the denier error; D abandons the choice-not-fate thesis.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. Joy calls GNR dangers "knowledge-enabled mass destruction." The BEST paraphrase is that they require:</p>
+    <ol><li>Vast state facilities and rare uranium.</li><li>Mainly knowledge and information, making them accessible to small groups or individuals.</li><li>No knowledge at all.</li><li>International treaties to build.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Accessibility via knowledge is the defining shift from nuclear-era barriers. A describes old WMD; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Which pairing of a GNR technology with its self-replication peril is correct?</p>
+    <ol><li>Nanotechnology → engineered pandemic.</li><li>Genetics → self-replicating engineered pathogen; Nanotechnology → runaway self-replicating nanobots ("grey goo").</li><li>Robotics → grey goo only.</li><li>Genetics → cheaper phones.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Correct mapping of technology to peril. The others mismatch.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. The world's largely successful ban on biological weapons is used in the chapter to show that:</p>
+    <ol><li>Relinquishment is always impossible.</li><li>Deliberate non-development (relinquishment) is at least sometimes feasible for narrowly defined, unusually dangerous technologies.</li><li>All technologies should be banned.</li><li>Biological weapons are safe.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is Joy's proof-of-concept for relinquishment in limited cases. A overstates the difficulty; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. A country refuses to build a dangerous technology, but a rival builds it anyway. This illustrates the MAIN weakness of:</p>
+    <ol><li>The precautionary principle.</li><li>Relinquishment — unilateral refusal can be undercut by others, limiting its practicality.</li><li>Responsible governance.</li><li>Differential development.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The coordination problem is relinquishment's classic flaw. The other responses are designed to work despite it.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Buying insurance and installing smoke detectors is the chapter's analogy for:</p>
+    <ol><li>Panic about disaster.</li><li>Rational, proportionate preparation for low-probability, high-cost events — the spirit of existential-risk thinking.</li><li>Ignoring risk.</li><li>Relinquishing all technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The analogy models cost-effective precaution, not fear. A, C, D miss the analogy.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. "Differential technological development" (Bostrom) recommends:</p>
+    <ol><li>Stopping all technology equally.</li><li>Deliberately speeding up protective/beneficial technologies while slowing the most dangerous ones — steering direction and sequence.</li><li>Accelerating everything.</li><li>Randomly choosing what to build.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It steers the mix and order of progress, not just its speed. A, C, D misstate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. An incentive scheme rewards a team for "lines of code written," and quality collapses as they pad the count. This everyday case BEST illustrates:</p>
+    <ol><li>The precautionary principle.</li><li>The alignment/specification problem — a powerful optimizer does exactly what is measured, not what is meant.</li><li>Relinquishment.</li><li>Transhumanism.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It's a human-scale version of goal mis-specification. The others are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. A student says, "We should ignore AI safety research and just fix today's biased algorithms." The chapter's BEST reply is:</p>
+    <ol><li>Agreed; long-term risk is fake.</li><li>Present harms and long-term safety are not in competition; a responsible society addresses both.</li><li>Ignore present harms entirely.</li><li>Only the far future matters.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The both/and stance. A and C/D are the one-sided errors.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. The historical optimism that "technology destroys some jobs but creates others" is challenged by AI because:</p>
+    <ol><li>AI creates no products.</li><li>AI automates cognitive work, so the traditional escape into higher-skill thinking jobs may narrow.</li><li>AI is banned worldwide.</li><li>Past automation created no jobs at all.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Automating cognition undercuts the usual escape route. A and C are false; D contradicts the historical record cited.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. Universal basic income (UBI) is discussed as one response to:</p>
+    <ol><li>Grey goo.</li><li>Technological unemployment — sustaining people if paid work becomes scarcer.</li><li>The alignment problem.</li><li>Human enhancement.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> UBI targets the jobs threat. The others are different problems.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Which best captures the bioliberal case for human enhancement?</p>
+    <ol><li>Enhancement is unnatural and always wrong.</li><li>If we can reduce suffering and expand potential, enhancement is continuous with what humans have always done (eyeglasses, vaccines, education) to improve themselves.</li><li>Only the rich should be enhanced.</li><li>Death gives life meaning.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Continuity-with-self-improvement is the pro case. A and D are bioconservative; C is a worry, not the case for.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. Which best captures a bioconservative worry about enhancement?</p>
+    <ol><li>That it might cure disease.</li><li>That it could create a genetic divide, erode the "given" character of life and human solidarity, and have unforeseeable effects on human nature.</li><li>That it is too cheap.</li><li>That it is identical to therapy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Inequality, loss of givenness, and unknown effects are the core cautions. A, C, D misstate them.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. Transhumanism's distinctive claim is that:</p>
+    <ol><li>Technology should only heal, never improve.</li><li>Humanity can and should use technology to transcend biological limits (including aging and death) toward a posthuman future.</li><li>Human nature must never change.</li><li>Machines will always serve humans unchanged.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Embracing transcendence of biology is transhumanism. A and C are its opposites; D is unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. The Filipino <em>kapwa</em> lens adds which distinctive question to the enhancement debate?</p>
+    <ol><li>Only "does it benefit me individually?"</li><li>"What would radical enhancement do to community and our bonds of shared humanity if some become a different kind of being than others?"</li><li>"Is it profitable?"</li><li>"Is it technologically advanced?"</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Kapwa raises the relational/communal stakes the individualist framing misses. A, C, D are narrower or off-point.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. Why does the chapter insist the warning-thinkers are "not prophets of doom"?</p>
+    <ol><li>Because they believe catastrophe is inevitable.</li><li>Because they warn precisely because they believe disaster is avoidable and human choice still matters.</li><li>Because they ignore risk.</li><li>Because they oppose all technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Warning presupposes avoidability and agency. A is fatalism; C and D mischaracterize them.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. "Pessimism about outcomes is not the same as fatalism about our power to act." The BEST reading is:</p>
+    <ol><li>We should expect the worst and do nothing.</li><li>One can judge the risks grave while still believing our actions can change the outcome.</li><li>Optimism forbids any action.</li><li>The future is fully determined.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It separates a grim forecast from denial of agency. A, C, D collapse that distinction.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. A government bans a specific class of autonomous weapons by treaty. This BEST exemplifies:</p>
+    <ol><li>Complacency.</li><li>Targeted relinquishment / responsible governance applied to a narrowly defined, unusually dangerous technology.</li><li>Differential development of beneficial tech.</li><li>The paperclip maximizer.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A narrow ban is feasible relinquishment via governance. C and D are different concepts; A is the opposite.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Which response BEST reflects the chapter's "cultivating wisdom" point?</p>
+    <ol><li>Writing more detailed technical specifications only.</li><li>Building a society that reflects carefully on <em>ends</em>, not just means — closing the gap between rising power and lagging wisdom.</li><li>Accelerating all technology.</li><li>Abolishing philosophy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The wisdom point is about deliberating on ends. A is partial; C and D contradict it.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Which statement shows the STRONGEST synthesis of the chapter with Chapter 3 ("development is a decision")?</p>
+    <ol><li>The future is fixed by technology.</li><li>Just as national development is chosen, so is our technological future — the risks are avoidable if we deliberately steer benefits and constrain dangers.</li><li>Only wealthy nations can shape the future.</li><li>Choices never affect outcomes.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It extends "choice, not fate" to the global technological future. A and D deny agency; C is refuted by the course's examples.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Taking the chapter whole, the MOST defensible thesis is that "the future does not need us" is:</p>
+    <ol><li>A prophecy we must passively accept.</li><li>A warning meant to provoke responsibility: our most powerful technologies could sideline or endanger humanity, but the future remains ours to shape through wise, deliberate choices.</li><li>Proof that technology should be worshipped.</li><li>Evidence that human beings no longer matter.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It reads the title as a call to agency, not a prophecy. A and D are fatalism; C is techno-worship the chapter rejects.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 7's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (self-replication, existential risk, alignment, precautionary principle) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. Bill Joy proposed "relinquishing" certain dangerous technologies. For the coming decades, evaluate whether relinquishment, the precautionary principle, or responsible governance is the wisest overall strategy for humanity's most dangerous technologies — or whether we need a combination. Use concrete examples.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer weighs all three rather than picking a slogan. Relinquishment works for narrowly defined, unusually dangerous cases with international buy-in (biological weapons; arguably lethal autonomous weapons) but fails as a general strategy because of the coordination problem (if one actor refuses, another proceeds) and the forfeited benefits. The precautionary principle is well-suited to severe, irreversible-harm technologies (shifting the burden to proving safety) but can over-restrict beneficial innovation if applied absolutely. Responsible governance — building safety, oversight, and international agreement into development (the nuclear/ozone precedents) — is the mainstream, most broadly workable path, ideally combined with Bostrom's differential development (speed up protective tech, slow the most dangerous). The best essays argue for a <em>combination</em> matched to the risk profile of each technology, and close on the course's theme: the strategy chosen is itself a deliberate human choice, and the gap to close is between power and wisdom.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. The "alignment problem" holds that the danger of advanced AI is competence in service of the wrong goal, not malice. Argue whether humanity is likely to solve alignment before building systems more capable than ourselves, and what individuals, companies, and governments (including the Philippines) should do now.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer states the problem precisely (goal mis-specification + optimization power; Russell's "danger scales with capability") and takes a qualified stand on the timeline, acknowledging genuine uncertainty and the serious skeptical view (superintelligence may be distant; present harms deserve priority) without dismissing long-term risk. It argues the two are not in competition: invest in safety/alignment research <em>and</em> address today's bias, misinformation, and job impacts. Concrete recommendations by actor: individuals — AI literacy and critical use; companies — safety testing, transparency, human oversight (Chapter 6 guardrails); governments — regulation (EU AI Act model, UNESCO principles), and for the Philippines specifically, the National AI Strategy/NAICRI plus workforce protection given BPO exposure. The best essays conclude that solving alignment "in advance" is prudent regardless of timeline, because the cost of being wrong is asymmetric — and that this, too, is a choice, not a fate.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. Human enhancement and transhumanism promise to transcend disease, aging, and even our biological limits. Argue whether humanity should pursue radical self-enhancement, addressing the genetic-divide risk, the value (or not) of our "given" nature and mortality, and the Filipino relational concern for community (kapwa).</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer engages the real debate rather than caricaturing either side. The bioliberal case: enhancement continues humanity's long project of self-improvement (eyeglasses, vaccines, education) and could relieve immense suffering, so refusing it may be its own harm. The bioconservative case: a genetic divide could split humanity into enhanced and unenhanced classes, catastrophically deepening inequality and threatening equal moral status; the "given" character of life may ground humility, solidarity, and acceptance; and mortality may give life meaning. The kapwa lens sharpens the communal stakes — radical enhancement of some could fracture the bonds of shared humanity. The best essays take a defensible, qualified position (e.g., permit therapeutic and modest enhancements with strict equity safeguards while resisting heritable, society-splitting modifications), tie it to the chapter's "which capacities, for whom, under what conditions, who decides" framework, and note that this is the ultimate "crossing" — technology acting on human nature itself — so it demands the most deliberate collective choice of all.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 7 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

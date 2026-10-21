@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit II · Week 10</div>
+  <h1>Chapter 6: When Technology and Humanity Cross — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 6 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. A city proposes cameras that would cut crime but track every citizen's movements. Framing this as an "ethical dilemma" is BEST justified because:</p>
+    <ol><li>One side is obviously right.</li><li>Two genuine goods — public safety and privacy/freedom — conflict, with no cost-free option.</li><li>Cameras are always wrong.</li><li>Crime is not a real problem.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A dilemma is a genuine conflict of values without a perfect answer. A, C, D deny the conflict the chapter insists on.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Human-rights reasoning is described as "largely deontological." The clearest implication is that rights:</p>
+    <ol><li>Can always be overridden if the outcome is good enough.</li><li>Function as side-constraints — limits on what may be done to a person regardless of aggregate benefit.</li><li>Are the same as maximizing happiness.</li><li>Only matter to lawyers.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Deontological rights set limits outcomes can't simply override. A is consequentialism; C conflates the two; D trivializes.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. Reducing a person to "standing-reserve" (Heidegger, Ch. 4) is, in this chapter's terms, essentially a violation of:</p>
+    <ol><li>Copyright.</li><li>Human dignity — treating a person as a mere means/resource rather than an end.</li><li>The trolley problem.</li><li>Neuroplasticity.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The chapter explicitly links standing-reserve to the Kantian dignity violation. The others are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Asimov's Three Laws are used in the chapter chiefly to show that:</p>
+    <ol><li>Robot ethics is already solved.</li><li>Simple rules break down in real moral situations, so ethics can't be reduced to code.</li><li>Robots should obey no one.</li><li>Science fiction predicts the future exactly.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Asimov's stories dramatize the rules failing — the point is difficulty, not a solution. A, C, D misread the lesson.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. A care robot keeps a lonely elder safe but replaces human visits. The deepest dignity concern is that it may:</p>
+    <ol><li>Use too much electricity.</li><li>Provide the appearance of companionship while quietly removing the human contact dignity requires.</li><li>Be too expensive.</li><li>Move too slowly.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The chapter's worry is deception/abandonment and lost human contact. A, C, D are practical, not dignity, issues.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. Why do many ethicists argue lethal autonomous weapons cross "an absolute moral line"?</p>
+    <ol><li>Because they are expensive.</li><li>Because delegating the decision to take a human life to a machine violates human dignity in a way no military advantage can justify.</li><li>Because they are slow.</li><li>Because robots deserve rights.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The objection is deontological: the kill decision must not be delegated to a machine. A, C, D miss the moral core.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. An AV must be pre-programmed for unavoidable-crash scenarios. The chapter's key insight is that:</p>
+    <ol><li>There is a neutral option that harms no one.</li><li>Any choice encodes an ethical theory into a mass-produced product, so the decision must be made openly and accountably.</li><li>Engineers should decide privately.</li><li>The car should simply turn off.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> No neutral option exists; design encodes ethics at scale, demanding public deliberation. A is false; C contradicts the accountability point; D still has victims.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. "Autonomy moves the moral decision upstream." This BEST means the decision shifts from:</p>
+    <ol><li>Governments to companies.</li><li>The human reacting in the moment to the designer deciding in advance — replicated across many machines.</li><li>Ethics to engineering, permanently.</li><li>The old to the young.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Upstream = from in-the-moment reaction to prior design choice. A is partial; C is the opposite of the chapter's aim; D is unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. A hiring AI trained on a firm's past decisions rejects more women. This BEST illustrates:</p>
+    <ol><li>That the AI is neutral and objective.</li><li>Algorithmic bias — learning and scaling historical human bias behind a mask of objectivity.</li><li>A random error.</li><li>That women apply less.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> "Garbage in, garbage out" automates past discrimination. A is the dangerous illusion; C and D dodge the cause.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. Why might automated discrimination be <em>harder</em> to fight than an openly prejudiced human?</p>
+    <ol><li>It is always illegal.</li><li>It wears a mask of mathematical objectivity, is hidden inside a system, and operates at scale — so it looks neutral and is harder to challenge.</li><li>It is easier to see.</li><li>It affects no one.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Concealment, apparent neutrality, and scale are the chapter's reasons. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. A bank says, "We just followed the algorithm." Which right is MOST directly undermined, and by what problem?</p>
+    <ol><li>Freedom of religion; the black box.</li><li>The right to a remedy; the accountability gap ("many hands").</li><li>The right to property; neuroplasticity.</li><li>No right is affected.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Deflecting responsibility to the algorithm strains the right to a remedy via the accountability gap. The others mismatch right and problem.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. The demand for "explainable AI" is grounded in the claim that human dignity includes:</p>
+    <ol><li>A right to free devices.</li><li>A right to an explanation for decisions that seriously affect us (e.g., why a loan was denied).</li><li>A right to never be judged.</li><li>A right to program computers.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Opaque life-affecting decisions conflict with due process and dignity. A, C, D misstate the claim.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. The chapter says AI threatens rights "without being conscious or evil." The BEST paraphrase is that AI is dangerous as a:</p>
+    <ol><li>Sentient villain plotting against us.</li><li>Fast, scalable, opaque, seemingly-neutral amplifier of existing human choices and biases.</li><li>Harmless calculator.</li><li>Purely physical robot.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The danger is amplification, not malevolence. A anthropomorphizes; C understates; D is a different topic.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. "I have nothing to hide" is called a weak defense of surveillance MOST because privacy:</p>
+    <ol><li>Only protects criminals.</li><li>Protects the freedom to think, dissent, and become oneself, and guards against chilling effects and concentrated power — for everyone.</li><li>Is unimportant.</li><li>Is about hiding data only.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Privacy is a condition of freedom, not a shield for wrongdoing. A, C, D are the misconceptions the chapter rejects.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. The "chilling effect" refers to:</p>
+    <ol><li>Devices overheating.</li><li>Self-censorship caused by believing one is always watched.</li><li>Cold data centers.</li><li>Faster processors.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Surveillance-induced self-censorship shrinks freedom. The others are literal misreadings.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. The chapter says the gravest surveillance concern is political because comprehensive monitoring:</p>
+    <ol><li>Improves battery life.</li><li>Shifts power decisively from citizens to whoever controls the data (states or corporations).</li><li>Has no effect on power.</li><li>Only concerns celebrities.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The key question is "what power, to whom, over whom?" A is trivial; C and D deny the stakes.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Carr's use of neuroplasticity supports his argument by claiming that:</p>
+    <ol><li>The brain never changes.</li><li>Because the brain rewires with use, internet habits of skimming and interruption can reshape it toward shallow processing.</li><li>Google physically enters the brain.</li><li>Reading is impossible online.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Plasticity is the mechanism linking media habits to cognition. A contradicts it; C and D are absurd literalizations.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. That Socrates worried writing would ruin memory is cited to show that:</p>
+    <ol><li>Carr must be wrong about everything.</li><li>Every major information technology provokes similar fears, so we should weigh Carr's claim critically rather than accept or dismiss it wholesale.</li><li>Writing did ruin memory.</li><li>Ancient people were foolish.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The Socrates parallel is a call for balanced evaluation, not a refutation or endorsement. A overstates; C and D misread.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. The most balanced position on Carr, per the chapter, connects to which earlier ideas?</p>
+    <ol><li>Scientism and the black box.</li><li>Chapter 5's golden mean and Chapter 4's "free relationship" — using the technology with enough awareness to preserve deep thought alongside new skills.</li><li>Asimov's Laws.</li><li>The trolley problem.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The mean/free-relationship stance is exactly the balanced view. The others are unrelated concepts.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. The EU AI Act's "risk-based approach" BEST exemplifies which chapter principle?</p>
+    <ol><li>That all AI should be banned.</li><li>That society deliberately governs technology by rights — banning the most dangerous uses, tightly regulating high-risk ones, and lightly touching the rest.</li><li>That AI needs no rules.</li><li>That companies should self-regulate only.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Tiered, rights-based governance is the model. A and C are extremes the chapter rejects; D is the gap governance aims to close.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. Kant's principle "treat humanity always as an end, never merely as a means" MOST directly grounds which idea in this chapter?</p>
+    <ol><li>Consequentialism.</li><li>Human dignity — the basis of human rights that resists sacrificing persons for aggregate benefit.</li><li>Neuroplasticity.</li><li>The trolley solution.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Kant's formula is the chapter's stated basis for dignity/rights. A is the view rights constrain; C and D are unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Which scenario is the clearest case of the "power outrunning wisdom" theme?</p>
+    <ol><li>A calculator adds numbers.</li><li>Facial recognition can now track everyone in public before society has decided whether that should be allowed.</li><li>A library lends books.</li><li>A student takes notes.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Capability outpacing rules/norms is the theme. A, C, D are settled, low-stakes uses.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. A consequentialist and a human-rights advocate disagree about mass surveillance. Their core disagreement is BEST described as:</p>
+    <ol><li>Whether crime is bad.</li><li>Whether aggregate benefits (less crime) can override an individual's right to privacy, or whether that right sets a limit outcomes may not cross.</li><li>Whether cameras work.</li><li>Whether privacy exists.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Outcomes-vs-rights is the deontology/consequentialism split. A, C, D are not the philosophical crux.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. "Automation bias" is dangerous in AI decision-making because people tend to:</p>
+    <ol><li>Distrust all machines.</li><li>Over-trust machine outputs even when they should question them, deepening the accountability problem.</li><li>Ignore computers entirely.</li><li>Program better systems.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Over-deference to "what the computer says" compounds harm. A and C are the opposite; D is unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Which is the BEST example of the "many hands" problem?</p>
+    <ol><li>One engineer proudly signs their work.</li><li>After an AI wrongly denies bail, the developer blames the data, the vendor blames the developer, and the court blames the software — so no one is accountable.</li><li>A single owner takes responsibility.</li><li>A judge explains a ruling in full.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Diffused responsibility across many actors is the many-hands gap. A, C, D are cases of clear accountability.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. A government argues facial recognition is fine because "only criminals need to worry." The BEST critique is:</p>
+    <ol><li>Agree; the innocent have nothing to fear.</li><li>Privacy protects everyone's freedom to think, dissent, and assemble; ending anonymity chills lawful protest and shifts power, harming the innocent too.</li><li>Criminals deserve privacy most.</li><li>Cameras never work.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The chapter's rebuttal to "nothing to hide." A repeats the fallacy; C and D miss the point.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Which pairing correctly matches a technology to the right it MOST threatens?</p>
+    <ol><li>Biased hiring AI → freedom of religion.</li><li>Biased hiring AI → equality/non-discrimination; mass facial recognition → privacy.</li><li>Facial recognition → property.</li><li>Care robot → freedom of movement.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Correct mapping of harm to right. The others mismatch.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. The chapter warns against both "technophobia" and "techno-utopianism." A self-driving car analysis avoiding both would:</p>
+    <ol><li>Demand an immediate total ban.</li><li>Acknowledge AVs could save many lives <em>and</em> raise real dilemmas (crash rules, liability, jobs, security), requiring open, accountable governance.</li><li>Deploy them with no rules to maximize progress.</li><li>Ignore the ethics entirely.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Holding both goods and threats is the balanced STS stance. A is technophobia; C is techno-utopianism; D abdicates.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. Why does the chapter insist these dilemmas need "structural," not just personal, responses?</p>
+    <ol><li>Because individual character never matters.</li><li>Because the harms are built into products used by millions, so laws, standards, and oversight are needed alongside personal virtue.</li><li>Because ethics is useless.</li><li>Because governments should control everything.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Systemic problems need systemic answers plus virtue. A and C dismiss ethics; D overstates.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. Carr's essay is called "a human-rights question turned inward." The BEST explanation is that it concerns:</p>
+    <ol><li>The right to fast internet.</li><li>Sovereignty over one's own attention and mind against technologies engineered to capture them.</li><li>The right to own a computer.</li><li>Freedom of movement.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Attention/cognitive autonomy is the inward "right." A, C, D are external or unrelated.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Which response to Carr shows the STRONGEST critical thinking?</p>
+    <ol><li>"He's completely right; the internet made everyone stupid."</li><li>"The internet reshapes cognition (plausibly true), but it also brings real gains and every medium drew such fears; the wise course is disciplined use that preserves deep thought."</li><li>"He's completely wrong; technology never affects the mind."</li><li>"Socrates proves writing was bad."</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Balanced, evidence-weighing judgment. A and C are the two extremes; D misuses the Socrates parallel.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. A "social credit"-style system scoring citizens by behavior is cited to show that surveillance can:</p>
+    <ol><li>Only ever help people.</li><li>Become a tool of comprehensive control that authoritarian regimes once could only dream of.</li><li>Never affect freedom.</li><li>Improve privacy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The example illustrates surveillance-as-control. A, C, D deny the danger.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. The Philippine Data Privacy Act (RA 10173) is best understood in this chapter as:</p>
+    <ol><li>A scientific discovery.</li><li>A social/legal response giving individuals rights over their personal data — governance as a "social technology."</li><li>An AI system.</li><li>A ban on all data use.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is rights-based governance, echoing Chapter 1's "law as social technology." A, C, D miscategorize it.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. The six converging governance principles (oversight, transparency, fairness, accountability, privacy, safety) share the aim of:</p>
+    <ol><li>Maximizing corporate profit.</li><li>Keeping human dignity and control ahead of technological convenience.</li><li>Banning all technology.</li><li>Removing humans from decisions.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> All six keep humans responsible and rights protected. A and D are opposite aims; C is an extreme.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. "Human oversight" as a governance principle specifically requires that:</p>
+    <ol><li>Machines make all consequential decisions alone.</li><li>A human remains responsible and in the loop for consequential decisions.</li><li>Humans never use AI.</li><li>AI explains nothing.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Human-in-the-loop responsibility is the principle. A is its opposite; C and D misstate it.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. An AV company wants to keep its crash-decision rules secret as a trade secret. The chapter's principled objection is that:</p>
+    <ol><li>Trade secrets are always illegal.</li><li>Because the rule encodes a life-and-death ethical choice affecting the public, it should be made openly and accountably, not privately.</li><li>Secrecy improves safety.</li><li>The public has no interest.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Public ethical stakes demand transparency/accountability. A overstates; C and D deny the public interest.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Which best captures why the chapter says "the deepest danger is quiet, not dramatic"?</p>
+    <ol><li>Killer robots are the only real risk.</li><li>The subtler harms — hidden bias, diffused accountability, eroded privacy, atrophied attention — are pervasive and easy to miss, unlike dramatic sci-fi scenarios.</li><li>There is no danger.</li><li>Drama is more harmful than substance.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The everyday, systemic harms are the emphasis. A narrows it; C denies it; D misreads.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. A student argues, "If we can build advanced AI, we should, and figure out ethics later." The chapter's BEST reply invokes:</p>
+    <ol><li>Scientism.</li><li>The is/ought gap and rights as limits — "can" does not imply "should," and dignity sets constraints that must guide design in advance.</li><li>Neuroplasticity.</li><li>The trolley problem only.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Rights-as-limits plus is/ought answers "build first, ethics later." A, C, D are off-point.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Which scenario BEST respects human dignity while using AI in hiring?</p>
+    <ol><li>The AI auto-rejects candidates with no human review or explanation.</li><li>The AI screens, but a human makes the final call, applicants can get an explanation and appeal, and the system is audited for bias.</li><li>The company hides that AI is used at all.</li><li>The AI's reasoning is kept secret from everyone.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It embodies oversight, explainability, remedy, and fairness. A, C, D violate the governance principles.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Taking the chapter as a whole, "keeping humanity the measure" MOST precisely means:</p>
+    <ol><li>Humans should reject all machines.</li><li>The human person, and every person's dignity and rights, must remain the standard by which we judge and constrain our technologies — never a resource optimized by them.</li><li>Machines should be the standard for humans.</li><li>Technology has no ethical dimension.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It restates the chapter's thesis. A is technophobia; C inverts it; D is false.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 6's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (rights, dignity, dilemmas, governance) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. As AI takes over more consequential decisions (hiring, lending, policing, healthcare) over the next decade, will human rights be adequately protected, or will the "accountability gap" and algorithmic bias widen? Argue a position and propose the governance guardrails you think are most essential.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer takes a clear, evidence-based stand. The pessimistic case: AI's speed, scale, opacity, and apparent neutrality can entrench bias and diffuse accountability faster than law adapts, especially in countries with weak enforcement. The optimistic case: governance is emerging (EU AI Act, UNESCO, PH Data Privacy Act/AI roadmap) and could institutionalize fairness better than inconsistent human decisions if well-designed. The best essays argue the outcome is contingent on deliberate choices and specify guardrails tied to the chapter: human oversight (a person accountable and in the loop), transparency/explainability (a right to explanation), bias auditing, a genuine right to appeal/remedy, and enforceable liability that closes the many-hands gap. They connect to Chapter 3 ("development is a decision") — protecting rights is a policy choice, not an automatic result — and hold both the goods and the threats without lapsing into technophobia or techno-utopianism.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. Facial recognition and pervasive data collection make anonymity increasingly impossible. Evaluate whether a free society can survive ubiquitous surveillance, using the concepts of privacy, the chilling effect, human dignity, and the shift of power. What should the Philippines specifically do?</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer argues that privacy is a precondition of freedom, not a shield for wrongdoing, and that ubiquitous surveillance threatens the free society through the chilling effect (self-censorship), the end of practical anonymity (chilling lawful protest and dissent), and a decisive power shift from citizens to whoever controls the data. It should weigh the genuine benefits (crime, disasters, services) honestly, then argue for limits: bans or strict controls on real-time public facial recognition (as the EU AI Act does), strong data-protection enforcement, purpose limitation, and transparency. For the Philippines specifically: strengthen the Data Privacy Act and the National Privacy Commission's enforcement powers, legislate clear limits on state and corporate surveillance, and build these into the National AI Strategy. The best essays note the political dimension — that the deepest question is "what power, to whom, over whom?" — and warn against normalizing a "social credit"-style trajectory.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. Nicholas Carr worries that digital technology is eroding our capacity for deep, sustained thought. As AI now also writes, summarizes, and thinks "for" us, will the next generation's minds be enhanced or diminished? Argue your view and propose how education (and a course like STS) should respond.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer engages Carr critically rather than accepting or dismissing him. It grants neuroplasticity and the plausible erosion of deep reading/attention, while noting the counter-history (Socrates on writing) and the genuine gains of digital tools — and then raises the new stakes of generative AI, which can outsource not just memory (Google) but reasoning and writing itself, risking cognitive "de-skilling" (a Chapter 1 Luddite echo at the level of the mind). The best essays argue the outcome depends on <em>how</em> we use these tools — the golden mean and "free relationship" again — using AI to augment rather than replace thinking, and preserving practices of undistracted, effortful cognition. On education: schools and STS should teach digital and AI literacy, protect and assess deep thinking (not just AI-assisted output), cultivate attention as a skill, and frame cognitive autonomy as a matter of human dignity and freedom — sovereignty over one's own mind.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 6 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

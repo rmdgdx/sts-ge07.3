@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 8 — Reinforcement Exercises &amp; Essay | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit III · Week 13</div>
+  <h1>Chapter 8: The Information Age — From Gutenberg to Generative AI — Reinforcement Exercises &amp; Essay</h1>
+  <div class="subtitle">GE07 Exercises &amp; Essay • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#intro-note">About</a></li>
+    <li><a href="#hots-test">HOTS Test</a></li>
+    <li><a href="#assignment">Assignment</a></li>
+    <li><a href="#essay">Essay</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="intro-note">
+  <h2>About These Exercises</h2>
+  <p>This companion set to the Chapter 8 main lecture contains the higher-order-thinking assessment materials: a 20-item HOTS Chapter Test, a 20-item HOTS reinforcement assignment (take-home), and a 3-item futures essay. Each multiple-choice item has a click-to-reveal answer with explanation; the essays include short model answers and a suggested rubric. Refer to the main lecture (with its Self-Assessment quiz and references) for the content these exercises assess.</p>
+</section>
+
+<section id="hots-test">
+  <h2>Chapter Test: 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Higher-Order Thinking Skills test — items require analysis, evaluation, inference, and application, not recall. Click "Answer &amp; Explanation" to reveal the key.</p>
+
+  <div class="mcq"><p class="stem">1. A student says, "I'm always online, so I'm the best-informed generation ever." Using the chapter's central paradox, the BEST critique is:</p>
+    <ol><li>They are completely right.</li><li>Unprecedented access to information does not guarantee knowledge or wisdom, and the same tools also spread misinformation — being online ≠ being well-informed.</li><li>The internet contains no true information.</li><li>Older generations were better informed.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Access ≠ understanding; the paradox holds both promise and peril. A ignores the crisis of truth; C and D overstate.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. "I saw a video online proving it, so I know it's true." Using the DIKW hierarchy, the flaw is that the student:</p>
+    <ol><li>Reached wisdom.</li><li>Mistook data/information (a video) for knowledge, skipping the verification and understanding that knowledge requires.</li><li>Has too little data.</li><li>Used no technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> A video is unverified information, not knowledge. A is the opposite; C and D are irrelevant.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. Shannon's reduction of all messages to bits matters to this chapter MOST because it explains why:</p>
+    <ol><li>Only text can be digitized.</li><li>Text, images, audio, and video can all be stored, copied, and transmitted by the same machines — enabling the entire digital/information age (including deepfakes).</li><li>Information is not measurable.</li><li>Analog media are superior.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Universal digitization underlies everything from streaming to synthetic media. A and C are false; D is off-point.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. The chapter calls print "the social media of its age" to make the point that:</p>
+    <ol><li>Gutenberg invented Facebook.</li><li>Every information technology both democratizes access and disrupts quality control, spreading truth and falsehood alike.</li><li>Print was harmless.</li><li>Social media is entirely new with no precedent.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The parallel is the double-edged pattern. A is absurd; C and D deny the historical lesson.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. The removal of "gatekeepers" by social media is BEST described as:</p>
+    <ol><li>Purely good — everyone can now speak.</li><li>Purely bad — no one should publish.</li><li>Double-edged — it democratizes voice but removes the editorial checks that once filtered information before it spread.</li><li>Irrelevant to truth.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The chapter holds both the empowerment and the loss of quality control. A and B are one-sided; D is false.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. Research finds false news often spreads faster than true news. The chapter's BEST explanation is that:</p>
+    <ol><li>People prefer lies.</li><li>Falsehood is often more novel/sensational, so engagement-optimized algorithms and human emotion amplify it.</li><li>True news is illegal.</li><li>Algorithms are neutral.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Sensationalism + engagement optimization drives the spread. A oversimplifies; C is false; D contradicts the chapter.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. A person only ever sees news confirming their political views and assumes "everyone thinks this way." This BEST illustrates:</p>
+    <ol><li>Wisdom.</li><li>A filter bubble / echo chamber produced by engagement algorithms, fragmenting shared reality.</li><li>Malinformation.</li><li>The liar's dividend.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Personalized confirmation is the filter bubble. The other terms name different phenomena.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. The chapter says the algorithm problem is "not that algorithms exist" but "what they are optimized for." The BEST paraphrase is:</p>
+    <ol><li>We should delete all algorithms.</li><li>Curation is necessary, but optimizing for engagement rather than truth/wellbeing systematically favors attention-grabbing over accurate content.</li><li>Algorithms are always neutral.</li><li>Engagement equals truth.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The issue is the objective, not the existence, of curation. A overreacts; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. A friend shares a false health tip they sincerely believe will help others. This is:</p>
+    <ol><li>Disinformation.</li><li>Misinformation — false information spread without intent to deceive.</li><li>Malinformation.</li><li>A deepfake.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Honest sharing of falsehood is misinformation. Disinformation requires intent; malinformation involves true info; a deepfake is synthetic media.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. A paid troll farm fabricates a scandal to sway an election. This is:</p>
+    <ol><li>Misinformation (an honest mistake).</li><li>Disinformation — deliberate, often organized and funded, false information meant to manipulate.</li><li>Malinformation.</li><li>Information literacy.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Intentional, organized falsehood is disinformation. A misclassifies intent; C is wrong; D is the opposite.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Why does the chapter insist that misinformation and disinformation "require different tools"?</p>
+    <ol><li>They are identical.</li><li>Misinformation (a mistake) is addressed by education/better information, while disinformation (a weapon) also requires exposing and disrupting the organized operations behind it.</li><li>Neither can be addressed.</li><li>Only censorship works for both.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Different causes need different remedies. A denies the distinction; C is defeatist; D is a false single solution.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. A guilty official caught on genuine video claims it is "just a deepfake" and escapes consequences. This exemplifies:</p>
+    <ol><li>Epistemic pollution only.</li><li>The liar's dividend — the existence of fakery lets the guilty deny real evidence.</li><li>Confirmation bias.</li><li>A filter bubble.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Deniability-of-real-evidence is the liar's dividend. The others are related but distinct concepts.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. "Epistemic pollution" is an apt metaphor because, like industrial pollution, it:</p>
+    <ol><li>Only affects one person.</li><li>Degrades a shared commons (the information environment) that everyone depends on, not just the polluter or victim.</li><li>Is easily reversed.</li><li>Has no real effects.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The metaphor stresses shared, systemic harm to a commons. A, C, D miss the point.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. Confirmation bias is called "the manipulator's best friend" because:</p>
+    <ol><li>It makes us skeptical of everything.</li><li>The information most likely to fool us is the information we most want to be true, so falsehoods that flatter our views spread easily.</li><li>It only affects other people.</li><li>It improves fact-checking.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> We lower our guard for congenial claims. A and D are opposite; C is self-serving denial.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. Professional fact-checkers use "lateral reading," which means they:</p>
+    <ol><li>Stare harder at the original page to judge it.</li><li>Leave the page and check what independent, credible sources say about the claim and its source.</li><li>Trust whatever looks professional.</li><li>Only read headlines.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Lateral reading verifies by going outward. A is "vertical" and unreliable; C and D are exactly what to avoid.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. The chapter reframes privacy in the Information Age as fundamentally about:</p>
+    <ol><li>Having something to hide.</li><li>Power over information about yourself — hence autonomy, dignity, and freedom from manipulation.</li><li>Keeping secrets from friends.</li><li>Avoiding all technology.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Privacy = control/power over one's data (echoing Ch. 6). A is the fallacy rejected; C and D miss the reframing.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Ong and Cabañes's "architects of networked disinformation" is significant because it shows that Philippine disinformation is largely:</p>
+    <ol><li>Random individual mistakes.</li><li>Organized and commercial — a professionalized, paid industry — not spontaneous.</li><li>Nonexistent.</li><li>Imported entirely from abroad.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The research reveals a for-hire disinformation industry (i.e., disinformation, not mere misinformation). A, C, D misstate the finding.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. Why does the chapter argue the Philippine case "matters globally"?</p>
+    <ol><li>Because it is unique and unrepeatable.</li><li>Because early, near-total social-media adoption made the country a preview of dynamics — empowering and corrosive — later seen worldwide.</li><li>Because Filipinos avoid the internet.</li><li>Because disinformation only happens in the Philippines.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It is a leading edge of a global phenomenon. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. The chapter argues information literacy must be paired with "social responses" because:</p>
+    <ol><li>Individuals can solve everything alone.</li><li>The harms are systemic (engagement design, organized disinformation), so fact-checking, education, platform accountability, and law are also needed — personal literacy is necessary but insufficient.</li><li>Personal habits do not matter.</li><li>Only governments matter.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Systemic problems need systemic answers plus personal literacy (the Ch. 6 lesson). A and C/D are one-sided.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Synthesizing the chapter, the ultimate goal of information literacy and this course is BEST stated as:</p>
+    <ol><li>To consume as much information as possible.</li><li>To climb the DIKW pyramid — turning data into understanding and understanding into wise judgment for oneself and one's community.</li><li>To reject all digital technology.</li><li>To trust experts without question.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The aim is wisdom, not mere information (nor rejection or blind trust). A, C, D each miss the DIKW target.</p></details></div>
+</section>
+<section id="assignment">
+  <h2>Reinforcement Exercise (Assignment): 20-Item HOTS Multiple Choice</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Take-home reinforcement. Same HOTS orientation, new angles on the chapter. Keys with explanations are collapsible for self-checking or teacher-only printing.</p>
+
+  <div class="mcq"><p class="stem">1. "The scarce resource today is not information but attention, discernment, and trust." The BEST implication is that:</p>
+    <ol><li>We need to produce more information.</li><li>Value now lies in the human capacities to judge and filter, not in mere access to data.</li><li>Information has no value.</li><li>Attention is unlimited.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Abundance of information shifts scarcity to judgment. A worsens the flood; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">2. Which correctly ranks the DIKW levels from lowest to highest?</p>
+    <ol><li>Wisdom, Knowledge, Information, Data.</li><li>Data, Information, Knowledge, Wisdom.</li><li>Information, Data, Wisdom, Knowledge.</li><li>Knowledge, Data, Information, Wisdom.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Data → Information → Knowledge → Wisdom is the hierarchy. The others scramble it.</p></details></div>
+
+  <div class="mcq"><p class="stem">3. A weather app shows "37." Adding "°C, the current temperature in Manila" moves it from data to:</p>
+    <ol><li>Wisdom.</li><li>Information — data given context and meaning.</li><li>Knowledge.</li><li>Disinformation.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Context converts data into information. Knowledge/wisdom require further understanding and judgment; D is irrelevant.</p></details></div>
+
+  <div class="mcq"><p class="stem">4. Infinite scroll and variable-reward notifications are cited as examples of:</p>
+    <ol><li>Neutral design.</li><li>"Addiction by design" — features engineered using psychology to be habit-forming and capture attention.</li><li>Information literacy.</li><li>Fact-checking.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> They are deliberate attention-capturing mechanisms. A denies intent; C and D are opposites.</p></details></div>
+
+  <div class="mcq"><p class="stem">5. Which is the BEST example of malinformation (as distinct from dis/misinformation)?</p>
+    <ol><li>A sincere but false rumor about a vaccine.</li><li>A paid fake scandal to swing an election.</li><li>Leaking someone's genuine private medical records to shame them.</li><li>An AI-generated fake video.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> True information weaponized to harm is malinformation. A is misinformation, B is disinformation, D is a deepfake.</p></details></div>
+
+  <div class="mcq"><p class="stem">6. A society where citizens no longer share "enough common factual ground to deliberate" is described as approaching a:</p>
+    <ol><li>Golden age of consensus.</li><li>"Post-truth" condition, which the chapter says threatens democracy.</li><li>Filter bubble of one.</li><li>Data-rich utopia.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Loss of shared truth is the post-truth danger to democracy. A is the opposite; C and D miss it.</p></details></div>
+
+  <div class="mcq"><p class="stem">7. Generative AI is described as "arguably as significant as the printing press" MOST because it:</p>
+    <ol><li>Uses more electricity.</li><li>Transforms not just the distribution but the very <em>creation</em> of convincing content at scale — a new inflection in the information revolution.</li><li>Is owned by one company.</li><li>Cannot make mistakes.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Machine-generated content at scale is the historic shift. A, C, D are false or trivial.</p></details></div>
+
+  <div class="mcq"><p class="stem">8. Which response to generative AI does the chapter endorse?</p>
+    <ol><li>Ban it entirely.</li><li>Use it uncritically for everything.</li><li>Develop literacy, norms, and governance (disclosure, detection, guardrails) to use it responsibly and protect the information commons.</li><li>Ignore it.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The balanced governance path. A is infeasible/undesirable; B and D are complacent extremes.</p></details></div>
+
+  <div class="mcq"><p class="stem">9. A cloned voice calls a grandmother pretending to be her grandchild asking for money. This is a harm enabled by:</p>
+    <ol><li>Filter bubbles.</li><li>Deepfake/voice-cloning technology used for fraud.</li><li>The DIKW hierarchy.</li><li>Lateral reading.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Synthetic voice fraud is a deepfake harm. The others are unrelated concepts.</p></details></div>
+
+  <div class="mcq"><p class="stem">10. The chapter warns deepfakes disproportionately harm women. The BEST reason given is:</p>
+    <ol><li>Women use less technology.</li><li>Non-consensual explicit imagery generated by AI is a severe harm that overwhelmingly targets women.</li><li>Deepfakes cannot depict men.</li><li>Women are less online.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The cited harm is non-consensual synthetic imagery. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">11. Aggregated big data is more concerning than a single purchase record because it can:</p>
+    <ol><li>Only reveal what you bought.</li><li>Reveal or predict health, beliefs, relationships, location, and vulnerabilities, enabling manipulation.</li><li>Never be analyzed.</li><li>Be recalled easily once leaked.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Aggregation enables prediction and manipulation. A understates; C is false; D contradicts data's irreversibility.</p></details></div>
+
+  <div class="mcq"><p class="stem">12. "Surveillance capitalism" (Zuboff), as used here, means that:</p>
+    <ol><li>Governments alone watch citizens.</li><li>Human experience itself becomes raw material for prediction and profit.</li><li>Data has no economic value.</li><li>Privacy is guaranteed.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Experience-as-raw-material is Zuboff's thesis. A is too narrow; C and D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">13. The chapter ties data privacy to Chapter 7 by noting that leaked personal data:</p>
+    <ol><li>Can always be deleted.</li><li>Cannot be recalled once exposed — an irreversibility echoing existential/GNR risk.</li><li>Has no consequences.</li><li>Improves security.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Irreversibility links data breaches to Ch. 7's theme. A, C, D are false.</p></details></div>
+
+  <div class="mcq"><p class="stem">14. Which BEST captures the chapter's stance on Filipinos' heavy social-media use?</p>
+    <ol><li>It is purely harmful.</li><li>It is purely beneficial.</li><li>It is double-edged: real empowerment (diaspora connection, disaster mutual aid, livelihoods) alongside heightened vulnerability to organized disinformation.</li><li>It has no notable effects.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>C.</strong> The chapter holds both goods and harms. A, B, D are one-sided or false.</p></details></div>
+
+  <div class="mcq"><p class="stem">15. Tsek.ph, VERA Files, and Rappler are cited as examples of:</p>
+    <ol><li>Troll farms.</li><li>Philippine fact-checking institutions — a social (structural) response to disinformation.</li><li>Social-media platforms.</li><li>Government agencies.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> They are fact-checkers, part of the structural response. The others miscategorize them.</p></details></div>
+
+  <div class="mcq"><p class="stem">16. A post provokes intense anger and urges you to "share before it's deleted!" The literacy-informed response is to:</p>
+    <ol><li>Share immediately to warn others.</li><li>Pause — strong emotion and urgency are manipulation cues — and verify via lateral reading before sharing (if at all).</li><li>Assume it is true because it is emotional.</li><li>Trust it because it confirms your views.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Emotion + urgency are red flags; verify first. A, C, D are exactly the exploited reflexes.</p></details></div>
+
+  <div class="mcq"><p class="stem">17. Regulating disinformation raises a "genuine tension" with:</p>
+    <ol><li>Data storage costs.</li><li>Freedom of expression — the risk that anti-disinformation rules become censorship.</li><li>Battery life.</li><li>Internet speed.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> The free-expression trade-off is the core tension. The others are irrelevant.</p></details></div>
+
+  <div class="mcq"><p class="stem">18. The chapter frames information literacy as "self-defense and civic duty." The BEST reason is that it:</p>
+    <ol><li>Is merely an academic skill.</li><li>Protects both one's own mind (dignity/autonomy) and the shared commons of truth a democracy needs.</li><li>Benefits only the individual.</li><li>Replaces the need for institutions.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Personal and civic stakes together. A understates; C ignores the commons; D contradicts the "structures too" point.</p></details></div>
+
+  <div class="mcq"><p class="stem">19. Which scenario BEST shows someone climbing from information to wisdom?</p>
+    <ol><li>Sharing a headline that matches their opinion.</li><li>Reading multiple credible sources on a health claim, understanding the evidence, and giving a sick friend caring, well-judged advice.</li><li>Collecting screenshots without reading them.</li><li>Believing the first result.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> Understanding applied with judgment and care is wisdom. A, C, D stall at data/information.</p></details></div>
+
+  <div class="mcq"><p class="stem">20. Taking the chapter whole, the MOST defensible thesis about the Information Age is:</p>
+    <ol><li>More information automatically makes societies wiser.</li><li>The same tools deliver both unprecedented access to knowledge and an unprecedented crisis of truth, so the task is to cultivate literacy and healthier structures that turn information into wisdom.</li><li>The internet should be shut down.</li><li>Truth no longer exists, so verification is pointless.</li></ol>
+    <details><summary>Answer &amp; Explanation</summary><p><strong>B.</strong> It integrates the paradox, DIKW, and the literacy response. A is the naïve assumption refuted; C is Luddism; D is the post-truth surrender the chapter resists.</p></details></div>
+</section>
+<section id="essay">
+  <h2>Essay: The Future of Chapter 8's Topics (3 Items)</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Each item includes a short model answer to guide checking. Suggested rubric per item: Thesis and stand 20%, Use of chapter concepts (DIKW, dis/misinformation, deepfakes, epistemic pollution) 40%, Evidence and examples 25%, Organization and clarity 15%. Suggested length: 300–500 words each.</p>
+
+  <div class="mcq">
+    <p class="stem">1. As generative AI makes deepfakes and synthetic text ubiquitous over the next decade, can societies preserve a shared sense of truth — or are we heading into a permanent "post-truth" era? Argue a position using the concepts of the liar's dividend, epistemic pollution, and information literacy, and propose the most important safeguards.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer takes a qualified stand rather than pure optimism or doom. The pessimistic case: cheap, convincing fakery plus the liar's dividend and epistemic pollution could erode "seeing is believing" and deepen the post-truth condition, especially where trust in institutions is already low. The optimistic case: societies have absorbed prior disruptions (print, photography) by developing new literacies, verification norms, and institutions, and technical/legal responses (provenance standards, content authentication, detection, disclosure laws, the EU AI Act) are emerging. The best essays argue the outcome is contingent on deliberate choices and propose layered safeguards: information literacy education (personal), fact-checking and provenance/authentication systems (structural), platform accountability and labeling of AI content, and governance that protects truth without becoming censorship. They conclude with the DIKW point — the goal is a society organized to convert information into wisdom — and note the Philippines' heightened stakes given its disinformation history.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">2. Social-media algorithms are optimized for engagement, not truth or wellbeing. Evaluate whether and how they should be changed, weighing the benefits of personalization against the harms of filter bubbles, amplified falsehood, and addictive design. Who should decide — companies, governments, or users?</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer engages the trade-offs honestly. Personalization and curation are genuinely useful (we cannot process the whole ocean of information), but engagement optimization systematically favors the sensational, builds echo chambers, and employs addictive design — harms to individuals and to the shared reality democracy needs. Options to evaluate: user controls (chronological or transparent feeds), regulatory requirements (algorithmic transparency, limits on addictive features, duty-of-care standards as in some EU rules), and market/design changes (optimizing for wellbeing or informed-ness rather than raw attention). On "who decides," the best essays argue for a combination — informed users, accountable companies, and democratic governance — noting the Chapter 6 lesson that systemic harms need structural responses, while cautioning that government control of feeds carries free-expression risks. They tie the recommendation to the chapter's core insight: the problem is <em>what the system optimizes for</em>, so changing the objective is the lever that matters most.</p></details>
+  </div>
+
+  <div class="mcq">
+    <p class="stem">3. The Philippines is a global case study in both the empowering and corrosive effects of the Information Age. Drawing on Ong and Cabañes's "networked disinformation" and the country's heavy social-media use, argue what the Philippines specifically should do over the next decade to protect its information environment while preserving free expression and the genuine benefits of connectivity.</p>
+    <details><summary>Short Model Answer</summary><p>A strong answer grounds itself in the Philippine specifics: near-top-of-the-world social-media use; real benefits (diaspora connection, disaster mutual aid, digital livelihoods); and a documented, professionalized, commercial disinformation industry (Ong &amp; Cabañes). It should distinguish misinformation (education) from disinformation (disrupting organized, paid operations) and propose a layered strategy: strengthen media and information literacy in schools; support and scale independent fact-checkers (Tsek.ph, VERA Files, Rappler); enforce and update the Data Privacy Act and pursue platform accountability (transparency, action on coordinated inauthentic behavior, AI-content labeling); and legislate carefully against disinformation while safeguarding free expression (naming the genuine tension). The best essays connect this to Chapter 3 (information integrity as nation-building) and Chapter 5's kapwa (protecting the information commons as a shared civic project), and argue that because Filipinos are a global leading edge, getting this right has significance beyond the country's borders.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 8 Reinforcement Exercises &amp; Essay &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

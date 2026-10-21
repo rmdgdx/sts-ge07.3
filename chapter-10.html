@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 10 — Main Lecture | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit III · Week 16</div>
+  <h1>Chapter 10: The Nano World, Gene Therapy, and Gene Editing</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#nano">The Nano World</a></li>
+    <li><a href="#nanoethics">Nanoethics</a></li>
+    <li><a href="#genetherapy">Gene Therapy</a></li>
+    <li><a href="#crispr">CRISPR</a></li>
+    <li><a href="#germline">The Germline Line</a></li>
+    <li><a href="#mrna">mRNA &amp; Pandemics</a></li>
+    <li><a href="#stemcells">Stem Cells</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Discuss the major impacts, both potential and realized, of nanotechnology on society, and analyze the issue through conceptual STS lenses;</li>
+    <li>Critique nanotechnology on its costs and benefits to society (nanoethics);</li>
+    <li>Describe gene therapy and its various forms, including CRISPR gene editing, mRNA technology, and stem cells;</li>
+    <li>Assess the potential benefits and detriments of these technologies to global health; and</li>
+    <li>Analyze the ethics of heritable (germline) human genome editing — arguably the most consequential ethical line in modern science.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: Engineering at the Scale of Atoms and Genes</h2>
+  <p class="lead">This chapter takes us to the frontier of the very small and the very powerful — technologies that engineer matter at the scale of <em>atoms</em> (nanotechnology) and life at the scale of <em>genes</em> (gene therapy and editing). If Chapter 9 asked how we relate to the living world around us, this chapter asks a more intimate question: <em>should we, and how far may we, re-engineer the very building blocks of matter and of ourselves?</em></p>
+  <p>These are not distant sci-fi speculations. Since this course's syllabus was first written, several of these technologies have crossed from laboratory promise to clinical reality. In late 2023, the world's <strong>first CRISPR gene-editing therapy</strong> was approved for patients; <strong>mRNA vaccines</strong>, an unglamorous research idea for decades, saved millions of lives during the COVID-19 pandemic; and gene therapies for once-incurable diseases are now reaching patients. We are living through the arrival of technologies that earlier chapters could only anticipate — which makes the STS questions urgent and real, not hypothetical.</p>
+  <p>The chapter carries forward a familiar pattern with new intensity. Each of these technologies offers <strong>extraordinary benefit</strong> — cures for genetic diseases, new medicines, clean energy, pandemic defense — and each raises <strong>profound ethical questions</strong>, from environmental risk to inequality to the deepest question of all: whether we should alter the human genome in ways passed to all future generations. This is Chapter 7's "power outrunning wisdom" made concrete in medicine, and it forces us to hold, once again, both the promise and the peril honestly.</p>
+  <div class="callout gold">
+    <span class="label">Framing Idea</span>
+    A recurring line runs through this chapter: the difference between <em>healing</em> and <em>enhancing</em> (Chapter 7), and between changing an <em>individual</em> and changing the <em>human species</em>. These distinctions — therapy vs. enhancement, and somatic vs. germline — are the ethical hinges on which the whole debate turns. Keep them in view.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    If a safe technology could cure a fatal genetic disease you were born with, would you use it? Now: if it could also make your future children taller, smarter, or more resistant to disease — passing the change to <em>their</em> children forever — would you still? What makes the second question harder?
+  </div>
+</section>
+<section id="nano">
+  <h2>The Nano World: Engineering the Very Small</h2>
+  <p><strong>Nanotechnology</strong> is the science and engineering of matter at the <strong>nanoscale</strong> — roughly 1 to 100 <em>nanometers</em>. A nanometer is one-billionth of a meter; to grasp the scale, a single human hair is about 80,000–100,000 nanometers wide, and a DNA strand is about 2.5 nanometers. We are talking about manipulating matter atom by atom and molecule by molecule.</p>
+  <h3>Why the nanoscale is special</h3>
+  <p>The key scientific insight is that at the nanoscale, <strong>materials behave differently</strong> than they do in bulk. The ordinary rules seem to bend: a material's color, strength, conductivity, chemical reactivity, and melting point can all change dramatically when its particles are shrunk to nanometers. Gold, inert and yellow in bulk, becomes chemically reactive and can appear red at the nanoscale; carbon, as graphite, is soft, but as carbon nanotubes it is stronger than steel. This is why the physicist Richard Feynman's prophetic 1959 lecture, <em>"There's Plenty of Room at the Bottom,"</em> is regarded as the founding vision of the field: he foresaw that an entire new world of engineering waited at the smallest scales.</p>
+  <h3>Realized and potential impacts</h3>
+  <p>Nanotechnology is not futuristic; it is already in your life. Its applications span nearly every field:</p>
+  <ul class="plain">
+    <li><strong>Medicine.</strong> Targeted <em>nanomedicine</em> — nanoparticles that deliver drugs directly to cancer cells, sparing healthy tissue; better diagnostics; and, notably, the lipid <em>nanoparticles</em> that made mRNA COVID-19 vaccines possible (a nano–bio convergence).</li>
+    <li><strong>Electronics.</strong> The relentless miniaturization behind modern computer chips (Moore's Law, Chapter 1) is nanotechnology; today's transistors are only nanometers across.</li>
+    <li><strong>Materials.</strong> Stronger, lighter materials (carbon nanotubes, graphene); self-cleaning and water-repellent surfaces; scratch-resistant coatings; better batteries.</li>
+    <li><strong>Energy and environment.</strong> More efficient solar cells, improved energy storage, water purification and filtration, and environmental cleanup of pollutants — connecting to sustainability and the coming climate chapter.</li>
+    <li><strong>Everyday products.</strong> Sunscreens, cosmetics, stain-resistant fabrics, food packaging, and sports equipment already contain engineered nanomaterials.</li>
+  </ul>
+  <p>The Filipino scientist <strong>Fabian Dayrit</strong>'s question — "Can we build a culture of science through nanotechnology?" (in the syllabus) — points to nanotech's potential as a driver of Philippine scientific development (Chapter 3), through DOST-supported research and applications suited to local needs (agriculture, water, health).</p>
+  <div class="callout">
+    <span class="label">An STS Observation</span>
+    Nanotechnology is a <em>convergent</em> and <em>enabling</em> technology — it doesn't do one thing; it improves everything, quietly, from the bottom up. This makes its benefits vast but diffuse, and its risks equally diffuse and hard to track. When a technology is embedded invisibly in thousands of products, governing it responsibly becomes uniquely difficult.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=what+is+nanotechnology+explained" target="_blank" rel="noopener">What is nanotechnology?</a> — curated search <span class="why">(engineering the very small)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Feynman+theres+plenty+of+room+at+the+bottom+nanotechnology" target="_blank" rel="noopener">Feynman: &ldquo;Plenty of Room at the Bottom&rdquo;</a> — curated search <span class="why">(the founding vision)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="nanoethics">
+  <h2>Nanoethics: Critiquing the Costs and Benefits</h2>
+  <p>The syllabus asks students to "critique the issue on its costs and benefits to society" — the domain of <strong>nanoethics</strong>, the study of the ethical and social implications of nanotechnology (developed by scholars like Patrick Lin and Fritz Allhoff in the syllabus reading). Holding the honest two-sided view, several concerns deserve attention.</p>
+  <ul class="plain">
+    <li><strong>Health and environmental (nanotoxicology) risk.</strong> The very property that makes nanomaterials useful — their tiny size and high reactivity — may also make them hazardous. Nanoparticles can penetrate cells and cross biological barriers (even the blood-brain barrier) in ways bulk materials cannot; some engineered nanomaterials have raised toxicity concerns. Because they are novel, their long-term effects on human health and ecosystems are not fully known (recall Chapter 9's "Environmental Impacts of Nanotechnology and Its Products" reading).</li>
+    <li><strong>The regulatory gap.</strong> Because nanomaterials behave differently from their bulk forms, existing safety regulations (written for bulk chemicals) may not apply properly. Technology is again outrunning governance (Chapter 6).</li>
+    <li><strong>Equity — the "nano-divide."</strong> Like other advanced technologies, nanotech could widen the gap between rich and poor nations and people, if its benefits accrue mainly to those who can afford them (echoing Chapter 3's development concerns and Chapter 7's genetic divide).</li>
+    <li><strong>Privacy and surveillance.</strong> Nanoscale sensors could enable surveillance so small as to be invisible, deepening the concerns of Chapter 6.</li>
+    <li><strong>The far-future and "grey goo."</strong> Bill Joy's fear (Chapter 7) of self-replicating nanobots consuming matter is considered physically implausible by most scientists, but it dramatizes the deeper, legitimate point: the precautionary attention that any powerful, novel, and potentially self-perpetuating technology deserves.</li>
+  </ul>
+  <div class="callout gold">
+    <span class="label">The Nanoethics Balance</span>
+    Nanotechnology is neither miracle nor menace; it is a powerful, invisible, enabling technology whose benefits and risks are both real and diffuse. The wise response is the one this course keeps returning to: proceed with the benefits while investing in nanotoxicology research, updating regulation to fit the new science, and ensuring the gains are shared — responsible innovation (Chapter 7), not blind acceleration or reflexive fear.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Nanoparticles are already in sunscreens, food packaging, and cosmetics you use — often without you knowing. Given that their long-term effects aren't fully understood, where is the right balance between enjoying the benefits now and applying the precautionary principle? Should products be required to label engineered nanomaterials?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=nanotechnology+risks+nanoethics+nanotoxicology" target="_blank" rel="noopener">The risks of nanotechnology</a> — curated search <span class="why">(costs and benefits)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="genetherapy">
+  <h2>Gene Therapy: Rewriting the Code of Life</h2>
+  <p>We now move from engineering atoms to engineering <em>genes</em> — arguably the most profound technological power humans have ever developed, because its subject is life itself, including our own. A brief foundation first: your <strong>DNA</strong> is the genetic "instruction manual" for building and running your body, written in a four-letter chemical code. A mistake ("mutation") in that code can cause a <strong>genetic disease</strong> — such as sickle-cell anemia, cystic fibrosis, or thalassemia (a significant condition in the Philippines). For most of history, these diseases could be managed but not cured, because we could not fix the underlying code.</p>
+  <p><strong>Gene therapy</strong> changes that. It is a set of techniques that treat or prevent disease by <em>modifying a person's genes</em> — for example, by delivering a correct copy of a faulty gene, inactivating a malfunctioning gene, or introducing a new gene to help fight disease. After decades of setbacks and slow progress, gene therapy has, in the 2020s, begun to deliver real cures for previously untreatable conditions — a genuine medical revolution.</p>
+  <h3>The single most important distinction: somatic vs. germline</h3>
+  <p>To think clearly about all gene technologies, you must grasp one distinction above all others:</p>
+  <table>
+    <thead><tr><th style="width:22%">Type</th><th>What is edited</th><th>Who is affected</th><th>Ethical status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Somatic</strong> (body-cell) editing</td><td>The genes in a patient's ordinary body cells (e.g., blood, liver, muscle)</td><td>Only the individual patient; changes are <em>not</em> passed to their children</td><td>Broadly accepted as a form of medical treatment, with normal safety oversight</td></tr>
+      <tr><td><strong>Germline</strong> (reproductive-cell) editing</td><td>The genes in eggs, sperm, or embryos</td><td>The individual <em>and all their descendants</em> — the change enters the human gene pool permanently</td><td>Highly controversial; heritable human editing is currently banned or strongly restricted in most countries</td></tr>
+    </tbody>
+  </table>
+  <p>This distinction is the ethical hinge of the entire chapter. <strong>Somatic</strong> gene therapy is, in principle, like any other medical treatment: it helps one consenting patient and stops with them. <strong>Germline</strong> editing changes not just a person but the <em>future of the human species</em>, affecting people who cannot consent because they do not yet exist — which is why it triggers the deepest ethical alarm and connects directly to Chapter 7's enhancement debate.</p>
+  <div class="callout">
+    <span class="label">Hold This Distinction</span>
+    Almost every confusion in public debate about gene editing dissolves once you ask: <em>Is this somatic (one patient, not heritable) or germline (heritable, affecting all descendants)?</em> The therapies being approved today are somatic. The bright red ethical line — the one the world has largely agreed not to cross — is heritable germline editing.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=what+is+gene+therapy+explained" target="_blank" rel="noopener">What is gene therapy?</a> — curated search <span class="why">(rewriting the code of life)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=somatic+vs+germline+gene+editing+difference" target="_blank" rel="noopener">Somatic vs. germline editing</a> — curated search <span class="why">(the ethical hinge)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="crispr">
+  <h2>CRISPR: The Gene-Editing Revolution</h2>
+  <p>The technology that transformed gene editing from a slow, expensive dream into a fast, cheap, and precise reality is <strong>CRISPR-Cas9</strong>, developed by <strong>Jennifer Doudna and Emmanuelle Charpentier</strong> (who won the 2020 Nobel Prize in Chemistry for it). CRISPR is often described as "molecular scissors": a guide molecule locates a precise spot in the DNA sequence, and the Cas9 protein cuts the DNA there, allowing genes to be disabled, corrected, or replaced. Its power lies in being far cheaper, faster, and easier than earlier methods — which democratized gene editing, spreading it to labs worldwide (and raising the accessibility concern of Chapter 7).</p>
+  <h3>From promise to approved cure</h3>
+  <p>CRISPR's clinical arrival is the headline development for this chapter. In late 2023, regulators approved <strong>Casgevy (exagamglogene autotemcel)</strong> — the <strong>world's first approved CRISPR-based therapy</strong> — to treat <strong>sickle-cell disease</strong> and <strong>beta-thalassemia</strong>, painful and life-shortening blood disorders. This is <em>somatic</em> editing: a patient's own blood stem cells are edited outside the body and returned, curing the disease in that individual without affecting their descendants. For patients who suffered lifelong, it is close to a miracle — a vivid demonstration that gene editing has become real medicine.</p>
+  <h3>The He Jiankui affair: the line that was crossed</h3>
+  <p>But CRISPR also produced modern science's gravest ethical scandal. In 2018, the Chinese scientist <strong>He Jiankui</strong> announced he had created the world's first <strong>gene-edited babies</strong> — twin girls whose embryos he had edited (attempting to confer HIV resistance). This was <em>germline</em> editing of humans, done secretly, prematurely, without adequate consent or scientific justification, and against near-universal ethical norms. The global scientific community <strong>condemned him unanimously</strong>; he was imprisoned in China. The episode was a watershed: it proved the technology to cross the germline line already exists and can be misused by a single actor, and it galvanized calls for global governance. It is the real-world embodiment of Chapter 7's warning about powerful, accessible technology outrunning our wisdom and rules.</p>
+  <div class="callout gold">
+    <span class="label">Two 2020s Milestones, Two Lessons</span>
+    <strong>Casgevy (2023)</strong> shows CRISPR at its best: <em>somatic</em> editing curing terrible disease, responsibly approved — the promise realized. <strong>He Jiankui (2018)</strong> shows CRISPR at its most dangerous: <em>germline</em> editing done recklessly and secretly — the peril realized. The difference between them is precisely the somatic/germline line, which is why that line matters so much.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    He Jiankui said he wanted to protect children from HIV. Even granting good intentions, why did the scientific world condemn him so completely? List the specific things that were wrong (consent, safety, necessity, heritability, secrecy). What does this teach about the difference between what technology <em>can</em> do and what we <em>should</em> do?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=CRISPR+gene+editing+explained" target="_blank" rel="noopener">How CRISPR works</a> — curated search <span class="why">(molecular scissors)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=first+CRISPR+therapy+Casgevy+sickle+cell+approved" target="_blank" rel="noopener">Casgevy: the first CRISPR cure</a> — curated search <span class="why">(the promise realized)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Jennifer+Doudna+CRISPR+TED+talk" target="_blank" rel="noopener">Jennifer Doudna on CRISPR</a> — curated search <span class="why">(from the co-inventor)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="germline">
+  <h2>The Deepest Question: Should We Edit the Human Germline?</h2>
+  <p>The He Jiankui affair forces the chapter's central ethical question into the open: <em>should humanity ever deliberately edit the heritable human genome?</em> This is one of the most consequential decisions our species faces, and it deserves careful, balanced treatment — it is the medical form of Chapter 7's enhancement and transhumanism debate.</p>
+  <h3>The case for (carefully) permitting it</h3>
+  <ul class="plain">
+    <li><strong>Preventing terrible disease.</strong> Germline editing could, in principle, eliminate devastating heritable diseases (Huntington's, certain cancers) from a family line forever — a profound good.</li>
+    <li><strong>Continuity with what we already accept.</strong> We already accept somatic therapy and embryo screening; some argue germline editing is a further step on the same path of relieving suffering.</li>
+  </ul>
+  <h3>The case for caution or prohibition</h3>
+  <ul class="plain">
+    <li><strong>Irreversibility and the human gene pool.</strong> A germline change is permanent and heritable — a mistake could be passed to all descendants, an irreversibility echoing Chapter 7. We would be altering the shared genetic heritage of humanity.</li>
+    <li><strong>Consent of the unconsenting.</strong> Those most affected — all future generations — cannot consent (Chapter 6's dignity and consent). We would be making irreversible decisions for people who do not yet exist.</li>
+    <li><strong>The slippery slope from therapy to enhancement.</strong> Once germline editing is permitted to prevent disease, where is the line against editing for height, intelligence, or appearance? This is the <strong>therapy-vs-enhancement</strong> problem, and it is genuinely hard to draw a stable line.</li>
+    <li><strong>The genetic divide and "designer babies."</strong> If enhancement becomes possible and is available only to the rich, it could create a permanent biological caste system — the enhanced and the unenhanced — catastrophically entrenching inequality (Chapter 7's deepest fear). It also raises the specter of a new <strong>eugenics</strong>, this time driven by consumer choice and markets rather than the state.</li>
+    <li><strong>Loss of the "given" and disability perspectives.</strong> Some argue that treating the human genome as something to be optimized erodes the acceptance of human variation and the equal worth of people with disabilities — a concern voiced strongly by disability-rights advocates.</li>
+  </ul>
+  <p>Reflecting this weight of concern, the global scientific community — through bodies like the World Health Organization and international commissions — has broadly concluded that <strong>heritable human genome editing should not proceed</strong> at this time: it is currently unsafe, ethically fraught, and lacking the broad societal consensus and governance such a step would require. Most countries prohibit or strictly limit it. This is a rare and important case of humanity collectively drawing a line and choosing <em>not</em> (yet) to use a power it possesses — the relinquishment option of Chapter 7, applied to our own genome.</p>
+  <div class="callout">
+    <span class="label">Why This Is the Ultimate STS Question</span>
+    Germline editing is where "when technology and humanity cross" reaches its literal limit: the technology edits humanity's own code. It gathers every theme of the course — the promise and peril of technology, human dignity and consent, inequality and justice, irreversibility and existential stakes, and above all the conviction that just because we <em>can</em> do something does not mean we <em>should</em>. It is the clearest case that the future must be chosen, not merely built.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=He+Jiankui+gene+edited+babies+CRISPR+scandal" target="_blank" rel="noopener">The gene-edited babies scandal</a> — curated search <span class="why">(the line that was crossed)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=should+we+edit+human+embryos+ethics+designer+babies" target="_blank" rel="noopener">Should we edit the human germline?</a> — curated search <span class="why">(the deepest question)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="mrna">
+  <h2>mRNA Technology and Pandemic Preparedness</h2>
+  <p>Not all of this chapter's gene technologies are ethically fraught; some are already among the great life-savers of our time. The syllabus's theme of gene therapy connects directly to <strong>mRNA technology</strong>, which the COVID-19 pandemic thrust from obscurity into history.</p>
+  <p><strong>Messenger RNA (mRNA)</strong> is the molecule that carries instructions from your DNA to your cells' protein-making machinery. An mRNA vaccine works by delivering a piece of mRNA that instructs your cells to make a harmless fragment of a virus (for COVID-19, the "spike" protein), which trains your immune system to recognize and fight the real virus. Crucially, the mRNA does <em>not</em> enter or alter your DNA — a fact worth stating plainly, because misinformation to the contrary spread widely (Chapter 8's crisis of truth, with real public-health consequences).</p>
+  <p>The mRNA story is a triple STS lesson. First, it is a spectacular demonstration of <strong>the value of long-term basic research</strong>: mRNA vaccines were developed in under a year during the pandemic <em>only because</em> of decades of quiet, unglamorous foundational work (notably by Katalin Karikó and Drew Weissman, who won the 2023 Nobel Prize in Medicine) — a vindication of the case for sustained research investment (Chapter 3). Second, it shows <strong>science responding to a global emergency</strong> at unprecedented speed. Third, and soberingly, it shows <strong>society shaping outcomes</strong>: the same technology reached rich nations first (vaccine nationalism and inequity), and its acceptance was undermined by misinformation — proving once more that a technology's impact depends on the social choices around it. Beyond COVID-19, mRNA is now being pursued for cancer vaccines, other infectious diseases, and — under the "One Health" logic of Chapter 9 — as a platform for future <strong>pandemic preparedness</strong>.</p>
+  <div class="callout green">
+    <span class="label">The Payoff of Patience</span>
+    mRNA vaccines are the clearest recent proof of a lesson this course keeps teaching: the "useless" basic research of one decade becomes the life-saving technology of the next. A society that funds science only for immediate payoff will not have the mRNA platforms ready when the next pandemic comes. Preparedness is a decision made years in advance (Chapter 3).
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=how+mRNA+vaccines+work+explained" target="_blank" rel="noopener">How mRNA vaccines work</a> — curated search <span class="why">(and why they don&rsquo;t alter your DNA)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Kariko+Weissman+mRNA+nobel+prize+basic+research" target="_blank" rel="noopener">The decades behind the mRNA vaccine</a> — curated search <span class="why">(the payoff of patience)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="stemcells">
+  <h2>Stem Cells: The Body's Master Cells</h2>
+  <p>The syllabus lists gene therapy alongside <strong>stem cells</strong>, the final piece of this chapter's regenerative-medicine frontier. <strong>Stem cells</strong> are the body's "master cells" — unspecialized cells with two remarkable abilities: they can renew themselves, and they can develop into many different specialized cell types (muscle, nerve, blood, and so on). This gives them enormous therapeutic promise: the possibility of <strong>regenerative medicine</strong> — repairing or replacing damaged tissues and organs, from spinal-cord injuries to heart damage to degenerative diseases.</p>
+  <p>Stem-cell science also illustrates how ethics can <em>reshape</em> research direction. Early hopes centered on <strong>embryonic stem cells</strong> (the most versatile, but obtained from embryos, raising profound moral objections about the status of the embryo — a debate closely tied to views on the beginning of human life). Partly in response to this ethical controversy, scientists developed <strong>induced pluripotent stem cells (iPSCs)</strong> — ordinary adult cells "reprogrammed" back to an embryo-like, versatile state (a breakthrough by Shinya Yamanaka, 2012 Nobel Prize). iPSCs sidestep the embryo-destruction objection, a striking example of ethical concern driving scientists toward a more acceptable technical solution — science and society co-producing a path forward (Chapter 1).</p>
+  <p>But stem cells also carry a cautionary tale relevant to the Philippines: the rise of unproven, expensive "<strong>stem-cell therapy</strong>" clinics offering unregulated treatments for everything from aging to serious disease, often without evidence and sometimes causing harm. This is where the chapter meets Chapter 8: patients desperate for cures are vulnerable to hype and misinformation, and protecting them requires both regulation and public scientific literacy. Legitimate stem-cell medicine holds real promise; the marketplace around it demands real caution.</p>
+  <div class="callout gold">
+    <span class="label">Two Lessons from Stem Cells</span>
+    First, <strong>ethics can steer science</strong> toward better paths (the embryonic → iPSC shift). Second, <strong>promising science attracts predatory hype</strong> (unproven clinics), so the same public that benefits from real breakthroughs must be protected, by regulation and literacy, from false ones. Both lessons show that responsible medicine is a partnership of science, ethics, and society.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=what+are+stem+cells+explained" target="_blank" rel="noopener">What are stem cells?</a> — curated search <span class="why">(the body&rsquo;s master cells)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=induced+pluripotent+stem+cells+iPSC+Yamanaka" target="_blank" rel="noopener">iPSCs: ethics steering science</a> — curated search <span class="why">(avoiding the embryo objection)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: Wielding the Power to Remake Matter and Life</h2>
+  <p>This chapter took us to the frontier where humans engineer atoms and genes. Four threads carry forward:</p>
+  <ol class="plain">
+    <li><strong>Small scale, vast power.</strong> Nanotechnology, an invisible and enabling technology, quietly improves medicine, electronics, energy, and materials — while its diffuse, novel risks (nanotoxicology, regulatory gaps, the nano-divide) demand nanoethics and responsible innovation, not hype or fear.</li>
+    <li><strong>Gene therapy is now real medicine — and the somatic/germline line is everything.</strong> Somatic editing (Casgevy, 2023) is curing terrible disease responsibly and stops with the patient; germline editing changes the human species forever and affects those who cannot consent. That distinction is the ethical hinge of modern genetics.</li>
+    <li><strong>Some lines we choose not to cross.</strong> The near-universal condemnation of He Jiankui and the global consensus against heritable human editing show humanity collectively deciding <em>not</em> to use a power it possesses — the clearest proof that the future is chosen, not merely built, and that "can" never settles "should."</li>
+    <li><strong>The payoff of patience, and the duty of protection.</strong> mRNA vaccines vindicate long-term basic research and pandemic preparedness; stem cells show ethics steering science (iPSCs) and the need to protect the vulnerable from predatory hype. Responsible medicine is always a partnership of science, ethics, and society.</li>
+  </ol>
+  <p>The unifying conviction — the one Unit III keeps sharpening — is that our growing power to remake matter and life makes <strong>wisdom, ethics, and governance more essential, not less</strong>. These technologies can heal the sick and defend against pandemics, or entrench inequality and cross irreversible lines; which future arrives depends on the choices a society makes now. Unit III concludes with the issue on which all of this ultimately depends — the mandated topic of <strong>climate change and environmental awareness</strong> — where the health of the whole planetary web, and the survival of a healthy human society within it, is finally at stake.</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Nanotechnology / nanoscale</td><td>Engineering matter at 1–100 nanometers (billionths of a meter), where materials behave differently than in bulk.</td></tr>
+      <tr><td>Nanomedicine</td><td>Medical applications of nanotech — e.g., nanoparticles that deliver drugs to targeted cells.</td></tr>
+      <tr><td>Nanoethics / nanotoxicology</td><td>The study of nanotech's ethical/social implications / of the health and environmental hazards of nanomaterials.</td></tr>
+      <tr><td>Nano-divide</td><td>The risk that nanotech's benefits widen inequality between rich and poor.</td></tr>
+      <tr><td>Gene therapy</td><td>Treating or preventing disease by modifying a person's genes.</td></tr>
+      <tr><td>Somatic editing</td><td>Editing a patient's body cells; affects only the individual, not their descendants — broadly accepted.</td></tr>
+      <tr><td>Germline editing</td><td>Editing eggs, sperm, or embryos; heritable, affecting all descendants and the gene pool — highly restricted.</td></tr>
+      <tr><td>CRISPR-Cas9</td><td>Cheap, precise "molecular scissors" for editing DNA (Doudna &amp; Charpentier, 2020 Nobel).</td></tr>
+      <tr><td>Casgevy</td><td>The first approved CRISPR therapy (2023), a somatic treatment for sickle-cell disease and beta-thalassemia.</td></tr>
+      <tr><td>He Jiankui affair</td><td>The 2018 creation of gene-edited babies — reckless germline editing, universally condemned.</td></tr>
+      <tr><td>Therapy vs. enhancement</td><td>The distinction between curing disease and improving beyond normal — central to the germline debate.</td></tr>
+      <tr><td>mRNA technology</td><td>Vaccines/therapies using messenger RNA to instruct cells (do not alter DNA); key to COVID-19 response.</td></tr>
+      <tr><td>Stem cells / iPSCs</td><td>The body's versatile "master cells"; induced pluripotent stem cells are reprogrammed adult cells that avoid embryo use.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>Nanomaterials are already in products you use daily, with long-term effects not fully known. How should society balance their benefits against the precautionary principle? Should they be labeled?</li>
+    <li>Explain the somatic/germline distinction and why it is the "ethical hinge" of gene editing. Why is one broadly accepted and the other largely banned?</li>
+    <li>Even granting good intentions, why was He Jiankui condemned worldwide? What specific ethical lines did he cross?</li>
+    <li>Should heritable human genome editing ever be permitted — even to prevent a devastating disease? Where would you draw the line, and who should decide?</li>
+    <li>mRNA vaccines came from decades of "useless" basic research. What does this imply for how the Philippines should fund science (Chapter 3)?</li>
+  </ol>
+  <h3>Activity 1 — Position paper (the syllabus assessment)</h3>
+  <p>Write a position paper on the resolution: <em>"Should heritable human genome editing ever be allowed?"</em> Require use of the somatic/germline and therapy/enhancement distinctions, the He Jiankui case, the consent and inequality arguments, and the current global consensus. Take and defend a clear stand.</p>
+  <h3>Activity 2 — Presentation and discussion (from the syllabus)</h3>
+  <p>Prepare a group presentation on one technology in this chapter (nanomedicine, CRISPR/Casgevy, mRNA vaccines, or stem cells), analyzing it through STS lenses: its realized and potential impacts, its costs and benefits, and the ethical/governance response it requires.</p>
+  <h3>Activity 3 — Fact-check the hype (individual, take-home)</h3>
+  <p>Find one online advertisement or claim for a "stem-cell," "anti-aging," or "gene" treatment. Using Chapter 8's information-literacy tools, evaluate whether it is evidence-based or predatory hype. Explain your reasoning and how a vulnerable patient might be protected.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. What is the nanoscale, and why is it special?</summary><p>Roughly 1–100 nanometers (billionths of a meter). It is special because materials behave differently at this scale — color, strength, conductivity, and reactivity can change dramatically from their bulk form.</p></details>
+  <details><summary>2. Give two realized applications of nanotechnology.</summary><p>Any two: targeted drug delivery/nanomedicine (and the lipid nanoparticles in mRNA vaccines); computer-chip miniaturization; stronger/lighter materials (carbon nanotubes, graphene); better solar cells and water purification; consumer products (sunscreens, coatings).</p></details>
+  <details><summary>3. Name three concerns studied by nanoethics.</summary><p>Any three: nanotoxicology (health/environmental risk from tiny reactive particles); the regulatory gap; the nano-divide (inequality); invisible surveillance; and precaution regarding novel, powerful technologies.</p></details>
+  <details><summary>4. What is gene therapy?</summary><p>A set of techniques that treat or prevent disease by modifying a person's genes — e.g., delivering a correct gene copy, inactivating a faulty gene, or adding a disease-fighting gene.</p></details>
+  <details><summary>5. Distinguish somatic from germline editing and their ethical status.</summary><p>Somatic edits body cells, affecting only the individual (broadly accepted). Germline edits eggs/sperm/embryos, is heritable, affects all descendants and the gene pool, and is highly restricted or banned.</p></details>
+  <details><summary>6. What is CRISPR-Cas9, and what was Casgevy?</summary><p>CRISPR is cheap, precise "molecular scissors" for editing DNA. Casgevy (2023) is the first approved CRISPR therapy — a somatic treatment for sickle-cell disease and beta-thalassemia.</p></details>
+  <details><summary>7. What did He Jiankui do, and why was he condemned?</summary><p>He created the first gene-edited babies (2018) via germline editing — done secretly, prematurely, without adequate consent or justification, against ethical norms. He was universally condemned and imprisoned.</p></details>
+  <details><summary>8. Why has the world broadly agreed not to pursue heritable human editing now?</summary><p>Because it is currently unsafe, irreversible, affects those who cannot consent (future generations), risks a therapy-to-enhancement slide and a genetic divide, and lacks broad societal consensus and governance.</p></details>
+  <details><summary>9. How does an mRNA vaccine work, and does it change your DNA?</summary><p>It delivers mRNA instructing cells to make a harmless viral fragment that trains the immune system. It does NOT enter or alter your DNA.</p></details>
+  <details><summary>10. What are stem cells, and why were iPSCs developed?</summary><p>Versatile "master cells" that self-renew and become many cell types (regenerative medicine). Induced pluripotent stem cells (iPSCs) were developed to obtain versatile cells without using/destroying embryos — ethics steering science.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>Lin, Patrick and Fritz Allhoff. "Nanoethics: The Ethical and Social Implications of Nanotechnology," John Wiley and Sons, 2007.</li>
+    <li>Zhang et al. "Environmental Impacts of Nanotechnology and Its Products," Proceedings of the 2011 ASEE Midwest Section Conference.</li>
+    <li>Dayrit, Fabian M. "Can We Build a Culture of Science through Nanotechnology?" (2013).</li>
+    <li>Feynman, Richard. "There's Plenty of Room at the Bottom," 1959.</li>
+    <li>Isaacson, Walter. <em>The Code Breaker: Jennifer Doudna, Gene Editing, and the Future of the Human Race</em>, Simon &amp; Schuster, 2021.</li>
+    <li>Doudna, Jennifer and Samuel Sternberg. <em>A Crack in Creation</em>, 2017.</li>
+    <li>World Health Organization. <em>Human Genome Editing: A Framework for Governance</em>, 2021.</li>
+    <li>Documentary: <em>Human Nature</em> (2019), on CRISPR; TED Talks: Jennifer Doudna on CRISPR; Juan Enriquez, "The Next Species of Human"; Susan Lim, "Transplant Cells, Not Organs."</li>
+    <li>YouTube: "Science Friction: Stem Cell Research"; reports on Casgevy approval (2023) and the He Jiankui case (2018).</li>
+    <li>Stanford Encyclopedia of Philosophy: entries on Nanotechnology, Gene Editing, and Human Enhancement.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 10 Main Lecture &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>

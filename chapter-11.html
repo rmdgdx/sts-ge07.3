@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 11 — Main Lecture | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .mandated{display:inline-block;margin-top:12px;background:#7a1f1f;color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 14px;border-radius:12px;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit III · Week 16</div>
+  <h1>Chapter 11: Climate Change and Environmental Awareness</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="mandated">CHED-Mandated Topic</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#science">The Science</a></li>
+    <li><a href="#consensus">Consensus &amp; Denial</a></li>
+    <li><a href="#impacts">Impacts</a></li>
+    <li><a href="#philippines">The PH Frontline</a></li>
+    <li><a href="#commons">Tragedy of the Commons</a></li>
+    <li><a href="#justice">Climate Justice</a></li>
+    <li><a href="#energy">The Energy Transition</a></li>
+    <li><a href="#action">Response &amp; Action</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Identify the causes of climate change and explain the underlying science;</li>
+    <li>Assess the various impacts of climate change — economic, geopolitical, biological, meteorological, and social;</li>
+    <li>Apply STS concepts to the issue of climate change, including the "tragedy of the commons" and climate justice;</li>
+    <li>Analyze the Philippines' specific vulnerability to climate change and the meaning of climate justice for the nation; and</li>
+    <li>Evaluate responses — the renewable-energy transition, alternative energy, mitigation, adaptation, and personal and collective action — while developing genuine environmental awareness.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: The Issue on Which Everything Depends</h2>
+  <p class="lead">This chapter carries the CHED mandate, and it is placed at the culmination of the course for a reason. Climate change is not one issue among many; it is the issue on which nearly every other now depends — food and biodiversity (Chapter 9), health (the "One Health" web), development and nation-building (Chapter 3), the good life and human flourishing (Chapters 4–5), justice and human rights (Chapter 6), and the survival of a healthy human society (Chapter 7). It is the ultimate test of whether humanity can use its scientific and technological power wisely, or whether that power will undo us.</p>
+  <p>Climate change is also the clearest possible case of this entire course's central themes made real. It is <strong>co-production</strong> at planetary scale (Chapter 1): human society, through its technology, has altered the Earth's climate system, and that altered system now reshapes human society in return. It is the supreme example of <strong>"power outrunning wisdom"</strong> (Chapter 7): the same fossil-fuel technologies that built modern prosperity (Chapter 1's Industrial Revolution) are destabilizing the planet's life-support systems. And it is the definitive proof that <strong>a scientific fact and a social response are two different things</strong>: the science of climate change is settled, but what humanity <em>does</em> about it is a matter of politics, economics, ethics, and choice.</p>
+  <p>A word on tone, as always. This chapter aims for neither despair nor denial. Climate change is a genuine emergency backed by overwhelming evidence — that must be stated plainly. But it is also, like every challenge in this course, a problem we still have the power to shape. The purpose of "environmental awareness" is not to induce paralyzing dread but to produce <em>informed, hopeful, and effective action</em>. The future is not yet written; it depends on the choices being made now, including by your generation, which will live in the world these choices create.</p>
+  <div class="callout gold">
+    <span class="label">Framing Idea</span>
+    Climate change is the STS course's final exam. It asks whether a species clever enough to change the planet's climate is also wise enough to change its own behavior in response. The science tells us what is happening and why; whether we act — and act justly — is a question the science cannot answer for us. That is the human question at the heart of this chapter.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    Have you personally experienced a stronger typhoon, a hotter year, worse flooding, or a disrupted harvest than your parents or grandparents describe from their youth? What have you noticed changing in your own lifetime and place?
+  </div>
+</section>
+<section id="science">
+  <h2>The Science: What Causes Climate Change?</h2>
+  <p>Environmental awareness begins with understanding the mechanism. The science is, at its core, straightforward and has been understood for over a century.</p>
+  <h3>The greenhouse effect</h3>
+  <p>The <strong>greenhouse effect</strong> is a natural and necessary process: certain gases in the atmosphere — <strong>greenhouse gases (GHGs)</strong> like carbon dioxide (CO₂), methane (CH₄), and water vapor — trap some of the sun's heat, keeping the Earth warm enough for life. Without it, the planet would be frozen. The problem is not the greenhouse effect itself but its <em>intensification</em>: human activities are adding vast quantities of greenhouse gases to the atmosphere, thickening the "blanket" and trapping more heat than the natural balance. This is often called the <strong>enhanced greenhouse effect</strong>, and the resulting warming is <strong>global warming</strong> — one part of the broader <strong>climate change</strong> (which includes shifts in rainfall, storms, sea level, and more).</p>
+  <h3>The human cause</h3>
+  <p>The primary driver is the burning of <strong>fossil fuels</strong> — coal, oil, and natural gas — for energy, which releases CO₂ that had been locked underground for millions of years. Secondary drivers include <strong>deforestation</strong> (trees absorb CO₂; cutting them removes that "carbon sink" and releases stored carbon), <strong>industrial agriculture</strong> (methane from livestock and rice paddies, nitrous oxide from fertilizers), and various industrial processes. The connection to Chapter 1 is direct: the Industrial Revolution's fossil-fuel engine, which lifted billions from poverty, is the same engine now overheating the planet — a stark illustration that technologies bring both immense benefit and unforeseen, long-delayed cost.</p>
+  <h3>The evidence</h3>
+  <p>The evidence that this is happening, and that humans are the cause, is overwhelming and multi-stranded: precise measurements of rising atmospheric CO₂ (now far above any level in at least 800,000 years, verified by ice cores); rising global average temperatures (the warmest years on record are recent); melting glaciers and polar ice; rising sea levels; ocean acidification; and shifting seasons and ecosystems. This is not the conclusion of one study but the convergent finding of every major scientific body on Earth.</p>
+  <div class="callout">
+    <span class="label">Why the Basic Science Is Not in Doubt</span>
+    That CO₂ traps heat was demonstrated in the 1850s–60s (Eunice Foote and John Tyndall); that burning fossil fuels would warm the planet was predicted in 1896 (Svante Arrhenius). This is not new or fragile science — it is basic physics, confirmed for over 150 years and by mountains of modern data. Understanding this history is a defense against the misinformation (Chapter 8) that treats settled science as an open question.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=climate+change+greenhouse+effect+explained+Kurzgesagt" target="_blank" rel="noopener">How climate change works</a> — Kurzgesagt / curated <span class="why">(the greenhouse effect)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=why+is+climate+change+happening+causes+fossil+fuels" target="_blank" rel="noopener">The human cause of warming</a> — curated search <span class="why">(fossil fuels &amp; deforestation)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="consensus">
+  <h2>Scientific Consensus and the Manufacture of Doubt</h2>
+  <p>Because this is an STS course, we must examine not just the science but the <em>social</em> story of how it has been received — a story that connects directly to Chapter 8's crisis of truth.</p>
+  <p>There is an <strong>overwhelming scientific consensus</strong> — well over 97% of actively publishing climate scientists, and every major scientific academy — that climate change is real, is primarily caused by human activity, and is dangerous. The authoritative synthesis of this consensus is produced by the <strong>Intergovernmental Panel on Climate Change (IPCC)</strong>, a UN body that reviews the work of thousands of scientists worldwide. Its most recent <strong>Sixth Assessment Report (AR6, 2023)</strong> stated in its starkest terms yet that human influence on the climate is "unequivocal" and that the window to limit warming is closing rapidly.</p>
+  <p>Yet public debate has lagged far behind the science — and this gap is not an accident. A well-documented campaign of <strong>climate-change denial and doubt</strong>, funded substantially by fossil-fuel interests, has for decades worked to manufacture the <em>appearance</em> of scientific controversy where little exists — using the same tactics the tobacco industry once used to deny that smoking causes cancer. This is a crucial STS lesson: the manipulation of information (Chapter 8) can delay a society's response to even a well-understood scientific reality, with catastrophic consequences. It shows that being "informed" requires not just access to facts but the literacy to recognize when doubt is being deliberately manufactured.</p>
+  <div class="callout gold">
+    <span class="label">Consensus Is Not Conformity</span>
+    Skepticism is a scientific virtue — but genuine skepticism follows the evidence, and the evidence here is conclusive. "Both sides" framing can mislead when one "side" represents 97%+ of experts and a century of physics, and the other is substantially funded by those who profit from delay. Recognizing manufactured doubt (Chapter 8) is itself an act of environmental awareness.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    The tactics used to deny climate science mirror those once used to deny the harms of tobacco. Why is manufactured doubt so effective at delaying action, even when the underlying science is settled? How can a citizen tell genuine scientific uncertainty from manufactured controversy?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=97+percent+scientific+consensus+on+climate+change" target="_blank" rel="noopener">The scientific consensus</a> — curated search <span class="why">(the science is settled)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Merchants+of+Doubt+climate+denial+tobacco+tactics" target="_blank" rel="noopener">Merchants of Doubt</a> — curated search <span class="why">(the manufacture of doubt)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="impacts">
+  <h2>The Impacts: Economic, Geopolitical, Biological, and Meteorological</h2>
+  <p>The syllabus asks students to "assess the various impacts of climate change including economic, geopolitical, biological, meteorological, etc." The impacts are already occurring and cut across every dimension of life:</p>
+  <table>
+    <thead><tr><th style="width:20%">Dimension</th><th>Impacts</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Meteorological</strong></td><td>More frequent and intense heatwaves, droughts, heavy rainfall, and stronger storms; shifting rainfall patterns; a warmer atmosphere holds more energy and moisture, "supercharging" weather.</td></tr>
+      <tr><td><strong>Biological / ecological</strong></td><td>Species extinction and range shifts (Chapter 9's biodiversity crisis); coral bleaching from warmer, more acidic oceans (devastating for the Coral Triangle); disrupted ecosystems and pollination; spread of tropical diseases.</td></tr>
+      <tr><td><strong>Economic</strong></td><td>Damage to agriculture and fisheries (food security); destruction of infrastructure by disasters; costs of adaptation; threats to tourism, insurance, and whole industries; a drag on development (Chapter 3).</td></tr>
+      <tr><td><strong>Social / health</strong></td><td>Threats to food and water security; heat-related illness and death; displacement and "climate refugees"; worsened inequality (the poor are hit hardest); mental-health effects ("eco-anxiety").</td></tr>
+      <tr><td><strong>Geopolitical</strong></td><td>Conflict over dwindling resources (water, arable land); mass migration and border pressures; instability in vulnerable regions; disputes over who bears responsibility and cost.</td></tr>
+      <tr><td><strong>Sea level</strong></td><td>Rising seas from melting ice and thermal expansion threaten low-lying coasts and island nations with flooding, saltwater intrusion, and, ultimately, disappearance.</td></tr>
+    </tbody>
+  </table>
+  <h3>Tipping points and the 1.5°C threshold</h3>
+  <p>A critical scientific concept is that of <strong>tipping points</strong> — thresholds beyond which changes become self-reinforcing and effectively irreversible (melting ice sheets, thawing permafrost releasing methane, Amazon dieback). This is why scientists and the <strong>Paris Agreement</strong> (2015) set a target of limiting warming to well below 2°C, ideally <strong>1.5°C</strong>, above pre-industrial levels: beyond these thresholds, the risk of triggering catastrophic, irreversible tipping points rises sharply. The irreversibility here directly echoes Chapter 7's existential-risk reasoning: some mistakes cannot be undone, which is why acting <em>before</em> the threshold is crossed is essential.</p>
+  <div class="callout">
+    <span class="label">Why "A Few Degrees" Is Not Small</span>
+    "1.5 or 2 degrees" sounds trivial in everyday terms, but a global <em>average</em> shift of a few degrees is enormous — the difference between the last Ice Age and today is only about 5°C globally. Small average changes drive large shifts in extremes, ecosystems, and sea level. Understanding this is a key piece of environmental literacy that denialists exploit.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=impacts+of+climate+change+explained" target="_blank" rel="noopener">The impacts of climate change</a> — curated search <span class="why">(across every dimension)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=climate+tipping+points+explained" target="_blank" rel="noopener">Climate tipping points</a> — curated search <span class="why">(why 1.5&deg;C matters)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="philippines">
+  <h2>On the Frontline: The Philippines and Climate Change</h2>
+  <p>This mandated topic is not abstract for Filipinos — the Philippines is one of the <strong>most climate-vulnerable nations on Earth</strong>, consistently ranking among the countries most affected by extreme weather. The syllabus's Filipino resources (Loren Legarda's <em>BUHOS</em> documentary, NCAR reports) reflect a national reality, not a foreign issue.</p>
+  <h3>Why the Philippines is so exposed</h3>
+  <ul class="plain">
+    <li><strong>Typhoons.</strong> The country lies in the world's most active tropical-cyclone basin, facing about 20 storms a year — and a warmer ocean fuels stronger ones. <strong>Typhoon Haiyan (Yolanda, 2013)</strong>, one of the most powerful storms ever recorded at landfall, killed over 6,000 Filipinos and became a global symbol of climate vulnerability; the pattern of devastating supertyphoons has continued since.</li>
+    <li><strong>An archipelago of coasts.</strong> With thousands of islands and long coastlines, the Philippines is acutely exposed to <em>sea-level rise</em>, storm surge, and saltwater intrusion — threatening coastal cities, communities, and freshwater.</li>
+    <li><strong>Agriculture and fisheries.</strong> Millions of Filipinos depend on farming and fishing, both highly sensitive to changing rainfall, heat, and ocean conditions (coral bleaching, fish migration) — a direct threat to food security and livelihoods.</li>
+    <li><strong>Biodiversity at risk.</strong> As a megadiverse hotspot (Chapter 9), the Philippines has extraordinary natural wealth that climate change endangers, weakening the very ecosystems (mangroves, reefs, forests) that provide natural protection against disasters.</li>
+  </ul>
+  <h3>The bitter injustice</h3>
+  <p>Here the STS lens reveals the defining moral fact of the Philippine case: the country has contributed <strong>very little</strong> to the greenhouse-gas emissions that cause climate change — a tiny share of the historical total — yet suffers among the <strong>most</strong> from its effects. This is the essence of <strong>climate injustice</strong>: those least responsible bear the heaviest burden. The Philippines has become a leading global voice for climate justice precisely because it lives this contradiction daily. Its national responses — the <strong>Climate Change Commission</strong>, the Climate Change Act, disaster-risk science (Chapter 3's Project NOAH, PAGASA), and its <strong>Nationally Determined Contribution (NDC)</strong> under the Paris Agreement — show a nation trying to both adapt to a crisis it did not create and press the world for justice.</p>
+  <div class="callout green">
+    <span class="label">Why the Filipino Perspective Matters</span>
+    For a Filipino student, climate change is not a debate about the distant future or faraway places; it is about the typhoon that flooded your town, the harvest your family lost, the coast your grandchildren may not have. This gives Filipinos a distinctive moral authority in the global conversation — and makes environmental awareness a matter of national survival, not merely global citizenship.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    The Philippines contributed almost nothing to causing climate change but suffers among the most from it. Is this fair? What do wealthy, high-emitting nations owe to vulnerable ones like the Philippines — and how should that obligation be met?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Philippines+climate+change+vulnerability+Typhoon+Haiyan" target="_blank" rel="noopener">The Philippines on the climate frontline</a> — curated search <span class="why">(Typhoon Haiyan &amp; vulnerability)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=BUHOS+Loren+Legarda+climate+change+Philippines" target="_blank" rel="noopener">BUHOS (Loren Legarda)</a> — curated search <span class="why">(a Filipino climate documentary)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="commons">
+  <h2>An STS Lens: The Tragedy of the Commons</h2>
+  <p>The syllabus assigns Garrett Hardin's classic 1968 essay "The Tragedy of the Commons," which offers the single most useful concept for understanding <em>why</em> climate change is so hard to solve — it is not mainly a technical problem but a <strong>collective-action problem</strong>.</p>
+  <p>Hardin's parable: imagine a shared pasture (a "commons") open to all herders. Each herder benefits individually by adding more cattle, but the <em>cost</em> of overgrazing is shared by everyone. So each rationally adds more animals, pursuing private gain, until the collective result is the destruction of the pasture that all depend on. The <strong>tragedy</strong> is that individually rational choices produce a collectively catastrophic outcome. Everyone loses precisely because each acted in narrow self-interest.</p>
+  <p>The atmosphere is the ultimate global commons. Each person, company, and nation gains from burning fossil fuels (cheap energy, profit, development), while the cost — a destabilized climate — is shared by all of humanity and by future generations. No single actor has a strong incentive to stop if others won't, and everyone fears bearing costs while others "free-ride." This is exactly why climate change resists solution: it is a tragedy of the global commons, and solving it requires overcoming the collective-action trap. Hardin's proposed solutions — "mutual coercion, mutually agreed upon" (that is, collective rules and governance) — point directly to why international agreements, national regulation, and shared norms are essential. The problem cannot be solved by individual virtue alone (the Chapter 6 lesson again), though individual action matters; it requires cooperative structures that align private incentives with the common good.</p>
+  <div class="callout gold">
+    <span class="label">The Commons and the Filipino "Kapwa"</span>
+    The tragedy of the commons is, at root, a failure of <em>shared responsibility</em> — a failure to see the atmosphere and the planet as a common good (recall Chapter 5's <em>kabutihang panlahat</em> and <em>kapwa</em>). The Filipino relational ethic, which insists that individual good is bound to the good of the whole, is precisely the disposition the commons requires. Solving climate change means extending <em>kapwa</em> to all of humanity and to future generations.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=tragedy+of+the+commons+explained+Garrett+Hardin" target="_blank" rel="noopener">The tragedy of the commons</a> — curated search <span class="why">(why climate is so hard to solve)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="justice">
+  <h2>Climate Justice: Who Is Responsible, Who Pays?</h2>
+  <p>Because climate change is a commons problem with wildly unequal contributions and impacts, it is fundamentally a question of <strong>justice</strong>, not just science or economics. <strong>Climate justice</strong> examines the ethical dimensions of the crisis and insists that responses be fair.</p>
+  <ul class="plain">
+    <li><strong>Historical responsibility.</strong> The wealthy, industrialized nations produced the vast majority of the greenhouse gases now in the atmosphere, over more than two centuries of fossil-fueled development. It is unjust for them to now demand that poor nations — which contributed little and still need development — bear equal restrictions.</li>
+    <li><strong>Unequal impact.</strong> As the Philippine case shows, the poorest nations and people, least responsible for the problem, suffer the worst consequences and have the fewest resources to adapt. Within nations too, the poor are hit hardest.</li>
+    <li><strong>Intergenerational justice.</strong> Today's emissions impose costs on <em>future generations</em> who have no say — the very people your generation and its children will be. This connects to Chapter 7 (obligations to those who cannot consent) and Chapter 5's relational good life.</li>
+    <li><strong>The principle of "common but differentiated responsibilities."</strong> Enshrined in international climate agreements, this principle holds that all nations must act, but those with greater historical responsibility and capacity must do more — including providing <strong>climate finance</strong> to help vulnerable nations adapt and transition.</li>
+  </ul>
+  <p>These justice questions dominate global negotiations. At the annual UN climate summits (the "COP" conferences), a hard-won milestone was the operationalization of a <strong>"Loss and Damage" Fund</strong> (agreed at COP28, 2023) to help climate-vulnerable nations cope with harms they did not cause — a partial recognition of climate justice. Subsequent summits (COP29 in Baku, 2024, on climate finance; COP30 in Belém, Brazil, 2025) continued to wrestle with how much the rich world will pay and how fast the world will move off fossil fuels — with progress real but widely judged insufficient against the scale and urgency the science demands. The gap between what is agreed and what is needed is itself an STS lesson about the difficulty of collective action.</p>
+  <div class="callout">
+    <span class="label">Why Justice Is Not Optional</span>
+    Climate change cannot be solved as a purely technical problem while ignoring justice, because the vulnerable nations will not (and cannot fairly be asked to) sacrifice their development to fix a problem they did not create, unless the responsible and capable nations lead and support them. Fairness is not a soft add-on to climate policy; it is a precondition for the global cooperation the commons problem requires.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=climate+justice+explained+who+is+responsible" target="_blank" rel="noopener">What is climate justice?</a> — curated search <span class="why">(who caused it, who pays)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=loss+and+damage+fund+COP+climate+finance" target="_blank" rel="noopener">Loss &amp; Damage and climate finance</a> — curated search <span class="why">(the justice question at the COPs)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="energy">
+  <h2>The Energy Crisis and the Renewable Transition</h2>
+  <p>The syllabus pairs climate change with "the energy crisis," because the two are inseparable: our climate problem is fundamentally an <strong>energy</strong> problem. Modern civilization runs on energy, most of it still from the fossil fuels that cause the warming. Solving climate change therefore requires nothing less than transforming the world's entire energy system — the great project of the coming decades.</p>
+  <h3>Mitigation: cutting emissions at the source</h3>
+  <p>The core solution is <strong>mitigation</strong> — reducing greenhouse-gas emissions — above all by transitioning from fossil fuels to <strong>renewable energy</strong>:</p>
+  <ul class="plain">
+    <li><strong>Solar and wind.</strong> Now often the <em>cheapest</em> sources of new electricity in history — a genuine reason for hope, and a technology story of falling costs and rapid growth. Offshore wind is a major frontier.</li>
+    <li><strong>Other renewables:</strong> hydropower, geothermal (the Philippines is a world leader, given its volcanic geology — a national asset, Chapter 3), and biomass.</li>
+    <li><strong>Alternative and emerging energy.</strong> The syllabus specifically notes <strong>Ocean Thermal Energy Conversion (OTEC)</strong> — harnessing the temperature difference between warm surface and cold deep ocean water, a promising option for a tropical archipelago like the Philippines — alongside tidal, wave, and green-hydrogen technologies.</li>
+    <li><strong>Efficiency and electrification:</strong> using less energy for the same benefit, and electrifying transport (EVs) and industry so they can run on clean power.</li>
+    <li><strong>Nuclear power</strong> remains debated: low-carbon and reliable, but raising concerns about waste, cost, and safety — a real STS controversy of its own.</li>
+  </ul>
+  <h3>Adaptation: living with the change already locked in</h3>
+  <p>Because some warming is already unavoidable, <strong>adaptation</strong> — adjusting to climate impacts we can no longer prevent — is equally essential, and especially urgent for a frontline nation. Adaptation includes flood defenses and resilient infrastructure, early-warning systems (PAGASA, Project NOAH), climate-resilient crops (Chapter 9), restoring natural buffers like mangroves and forests, and disaster-preparedness. Mitigation and adaptation are not either/or; the world needs both — to limit the damage <em>and</em> to survive what cannot be limited.</p>
+  <div class="callout gold">
+    <span class="label">A Real Reason for Hope</span>
+    The clean-energy transition is not a fantasy — it is underway. Solar and wind costs have collapsed, renewables are being deployed at record scale, and clean technology is increasingly the economically sensible choice, not just the moral one. The obstacles now are less technical than political and economic: the collective-action problem, entrenched fossil-fuel interests, and the challenge of a <em>just</em> transition. The solutions exist; the question is whether humanity will deploy them fast enough and fairly enough.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=renewable+energy+transition+solar+wind+explained" target="_blank" rel="noopener">The renewable-energy transition</a> — curated search <span class="why">(solutions that already exist)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=ocean+thermal+energy+conversion+OTEC+explained" target="_blank" rel="noopener">Ocean Thermal Energy Conversion (OTEC)</a> — curated search <span class="why">(alternative energy for the tropics)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="action">
+  <h2>Response and Action: From Awareness to a Just Transition</h2>
+  <p>The goal of this mandated topic is "environmental awareness" — but awareness that does not lead to action is incomplete. Responses operate at every level, and all are needed together.</p>
+  <ul class="plain">
+    <li><strong>Individual action.</strong> Reducing one's own carbon footprint (energy use, transport, diet, consumption — recall Chapter 5's sugar and consumption theme), and, crucially, <em>civic</em> action: voting, advocating, and pressing institutions to change. Individual choices matter and build the culture for larger change — but, per the commons logic, they are necessary and insufficient on their own.</li>
+    <li><strong>Collective and structural action.</strong> The decisive changes are systemic: government policy (carbon pricing, renewable mandates, efficiency standards, the Philippine Climate Change Act), corporate transformation, and international cooperation (the Paris Agreement, COP process). This is Hardin's "mutual coercion, mutually agreed upon" — the collective rules the commons requires.</li>
+    <li><strong>The green economy and just transition.</strong> The syllabus's "green economy" (via the UNEP reading) envisions an economy that delivers prosperity <em>within</em> environmental limits — decoupling human flourishing from environmental destruction (Chapter 5). Crucially, the transition must be <strong>just</strong>: workers and communities dependent on fossil fuels (a Chapter 1 Luddite echo) must be supported, not abandoned, or the transition will be resisted and unfair.</li>
+    <li><strong>Science and technology.</strong> Continued research into clean energy, carbon capture, resilient agriculture, and climate modeling — the productive role of S&amp;T (Chapter 3) turned toward solving the problem its earlier forms helped create.</li>
+    <li><strong>A shift in values.</strong> Ultimately, meeting the climate challenge requires the wisdom this whole course aims to cultivate: seeing ourselves as part of the natural web (Chapters 2, 9), extending our sense of the common good to all humanity and future generations (Chapter 5's <em>kapwa</em>), and choosing to use our technological power wisely (Chapter 7).</li>
+  </ul>
+  <div class="callout green">
+    <span class="label">From Eco-Anxiety to Empowered Action</span>
+    Many young people feel "eco-anxiety" — real distress about the climate future. The healthy response is neither denial nor despair but <em>empowered engagement</em>: channeling concern into informed, collective action. Studies and psychologists agree that action is itself an antidote to climate anxiety. You are not powerless; you are, in fact, the generation with the most at stake and the most power to shape what comes next.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=what+can+we+do+about+climate+change" target="_blank" rel="noopener">What can we actually do?</a> — curated search <span class="why">(from awareness to action)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=just+transition+green+economy+explained" target="_blank" rel="noopener">A just transition &amp; the green economy</a> — curated search <span class="why">(fair and effective change)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: The Ultimate STS Challenge</h2>
+  <p>This mandated chapter gathers the entire course into a single, urgent question. Four threads bring it together:</p>
+  <ol class="plain">
+    <li><strong>The science is settled; the response is a choice.</strong> Human-caused climate change is real, dangerous, and understood — basic physics confirmed for over 150 years and by every scientific body. What humanity <em>does</em> about it is not settled by science but by politics, economics, and ethics. This is the definitive proof that a fact and a response are different things.</li>
+    <li><strong>It is a tragedy of the commons and a question of justice.</strong> Climate change is a collective-action problem in which individually rational choices produce collective catastrophe — and one in which those least responsible (like the Philippines) suffer most. Solving it requires cooperative governance and fairness, not technical fixes alone.</li>
+    <li><strong>The Philippines lives the frontline and the injustice.</strong> A megadiverse, typhoon-battered archipelago that emitted almost nothing yet suffers among the most, the Philippines makes climate change a matter of national survival and gives Filipinos moral authority to demand climate justice.</li>
+    <li><strong>Solutions exist; the transition must be fast and just.</strong> The renewable-energy transition is underway and increasingly economical; mitigation and adaptation are both essential; and the transformation must be a <em>just</em> one that supports the vulnerable and shares the burden fairly.</li>
+  </ol>
+  <p>The unifying conviction — the one this entire course has built toward — is that climate change is the ultimate test of whether humanity can be not just clever but <strong>wise</strong>: whether a species powerful enough to change the planet's climate can also choose, collectively and justly, to change its own course. The science has done its part; the answer now depends on human choice, values, and cooperation — which is to say, on exactly the reflective, ethical, and engaged citizenship this course exists to cultivate. As the STS curriculum reaches its end, its final and most important lesson is this: <strong>the future of the planet, like the future of technology, is not a fate to be suffered but a choice to be made</strong> — and you are among those who will make it.</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>Greenhouse effect</td><td>The natural trapping of heat by atmospheric gases; its human-driven intensification (enhanced greenhouse effect) causes global warming.</td></tr>
+      <tr><td>Greenhouse gases (GHGs)</td><td>Gases like CO₂, methane, and nitrous oxide that trap heat; emitted mainly by burning fossil fuels, deforestation, and agriculture.</td></tr>
+      <tr><td>Global warming / climate change</td><td>The rise in global average temperature / the broader resulting shifts in climate, weather, sea level, and ecosystems.</td></tr>
+      <tr><td>Fossil fuels</td><td>Coal, oil, and natural gas — the primary source of human GHG emissions.</td></tr>
+      <tr><td>IPCC / AR6</td><td>The UN Intergovernmental Panel on Climate Change; its Sixth Assessment Report (2023) states human influence is "unequivocal."</td></tr>
+      <tr><td>Scientific consensus</td><td>The 97%+ agreement among climate scientists that warming is real, human-caused, and dangerous.</td></tr>
+      <tr><td>Manufactured doubt</td><td>The deliberate creation of false controversy (funded by fossil-fuel interests) to delay action — echoing tobacco-industry tactics.</td></tr>
+      <tr><td>Tipping point</td><td>A threshold beyond which climate change becomes self-reinforcing and effectively irreversible.</td></tr>
+      <tr><td>Paris Agreement / 1.5°C</td><td>The 2015 treaty aiming to limit warming to well below 2°C, ideally 1.5°C, above pre-industrial levels.</td></tr>
+      <tr><td>Tragedy of the commons</td><td>Hardin's idea that individually rational use of a shared resource produces collective ruin — the model for climate as a collective-action problem.</td></tr>
+      <tr><td>Climate justice</td><td>The ethical dimension: those least responsible suffer most; responses must be fair (historical, unequal-impact, and intergenerational justice).</td></tr>
+      <tr><td>Mitigation vs. adaptation</td><td>Cutting emissions to limit warming vs. adjusting to impacts already unavoidable — both essential.</td></tr>
+      <tr><td>Just transition / green economy</td><td>Shifting to clean energy in a way that supports affected workers and communities / an economy delivering prosperity within environmental limits.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>Explain, in your own words, why the basic science of climate change is not seriously in scientific doubt. How would you respond to someone who says "scientists disagree"?</li>
+    <li>Use the tragedy of the commons to explain why climate change is so hard to solve. Why isn't individual virtue enough?</li>
+    <li>The Philippines emitted little but suffers much. What is "climate justice," and what specifically do you think wealthy nations owe the Philippines?</li>
+    <li>Is the renewable transition mainly a technical problem, an economic one, or a political one? What is the biggest obstacle, and how might it be overcome?</li>
+    <li>How do you personally cope with "eco-anxiety"? What is the difference between despair, denial, and empowered action?</li>
+  </ol>
+  <h3>Activity 1 — Learning application: weather/climate project (the syllabus assessment)</h3>
+  <p>As a group, choose a specific Philippine climate impact (supertyphoons, sea-level rise in a named city, coral bleaching, agricultural disruption) and produce a presentation: the science behind it, its local impacts, the justice dimension, and concrete mitigation <em>and</em> adaptation responses. Present with data (from PAGASA, IPCC, NCAR, the Climate Change Commission).</p>
+  <h3>Activity 2 — Climate-solutions debate / COP simulation (group work)</h3>
+  <p>Simulate a mini-COP negotiation: assign groups to represent a wealthy high-emitter, a vulnerable island nation (like the Philippines), a large developing economy, and a fossil-fuel producer. Negotiate an agreement on emissions cuts and climate finance. Debrief on why real agreement is so hard (the commons problem) and what justice requires.</p>
+  <h3>Activity 3 — Personal &amp; community action plan (individual, take-home)</h3>
+  <p>Audit your own carbon footprint and design a realistic plan combining <em>personal</em> changes and <em>civic/collective</em> actions (advocacy, community, institutional). Reflect honestly on what individuals can and cannot achieve alone, and how to move from awareness to action.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. What is the difference between the natural greenhouse effect and global warming?</summary><p>The greenhouse effect is the natural, necessary trapping of heat by atmospheric gases; global warming results from its human-driven intensification (the enhanced greenhouse effect) as we add more GHGs.</p></details>
+  <details><summary>2. What is the primary human cause of climate change, and two secondary causes?</summary><p>Primary: burning fossil fuels (coal, oil, gas), which releases CO₂. Secondary (any two): deforestation, industrial agriculture (methane, nitrous oxide), and industrial processes.</p></details>
+  <details><summary>3. Why is it accurate to say the basic science is "not new or fragile"?</summary><p>CO₂'s heat-trapping was shown in the 1850s–60s (Foote, Tyndall) and fossil-fuel warming predicted in 1896 (Arrhenius); it is basic physics confirmed for 150+ years and by every major scientific body.</p></details>
+  <details><summary>4. What is the IPCC, and what did AR6 (2023) conclude?</summary><p>The UN Intergovernmental Panel on Climate Change, which synthesizes the science. AR6 stated that human influence on the climate is "unequivocal" and that the window to limit warming is closing rapidly.</p></details>
+  <details><summary>5. What is "manufactured doubt," and what earlier campaign does it resemble?</summary><p>The deliberate creation of false scientific controversy (funded largely by fossil-fuel interests) to delay action — using the same tactics the tobacco industry used to deny that smoking causes cancer.</p></details>
+  <details><summary>6. What is a climate "tipping point," and why does it justify the 1.5°C target?</summary><p>A threshold beyond which change becomes self-reinforcing and effectively irreversible. Limiting warming to 1.5°C aims to avoid triggering catastrophic, irreversible tipping points.</p></details>
+  <details><summary>7. Explain the "tragedy of the commons" and how it applies to climate.</summary><p>Individually rational use of a shared resource (each herder adding cattle) destroys it for all. The atmosphere is a global commons: each actor gains from emitting while all share the cost — a collective-action trap.</p></details>
+  <details><summary>8. Why is the Philippine case a case of "climate injustice"?</summary><p>The Philippines contributed very little to global emissions yet suffers among the most from climate impacts — those least responsible bear the heaviest burden.</p></details>
+  <details><summary>9. Distinguish mitigation from adaptation.</summary><p>Mitigation reduces GHG emissions to limit warming (e.g., renewables); adaptation adjusts to impacts already unavoidable (e.g., flood defenses, early warning). Both are essential.</p></details>
+  <details><summary>10. What does a "just transition" mean, and why does it matter?</summary><p>Shifting to clean energy in a way that supports workers and communities dependent on fossil fuels, so the transition is fair and not resisted — otherwise it is unjust and politically unsustainable.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>IPCC. <em>AR6 Synthesis Report: Climate Change 2023</em> — Summary for Policymakers.</li>
+    <li>Hardin, Garrett. "The Tragedy of the Commons," <em>Science</em>, 1968.</li>
+    <li>Gore, Al. <em>An Inconvenient Truth</em> and <em>The Future: Six Drivers of Global Change</em>.</li>
+    <li>NCAR. "Changing the Atmosphere: Anthropology and Climate Change"; "Scientists tackle mystery of thunderstorms that strike at night."</li>
+    <li>Legarda, Loren. <em>BUHOS: A Climate Change Documentary</em> (Philippine context).</li>
+    <li>Webster, Donovan. "Reigning in the Weather," <em>Discover</em>, June 2008.</li>
+    <li>UNEP. "Towards a Green Economy: Pathways to Sustainable Development and Poverty Eradication."</li>
+    <li>Thunberg, Greta (ed.). <em>The Climate Book</em>, Penguin, 2022 (selections).</li>
+    <li>United Nations. Paris Agreement (2015); UNFCCC COP outcomes (COP28 Loss and Damage, 2023; COP29 Baku finance, 2024; COP30 Belém, 2025).</li>
+    <li>Republic of the Philippines. Climate Change Act; Climate Change Commission; the Philippine Nationally Determined Contribution (NDC).</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 11 Main Lecture &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>
