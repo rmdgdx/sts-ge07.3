@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5 — Main Lecture | STS</title>
+<style>
+  :root{
+    --navy:#1a2f5a; --navy-dark:#12213f; --gold:#c9a227; --accent:#2e6da4;
+    --new:#0e7c4a; --upd:#b3541e; --ink:#26303b; --muted:#5c6b7a;
+    --line:#d8dee6; --bg:#f4f6f9; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;}
+  .sans{font-family:'Segoe UI',Arial,Helvetica,sans-serif;}
+
+  header.masthead{background:linear-gradient(135deg,var(--navy-dark),var(--navy) 60%,#24457e);color:#fff;padding:42px 24px 34px;text-align:center;}
+  header.masthead .kicker{font-family:'Segoe UI',Arial,sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#c7d3e8;}
+  header.masthead h1{font-size:1.9rem;margin:.45em auto .25em;max-width:900px;letter-spacing:.01em;}
+  header.masthead .subtitle{font-family:'Segoe UI',Arial,sans-serif;color:#dbe4f3;font-size:.92rem;}
+  header.masthead .rule{width:90px;height:3px;background:var(--gold);margin:16px auto 0;border-radius:2px;}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navy-dark);box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;}
+  nav a{display:block;padding:10px 13px;color:#e7edf7;text-decoration:none;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;letter-spacing:.03em;}
+  nav a:hover{background:var(--navy);color:var(--gold);}
+
+  main{max-width:980px;margin:0 auto;padding:34px 20px 70px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 36px;margin-bottom:28px;box-shadow:0 1px 4px rgba(20,35,60,.06);;scroll-margin-top:64px}
+  h2{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:1.3rem;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:18px;}
+  h3{font-family:'Segoe UI',Arial,sans-serif;color:var(--accent);font-size:1.06rem;margin:24px 0 10px;}
+  h4{font-family:'Segoe UI',Arial,sans-serif;color:var(--navy);font-size:.95rem;margin:16px 0 6px;}
+  p{margin-bottom:13px;text-align:justify;}
+  ul.plain{margin:0 0 13px 24px;}
+  ul.plain li{margin-bottom:6px;}
+  ol.plain{margin:0 0 13px 26px;}
+  ol.plain li{margin-bottom:6px;}
+
+  .lead{font-size:1.06rem;color:#33404e;}
+  .callout{background:#eef3fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.95rem;}
+  .callout.gold{background:#faf6e9;border-left-color:var(--gold);}
+  .callout.green{background:#f2f7ee;border-left-color:var(--new);}
+  .callout .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+
+  .qbox{background:#fdf6ec;border:1px dashed #d9b26a;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:.95rem;}
+  .qbox .label{display:block;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--upd);margin-bottom:4px;}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0 6px;}
+  th{background:var(--navy);color:#fff;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;padding:9px 12px;text-align:left;}
+  td{border:1px solid var(--line);padding:9px 12px;vertical-align:top;background:#fff;}
+  tr:nth-child(even) td{background:#f7f9fc;}
+  .era-row td{background:#e9eef6 !important;color:var(--navy);font-family:'Segoe UI',Arial,sans-serif;font-weight:700;letter-spacing:.04em;font-size:.85rem;}
+
+  details{margin:10px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px;background:#fbfcfe;}
+  summary{cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;color:var(--navy);}
+  details[open]{background:#f4f8f4;}
+
+  .mcq{margin:0 0 18px;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fbfcfe;}
+  .mcq .stem{font-weight:bold;margin-bottom:8px;}
+  .mcq ol{list-style-type:upper-alpha;margin:0 0 10px 30px;}
+  .mcq ol li{margin-bottom:4px;}
+  .mcq details{margin:6px 0 0;border:none;background:#f0f6f1;border-left:4px solid var(--new);border-radius:0 6px 6px 0;padding:10px 14px;}
+  .mcq details summary{color:var(--new);font-size:.85rem;}
+  .mcq details p{margin:8px 0 0;font-size:.93rem;}
+  .callout.green a{color:#0a5c39;text-decoration:underline;font-weight:600;}
+  .callout a{color:var(--accent);text-decoration:underline;font-weight:600;}
+  .callout a:hover{color:var(--navy);}
+  .vidlist{margin:6px 0 0 20px;} .vidlist li{margin-bottom:7px;}
+  .vidlist .why{color:#3b5c46;font-style:italic;}
+  footer{background:var(--navy-dark);color:#b9c6da;text-align:center;padding:24px 16px;font-family:'Segoe UI',Arial,sans-serif;font-size:.8rem;}
+  @media (max-width:700px){section{padding:20px 16px;} table{font-size:.8rem;} th,td{padding:6px 8px;}}
+  @media print{nav{display:none;} body{background:#fff;} section{box-shadow:none;border:none;page-break-inside:avoid;} header.masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Science, Technology, and Society · Unit II · Week 9</div>
+  <h1>Chapter 5: The Good Life</h1>
+  <div class="subtitle">GE07 Lecture • Dr. Ryan Manuel D. Guido</div>
+  <div class="rule"></div>
+</header>
+
+<nav class="sans">
+  <ul>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#aristotle">Aristotle</a></li>
+    <li><a href="#virtue">Virtue &amp; the Mean</a></li>
+    <li><a href="#rivals">Rival Views</a></li>
+    <li><a href="#science">Science &amp; the Good Life</a></li>
+    <li><a href="#filipino">The Filipino Good Life</a></li>
+    <li><a href="#algorithms">Age of Algorithms</a></li>
+    <li><a href="#sugar">Case: Sugar</a></li>
+    <li><a href="#synthesis">Synthesis</a></li>
+    <li><a href="#terms">Key Terms</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#quiz">Self-Assessment</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="objectives">
+  <h2>Learning Objectives</h2>
+  <p>At the end of this chapter, the students should be able to:</p>
+  <ol class="plain">
+    <li>Examine the shared concerns that make up the good life in order to come up with innovative, creative solutions to contemporary issues guided by ethical standards;</li>
+    <li>Explain Aristotle's account of the good life (eudaimonia), virtue, and the "golden mean";</li>
+    <li>Compare Aristotle's view with rival conceptions of the good life (hedonism, Stoicism, and the Filipino concept of the public good);</li>
+    <li>Evaluate the proper role of science and technology in a good human life, using Richard Feynman's reflections; and</li>
+    <li>Apply the idea of the good life to concrete contemporary issues — from the "attention economy" to the production and consumption of sugar — guided by ethical standards.</li>
+  </ol>
+</section>
+<section id="intro">
+  <h2>Introduction: The Oldest Question</h2>
+  <p class="lead">"What is the good life?" is perhaps the oldest question in philosophy — and, quietly, the one behind almost every choice you make. Every advertisement, every career plan, every scroll through a feed is a partial answer to it: <em>this</em> is what a life worth living looks like. The trouble is that we rarely ask the question directly, and so we absorb our answers from whatever is loudest around us.</p>
+  <p>Chapter 4 drew the crucial distinction between technological <em>power</em> and human <em>flourishing</em>, and introduced Heidegger's warning about a world reduced to "resource." This chapter takes the next step and asks the question those raised: if not power, pleasure, or accumulation, then <em>what</em> actually constitutes a good human life? And where do science and technology fit within it — as the goal of life, a threat to it, or a servant of it?</p>
+  <p>This is not merely an academic exercise. In an age of scientific and technological advancement, we can do almost anything — but "can" does not tell us "should," and having more options is not the same as knowing what to choose. The good life is the framework that lets us judge our powers rather than being ruled by them. As the syllabus frames it, examining our "shared concerns" about the good life is what equips us to devise ethical, creative solutions to contemporary problems. To live well in a technological world, we first need a picture of what living well <em>means</em>.</p>
+  <div class="callout gold">
+    <span class="label">Framing Idea</span>
+    Socrates said, "The unexamined life is not worth living." The good life is not something you can drift into; it is something you must think about and choose. This chapter offers the great philosophical answers not to memorize but to test against your own life.
+  </div>
+  <div class="qbox">
+    <span class="label">Think–Pair–Share</span>
+    Finish this sentence honestly, in one line: "I will know I have lived a good life if ___." Then look at your answer — is it about pleasure, achievement, wealth, relationships, meaning, or something else? Where did that answer come from?
+  </div>
+</section>
+<section id="aristotle">
+  <h2>Aristotle and Eudaimonia: The Good Life as Flourishing</h2>
+  <p>We met eudaimonia in Chapter 4; here we develop Aristotle's full account, drawn from his <em>Nicomachean Ethics</em> (Books I, VI, and X), the most influential treatment of the good life in Western thought.</p>
+  <h3>The highest good</h3>
+  <p>Aristotle begins by observing that everything we do aims at some <em>good</em> or end. We study to pass, pass to graduate, graduate to get a job, work to earn money. But this chain of "for the sake of" cannot go on forever; there must be some final end that we want <em>for its own sake</em> and not for the sake of anything else. That end, Aristotle argues, is <strong>eudaimonia</strong> — usually translated "happiness" but better rendered as <strong>flourishing</strong> or "living well and doing well." Everything else — money, honor, health, even pleasure — we ultimately want <em>because</em> we think it will contribute to a flourishing life. Eudaimonia is the good we never seek for the sake of something else. It is, in his phrase, the <strong>highest good</strong> (<em>summum bonum</em>).</p>
+  <h3>The function argument</h3>
+  <p>What, then, <em>is</em> flourishing? Aristotle answers with his famous <strong>function argument</strong> (ergon). Just as a good flutist is one who plays the flute well, and a good knife is one that cuts well, a good human being is one who performs the characteristic human <em>function</em> excellently. And the function unique to humans — what sets us apart from plants (which merely grow) and animals (which merely sense and move) — is <strong>reason</strong>. Therefore, human flourishing is <strong>the activity of the soul in accordance with virtue (excellence) over a complete life</strong> — a life of reasoning and acting well, guided by good character, sustained not for a moment but across the whole arc of a life. "One swallow does not make a summer," Aristotle warns; nor does one good day make a flourishing life.</p>
+  <h3>Three features that make eudaimonia distinctive</h3>
+  <ul class="plain">
+    <li><strong>It is an activity, not a state.</strong> Flourishing is something you <em>do</em> — living and acting well — not a feeling you have or a prize you win. You cannot be passively made eudaimon.</li>
+    <li><strong>It concerns a whole life.</strong> Eudaimonia is assessed over a complete life, not a single peak experience. This is why it cannot be equated with momentary pleasure.</li>
+    <li><strong>It is self-sufficient and complete.</strong> It is the one end desired always for itself and never merely as a means to something further.</li>
+  </ul>
+  <p>Aristotle also acknowledged, realistically, that flourishing needs some <strong>external goods</strong> — a basic level of health, friends, resources, and good fortune. It is hard to flourish in extreme poverty, isolation, or sickness. But these are <em>conditions</em> for flourishing, not flourishing itself, and beyond a sufficient level they add little. This is a strikingly modern point: it anticipates the wellbeing research showing that once basic needs are met, more wealth adds little to a good life (Chapter 4's hedonic treadmill).</p>
+  <div class="callout">
+    <span class="label">STS Connection</span>
+    Notice how directly this answers Chapter 4's question. If the good life is an <em>activity</em> of reason and virtue over a whole life, then no device, purchase, or level of convenience can <em>be</em> the good life — though technology can help supply the external goods (health, connection, freedom from toil) that give flourishing room to grow. Technology is, at best, a servant of the good life, never its substance.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Aristotle+Nicomachean+ethics+eudaimonia+Crash+Course+Philosophy" target="_blank" rel="noopener">Aristotle &amp; the good life</a> — CrashCourse / curated <span class="why">(the highest good)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Aristotle+function+argument+eudaimonia+TED-Ed" target="_blank" rel="noopener">The function argument</a> — curated search <span class="why">(living well as a whole life)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="virtue">
+  <h2>Virtue and the Golden Mean</h2>
+  <p>If flourishing is "activity in accordance with virtue," we need to know what <strong>virtue</strong> (aretē, "excellence") is. For Aristotle, virtues are stable traits of character that dispose us to feel and act well — courage, honesty, generosity, temperance, justice, good humor. Crucially, virtues are not inborn and not merely known; they are <strong>habits</strong>, formed by practice. "We become just by doing just acts, temperate by doing temperate acts, brave by doing brave acts." Character is built the way a skill is built — through repetition until it becomes second nature. This is a hopeful doctrine: a good life is not reserved for the naturally gifted but is cultivated by anyone willing to practice.</p>
+  <h3>The doctrine of the mean</h3>
+  <p>Aristotle's most famous practical idea is the <strong>golden mean</strong>: each virtue lies between two vices — one of <em>excess</em> and one of <em>deficiency</em>. Virtue is the "just right" middle, found by reason and sensitive to the situation.</p>
+  <table>
+    <thead><tr><th>Deficiency (vice)</th><th>Virtue (the mean)</th><th>Excess (vice)</th></tr></thead>
+    <tbody>
+      <tr><td>Cowardice</td><td><strong>Courage</strong></td><td>Recklessness</td></tr>
+      <tr><td>Stinginess</td><td><strong>Generosity</strong></td><td>Wastefulness</td></tr>
+      <tr><td>Insensibility / dullness</td><td><strong>Temperance</strong></td><td>Self-indulgence</td></tr>
+      <tr><td>Sarcasm / grumpiness</td><td><strong>Good humor / friendliness</strong></td><td>Buffoonery / flattery</td></tr>
+      <tr><td>Apathy</td><td><strong>Proper ambition</strong></td><td>Over-ambition</td></tr>
+    </tbody>
+  </table>
+  <p>The mean is not a rigid mathematical midpoint but "the mean relative to us," found by practical wisdom in the concrete situation — the right amount, at the right time, toward the right people, for the right reason. This requires the master-virtue Aristotle discusses in Book VI: <strong>phronesis</strong> or <em>practical wisdom</em> — the intelligent capacity to deliberate well about how to live and to perceive what a particular situation calls for. Practical wisdom is not the same as cleverness or technical skill; it is knowing how to live rightly, and it can only be gained through experience.</p>
+  <div class="callout gold">
+    <span class="label">Why the Mean Matters Today</span>
+    The golden mean is a powerful tool for the digital age. Our relationship with technology can err by <em>deficiency</em> (a total Luddite refusal that cuts us off from real goods) or by <em>excess</em> (compulsive, boundaryless use that fragments our attention and relationships). The virtuous path — echoing Heidegger's "free relationship" — is the practically-wise mean: using technology well, in the right amount, for the right ends.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Apply the golden mean to one technology habit — social-media use, gaming, messaging, online shopping. What would the vice of <em>deficiency</em> look like? The vice of <em>excess</em>? What would the virtuous <em>mean</em> look like for you, concretely?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Aristotle+golden+mean+virtue+ethics+Crash+Course+Philosophy" target="_blank" rel="noopener">Virtue &amp; the golden mean</a> — CrashCourse / curated <span class="why">(habit and the &lsquo;just right&rsquo; middle)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="rivals">
+  <h2>Rival Visions of the Good Life</h2>
+  <p>Aristotle's is not the only serious answer. Part of examining "shared concerns" about the good life is knowing the main alternatives, each of which still shapes how people live today — including how technology is marketed to us.</p>
+  <h3>Hedonism — the good life as pleasure</h3>
+  <p>The oldest rival holds that pleasure is the good and pain the evil, so the good life is the life of maximum pleasure. The Greek <strong>Epicurus</strong> gave this its most refined form — but, importantly, he did <em>not</em> mean crude indulgence. Epicurus prized <em>simple</em>, sustainable pleasures (friendship, modest food, freedom from anxiety) and the absence of pain and fear (<em>ataraxia</em>), warning that excess leads to suffering. Modern consumer culture and much of the "attention economy," by contrast, sell a cruder hedonism of constant stimulation. Aristotle's reply stands: pleasure is a <em>part</em> of the good life and a natural accompaniment of virtuous activity, but a life organized <em>around</em> pleasure mistakes a by-product for the goal.</p>
+  <h3>Stoicism — the good life as virtue and tranquility</h3>
+  <p>The <strong>Stoics</strong> (Epictetus, Seneca, Marcus Aurelius) taught that the good life lies in virtue and inner tranquility achieved by focusing only on what is "up to us" — our own judgments, choices, and character — and accepting with equanimity what is not (wealth, reputation, even health, and the actions of others). External things are "indifferents"; peace comes from mastering our responses. Stoicism has enjoyed a striking modern revival, precisely because it offers steadiness in a chaotic, notification-saturated world. Its wisdom — control what you can, release what you cannot — is a practical antidote to digital-age anxiety.</p>
+  <h3>The good life as meaning and relationship</h3>
+  <p>A broad modern and religious tradition locates the good life less in pleasure or even personal virtue than in <strong>meaning</strong> — a life devoted to something larger than oneself: love, family, faith, service, justice, creativity. Contemporary psychology distinguishes the <em>hedonic</em> (pleasure-based) from the <em>eudaimonic</em> (meaning-based) approaches to wellbeing, and research consistently finds that <em>meaning</em> and strong <em>relationships</em> predict a good life better than pleasure or money. This resonates with Aristotle (for whom friendship was essential to flourishing) and, as we will see, with Filipino thought.</p>
+  <table>
+    <thead><tr><th>Vision</th><th>The good life is…</th><th>Key thinkers</th><th>Danger it warns against</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Aristotelian</strong></td><td>Flourishing: virtuous, reasoned activity over a whole life</td><td>Aristotle</td><td>Mistaking means (money, pleasure) for the end</td></tr>
+      <tr><td><strong>Hedonist</strong></td><td>Maximizing pleasure, minimizing pain</td><td>Epicurus</td><td>Restless craving; the treadmill of stimulation</td></tr>
+      <tr><td><strong>Stoic</strong></td><td>Virtue and tranquility; mastering our responses</td><td>Epictetus, Marcus Aurelius</td><td>Being enslaved by what we cannot control</td></tr>
+      <tr><td><strong>Meaning/Relational</strong></td><td>Devotion to something larger; love and connection</td><td>Modern psychology; religious traditions</td><td>Empty achievement without purpose</td></tr>
+    </tbody>
+  </table>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Stoicism+explained+how+to+be+a+stoic" target="_blank" rel="noopener">Stoicism in a nutshell</a> — curated search <span class="why">(virtue and tranquility)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=Epicurus+hedonism+philosophy+of+happiness" target="_blank" rel="noopener">Epicurus on pleasure</a> — curated search <span class="why">(the refined hedonist)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="science">
+  <h2>Science, Wonder, and the Good Life: Richard Feynman</h2>
+  <p>Where does <em>science</em> itself fit in a good life? The syllabus pairs this chapter with the physicist <strong>Richard Feynman</strong>'s essay "What Is and What Should Be the Role of Scientific Culture in Modern Society" (from <em>The Pleasure of Finding Things Out</em>). Feynman offers a humane, balanced answer that resists two opposite errors.</p>
+  <p>Against those who see science as cold and value-destroying, Feynman insists that science <em>adds</em> to the good life. Understanding a flower's biology, he argues, does not subtract from its beauty but <em>adds</em> layers of wonder — the cellular processes, the evolutionary history, the physics of color. Science, for Feynman, is a source of profound <strong>pleasure and wonder</strong> ("the pleasure of finding things out"), an expansion of the mind that enriches rather than diminishes human experience. Curiosity satisfied is one of life's genuine goods, available to anyone.</p>
+  <p>But against those who would make science the <em>arbiter</em> of the good life, Feynman is equally clear: science tells us what <em>is</em>, not what we <em>ought</em> to do. Science gives us power — the power to heal or to harm, "to do good or to do bad, but it does not carry instructions on how to use it." The same knowledge that makes medicine makes weapons. Science can illuminate the consequences of our choices, but it cannot, by itself, tell us which ends are worth pursuing. Those questions — of value, meaning, and the good — belong to ethics and philosophy, not to the laboratory. Feynman's honesty about science's <em>limits</em> is itself a mark of scientific integrity and of wisdom.</p>
+  <div class="callout gold">
+    <span class="label">The Feynman Balance — and the trap of "scientism"</span>
+    Science <strong>enriches</strong> the good life (wonder, understanding, the relief of suffering) but does not <strong>define</strong> it (it cannot tell us what we ought to value). The error of treating science as the <em>only</em> valid source of truth and value — dismissing ethics, art, and philosophy — is called <strong>scientism</strong>, and it is exactly what the C.S. Lewis clip in the course syllabus warns against. A good life uses science without worshipping it.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Feynman says understanding a flower scientifically <em>adds</em> to its beauty. Do you agree, or does explanation sometimes drain the wonder from things? Give an example from your own experience where knowing more made something more — or less — beautiful.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=Richard+Feynman+ode+to+a+flower+beauty+of+science" target="_blank" rel="noopener">Feynman: the beauty of a flower</a> — curated search <span class="why">(science adds to wonder)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="filipino">
+  <h2>The Good Life in the Filipino Context: The Public Good</h2>
+  <p>The syllabus deliberately grounds the good life in Filipino thought, through Rolando Gripaldo's "The Concepts of the Public Good: A View from the Filipino Philosopher" and Christopher Ryan Maboloc's "Eudaimonia and Human Flourishing." Filipino philosophy adds an essential corrective to individualistic pictures of the good life.</p>
+  <p>Where much Western thought begins with the <em>individual's</em> flourishing, Filipino ethics begins with the <strong>relational self</strong>. Building on the concept of <em>kapwa</em> (shared identity; see Chapter 4), Filipino thought holds that a person cannot flourish in isolation — the good life is inseparable from the good of one's <em>kapwa</em>, family, and community. Gripaldo's discussion of the <strong>public good</strong> (<em>kabutihang panlahat</em>) insists that individual good and common good are bound together: a genuinely good life contributes to, and is nourished by, the flourishing of the community. This resonates with values like <em>bayanihan</em> (communal cooperation), <em>pakikipagkapwa</em>, and <em>kagandahang-loob</em> (nobility of will, generosity of spirit).</p>
+  <p>This relational vision reframes technology's role. If the good life is a <em>shared</em> project, then the right question about any technology is not only "does it benefit <em>me</em>?" but "does it serve the <em>common good</em>, and the flourishing of my <em>kapwa</em> and community?" A social-media platform, a piece of agricultural science, an AI system — each can be assessed by whether it strengthens or corrodes the bonds of community and contributes to <em>kabutihang panlahat</em>. This connects the personal good life of Unit II back to the nation-building of Chapter 3: a good society is the condition for good individual lives, and vice versa.</p>
+  <div class="callout green">
+    <span class="label">A Distinctively Filipino Contribution</span>
+    The Filipino tradition guards against a purely private, consumerist idea of the good life. It insists that to live well is to live well <em>with</em> and <em>for</em> others — that no one truly flourishes while their community suffers. In an age of personalized feeds and individual metrics, this is a bracing and countercultural reminder.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=kapwa+Filipino+psychology+Virgilio+Enriquez" target="_blank" rel="noopener">Kapwa: the Filipino self</a> — curated search <span class="why">(the good life as shared)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="algorithms">
+  <h2>The Good Life in the Age of Algorithms</h2>
+  <p>We can now bring these classical ideas to bear on the most pressing contemporary threat to the good life: the <strong>attention economy</strong>. Many digital technologies are deliberately engineered not to serve your flourishing but to <em>capture and monetize your attention</em> — the longer you scroll, the more advertising revenue you generate. Their success is measured in "engagement," which is often the opposite of the deep focus, real relationship, and reflective activity that eudaimonia requires.</p>
+  <p>Seen through this chapter's lenses, the diagnosis is sharp. In <strong>Aristotle's</strong> terms, infinite feeds sell us the <em>vice of excess</em> and a stream of shallow pleasures in place of virtuous activity; the antidote is the practically-wise <em>mean</em>. In <strong>Heidegger's</strong> terms (Chapter 4), the attention economy is enframing at the level of the mind — revealing your attention, and you, as a resource to be extracted. In <strong>Stoic</strong> terms, it constantly agitates us over things "not up to us" (others' opinions, comparison, outrage). In <strong>Filipino</strong> terms, it can substitute a performance of connection for genuine <em>pakikipagkapwa</em>. And in <strong>Feynman's</strong> terms, it exploits our natural curiosity while starving it of anything worth finding out.</p>
+  <p>The point is not that phones are evil or that students should quit the internet — that would be the vice of deficiency and, per Heidegger, both foolish and impossible. The point is that a good life in a technological age requires <em>deliberate, practically-wise choices</em> about how our tools are designed and used, so that technology serves our flourishing rather than feeding on it. The concepts in this chapter are precisely the tools for making those choices well.</p>
+  <div class="callout">
+    <span class="label">Digital-Age Practical Wisdom</span>
+    Phronesis for 2026: Which technologies genuinely support your flourishing and relationships, and which merely harvest your attention? Where is the <em>mean</em> between deprivation and compulsion? What deserves your attention — your scarcest, most precious resource — and what is merely competing for it? These are questions of the good life, not of engineering.
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=The+Social+Dilemma+attention+economy+documentary" target="_blank" rel="noopener">The Social Dilemma</a> — curated search <span class="why">(the attention economy)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=how+social+media+hijacks+your+attention" target="_blank" rel="noopener">How apps capture your attention</a> — curated search <span class="why">(the vice of excess)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="sugar">
+  <h2>Case Study: The Production and Consumption of Sugar</h2>
+  <p>The syllabus anchors this chapter with a concrete case: the production and consumption of sugar (paired with the documentary <em>That Sugar Film</em>). Sugar is a perfect microcosm of the good-life question, because it stages the collision between <em>pleasure</em> and <em>flourishing</em> at every level — personal, social, and planetary.</p>
+  <h3>At the personal level: pleasure vs. flourishing</h3>
+  <p>Sugar delivers immediate, reliable <em>pleasure</em> — evolution wired us to crave it. Yet overconsumption drives obesity, type-2 diabetes, and heart disease, undermining the <em>health</em> that Aristotle counted among the external goods necessary for flourishing. Modern food technology has made cheap sugar ubiquitous, and the food industry engineers products (and markets them) to exploit our cravings — a direct parallel to the attention economy. Here the golden mean is vivid: total avoidance is unnecessary (deficiency), but the modern default of hidden, excessive sugar is the vice of excess. <strong>Temperance</strong>, guided by knowledge, is the virtuous middle.</p>
+  <h3>At the social and ethical level: whose good?</h3>
+  <p>Sugar is never just a personal choice. Its production raises questions of the <em>public good</em>: the health-system costs of diet-related disease borne by everyone; the labor conditions of sugar workers (a charged history in the Philippines, from the haciendas of Negros to today's <em>sacadas</em>); corporate marketing to children; and the responsibilities of government to inform and protect citizens. A Filipino <em>kapwa</em>-centered ethic asks not only "is this good for me?" but "what does this industry do to my community and to the workers who produce it?"</p>
+  <h3>At the planetary level: sustainability and the green economy</h3>
+  <p>Finally, sugar production has environmental costs — land and water use, monoculture, emissions — linking the personal good life to the <em>sustainability</em> theme the syllabus raises through the "green economy" and, later, the mandated climate topics (Chapter 16). A good life, on the relational and long-term view, cannot be purchased at the expense of the community's health or the planet's future. What looks like a private pleasure turns out to implicate the whole web of the good life: personal virtue, the public good, and the sustainability of the world we share.</p>
+  <div class="callout gold">
+    <span class="label">Why Sugar Teaches the Whole Chapter</span>
+    A spoonful of sugar contains the entire course of the chapter: the seduction of pleasure over flourishing; the golden mean between denial and excess; the need for practical wisdom informed by science (Feynman) but not dictated by it; the public-good and <em>kapwa</em> dimensions; and the tie to sustainability. Learning to think well about sugar is practice for thinking well about every technology that offers pleasure while quietly shaping our lives.
+  </div>
+  <div class="qbox">
+    <span class="label">Discussion Break</span>
+    Map one product you consume daily — a sugary drink, a fast-food meal, a mobile game, a fast-fashion item — onto the three levels above (personal flourishing, the public good, sustainability). Where does pleasure serve the good life, and where does it undermine it?
+  </div>
+  <div class="callout green">
+    <span class="label">▶ Watch &amp; Immerse</span>
+    <ul class="vidlist plain">
+      <li><a href="https://www.youtube.com/results?search_query=That+Sugar+Film+documentary" target="_blank" rel="noopener">That Sugar Film</a> — curated search <span class="why">(pleasure vs. flourishing)</span></li>
+      <li><a href="https://www.youtube.com/results?search_query=how+sugar+affects+your+brain+and+body" target="_blank" rel="noopener">How sugar affects your body</a> — curated search <span class="why">(the personal level)</span></li>
+    </ul>
+  </div>
+</section>
+<section id="synthesis">
+  <h2>Synthesis: Choosing a Life Worth Living</h2>
+  <p>This chapter has taken the distinction that opened Unit II — power versus flourishing — and filled in a positive picture of what flourishing is. Four ideas carry forward:</p>
+  <ol class="plain">
+    <li><strong>The good life is flourishing, not pleasure or accumulation.</strong> Aristotle's eudaimonia — virtuous, reasoned activity over a whole life — remains the most durable answer, and it explains why more power, money, or stimulation does not automatically make a life good.</li>
+    <li><strong>Virtue is habit, and the good path is usually the mean.</strong> Character is built by practice, and practical wisdom (phronesis) finds the virtuous middle between excess and deficiency — a directly usable tool for our relationship with technology.</li>
+    <li><strong>Science enriches the good life but cannot define it.</strong> Feynman's balance — science as a source of wonder and power, but silent on what we ought to value — guards against scientism and keeps ethics in charge of ends.</li>
+    <li><strong>The good life is shared.</strong> Filipino thought (kapwa, kabutihang panlahat) insists that flourishing is relational — bound to the good of one's community — reframing every technology by whether it serves the common good.</li>
+  </ol>
+  <p>The unifying lesson is that the good life is not a default you drift into but a <strong>choice you must examine and pursue</strong> — and that in an age of engineered pleasures and attention-harvesting tools, examining it is more urgent, not less. Science and technology are powerful means; the good life is the end that must judge them. In Chapter 6, we press further into the tensions this raises — "When technology and humanity cross" — taking up the ethical dilemmas of robotics, AI, and human rights that arise precisely when our technological power outruns our wisdom about how to use it.</p>
+</section>
+<section id="terms">
+  <h2>Key Terms</h2>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>The good life</td><td>A life worth living — the central question of ethics; each vision answers it differently.</td></tr>
+      <tr><td>Eudaimonia</td><td>Aristotle's term for flourishing / "living and doing well" — the highest good, sought for its own sake.</td></tr>
+      <tr><td>Highest good (summum bonum)</td><td>The final end we desire for itself and not for the sake of anything else.</td></tr>
+      <tr><td>Function argument (ergon)</td><td>Aristotle's argument that a good human performs the characteristic human function — reason — excellently.</td></tr>
+      <tr><td>Virtue (aretē)</td><td>An excellence of character; a stable, habit-formed disposition to feel and act well.</td></tr>
+      <tr><td>Golden mean</td><td>The virtuous middle between the vices of excess and deficiency, found by reason relative to the situation.</td></tr>
+      <tr><td>Practical wisdom (phronesis)</td><td>The master-virtue of deliberating well about how to live and perceiving what a situation calls for.</td></tr>
+      <tr><td>External goods</td><td>Conditions (health, friends, resources, fortune) that flourishing needs but which are not flourishing itself.</td></tr>
+      <tr><td>Hedonism</td><td>The view that pleasure is the good and the aim of life (Epicurus favored simple, sustainable pleasures).</td></tr>
+      <tr><td>Stoicism</td><td>The view that the good life is virtue and tranquility, focusing only on what is "up to us."</td></tr>
+      <tr><td>Scientism</td><td>The error of treating science as the only valid source of truth and value, dismissing ethics, art, philosophy.</td></tr>
+      <tr><td>Public good (kabutihang panlahat)</td><td>The Filipino/relational idea that individual flourishing is bound to the flourishing of the community.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="activities">
+  <h2>Discussion Questions and Activities</h2>
+  <h3>For class discussion</h3>
+  <ol class="plain">
+    <li>Which vision of the good life — Aristotelian, hedonist, Stoic, or relational/meaning-based — best matches how you actually live? How you <em>want</em> to live? Explain the gap, if any.</li>
+    <li>Is Aristotle right that the good life must be assessed over a <em>whole life</em> rather than in moments? What follows for how we should treat momentary pleasures?</li>
+    <li>Feynman says science enriches but cannot define the good life. Do you agree that science "does not carry instructions on how to use it"? What, then, should?</li>
+    <li>How does the Filipino idea of <em>kabutihang panlahat</em> challenge the way the good life is marketed to us (personalized, individual, consumer)?</li>
+    <li>Apply the golden mean to the attention economy. What does a practically-wise relationship with your phone actually look like, day to day?</li>
+  </ol>
+  <h3>Activity 1 — "The good life" comparison chart (group work)</h3>
+  <p>In groups, build a comparison chart of the four visions of the good life (Aristotelian, hedonist, Stoic, relational). For each, state its answer, one strength, one weakness, and how it would judge one specific technology (e.g., TikTok, a fitness tracker, an AI tutor). Present and defend.</p>
+  <h3>Activity 2 — Case study: sugar (the syllabus assessment)</h3>
+  <p>Watch <em>That Sugar Film</em>. Then write a short analysis of the production and consumption of sugar across the three levels in this chapter (personal flourishing, the public good, sustainability), and propose one ethical, practically-wise policy or personal practice. Use the golden mean.</p>
+  <h3>Activity 3 — Mini-essay (individual, 500–700 words)</h3>
+  <p><em>"For me, the good life is ___."</em> Defend your own considered vision of the good life in dialogue with at least two thinkers from this chapter, and say honestly where technology helps and where it hinders your pursuit of it.</p>
+</section>
+<section id="quiz">
+  <h2>Self-Check Quiz</h2>
+  <p class="sans" style="font-size:.9rem;color:var(--muted)">Answer first, then click each item to reveal the answer.</p>
+  <details><summary>1. What does Aristotle mean by eudaimonia, and why is it the "highest good"?</summary><p>Flourishing / "living and doing well" — the one end we seek for its own sake and not for the sake of anything else, making it the highest good (summum bonum).</p></details>
+  <details><summary>2. State Aristotle's function argument in one sentence.</summary><p>A good human performs the characteristic human function — reasoning — excellently, so flourishing is the soul's activity in accordance with virtue over a complete life.</p></details>
+  <details><summary>3. What is the golden mean? Give one example.</summary><p>The virtuous middle between vices of excess and deficiency; e.g., courage is the mean between cowardice (deficiency) and recklessness (excess).</p></details>
+  <details><summary>4. What is phronesis, and why is it the "master-virtue"?</summary><p>Practical wisdom — the capacity to deliberate well about how to live and perceive what a situation calls for; it guides the other virtues to the right mean.</p></details>
+  <details><summary>5. According to Aristotle, are virtues inborn? How are they acquired?</summary><p>No — virtues are habits formed by practice: "we become just by doing just acts, brave by doing brave acts."</p></details>
+  <details><summary>6. How do hedonism and Stoicism each define the good life?</summary><p>Hedonism: maximizing pleasure / minimizing pain (Epicurus favored simple pleasures and ataraxia). Stoicism: virtue and tranquility by focusing only on what is "up to us."</p></details>
+  <details><summary>7. What is Feynman's two-sided view of science and the good life?</summary><p>Science enriches life (wonder, understanding, relief of suffering) but cannot define it — it tells us what <em>is</em>, not what we <em>ought</em> to value; "it does not carry instructions on how to use it."</p></details>
+  <details><summary>8. What is scientism, and why is it an error?</summary><p>Treating science as the only valid source of truth and value, dismissing ethics, art, and philosophy; it's an error because questions of value and the good lie outside science's method.</p></details>
+  <details><summary>9. How does the Filipino idea of the public good (kabutihang panlahat) reframe the good life?</summary><p>It makes flourishing relational: individual good is bound to the good of one's kapwa and community, so a good life must contribute to the common good.</p></details>
+  <details><summary>10. Why is sugar a good case study for the good life?</summary><p>It stages pleasure vs. flourishing at three levels — personal health (the golden mean/temperance), the public good (labor, health costs, marketing), and sustainability — showing how a private pleasure implicates the whole web of the good life.</p></details>
+</section>
+<section id="references">
+  <h2>References and Further Reading</h2>
+  <ul class="plain">
+    <li>Aristotle. <em>Nicomachean Ethics</em>, Books I, VI, and X (eudaimonia, the function argument, virtue, the mean, practical wisdom).</li>
+    <li>Feynman, Richard. "What Is and What Should Be the Role of Scientific Culture in Modern Society," in <em>The Pleasure of Finding Things Out: The Best Short Works of Richard Feynman</em>, Perseus Books, 1999, pp. 97–115.</li>
+    <li>Gripaldo, Rolando. "The Concepts of the Public Good: A View from the Filipino Philosopher," in <em>The Making of a Filipino Philosopher and Other Essays</em>, National Bookstore, 2009, pp. 82–101.</li>
+    <li>Maboloc, Christopher Ryan. "Eudaimonia and Human Flourishing," in <em>Ethics and Human Dignity</em>, Rex Bookstore, 2010, pp. 15–23.</li>
+    <li>Epicurus. "Letter to Menoeceus" (on pleasure, simplicity, and ataraxia).</li>
+    <li>Epictetus, <em>Enchiridion</em>; Marcus Aurelius, <em>Meditations</em> (Stoic accounts of the good life).</li>
+    <li>Film: <em>That Sugar Film</em> (2015) — production and consumption of sugar.</li>
+    <li>Presentation: "Towards a Green Economy: Pathways to Sustainable Development and Poverty Eradication," UNEP.</li>
+    <li>Enriquez, Virgilio. <em>From Colonial to Liberation Psychology</em> (on <em>kapwa</em>).</li>
+    <li>Stanford Encyclopedia of Philosophy: entries on Aristotle's Ethics, Ancient Ethical Theory, and Well-Being.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Science, Technology, and Society · Chapter 5 Main Lecture &middot; Prepared August 2026</footer>
+
+<script>
+/* Smooth in-page navigation that works inside sandboxed preview frames */
+(function(){
+  function go(e){
+    var href=this.getAttribute('href');
+    if(!href||href.charAt(0)!=='#')return;
+    var el=document.getElementById(href.slice(1));
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+      if(history&&history.replaceState){history.replaceState(null,'',href);}}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',go);});
+})();
+</script>
+</body>
+</html>
